@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steam Cleaning Tampere | Höyrypesu Tampere | BetterClean — Chemical-Free Sanitisation</title>
+  <meta name="description" content="Professional steam cleaning in Tampere. Chemical-free high-temperature sanitisation of tiles, grout, kitchen surfaces, bathroom fixtures and sauna. From €80/hr incl. VAT." />
+  <meta name="keywords" content="steam cleaning tampere, höyrypesu tampere, höyrypuhdistus tampere, chemical free cleaning tampere, bathroom steam cleaning tampere" />
+  <meta property="og:title" content="Steam Cleaning Tampere | Höyrypesu Tampere | BetterClean" />
+  <meta property="og:description" content="Professional steam cleaning in Tampere. Chemical-free high-temperature sanitisation of tiles, grout, kitchen surfaces, bathroom fixtures and sauna. From €80/hr incl. VAT." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://betterclean.fi/steam-cleaning.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; }
+    h1, h2, h3, h4, .font-display { font-family: 'Sora', sans-serif; }
+
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      border: 2px solid var(--green);
+      color: var(--green);
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--green); color: #fff; }
+
+    .lang-toggle { display: flex; background: #f1f5f0; border-radius: 6px; overflow: hidden; }
+    .lang-btn {
+      padding: 6px 14px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      border: none;
+      background: transparent;
+      color: #666;
+    }
+    .lang-btn.active { background: var(--green); color: #fff; }
+
+    .section-green { background: var(--green-light); }
+    .section-dark { background: var(--dark); color: #fff; }
+
+    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .check-icon { width: 22px; height: 22px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+    .price-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(58,170,53,0.08);
+      border: 1px solid #e8f5e8;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(58,170,53,0.18); }
+    .price-card.featured { border: 2px solid var(--green); position: relative; }
+
+    .reason-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(58,170,53,0.07);
+    }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%);
+    }
+
+    nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
+
+    [data-lang] { transition: opacity 0.2s; }
+
+    /* Steam icon pulse */
+    .steam-icon {
+      width: 64px; height: 64px;
+      background: var(--green-light);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    /* Comparison table */
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 14px;
+    }
+    .compare-table td {
+      padding: 14px 20px;
+      border-top: 1px solid #e8f5e8;
+      font-size: 14px;
+    }
+    .compare-table tr:hover td { background: #f8fdf8; }
+    .compare-table .check-yes { color: var(--green); font-weight: 700; font-size: 18px; }
+    .compare-table .check-no { color: #ccc; font-weight: 700; font-size: 18px; }
+    .compare-table .check-partial { color: #f5a623; font-weight: 700; font-size: 14px; }
+
+    /* FAQ */
+    details {
+      border: 1px solid #e8f5e8;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    details[open] { border-color: var(--green); }
+    summary {
+      padding: 18px 22px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1a2e1a;
+      transition: background 0.15s;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: var(--green-light); }
+    details[open] summary { background: var(--green-light); color: var(--green-dark); }
+    .faq-chevron { transition: transform 0.2s; font-size: 18px; color: var(--green); }
+    details[open] .faq-chevron { transform: rotate(45deg); }
+    .faq-body {
+      padding: 0 22px 18px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* Service card */
+    .service-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 4px 20px rgba(58,170,53,0.07);
+      border: 1px solid #e8f5e8;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(58,170,53,0.16); }
+
+    /* Stat chip */
+    .stat-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(58,170,53,0.12);
+      border: 1px solid rgba(58,170,53,0.25);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-size: 13px; font-weight: 600;
+      color: var(--green-dark);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav class="px-6 py-4">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex flex-col items-start">
+      <div style="height: 72px; overflow: hidden; display: flex; align-items: center;">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" style="height: 296px; width: auto;" />
+      </div>
+      <span class="text-xs font-semibold uppercase tracking-widest mt-1" style="color: var(--green); letter-spacing: 0.12em;" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#why" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Why Us" data-fi="Miksi Me"></a>
+      <a href="index.html#services" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Services" data-fi="Palvelut"></a>
+      <a href="pricing.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Pricing" data-fi="Hinnat"></a>
+      <a href="index.html#contact" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="lang-toggle">
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" onclick="setLang('fi')">FI</button>
+      </div>
+      <a href="index.html#contact" class="btn-primary text-sm hidden md:inline-block" data-en="Book Now" data-fi="Varaa Nyt"></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero-bg py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: var(--green);">
+      Höyrypesu Tampere / Steam Cleaning Tampere
+    </p>
+    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-6" style="letter-spacing: -0.03em; color: #1a2e1a; max-width: 760px;"
+      data-en="Professional Steam Cleaning in Tampere"
+      data-fi="Ammattimainen Höyrypesu Tampereella">
+    </h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8" style="max-width: 600px;"
+      data-en="Chemical-free, high-temperature steam sanitisation that kills 99.9% of bacteria and allergens. No harsh chemicals — safe for children, pets and allergy sufferers."
+      data-fi="Kemikaaliton, korkean lämpötilan höyrysanitaatio, joka tuhoaa 99,9 % bakteereista ja allergeeneista. Ei voimakkaita kemikaaleja — turvallinen lapsille, lemmikeille ja allergikoille.">
+    </p>
+    <div class="flex flex-wrap gap-3 mb-8">
+      <span class="stat-chip">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#2a8226" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="No chemicals" data-fi="Ei kemikaaleja"></span>
+      </span>
+      <span class="stat-chip">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#2a8226" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="99.9% bacteria-free" data-fi="99,9 % bakteerivapaa"></span>
+      </span>
+      <span class="stat-chip">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#2a8226" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="Safe for allergies" data-fi="Turvallinen allergikoille"></span>
+      </span>
+    </div>
+    <a href="index.html#contact" class="btn-primary" data-en="Book Steam Cleaning" data-fi="Varaa Höyrypesu"></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════ WHAT WE STEAM CLEAN ═══════════════════════ -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);"
+        data-en="What We Clean" data-fi="Mitä Höyrypesu Kattaa"></p>
+      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;"
+        data-en="Surfaces We Steam Clean"
+        data-fi="Pinnat Joita Höyrypesu Kattaa"></h2>
+      <p class="text-gray-500 mt-4 text-base leading-relaxed" style="max-width: 560px; margin: 16px auto 0;"
+        data-en="Steam cleaning penetrates grout lines, tile gaps, and hard-to-reach corners that regular cleaning misses. Our professional equipment reaches 140°C+ to sanitise at the deepest level."
+        data-fi="Höyrypesu tunkeutuu saumoihin, laatikkorakoihin ja vaikeasti tavoitettaviin kulmiin, joita tavallinen siivous ei saavuta. Ammattilaitteistomme yltää yli 140°C:een puhdistamaan syvimmälle tasolle."></p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+
+      <!-- Checklist -->
+      <div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Bathroom tiles and grout" data-fi="Kylpyhuoneen kaakelit ja saumat"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Deep penetration into grout lines removes mould, lime and discolouration." data-fi="Syvä tunkeutuminen saumoihin poistaa homeen, kalkin ja värjäytymät."></p>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Kitchen surfaces and hob" data-fi="Keittiön pinnat ja liesi"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Removes baked-on grease and food residue from hobs, splashbacks and worktops without chemicals." data-fi="Poistaa palaneen rasvan ja ruoantähteet liedeltä, kaatopaikalta ja työtasoilta ilman kemikaaleja."></p>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Toilet and fixtures" data-fi="WC ja kalusteet"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Complete sanitisation of toilet bowl, seat, cistern and all fittings — no chemicals needed." data-fi="Täydellinen sanitointi WC-altaaseen, istuimeen, vesisäiliöön ja kaikkiin varusteisiin — ei kemikaaleja."></p>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Sauna benches and walls (löylyhuone)" data-fi="Saunan lauteet ja seinät (löylyhuone)"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Steam is the ideal tool for sauna cleaning — kills bacteria and mould from wood without detergents." data-fi="Höyry on ihanteellinen saunan puhdistukseen — tappaa bakteerit ja homeen puusta ilman pesuaineita."></p>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Hard floors" data-fi="Kovat lattiat"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Steam sanitises tile, stone and vinyl floors — deeper than any mop, leaving no chemical residue." data-fi="Höyry puhdistaa kaakeli-, kivi- ja vinyylilattiat syvemmälle kuin mikään moppi ilman kemikaalijäämiä."></p>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Window frames and sills" data-fi="Ikkunankarmit ja -laudat"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Removes ingrained grime and mould from frames and sills that accumulate over months." data-fi="Poistaa karmeihin ja laudoille kertyneen lian ja homeen, joka on kertynyt kuukausien aikana."></p>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Cabinet door fronts" data-fi="Kaappien ovet"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Steam lifts grease and sticky residue from kitchen and bathroom cabinet fronts without streaking." data-fi="Höyry irrottaa rasvan ja tahmean jäämän keittiö- ja kylpyhuonekaapin ovista ilman tahraviivoja."></p>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800" data-en="Oven interior (add-on)" data-fi="Uunin sisäpuoli (lisäpalvelu)"></p>
+            <p class="text-sm text-gray-500 mt-0.5" data-en="Available as a stand-alone add-on. Steam loosens carbonised grease for easy removal — no oven cleaners." data-fi="Saatavilla erillisenä lisäpalveluna. Höyry irrottaa hiiltyneen rasvan helpoksi poistaa — ei uunin puhdistusaineita."></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Card -->
+      <div class="price-card featured" style="position: relative;">
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 16px; border-radius: 20px; font-family: 'Sora', sans-serif; white-space: nowrap;"
+          data-en="Kotitalousvähennys eligible" data-fi="Oikeutettu kotitalousvähennykseen"></div>
+
+        <div class="mb-6">
+          <p class="text-sm font-semibold uppercase tracking-widest mb-2" style="color: var(--green);"
+            data-en="Steam Cleaning Pricing" data-fi="Höyrypesu Hinnasto"></p>
+          <div class="flex items-end gap-2 mb-1">
+            <span class="text-4xl font-display font-extrabold" style="color: var(--dark); letter-spacing: -0.03em;">€80</span>
+            <span class="text-lg text-gray-500 mb-1" data-en="/hr incl. VAT" data-fi="/t sisältää ALV:n"></span>
+          </div>
+          <p class="text-sm text-gray-500" data-en="→ €52/hr after kotitalousvähennys (35% tax deduction)" data-fi="→ €52/t kotitalousvähennyksen jälkeen (35 % verovähennys)"></p>
+        </div>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <div>
+              <p class="font-semibold text-gray-800 text-sm" data-en="Kitchen (surfaces + floor)" data-fi="Keittiö (pinnat + lattia)"></p>
+              <p class="text-xs text-gray-400 mt-0.5" data-en="Approx. 1.5–2 hours" data-fi="Noin 1,5–2 tuntia"></p>
+            </div>
+            <span class="font-display font-bold text-base" style="color: var(--dark);">€120–€160</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <div>
+              <p class="font-semibold text-gray-800 text-sm" data-en="Bathroom + toilet" data-fi="Kylpyhuone + WC"></p>
+              <p class="text-xs text-gray-400 mt-0.5" data-en="Approx. 1–1.5 hours" data-fi="Noin 1–1,5 tuntia"></p>
+            </div>
+            <span class="font-display font-bold text-base" style="color: var(--dark);">€80–€120</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <div>
+              <p class="font-semibold text-gray-800 text-sm" data-en="Full home steam treatment" data-fi="Kodin kattava höyrypesu"></p>
+              <p class="text-xs text-gray-400 mt-0.5" data-en="All steam-suitable surfaces" data-fi="Kaikki höyryyn soveltuvat pinnat"></p>
+            </div>
+            <span class="font-display font-bold text-base" style="color: var(--green);"
+              data-en="Custom quote" data-fi="Tarjouspyyntö"></span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <div>
+              <p class="font-semibold text-gray-800 text-sm" data-en="Minimum booking" data-fi="Minimikesto"></p>
+            </div>
+            <span class="font-display font-bold text-base" style="color: var(--dark);"
+              data-en="2 hours" data-fi="2 tuntia"></span>
+          </div>
+        </div>
+
+        <a href="index.html#contact" class="btn-primary w-full text-center" style="width: 100%;"
+          data-en="Get a Free Quote" data-fi="Pyydä Ilmainen Tarjous"></a>
+
+        <p class="text-xs text-gray-400 mt-4 text-center leading-relaxed"
+          data-en="All prices include 25.5% VAT. Kotitalousvähennys reduces effective cost by 35% for household work."
+          data-fi="Kaikki hinnat sisältävät 25,5 % ALV:n. Kotitalousvähennys pienentää todellisia kustannuksia 35 %."></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ WHY STEAM CLEANING ═══════════════════════ -->
+<section class="py-20 px-6 section-green">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);"
+        data-en="The Benefits" data-fi="Hyödyt"></p>
+      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;"
+        data-en="Why Choose Steam Cleaning?"
+        data-fi="Miksi Valita Höyrypesu?"></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="reason-card">
+        <div class="steam-icon">
+          <svg width="30" height="30" fill="none" viewBox="0 0 24 24">
+            <path d="M12 2C12 2 8 7 8 11a4 4 0 0 0 8 0c0-4-4-9-4-9z" stroke="#3aaa35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 21h8M12 17v4" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3" style="color: var(--dark);"
+          data-en="Chemical-Free Cleaning"
+          data-fi="Kemikaaliton Puhdistus"></h3>
+        <p class="text-gray-500 text-sm leading-relaxed"
+          data-en="High-temperature steam (140°C+) kills bacteria, mould spores and dust mites on contact — without any chemical agents. Just water, converted to powerful steam."
+          data-fi="Korkean lämpötilan höyry (yli 140°C) tappaa bakteerit, homeitiöt ja pölypunkit kosketuksessa — ilman kemiallisia aineita. Pelkkää vettä muutettuna tehokkaaksi höyryksi."></p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="reason-card">
+        <div class="steam-icon">
+          <svg width="30" height="30" fill="none" viewBox="0 0 24 24">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#3aaa35" stroke-width="2"/>
+            <path d="M8 12l2.5 2.5L16 9" stroke="#3aaa35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3" style="color: var(--dark);"
+          data-en="Allergy Safe"
+          data-fi="Turvallinen Allergikoille"></h3>
+        <p class="text-gray-500 text-sm leading-relaxed"
+          data-en="Ideal for families with young children, pets, or anyone suffering from asthma or allergies. Steam leaves no chemical residue — just clean, sanitised surfaces with nothing harmful remaining."
+          data-fi="Ihanteellinen perheille, joissa on pieniä lapsia, lemmikkejä tai astmasta tai allergioista kärsiviä. Höyry ei jätä kemiallista jäämää — vain puhtaita, sanitoituja pintoja ilman haitallisia aineita."></p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="reason-card">
+        <div class="steam-icon">
+          <svg width="30" height="30" fill="none" viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" stroke="#3aaa35" stroke-width="2"/>
+            <path d="M12 6v6l4 2" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 16c1-1.5 2.5-2 5-2s4 .5 5 2" stroke="#3aaa35" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3" style="color: var(--dark);"
+          data-en="Eco-Friendly"
+          data-fi="Ympäristöystävällinen"></h3>
+        <p class="text-gray-500 text-sm leading-relaxed"
+          data-en="No chemical runoff into waterways. No plastic bottles to dispose of. Steam cleaning uses only water — making it the most environmentally responsible deep-clean method available."
+          data-fi="Ei kemiallisia valumia vesistöihin. Ei muovipulloja hävitettäväksi. Höyrypesu käyttää vain vettä — se on ympäristövastuullisin saatavilla oleva syväpuhdistusmenetelmä."></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ COMPARISON TABLE ═══════════════════════ -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);"
+        data-en="Side by Side" data-fi="Vertailu"></p>
+      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;"
+        data-en="Steam Cleaning vs Regular Cleaning"
+        data-fi="Höyrypesu vs Tavallinen Siivous"></h2>
+    </div>
+
+    <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+      <table class="compare-table">
+        <thead>
+          <tr style="background: var(--green-light);">
+            <th style="width: 45%; color: var(--dark);" data-en="Feature" data-fi="Ominaisuus"></th>
+            <th style="color: var(--green);">
+              <span data-en="Steam Cleaning" data-fi="Höyrypesu"></span>
+            </th>
+            <th style="color: #999;">
+              <span data-en="Regular Cleaning" data-fi="Tavallinen Siivous"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-medium text-gray-700" data-en="Kills bacteria" data-fi="Tappaa bakteerit"></td>
+            <td class="check-yes">✓</td>
+            <td class="check-partial" data-en="Partially" data-fi="Osittain"></td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-700" data-en="Removes mould" data-fi="Poistaa homeen"></td>
+            <td class="check-yes">✓</td>
+            <td class="check-no">✗</td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-700" data-en="Safe for allergies" data-fi="Turvallinen allergikoille"></td>
+            <td class="check-yes">✓</td>
+            <td class="check-partial" data-en="Depends on products" data-fi="Riippuu tuotteista"></td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-700" data-en="Eco-friendly" data-fi="Ympäristöystävällinen"></td>
+            <td class="check-yes">✓</td>
+            <td class="check-no">✗</td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-700" data-en="No chemical residue" data-fi="Ei kemikaalijäämiä"></td>
+            <td class="check-yes">✓</td>
+            <td class="check-no">✗</td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-700" data-en="Penetrates grout" data-fi="Tunkeutuu saumoihin"></td>
+            <td class="check-yes">✓</td>
+            <td class="check-no">✗</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<section class="py-20 px-6 section-green">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);"
+        data-en="Common Questions" data-fi="Usein Kysytyt Kysymykset"></p>
+      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;"
+        data-en="Steam Cleaning FAQ"
+        data-fi="Höyrypesu UKK"></h2>
+    </div>
+
+    <details>
+      <summary>
+        <span data-en="Is steam cleaning safe for all surfaces?" data-fi="Onko höyrypesu turvallinen kaikille pinnoille?"></span>
+        <span class="faq-chevron">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-en="Not for all surfaces — hardwood floors, for example, require caution as excessive moisture can cause warping. Delicate laminates and unsealed natural stone also need special assessment. Before starting, our team assesses every surface in your home to determine suitability. Steam is highly effective and completely safe on tiles, grout, glass, stainless steel, porcelain, vinyl and most sealed stone."
+           data-fi="Ei kaikille pinnoille — esimerkiksi puulattiat vaativat varovaisuutta, koska liiallinen kosteus voi aiheuttaa käyristymistä. Myös herkät laminaatit ja sinetöimättömät luonnonkivet tarvitsevat erityisarviointia. Ennen aloittamista tiimimme arvioi jokaisen pinnan kelpoisuuden. Höyry on erittäin tehokas ja täysin turvallinen kaakeleille, saumoille, lasille, ruostumattomalle teräkselle, posliinille, vinyyliille ja useimmille sinetöidyille kiville."></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span data-en="Does steam cleaning kill mould?" data-fi="Tappaa höyrypesu homeen?"></span>
+        <span class="faq-chevron">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-en="Yes. Steam at 140°C+ kills mould spores at the root, including in grout lines and behind tile edges where standard cleaning products cannot penetrate. This makes steam cleaning particularly effective in Finnish bathrooms and saunas where high humidity creates ideal conditions for mould growth. Regular steam cleaning every 3–6 months is the most effective prevention strategy."
+           data-fi="Kyllä. Yli 140°C:n höyry tappaa homeitiöt juuresta, myös saumoissa ja kaakelirenkaiden takana, joihin tavalliset siivoustuotteet eivät pysty tunkeutumaan. Tämä tekee höyrypesuista erityisen tehokkaita suomalaisissa kylpyhuoneissa ja saunoissa, joissa korkea kosteus luo ihanteelliset olosuhteet homeenkasvulle. Säännöllinen höyrypesu 3–6 kuukauden välein on tehokkain ehkäisystrategia."></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span data-en="Is steam cleaning eligible for kotitalousvähennys?" data-fi="Onko höyrypesu oikeutettu kotitalousvähennykseen?"></span>
+        <span class="faq-chevron">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-en="Yes. Steam cleaning performed in your own home qualifies for the Finnish household tax deduction (kotitalousvähennys). You can deduct 35% of the labour cost from your taxes, effectively reducing your €80/hr rate to approximately €52/hr. The deduction is applied directly when you file your annual tax return. We provide all the necessary documentation."
+           data-fi="Kyllä. Kotonasi suoritettava höyrypesu oikeuttaa Suomen kotitalousvähennykseen. Voit vähentää 35 % työvoimakustannuksista veroistasi, mikä käytännössä pienentää 80 €/tunnin hintasi noin 52 €/tuntiin. Vähennys tehdään suoraan vuosittaisen veroilmoituksen yhteydessä. Me toimitamme kaikki tarvittavat asiakirjat."></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span data-en="How often should I steam clean my bathroom?" data-fi="Kuinka usein kylpyhuone tulisi höyrypesuuttaa?"></span>
+        <span class="faq-chevron">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-en="We recommend professional steam cleaning of grout and tiles every 3–6 months, depending on how frequently the bathroom is used and how well it is ventilated. In Finnish homes where bathrooms are used daily and often have limited ventilation, a quarterly steam clean keeps mould and limescale at bay most effectively. Between professional sessions, regular wiping after showers helps significantly."
+           data-fi="Suosittelemme ammattimaista höyrypesuuta saumoille ja kaakeleille 3–6 kuukauden välein, riippuen kylpyhuoneen käyttötiheydestä ja tuuletuksesta. Suomalaisissa kodeissa, joissa kylpyhuoneet ovat päivittäisessä käytössä ja usein rajallisella tuuletuksella, neljännesvuosittainen höyrypesu pitää homeen ja kalkin parhaiten kurissa. Ammattimaisten käyntien välillä suihkun jälkeinen säännöllinen pyyhkiminen auttaa merkittävästi."></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span data-en="Is steam cleaning good for sauna cleaning in Finland?" data-fi="Sopiiko höyrypesu saunan puhdistukseen Suomessa?"></span>
+        <span class="faq-chevron">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-en="Absolutely — steam is the ideal solution for sauna cleaning in Finland. The sauna environment, with its extreme heat cycles and wood surfaces, demands a cleaning method that sanitises thoroughly without introducing harsh chemicals that could be inhaled during löyly. Steam sanitises sauna benches, walls and the kiuas area naturally and safely. It kills bacteria and mould from wood fibres without any detergents, leaving nothing behind but a clean, fresh sauna."
+           data-fi="Ehdottomasti — höyry on ihanteellinen ratkaisu saunan puhdistukseen Suomessa. Saunaympäristö, jonka äärimmäiset lämpösyklit ja puupinnat vaativat puhdistusmenetelmän, joka sanitoi perusteellisesti ilman voimakkaita kemikaaleja, joita voitaisiin hengittää löylyn aikana. Höyry sanitoi lauteet, seinät ja kiukaan alueen luonnollisesti ja turvallisesti. Se tappaa bakteerit ja homeen puukuiduista ilman pesuaineita, jättäen jälkeensä vain puhtaan, raikkaan saunan."></p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ RELATED SERVICES ═══════════════════════ -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);"
+        data-en="Explore More" data-fi="Lisää Palveluja"></p>
+      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;"
+        data-en="Related Services"
+        data-fi="Muut Palvelut"></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Window Cleaning -->
+      <a href="window-cleaning.html" class="service-card block">
+        <div class="h-44 overflow-hidden" style="background: linear-gradient(135deg, #e8f5fe 0%, #cce8fc 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="64" height="64" fill="none" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="#0fb8c9" stroke-width="1.5"/>
+            <path d="M12 3v18M3 12h18" stroke="#0fb8c9" stroke-width="1.5"/>
+            <path d="M7 7l2 2M15 7l2 2M7 15l2 2M15 15l2 2" stroke="#0fb8c9" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display font-bold text-lg mb-2" style="color: var(--dark);"
+            data-en="Window Cleaning" data-fi="Ikkunanpesu"></h3>
+          <p class="text-sm text-gray-500 leading-relaxed"
+            data-en="Crystal-clear windows inside and out. Professional window cleaning for homes and apartments in Tampere."
+            data-fi="Kristallinkirkkaat ikkunat sisältä ja ulkoa. Ammattimainen ikkunanpesu koteihin ja asuntoihin Tampereella."></p>
+          <p class="text-sm font-semibold mt-3" style="color: var(--green);" data-en="Learn more →" data-fi="Lue lisää →"></p>
+        </div>
+      </a>
+
+      <!-- Post-Renovation -->
+      <a href="post-renovation-cleaning.html" class="service-card block">
+        <div class="h-44 overflow-hidden" style="background: linear-gradient(135deg, #fef9e8 0%, #fce9ba 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="64" height="64" fill="none" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#f5a623" stroke-width="1.5"/>
+            <path d="M9 22V12h6v10" stroke="#f5a623" stroke-width="1.5"/>
+            <path d="M14 7l1 1-5 5-2-2 1-1 1 1 4-4z" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display font-bold text-lg mb-2" style="color: var(--dark);"
+            data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></h3>
+          <p class="text-sm text-gray-500 leading-relaxed"
+            data-en="Move-in ready after your renovation. We remove dust, debris and construction residue thoroughly."
+            data-fi="Muuttovalmis remontin jälkeen. Poistamme pölyn, jätteet ja rakennusjäämät perusteellisesti."></p>
+          <p class="text-sm font-semibold mt-3" style="color: var(--green);" data-en="Learn more →" data-fi="Lue lisää →"></p>
+        </div>
+      </a>
+
+      <!-- Pricing -->
+      <a href="pricing.html" class="service-card block">
+        <div class="h-44 overflow-hidden" style="background: linear-gradient(135deg, #edf7ec 0%, #c2e8c0 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="64" height="64" fill="none" viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2" stroke="#3aaa35" stroke-width="1.5"/>
+            <path d="M12 9v6M9 12h6" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 10h20" stroke="#3aaa35" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display font-bold text-lg mb-2" style="color: var(--dark);"
+            data-en="Full Pricing" data-fi="Kaikki Hinnat"></h3>
+          <p class="text-sm text-gray-500 leading-relaxed"
+            data-en="Transparent, fixed pricing for all our services. No hidden fees, no surprises — just honest cleaning prices."
+            data-fi="Läpinäkyvä, kiinteä hinnoittelu kaikille palveluille. Ei piilomaksuja, ei yllätyksiä — vain rehelliset siivoushinnot."></p>
+          <p class="text-sm font-semibold mt-3" style="color: var(--green);" data-en="See all prices →" data-fi="Katso kaikki hinnat →"></p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA BANNER ═══════════════════════ -->
+<section class="py-16 px-6" style="background: var(--green);">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4" style="letter-spacing: -0.02em;"
+      data-en="Book Steam Cleaning Today"
+      data-fi="Varaa Höyrypesu Tänään"></h2>
+    <p class="text-white/80 text-lg leading-relaxed mb-8" style="max-width: 520px; margin: 0 auto 32px;"
+      data-en="Chemical-free, professional steam cleaning in Tampere. Quick booking, reliable team, guaranteed results."
+      data-fi="Kemikaaliton, ammattimainen höyrypesu Tampereella. Nopea varaus, luotettava tiimi, taatut tulokset."></p>
+    <a href="index.html#contact" class="btn-primary" style="background: #fff; color: var(--green-dark); box-shadow: 0 4px 24px rgba(0,0,0,0.15);"
+      data-en="Get a Free Quote" data-fi="Pyydä Ilmainen Tarjous"></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="py-12 px-6" style="background: var(--dark); color: rgba(255,255,255,0.7);">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-8 mb-10">
+      <div class="flex-1">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" class="h-[200px] mb-4 brightness-200 grayscale" />
+        <p class="text-sm leading-relaxed" style="max-width: 280px;"
+          data-en="Professional eco-friendly cleaning in Tampere. Reducing footprints, refreshing spaces."
+          data-fi="Ammattimainen ympäristöystävällinen siivous Tampereella. Vähennämme jalanjälkiä, virkistämme tiloja."></p>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Services" data-fi="Palvelut"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#services" class="hover:text-white transition-colors" data-en="Regular Home Cleaning" data-fi="Kotisiivous"></a></li>
+          <li><a href="index.html#pricing" class="hover:text-white transition-colors" data-en="Deep Cleaning" data-fi="Syväsiivous"></a></li>
+          <li><a href="window-cleaning.html" class="hover:text-white transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a></li>
+          <li><a href="steam-cleaning.html" class="hover:text-white transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu"></a></li>
+          <li><a href="post-renovation-cleaning.html" class="hover:text-white transition-colors" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="All Pricing" data-fi="Kaikki Hinnat"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Company" data-fi="Yritys"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#why" class="hover:text-white transition-colors" data-en="Why BetterClean" data-fi="Miksi BetterClean"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="Pricing" data-fi="Hinnat"></a></li>
+          <li><a href="index.html#contact" class="hover:text-white transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4">Tampere</h4>
+        <p class="text-sm" data-en="Serving all of Tampere and surrounding areas." data-fi="Palvelemme koko Tamperetta ja lähialuetta."></p>
+        <p class="text-sm mt-2">+358 XX XXX XXXX</p>
+        <p class="text-sm">info@betterclean.fi</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+      <p>© 2026 BetterClean. <span data-en="All rights reserved." data-fi="Kaikki oikeudet pidätetään."></span></p>
+      <p data-en="Reducing Footprints, Refreshing Spaces." data-fi="Vähennämme Jalanjälkiä, Virkistämme Tiloja."></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════ LANGUAGE SCRIPT ═══════════════════════ -->
+<script>
+  let currentLang = 'fi';
+
+  function setLang(lang) {
+    currentLang = lang;
+
+    // Update toggle buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+
+    // Update all translatable elements
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (!text) return;
+
+      if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'SPAN' || el.tagName === 'LABEL' || el.tagName === 'LI') {
+        el.innerHTML = text;
+      } else if (el.tagName === 'OPTION') {
+        el.textContent = text;
+      } else {
+        el.textContent = text;
+      }
+    });
+
+    // Update html lang attr
+    document.documentElement.lang = lang;
+  }
+
+  // Initialize Finnish on load
+  setLang('fi');
+</script>
+
+</body>
+</html>

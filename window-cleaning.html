@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Window Cleaning Tampere | Ikkunanpesu Tampere | BetterClean — Streak-Free Professional Results</title>
+  <meta name="description" content="Professional window cleaning in Tampere. Interior and exterior glass, frames, sills and tracks. From €90 for small apartments. All prices include VAT 25.5%. Book online." />
+  <meta name="keywords" content="window cleaning tampere, ikkunanpesu tampere, ikkunoiden pesu tampere, ikkunanpesija tampere, professional window cleaning finland" />
+  <link rel="canonical" href="https://betterclean.fi/window-cleaning.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; }
+    h1, h2, h3, h4, .font-display { font-family: 'Sora', sans-serif; }
+    :root { --green: #3aaa35; --green-dark: #2a8226; --green-light: #edf7ec; --teal: #0fb8c9; --dark: #1a2e1a; }
+    .btn-primary { background: var(--green); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; padding: 14px 32px; border-radius: 8px; display: inline-block; transition: background 0.2s, transform 0.15s; letter-spacing: -0.01em; box-shadow: 0 4px 16px rgba(58,170,53,0.28); }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline { border: 2px solid var(--green); color: var(--green); font-family: 'Sora', sans-serif; font-weight: 700; padding: 12px 28px; border-radius: 8px; display: inline-block; transition: background 0.2s, color 0.2s; }
+    .btn-outline:hover { background: var(--green); color: #fff; }
+    .lang-toggle { display: flex; background: #f1f5f0; border-radius: 6px; overflow: hidden; }
+    .lang-btn { padding: 6px 14px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s, color 0.2s; border: none; background: transparent; color: #666; }
+    .lang-btn.active { background: var(--green); color: #fff; }
+    nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
+    .hero-bg { background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%); }
+
+    /* FAQ accordion */
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--green); transition: transform 0.2s; display: inline-block; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details { border-bottom: 1px solid #e8f0e7; }
+    details[open] { background: var(--green-light); border-radius: 8px; border: 1px solid #c6e6c4; margin-bottom: 4px; }
+
+    /* Card hover */
+    .service-card { transition: transform 0.2s, box-shadow 0.2s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(58,170,53,0.14); }
+
+    /* Stat chip */
+    .stat-chip { background: rgba(58,170,53,0.1); border: 1px solid rgba(58,170,53,0.25); color: var(--green-dark); border-radius: 100px; padding: 8px 18px; font-size: 0.875rem; font-weight: 600; font-family: 'Sora', sans-serif; display: inline-flex; align-items: center; gap: 6px; }
+
+    /* Price table */
+    .price-row:not(:last-child) { border-bottom: 1px solid #e8f0e7; }
+    .price-row { padding: 14px 0; }
+
+    /* Feature card */
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="px-6 py-4">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex flex-col items-start">
+      <div style="height: 72px; overflow: hidden; display: flex; align-items: center;">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean — Professional Cleaning Tampere" style="height: 296px; width: auto;" />
+      </div>
+      <span class="text-xs font-semibold uppercase tracking-widest mt-1" style="color: var(--green); letter-spacing: 0.12em;" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#why" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Why Us" data-fi="Miksi Me"></a>
+      <a href="index.html#services" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Services" data-fi="Palvelut"></a>
+      <a href="pricing.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Pricing" data-fi="Hinnat"></a>
+      <a href="index.html#contact" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="lang-toggle">
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" onclick="setLang('fi')">FI</button>
+      </div>
+      <a href="index.html#contact" class="btn-primary text-sm hidden md:inline-block" data-en="Book Now" data-fi="Varaa Nyt"></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-bg px-6 py-20 md:py-28">
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Label -->
+    <p class="text-sm font-semibold uppercase tracking-widest mb-5" style="color: var(--green); letter-spacing: 0.1em;">
+      <span data-en="Ikkunanpesu Tampere / Window Cleaning Tampere" data-fi="Ikkunanpesu Tampere / Window Cleaning Tampere"></span>
+    </p>
+    <!-- H1 -->
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style="color: var(--dark); letter-spacing: -0.03em;">
+      <span data-en="Professional Window Cleaning in Tampere" data-fi="Ammattimainen Ikkunanpesu Tampereella"></span>
+    </h1>
+    <!-- Subtitle -->
+    <p class="text-lg md:text-xl leading-relaxed mb-10 text-gray-600 max-w-2xl mx-auto" style="line-height: 1.7;">
+      <span data-en="Streak-free, crystal-clear results. Interior &amp; exterior glass, frames, sills and balcony doors. All prices include VAT." data-fi="Täysin juovaton lopputulos. Sisä- ja ulkopuolinen lasi, karmit, ikkunalaudat ja parvekeovet. Kaikki hinnat sisältävät ALV:n."></span>
+    </p>
+    <!-- Stat chips -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <span class="stat-chip"><span style="color: var(--green);">✓</span> <span data-en="Streak-free guarantee" data-fi="Juovatomuustakuu"></span></span>
+      <span class="stat-chip"><span style="color: var(--green);">✓</span> <span data-en="Interior &amp; exterior" data-fi="Sisä- ja ulkopuoli"></span></span>
+      <span class="stat-chip"><span style="color: var(--green);">✓</span> <span data-en="All prices incl. VAT" data-fi="Kaikki hinnat sis. ALV"></span></span>
+    </div>
+    <!-- CTA -->
+    <a href="index.html#contact" class="btn-primary text-base" data-en="Book Now" data-fi="Varaa Nyt"></a>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED + PRICING -->
+<section class="px-6 py-20" style="background: #fff;">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="color: var(--dark); letter-spacing: -0.02em;">
+        <span data-en="What's Included &amp; Pricing" data-fi="Mitä sisältyy &amp; Hinnoittelu"></span>
+      </h2>
+      <p class="text-gray-500 text-lg max-w-xl mx-auto" style="line-height: 1.7;">
+        <span data-en="Transparent, all-inclusive pricing for professional window cleaning in Tampere." data-fi="Läpinäkyvä, kattava hinnoittelu ammattimaiseen ikkunanpesuun Tampereella."></span>
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+
+      <!-- Left: Checklist -->
+      <div>
+        <h3 class="text-xl font-bold mb-6" style="color: var(--dark);">
+          <span data-en="Every window cleaning includes:" data-fi="Jokainen ikkunanpesu sisältää:"></span>
+        </h3>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: var(--green);">✓</span>
+            <div>
+              <p class="font-semibold" data-en="Interior glass cleaning" data-fi="Sisäpuolinen lasinpesu"></p>
+              <p class="text-sm text-gray-500 mt-0.5" data-en="All interior panes cleaned streak-free with professional squeegee technique" data-fi="Kaikki sisälasit pestään juovattomasti ammattimaisella lastaustekniikalla"></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: var(--green);">✓</span>
+            <div>
+              <p class="font-semibold" data-en="Exterior glass cleaning" data-fi="Ulkopuolinen lasinpesu"></p>
+              <p class="text-sm text-gray-500 mt-0.5" data-en="Outside surfaces cleaned of dirt, pollen, and mineral deposits" data-fi="Ulkopinnat puhdistetaan liasta, siitepölystä ja mineraalijäämistä"></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: var(--green);">✓</span>
+            <div>
+              <p class="font-semibold" data-en="Window frames &amp; sills" data-fi="Karmit ja ikkunalaudat"></p>
+              <p class="text-sm text-gray-500 mt-0.5" data-en="Frames wiped down and sills thoroughly cleaned inside and out" data-fi="Karmit pyyhitään ja ikkunalaudat puhdistetaan perusteellisesti sisä- ja ulkopuolelta"></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: var(--green);">✓</span>
+            <div>
+              <p class="font-semibold" data-en="Tracks &amp; grooves" data-fi="Uraukset ja kiskot"></p>
+              <p class="text-sm text-gray-500 mt-0.5" data-en="Sliding tracks and drainage grooves cleared of debris and buildup" data-fi="Liukukiskot ja vesilukot puhdistetaan roskista ja kertyneestä liasta"></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: var(--green);">✓</span>
+            <div>
+              <p class="font-semibold" data-en="Balcony doors" data-fi="Parvekeovet"></p>
+              <p class="text-sm text-gray-500 mt-0.5" data-en="Glass balcony doors and panels cleaned on both sides" data-fi="Lasiparvekkeen ovet ja paneelit pestään molemmilta puolilta"></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: var(--green);">✓</span>
+            <div>
+              <p class="font-semibold" data-en="Screen cleaning" data-fi="Hyttysverkkojen puhdistus"></p>
+              <p class="text-sm text-gray-500 mt-0.5" data-en="Insect screens and fly screens removed, washed, and replaced" data-fi="Hyttysverkot irrotetaan, pestään ja kiinnitetään takaisin"></p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-8 p-5 rounded-xl" style="background: var(--green-light); border: 1px solid #c6e6c4;">
+          <p class="text-sm font-semibold" style="color: var(--green-dark);">
+            <span data-en="💡 Eligible for kotitalousvähennys (household tax deduction). Save 35% on labour costs." data-fi="💡 Oikeutettu kotitalousvähennykseen. Säästä 35 % työkustannuksista."></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Price table card -->
+      <div class="rounded-2xl overflow-hidden" style="border: 1px solid #e8f0e7; box-shadow: 0 8px 40px rgba(58,170,53,0.10);">
+        <div class="px-8 py-6" style="background: var(--dark);">
+          <h3 class="text-xl font-bold text-white" data-en="Window Cleaning Prices" data-fi="Ikkunanpesun Hinnat"></h3>
+          <p class="text-sm mt-1" style="color: rgba(255,255,255,0.6);" data-en="All prices include VAT 25.5%" data-fi="Kaikki hinnat sisältävät ALV 25,5 %"></p>
+        </div>
+        <div class="px-8 py-6 bg-white">
+
+          <!-- Hourly rate row -->
+          <div class="price-row flex justify-between items-center">
+            <div>
+              <p class="font-semibold" data-en="Hourly rate" data-fi="Tuntihinta"></p>
+              <p class="text-xs text-gray-400 mt-0.5" data-en="After kotitalousvähennys" data-fi="Kotitalousvähennyksen jälkeen"></p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold" style="color: var(--dark);">€70<span class="text-sm font-normal text-gray-400">/hr</span></p>
+              <p class="text-sm font-semibold" style="color: var(--green);">→ €45.50/hr</p>
+            </div>
+          </div>
+
+          <!-- Small apartment -->
+          <div class="price-row flex justify-between items-center">
+            <div>
+              <p class="font-semibold" data-en="Small apartment" data-fi="Pieni asunto"></p>
+              <p class="text-xs text-gray-400 mt-0.5" data-en="Up to 8 windows" data-fi="Enintään 8 ikkunaa"></p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold" style="color: var(--dark);">€90–€130</p>
+            </div>
+          </div>
+
+          <!-- Medium home -->
+          <div class="price-row flex justify-between items-center">
+            <div>
+              <p class="font-semibold" data-en="Medium home" data-fi="Keskikokoinen koti"></p>
+              <p class="text-xs text-gray-400 mt-0.5" data-en="9–16 windows" data-fi="9–16 ikkunaa"></p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold" style="color: var(--dark);">€140–€200</p>
+            </div>
+          </div>
+
+          <!-- Hard-to-reach windows -->
+          <div class="price-row flex justify-between items-center">
+            <div>
+              <p class="font-semibold" data-en="High / hard-to-reach windows" data-fi="Korkeat / vaikeatpääsyiset ikkunat"></p>
+              <p class="text-xs text-gray-400 mt-0.5" data-en="Ladder work required" data-fi="Vaatii tikastyöskentelyn"></p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold" style="color: var(--dark);">+€50</p>
+              <p class="text-xs text-gray-400" data-en="per visit" data-fi="per käynti"></p>
+            </div>
+          </div>
+
+          <!-- Minimum booking -->
+          <div class="price-row flex justify-between items-center">
+            <div>
+              <p class="font-semibold" data-en="Minimum booking" data-fi="Minimitilaus"></p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold" style="color: var(--dark);" data-en="2 hours" data-fi="2 tuntia"></p>
+            </div>
+          </div>
+
+          <a href="index.html#contact" class="btn-primary w-full text-center mt-6 block" data-en="Get a Free Quote" data-fi="Pyydä Ilmainen Tarjous"></a>
+          <p class="text-xs text-center text-gray-400 mt-3" data-en="No obligation. We'll confirm your exact quote within 24 hours." data-fi="Ei sitoumuksia. Vahvistamme tarkan tarjouksenne 24 tunnin kuluessa."></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY PROFESSIONAL WINDOW CLEANING -->
+<section class="px-6 py-20" style="background: var(--green-light);">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="color: var(--dark); letter-spacing: -0.02em;">
+        <span data-en="Why Choose Professional Window Cleaning?" data-fi="Miksi valita ammattimainen ikkunanpesu?"></span>
+      </h2>
+      <p class="text-gray-500 text-lg max-w-xl mx-auto" style="line-height: 1.7;">
+        <span data-en="There's a reason professionals get results that DIY can't match." data-fi="Ammattilaiset saavuttavat tuloksia, joita omatoiminen pesu ei pysty toistamaan."></span>
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Better Results -->
+      <div class="service-card bg-white rounded-2xl p-8" style="box-shadow: 0 4px 24px rgba(58,170,53,0.08);">
+        <div class="feature-icon" style="background: rgba(58,170,53,0.1);">
+          <span style="font-size: 1.6rem;">🪟</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--dark);" data-en="Better Results" data-fi="Parempi lopputulos"></h3>
+        <p class="text-gray-600 leading-relaxed" style="line-height: 1.7;" data-en="Professional squeegee technique eliminates streaks and residue that household sprays leave behind. We use purified water and specialist cleaning agents safe for all glass types." data-fi="Ammattimainen lastaustekniikka poistaa juovat ja jäämät, joita kotipuhdistusaineet jättävät. Käytämme puhdistettua vettä ja kaikkiin lasityyppeihin sopivia erikoispuhdistusaineita."></p>
+      </div>
+
+      <!-- Saves Time -->
+      <div class="service-card bg-white rounded-2xl p-8" style="box-shadow: 0 4px 24px rgba(58,170,53,0.08);">
+        <div class="feature-icon" style="background: rgba(15,184,201,0.1);">
+          <span style="font-size: 1.6rem;">⏱️</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--dark);" data-en="Saves Time" data-fi="Säästää aikaa"></h3>
+        <p class="text-gray-600 leading-relaxed" style="line-height: 1.7;" data-en="What takes the average household 4–6 hours of frustrating effort, our trained cleaners complete in under 2 hours — leaving you free to spend your weekend however you like." data-fi="Mitä tavalliselta kotitaloudelta vie 4–6 tuntia turhauttavaa työtä, koulutetut siivoojamme hoitavat alle kahdessa tunnissa — jolloin sinulle jää viikonloppu omaan käyttöön."></p>
+      </div>
+
+      <!-- Safe & Insured -->
+      <div class="service-card bg-white rounded-2xl p-8" style="box-shadow: 0 4px 24px rgba(58,170,53,0.08);">
+        <div class="feature-icon" style="background: rgba(58,170,53,0.1);">
+          <span style="font-size: 1.6rem;">🛡️</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--dark);" data-en="Safe &amp; Insured" data-fi="Turvallinen ja vakuutettu"></h3>
+        <p class="text-gray-600 leading-relaxed" style="line-height: 1.7;" data-en="We handle ladder work on high and hard-to-reach windows safely and professionally. All our staff are trained, insured, and fully covered — so you never need to climb a ladder again." data-fi="Hoidamme tikastyöskentelyn korkeilla ja vaikeapääsyisillä ikkunoilla turvallisesti ja ammattimaisesti. Kaikki henkilökuntamme on koulutettu, vakuutettu ja täysin katettu."></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ ACCORDION -->
+<section class="px-6 py-20" style="background: #fff;">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="color: var(--dark); letter-spacing: -0.02em;">
+        <span data-en="Frequently Asked Questions" data-fi="Usein kysytyt kysymykset"></span>
+      </h2>
+      <p class="text-gray-500 text-lg" style="line-height: 1.7;">
+        <span data-en="Everything you need to know about professional window cleaning in Tampere." data-fi="Kaikki mitä sinun tulee tietää ammattimaisesta ikkunanpesusta Tampereella."></span>
+      </p>
+    </div>
+
+    <div class="space-y-2">
+
+      <!-- FAQ 1 -->
+      <details class="rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 gap-4" style="font-family: 'Sora', sans-serif; font-weight: 700; color: var(--dark); font-size: 1rem;">
+          <span data-en="How often should I clean my windows in Finland?" data-fi="Kuinka usein ikkunat tulisi pestä Suomessa?"></span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-600" style="line-height: 1.7;">
+          <p data-en="We recommend cleaning your windows 2–3 times per year in Finland. The ideal times are spring (to clear winter grime and pollen), midsummer (after peak pollen season), and autumn (before the dark season begins). Regular professional window cleaning in Tampere also extends the life of your glass by preventing mineral buildup and hard water staining." data-fi="Suosittelemme ikkunoiden pesua 2–3 kertaa vuodessa Suomessa. Ihanteelliset ajankohdat ovat kevät (talven lian ja siitepölyn poistamiseksi), keskikesä (siitepölykauden huipun jälkeen) ja syksy (ennen pimeää kautta). Säännöllinen ammattimainen ikkunanpesu Tampereella myös pidentää lasin käyttöikää estämällä mineraalikerrostumia ja kovavesiläiskiä."></p>
+        </div>
+      </details>
+
+      <!-- FAQ 2 -->
+      <details class="rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 gap-4" style="font-family: 'Sora', sans-serif; font-weight: 700; color: var(--dark); font-size: 1rem;">
+          <span data-en="Do you clean both inside and outside the windows?" data-fi="Pesettekö ikkunat sekä sisä- että ulkopuolelta?"></span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-600" style="line-height: 1.7;">
+          <p data-en="Yes, absolutely. All our window cleaning services in Tampere include both interior and exterior glass as standard. There is no extra charge for cleaning both sides — it is all included in the quoted price. We also clean frames, sills, tracks, and balcony door glass on both sides." data-fi="Kyllä, ehdottomasti. Kaikki ikkunanpesupalvelumme Tampereella sisältävät sekä sisä- että ulkopuolisen lasin vakiona. Molempien puolien pesusta ei veloiteta lisämaksua — kaikki sisältyy tarjottuun hintaan. Pesemme myös karmit, ikkunalaudat, kiskot ja parvekeoven lasit molemmilta puolilta."></p>
+        </div>
+      </details>
+
+      <!-- FAQ 3 -->
+      <details class="rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 gap-4" style="font-family: 'Sora', sans-serif; font-weight: 700; color: var(--dark); font-size: 1rem;">
+          <span data-en="What about high or hard-to-reach windows?" data-fi="Entä korkeat tai vaikeapääsyiset ikkunat?"></span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-600" style="line-height: 1.7;">
+          <p data-en="No problem. We handle all ladder work safely and professionally. Windows that require ladders or extended reach equipment are charged a one-time surcharge of +€50 per visit, on top of the standard window cleaning price. We will always advise you in advance if your windows require this so there are no surprises." data-fi="Ei ongelmaa. Hoidamme kaiken tikastyöskentelyn turvallisesti ja ammattimaisesti. Tikkaita tai pitkävartikaita laitteita vaativista ikkunoista veloitetaan kertakohtainen lisämaksu +50 € per käynti normaalin ikkunanpesuhinnan lisäksi. Ilmoitamme aina etukäteen, jos ikkunasi vaativat tätä, jotta ei tule yllätyksiä."></p>
+        </div>
+      </details>
+
+      <!-- FAQ 4 -->
+      <details class="rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 gap-4" style="font-family: 'Sora', sans-serif; font-weight: 700; color: var(--dark); font-size: 1rem;">
+          <span data-en="Is window cleaning eligible for kotitalousvähennys (household tax deduction)?" data-fi="Onko ikkunanpesu oikeutettu kotitalousvähennykseen?"></span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-600" style="line-height: 1.7;">
+          <p data-en="Yes. Professional window cleaning qualifies for the Finnish household tax deduction (kotitalousvähennys). You can deduct 35% of the labour costs directly from your taxes, reducing the effective hourly rate from €70/hr to approximately €45.50/hr. We provide a proper receipt that you can use when filing your taxes. The deduction applies to work done in your permanent or holiday home." data-fi="Kyllä. Ammattimainen ikkunanpesu on oikeutettu kotitalousvähennykseen. Voit vähentää 35 % työkustannuksista suoraan veroistasi, mikä alentaa tosiasiallisen tuntihinnan 70 €/tunnilta noin 45,50 €/tunnille. Toimitamme asianmukaisen kuitin, jonka voit käyttää veroilmoituksessa. Vähennys koskee pysyvässä kodissasi tai vapaa-ajan asunnossasi tehtyjä töitä."></p>
+        </div>
+      </details>
+
+      <!-- FAQ 5 -->
+      <details class="rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 gap-4" style="font-family: 'Sora', sans-serif; font-weight: 700; color: var(--dark); font-size: 1rem;">
+          <span data-en="Do you serve areas outside Tampere?" data-fi="Palveletteko Tampereen ulkopuolella?"></span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-600" style="line-height: 1.7;">
+          <p data-en="Yes! In addition to Tampere, we provide professional window cleaning in Kangasala, Ylöjärvi, Lempäälä, Pirkkala, and Nokia. If you are unsure whether we cover your area, contact us and we will confirm availability. Travel time to surrounding areas may be included in the booking minimum." data-fi="Kyllä! Tampereen lisäksi tarjoamme ammattimaista ikkunanpesua Kangasalalla, Ylöjärvellä, Lempäälässä, Pirkkalassa ja Nokialla. Jos et ole varma, palvelemmeko aluettasi, ota yhteyttä ja vahvistamme saatavuuden. Lähialueiden matka-aika voi sisältyä tilauksen minimiin."></p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- RELATED SERVICES -->
+<section class="px-6 py-20" style="background: var(--green-light);">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="color: var(--dark); letter-spacing: -0.02em;">
+        <span data-en="Explore Our Other Services" data-fi="Tutustu muihin palveluihimme"></span>
+      </h2>
+      <p class="text-gray-500 text-lg max-w-xl mx-auto" style="line-height: 1.7;">
+        <span data-en="BetterClean offers a full range of professional cleaning services in Tampere." data-fi="BetterClean tarjoaa kattavan valikoiman ammattimaisia siivouspalveluja Tampereella."></span>
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Steam Cleaning -->
+      <a href="steam-cleaning.html" class="service-card bg-white rounded-2xl p-8 block" style="box-shadow: 0 4px 24px rgba(58,170,53,0.08); text-decoration: none;">
+        <div class="feature-icon" style="background: rgba(15,184,201,0.1);">
+          <span style="font-size: 1.6rem;">♨️</span>
+        </div>
+        <h3 class="text-xl font-bold mb-2" style="color: var(--dark);" data-en="Steam Cleaning" data-fi="Höyrypesu"></h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4" style="line-height: 1.7;" data-en="Deep sanitisation without chemicals. Perfect for kitchens, bathrooms, and upholstery." data-fi="Syväpuhdistus ilman kemikaaleja. Ihanteellinen keittiöihin, kylpyhuoneisiin ja verhoiluihin."></p>
+        <span class="text-sm font-semibold" style="color: var(--green);" data-en="Learn more →" data-fi="Lue lisää →"></span>
+      </a>
+
+      <!-- Post-Renovation Cleaning -->
+      <a href="post-renovation-cleaning.html" class="service-card bg-white rounded-2xl p-8 block" style="box-shadow: 0 4px 24px rgba(58,170,53,0.08); text-decoration: none;">
+        <div class="feature-icon" style="background: rgba(58,170,53,0.1);">
+          <span style="font-size: 1.6rem;">🏗️</span>
+        </div>
+        <h3 class="text-xl font-bold mb-2" style="color: var(--dark);" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4" style="line-height: 1.7;" data-en="Remove construction dust, debris, and residues after any renovation project." data-fi="Poistamme rakennuspölyn, roskien ja jäämät minkä tahansa remontin jälkeen."></p>
+        <span class="text-sm font-semibold" style="color: var(--green);" data-en="Learn more →" data-fi="Lue lisää →"></span>
+      </a>
+
+      <!-- Full Pricing -->
+      <a href="pricing.html" class="service-card bg-white rounded-2xl p-8 block" style="box-shadow: 0 4px 24px rgba(58,170,53,0.08); text-decoration: none;">
+        <div class="feature-icon" style="background: rgba(58,170,53,0.1);">
+          <span style="font-size: 1.6rem;">💶</span>
+        </div>
+        <h3 class="text-xl font-bold mb-2" style="color: var(--dark);" data-en="Full Pricing" data-fi="Kaikki Hinnat"></h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4" style="line-height: 1.7;" data-en="View our complete, transparent pricing for all cleaning services — no hidden fees." data-fi="Katso täydellinen, läpinäkyvä hinnoittelumme kaikille siivouspalveluille — ei piilomaksuja."></p>
+        <span class="text-sm font-semibold" style="color: var(--green);" data-en="View pricing →" data-fi="Katso hinnat →"></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="px-6 py-20" style="background: var(--green);">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+      <span data-en="Book Your Window Cleaning Today" data-fi="Varaa Ikkunanpesu Tänään"></span>
+    </h2>
+    <p class="text-lg mb-8" style="color: rgba(255,255,255,0.85); line-height: 1.7;">
+      <span data-en="Streak-free, crystal-clear windows for your Tampere home. Get a free quote in under 24 hours." data-fi="Juovattomat, kristallinkirkkaat ikkunat kotiin Tampereella. Saat ilmaisen tarjouksen alle 24 tunnissa."></span>
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="index.html#contact" class="btn-outline" style="border-color: #fff; color: #fff; background: transparent;" onmouseover="this.style.background='#fff';this.style.color='var(--green-dark)';" onmouseout="this.style.background='transparent';this.style.color='#fff';" data-en="Get a Free Quote" data-fi="Pyydä Ilmainen Tarjous"></a>
+      <a href="tel:+358XXXXXXXXX" class="btn-primary" style="background: var(--dark); box-shadow: 0 4px 16px rgba(0,0,0,0.25);" data-en="Call Us Now" data-fi="Soita Meille"></a>
+    </div>
+    <p class="text-sm mt-6" style="color: rgba(255,255,255,0.65);" data-en="Serving Tampere, Kangasala, Ylöjärvi, Lempäälä, Pirkkala &amp; Nokia" data-fi="Palvelemme Tampere, Kangasala, Ylöjärvi, Lempäälä, Pirkkala &amp; Nokia"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background: var(--dark); color: rgba(255,255,255,0.7);">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-8 mb-10">
+      <div class="flex-1">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" class="h-[200px] mb-4 brightness-200 grayscale" />
+        <p class="text-sm leading-relaxed" style="max-width: 280px;" data-en="Professional eco-friendly cleaning in Tampere. Reducing footprints, refreshing spaces." data-fi="Ammattimainen ympäristöystävällinen siivous Tampereella. Pienempi jalanjälki, puhtaampi tila."></p>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Services" data-fi="Palvelut"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#services" class="hover:text-white transition-colors" data-en="Regular Home Cleaning" data-fi="Kotisiivous"></a></li>
+          <li><a href="index.html#pricing" class="hover:text-white transition-colors" data-en="Deep Cleaning" data-fi="Syväsiivous"></a></li>
+          <li><a href="window-cleaning.html" class="hover:text-white transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a></li>
+          <li><a href="steam-cleaning.html" class="hover:text-white transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu"></a></li>
+          <li><a href="post-renovation-cleaning.html" class="hover:text-white transition-colors" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Company" data-fi="Yritys"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#why" class="hover:text-white transition-colors" data-en="Why BetterClean" data-fi="Miksi BetterClean"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="Pricing" data-fi="Hinnat"></a></li>
+          <li><a href="index.html#contact" class="hover:text-white transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4">Tampere</h4>
+        <p class="text-sm" data-en="Serving all of Tampere and surrounding areas." data-fi="Palvelemme koko Tamperetta ja lähialuetta."></p>
+        <p class="text-sm mt-2">+358 XX XXX XXXX</p>
+        <p class="text-sm">info@betterclean.fi</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+      <p>© 2026 BetterClean. <span data-en="All rights reserved." data-fi="Kaikki oikeudet pidätetään."></span></p>
+      <p data-en="Reducing Footprints, Refreshing Spaces." data-fi="Pienempi jalanjälki, puhtaampi tila."></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let currentLang = 'en';
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (!text) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = text; }
+      else { el.textContent = text; }
+    });
+    document.documentElement.lang = lang;
+  }
+  setLang('fi');
+</script>
+
+</body>
+</html>

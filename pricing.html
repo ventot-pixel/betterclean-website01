@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BetterClean Pricing | Home Cleaning Prices Tampere | Siivouspalvelu Hinnat</title>
+  <meta name="description" content="Transparent cleaning prices in Tampere. Regular home cleaning from €60/hr, deep cleaning from €75/hr, window cleaning from €70/hr. All prices include VAT 25.5%." />
+  <meta name="keywords" content="cleaning prices tampere, siivouspalvelu hinnat tampere, kotisiivous hinta, muuttosiivoaus hinta, ikkunanpesu hinta tampere" />
+  <link rel="canonical" href="https://betterclean.fi/pricing.html" />
+  <meta property="og:title" content="BetterClean Pricing | Siivouspalvelu Hinnat Tampere" />
+  <meta property="og:description" content="Transparent cleaning prices in Tampere. Regular home cleaning from €60/hr, deep cleaning from €75/hr. All prices include VAT 25.5%." />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #f9fafb; }
+    h1, h2, h3, h4, .font-display { font-family: 'Sora', sans-serif; }
+
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --dark: #1a2e1a;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 16px rgba(58,170,53,0.28);
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      border: 2px solid var(--green);
+      color: var(--green);
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: var(--green); color: #fff; }
+
+    /* ── Lang toggle ── */
+    .lang-toggle { display: flex; background: #f1f5f0; border-radius: 6px; overflow: hidden; }
+    .lang-btn {
+      padding: 6px 14px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      border: none;
+      background: transparent;
+      color: #666;
+    }
+    .lang-btn.active { background: var(--green); color: #fff; }
+
+    /* ── Nav ── */
+    nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
+
+    /* ── Hero bg ── */
+    .hero-bg {
+      background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%);
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* ── Rule ── */
+    .green-rule { width: 48px; height: 3px; background: var(--green); margin: 16px auto 0; border-radius: 2px; }
+
+    /* ── Price card ── */
+    .price-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(58,170,53,0.08);
+      border: 1px solid #e8f5e8;
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+    .price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(58,170,53,0.18); }
+    .price-card.featured {
+      border: 2px solid var(--green);
+      box-shadow: 0 4px 24px rgba(58,170,53,0.18);
+    }
+    .featured-badge {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    /* ── Card header ── */
+    .card-header {
+      padding: 28px 28px 18px;
+      border-bottom: 1px solid #f0f9f0;
+    }
+    .card-icon {
+      width: 44px; height: 44px;
+      background: var(--green-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+    .card-header h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+    .card-header p {
+      font-size: 0.83rem;
+      color: #5a6b5a;
+      line-height: 1.55;
+    }
+
+    /* ── Price rows ── */
+    .card-price { padding: 18px 28px 24px; }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 9px 0;
+      border-bottom: 1px solid #f4f9f4;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-label { font-size: 0.85rem; color: #5a6b5a; font-weight: 400; line-height: 1.4; }
+    .price-label small { display: block; font-size: 0.72rem; color: #aaa; margin-top: 2px; }
+    .price-val { font-size: 1.05rem; font-weight: 700; color: var(--dark); text-align: right; flex-shrink: 0; margin-left: 12px; }
+    .price-val .after { display: block; font-size: 0.72rem; color: var(--green); font-weight: 500; margin-top: 2px; }
+    .price-val.highlight { color: var(--green); font-size: 1.2rem; }
+
+    /* ── Tax badge ── */
+    .tax-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(58,170,53,0.12);
+      border: 1px solid rgba(58,170,53,0.3);
+      border-radius: 40px;
+      padding: 8px 22px;
+    }
+    .tax-badge span { color: var(--dark); font-size: 0.85rem; font-weight: 500; }
+
+    /* ── Steam banner ── */
+    .steam-banner {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      border-radius: 16px;
+      padding: 30px 36px;
+      display: flex; align-items: flex-start; gap: 22px;
+      margin: 36px 0;
+      border: 1px solid rgba(58,170,53,0.3);
+    }
+    .steam-banner .icon { font-size: 2.2rem; flex-shrink: 0; margin-top: 2px; }
+    .steam-banner h4 { color: #fff; font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .steam-banner p { color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.6; }
+    .steam-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .steam-pill {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+    }
+
+    /* ── Table ── */
+    .table-wrap {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e8f5e8;
+      overflow: hidden;
+      margin-bottom: 36px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 24px rgba(58,170,53,0.06);
+    }
+    .table-wrap table { width: 100%; border-collapse: collapse; }
+    .table-wrap thead th {
+      background: var(--dark);
+      color: rgba(255,255,255,0.9);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      text-align: left;
+    }
+    .table-wrap thead th:last-child { text-align: right; }
+    .table-wrap tbody tr { border-bottom: 1px solid #f0f9f0; transition: background 0.15s; }
+    .table-wrap tbody tr:last-child { border-bottom: none; }
+    .table-wrap tbody tr:nth-child(even) { background: #f9fef9; }
+    .table-wrap tbody tr:hover { background: var(--green-light); }
+    .table-wrap tbody td { padding: 13px 20px; font-size: 0.88rem; color: var(--dark); vertical-align: top; }
+    .table-wrap tbody td:last-child { text-align: right; font-weight: 700; }
+    .table-wrap tbody td .note { font-size: 0.73rem; color: #7a8b7a; font-weight: 400; display: block; margin-top: 2px; }
+    .price-cell { font-size: 1rem !important; color: var(--dark) !important; }
+    .price-cell .tax-note { font-size: 0.72rem; color: var(--green); display: block; margin-top: 2px; font-weight: 500; }
+
+    /* ── Add-ons ── */
+    .addon-card {
+      background: #fff;
+      border: 1px solid #e8f5e8;
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .addon-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 6px 20px rgba(58,170,53,0.12);
+      transform: translateY(-2px);
+    }
+    .addon-top { display: flex; align-items: center; gap: 10px; }
+    .addon-icon { font-size: 1.35rem; }
+    .addon-name { font-family: 'Sora', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--dark); }
+    .addon-desc { font-size: 0.76rem; color: #5a6b5a; line-height: 1.55; }
+    .addon-price { font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-top: auto; }
+    .addon-price span { font-size: 0.72rem; color: var(--green); font-weight: 500; display: block; margin-top: 2px; font-family: 'Inter', sans-serif; }
+
+    /* ── Packages ── */
+    .pkg-card {
+      background: #fff;
+      border: 1px solid #e8f5e8;
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .pkg-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(58,170,53,0.12); }
+    .pkg-card.best {
+      background: var(--dark);
+      border-color: var(--green);
+      box-shadow: 0 4px 24px rgba(58,170,53,0.2);
+    }
+    .pkg-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      font-family: 'Sora', sans-serif;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .pkg-name {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+    .pkg-card.best .pkg-name { color: #fff; }
+    .pkg-desc { font-size: 0.82rem; color: #5a6b5a; line-height: 1.6; margin-bottom: 18px; }
+    .pkg-card.best .pkg-desc { color: rgba(255,255,255,0.55); }
+    .pkg-includes { list-style: none; margin-bottom: 22px; padding: 0; }
+    .pkg-includes li {
+      font-size: 0.83rem;
+      color: #5a6b5a;
+      padding: 4px 0;
+      display: flex; align-items: flex-start; gap: 8px;
+      line-height: 1.5;
+    }
+    .pkg-card.best .pkg-includes li { color: rgba(255,255,255,0.65); }
+    .pkg-includes li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; font-size: 0.85rem; }
+    .pkg-footer { border-top: 1px solid #e8f5e8; padding-top: 18px; }
+    .pkg-card.best .pkg-footer { border-color: rgba(255,255,255,0.1); }
+    .pkg-total { font-size: 0.75rem; color: #7a8b7a; margin-bottom: 4px; }
+    .pkg-card.best .pkg-total { color: rgba(255,255,255,0.4); }
+    .pkg-price { font-family: 'Sora', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--dark); }
+    .pkg-card.best .pkg-price { color: var(--green); }
+    .pkg-save { font-size: 0.76rem; color: var(--green); font-weight: 600; margin-top: 3px; }
+    .pkg-card.best .pkg-save { color: #7de07a; }
+
+    /* ── Notes box ── */
+    .notes-box {
+      background: var(--green-light);
+      border: 1px solid rgba(58,170,53,0.2);
+      border-radius: 14px;
+      padding: 26px 32px;
+      margin-bottom: 60px;
+    }
+    .notes-box h4 { font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 16px; }
+    .notes-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; padding: 0; }
+    .notes-list li { list-style: none; font-size: 0.83rem; color: #3a5a3a; display: flex; gap: 8px; line-height: 1.55; }
+    .notes-list li::before { content: '◆'; color: var(--green); font-size: 0.55rem; flex-shrink: 0; margin-top: 5px; }
+
+    /* ── Section divider ── */
+    .section-divider { border: none; border-top: 1px solid rgba(58,170,53,0.12); margin: 8px 0 0; }
+
+    /* ── Animations ── */
+    [data-lang] { transition: opacity 0.2s; }
+
+    @media (max-width: 640px) {
+      .steam-banner { flex-direction: column; gap: 14px; padding: 22px 20px; }
+      .card-header { padding: 22px 20px 16px; }
+      .card-price { padding: 14px 20px 20px; }
+      .notes-box { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav class="px-6 py-4">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex flex-col items-start">
+      <div style="height: 72px; overflow: hidden; display: flex; align-items: center;">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" style="height: 296px; width: auto;" />
+      </div>
+      <span class="text-xs font-semibold uppercase tracking-widest mt-1" style="color: var(--green); letter-spacing: 0.12em;" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#why" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Why Us" data-fi="Miksi Me"></a>
+      <a href="index.html#services" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Services" data-fi="Palvelut"></a>
+      <a href="pricing.html" class="text-sm font-semibold transition-colors" style="color: var(--green);" data-en="Pricing" data-fi="Hinnat"></a>
+      <a href="index.html#contact" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="lang-toggle">
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" onclick="setLang('fi')">FI</button>
+      </div>
+      <a href="index.html#contact" class="btn-primary text-sm hidden md:inline-block" data-en="Book Now" data-fi="Varaa Nyt"></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero-bg py-20 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: var(--green-dark);" data-en="Läpinäkyvät Hinnat / Transparent Pricing" data-fi="Läpinäkyvät Hinnat / Transparent Pricing"></p>
+    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-5" style="letter-spacing: -0.03em; color: var(--dark);" data-en="How Much Does Cleaning Cost in Tampere?" data-fi="Kuinka Paljon Siivous Maksaa Tampereella?"></h1>
+    <p class="text-lg leading-relaxed mb-8 mx-auto" style="color: #3a5a3a; max-width: 600px;" data-en="All prices include VAT 25.5% as required by Finnish law. Finnish households are eligible for the Kotitalousvähennys household tax deduction — reducing your net cost by up to 35%." data-fi="Kaikki hinnat sisältävät ALV 25,5 % Suomen lain mukaisesti. Suomalaiset kotitaloudet voivat hyödyntää kotitalousvähennystä — joka pienentää todellisia kustannuksiasi jopa 35 %."></p>
+    <div class="tax-badge">
+      <span data-en="💡 Save 35% with Kotitalousvähennys household deduction" data-fi="💡 Säästä 35 % kotitalousvähennyksellä"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+<div class="max-w-6xl mx-auto px-6">
+
+  <!-- ── CORE SERVICES ── -->
+  <div class="text-center py-14 pb-8">
+    <span class="section-label" data-en="Core Services" data-fi="Pääpalvelut"></span>
+    <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em; color: var(--dark);" data-en="Cleaning Services &amp; Rates" data-fi="Siivouspalvelut &amp; Hinnat"></h2>
+    <p class="mt-3 text-gray-500 leading-relaxed mx-auto" style="max-width: 560px; font-size: 0.95rem;" data-en="All services include professional eco-certified products, specialist equipment, and our quality guarantee. No hidden fees." data-fi="Kaikki palvelut sisältävät ammattimaiset eko-sertifioidut tuotteet, erikoislaitteet ja laatutakuumme. Ei piilomaksuja."></p>
+    <div class="green-rule"></div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-6">
+
+    <!-- Regular Home Cleaning -->
+    <div class="price-card">
+      <div class="card-header">
+        <div class="card-icon">🏠</div>
+        <h3 data-en="Regular Home Cleaning" data-fi="Kotisiivous"></h3>
+        <p data-en="Recurring maintenance cleaning. Vacuuming, mopping, surface wiping, kitchen & bathroom. Same professional every visit." data-fi="Toistuva ylläpitäväsiivous. Imurointi, moppaus, pintojen pyyhintä, keittiö ja kylpyhuone. Sama ammattilainen joka käynnillä."></p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Recurring contract" data-fi="Sopimusasiakas"></span>
+            <small data-en="Weekly / bi-weekly / monthly" data-fi="Viikoittain / joka toinen viikko / kuukausittain"></small>
+          </div>
+          <div class="price-val highlight">€60 <small style="font-size:0.65rem; color:#aaa; font-weight:400">/hr</small>
+            <span class="after" data-en="→ €39/hr after deduction" data-fi="→ €39/h vähennyksen jälkeen"></span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label" data-en="One-off single visit" data-fi="Yksittäinen käynti"></div>
+          <div class="price-val">€68 <small style="font-size:0.65rem; color:#aaa; font-weight:400">/hr</small>
+            <span class="after" data-en="→ €44.20/hr after deduction" data-fi="→ €44.20/h vähennyksen jälkeen"></span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Minimum booking" data-fi="Minimitilaus"></span>
+            <small data-en="All visits" data-fi="Kaikki käynnit"></small>
+          </div>
+          <div class="price-val" data-en="2 hours" data-fi="2 tuntia"></div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Visit fee" data-fi="Käyntimaksu"></span>
+            <small data-en="Covers travel & supplies" data-fi="Matka ja tarvikkeet mukana"></small>
+          </div>
+          <div class="price-val" data-en="Included" data-fi="Sisältyy"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Cleaning (featured) -->
+    <div class="price-card featured">
+      <div class="featured-badge" data-en="Most Popular" data-fi="Suosituin"></div>
+      <div class="card-header">
+        <div class="card-icon">✨</div>
+        <h3 data-en="Deep Cleaning" data-fi="Syväsiivous"></h3>
+        <p data-en="Comprehensive intensive clean. Inside cabinets, behind appliances, detailed scrubbing of all neglected areas. Includes steam cleaning." data-fi="Kattava tehokäsittely. Kaappien sisäpuoli, laitteiden takana, kaikkien laiminlyötyjen alueiden huolellinen pesu. Sisältää höyrypesun."></p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label" data-en="Hourly rate" data-fi="Tuntihinta"></div>
+          <div class="price-val highlight">€75 <small style="font-size:0.65rem; color:#aaa; font-weight:400">/hr</small>
+            <span class="after" data-en="→ €48.75/hr after deduction" data-fi="→ €48.75/h vähennyksen jälkeen"></span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Studio / 1-room flat" data-fi="Studio / 1 huone"></span>
+            <small data-en="Approx. 3–4 hours" data-fi="Noin 3–4 tuntia"></small>
+          </div>
+          <div class="price-val">€240–€280</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="2-room apartment" data-fi="2 huoneen asunto"></span>
+            <small data-en="Approx. 4–5 hours" data-fi="Noin 4–5 tuntia"></small>
+          </div>
+          <div class="price-val">€320–€380</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="3-room apartment" data-fi="3 huoneen asunto"></span>
+            <small data-en="Approx. 5–7 hours" data-fi="Noin 5–7 tuntia"></small>
+          </div>
+          <div class="price-val">€420–€520</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Large home (4+ rooms)" data-fi="Suuri koti (4+ huonetta)"></span>
+            <small data-en="Custom quote" data-fi="Yksilöllinen tarjous"></small>
+          </div>
+          <div class="price-val" data-en="From €580" data-fi="Alkaen €580"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Move-out -->
+    <div class="price-card">
+      <div class="card-header">
+        <div class="card-icon">🔑</div>
+        <h3 data-en="Move-out / End of Tenancy" data-fi="Muuttosiivoaus / Loppusiivous"></h3>
+        <p data-en="Deposit-back guaranteed clean. Every surface, every corner. Includes oven, fridge, cabinets, and steam treatment of bathrooms." data-fi="Takuuvuokratakuusiivoaus. Joka pinta, joka nurkkaus. Sisältää uunin, jääkaapin, kaapit ja kylpyhuoneiden höyrykäsittelyn."></p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Studio / 1-room" data-fi="Studio / 1 huone"></span>
+            <small data-en="~3–4 hours" data-fi="~3–4 tuntia"></small>
+          </div>
+          <div class="price-val">€280–€320</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="2-room apartment" data-fi="2 huoneen asunto"></span>
+            <small data-en="~4–6 hours" data-fi="~4–6 tuntia"></small>
+          </div>
+          <div class="price-val">€360–€440</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="3-room apartment" data-fi="3 huoneen asunto"></span>
+            <small data-en="~6–8 hours" data-fi="~6–8 tuntia"></small>
+          </div>
+          <div class="price-val">€480–€580</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label" data-en="Large home (4+ rooms)" data-fi="Suuri koti (4+ huonetta)"></div>
+          <div class="price-val" data-en="Custom quote" data-fi="Yksilöllinen tarjous"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Window Cleaning -->
+    <div class="price-card">
+      <div class="card-header">
+        <div class="card-icon">🪟</div>
+        <h3 data-en="Window Cleaning" data-fi="Ikkunanpesu"></h3>
+        <p data-en="Streak-free interior & exterior glass, frames, sills, and tracks. Includes balcony doors. Professional squeegee technique." data-fi="Läikkäjättömät sisä- ja ulkolasit, karmit, ikkunalaudat ja uritukset. Sisältää parvekkeen ovet. Ammattimaisella vetolastitiivistysmenetelmällä."></p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label" data-en="Hourly rate" data-fi="Tuntihinta"></div>
+          <div class="price-val highlight">€70 <small style="font-size:0.65rem; color:#aaa; font-weight:400">/hr</small>
+            <span class="after" data-en="→ €45.50/hr after deduction" data-fi="→ €45.50/h vähennyksen jälkeen"></span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Small apartment" data-fi="Pieni asunto"></span>
+            <small data-en="Up to 8 windows" data-fi="Enintään 8 ikkunaa"></small>
+          </div>
+          <div class="price-val">€90–€130</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Medium home" data-fi="Keskikokoinen koti"></span>
+            <small data-en="9–16 windows" data-fi="9–16 ikkunaa"></small>
+          </div>
+          <div class="price-val">€140–€200</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="High/hard-to-reach windows" data-fi="Korkeat/vaikeastihankalat ikkunat"></span>
+            <small data-en="Ladder work" data-fi="Tikastyöskentely"></small>
+          </div>
+          <div class="price-val" data-en="+€50/visit" data-fi="+€50/käynti"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post-Renovation -->
+    <div class="price-card">
+      <div class="card-header">
+        <div class="card-icon">🏗️</div>
+        <h3 data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></h3>
+        <p data-en="Specialist dust removal, cabinet washing, surface disinfection, and steam treatment after construction or renovation work." data-fi="Erikoispölynpoisto, kaappien pesu, pintojen desinfiointi ja höyrykäsittely rakentamisen tai remontoinnin jälkeen."></p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label" data-en="Hourly rate" data-fi="Tuntihinta"></div>
+          <div class="price-val highlight">€80 <small style="font-size:0.65rem; color:#aaa; font-weight:400">/hr</small>
+            <span class="after" data-en="→ €52/hr after deduction" data-fi="→ €52/h vähennyksen jälkeen"></span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label" data-en="Minimum booking" data-fi="Minimitilaus"></div>
+          <div class="price-val" data-en="4 hours" data-fi="4 tuntia"></div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="HEPA filtration upgrade" data-fi="HEPA-suodatusparannus"></span>
+            <small data-en="Allergy-safe clean" data-fi="Allergiaturvallinen siivous"></small>
+          </div>
+          <div class="price-val" data-en="+€60/session" data-fi="+€60/kerta"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Steam Cleaning (Standalone) -->
+    <div class="price-card">
+      <div class="card-header">
+        <div class="card-icon">💨</div>
+        <h3 data-en="Steam Cleaning (Standalone)" data-fi="Höyrypesu (Erillinen)"></h3>
+        <p data-en="High-temperature steam sanitisation of tiles, grout, kitchen surfaces, bathroom fixtures, and hard floors. No chemicals needed." data-fi="Korkean lämpötilan höyrysaneeraus kaakeleille, saumamassoille, keittiöpinnoille, kylpyhuoneen kalusteille ja kivillattioille. Ei kemikaaleja."></p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label" data-en="Hourly rate" data-fi="Tuntihinta"></div>
+          <div class="price-val highlight">€80 <small style="font-size:0.65rem; color:#aaa; font-weight:400">/hr</small>
+            <span class="after" data-en="→ €52/hr after deduction" data-fi="→ €52/h vähennyksen jälkeen"></span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Kitchen (surfaces + floor)" data-fi="Keittiö (pinnat + lattia)"></span>
+            <small data-en="Approx. 1.5–2 hours" data-fi="Noin 1,5–2 tuntia"></small>
+          </div>
+          <div class="price-val">€120–€160</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Bathroom + toilet" data-fi="Kylpyhuone + WC"></span>
+            <small data-en="Approx. 1–1.5 hours" data-fi="Noin 1–1,5 tuntia"></small>
+          </div>
+          <div class="price-val">€80–€120</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            <span data-en="Full home steam treatment" data-fi="Koko kodin höyrykäsittely"></span>
+            <small data-en="All steam-suitable surfaces" data-fi="Kaikki höyrylle soveltuvat pinnat"></small>
+          </div>
+          <div class="price-val" data-en="Custom quote" data-fi="Yksilöllinen tarjous"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /core grid -->
+
+  <!-- ── STEAM INCLUDED BANNER ── -->
+  <div class="steam-banner">
+    <div class="icon">💨</div>
+    <div>
+      <h4 data-en="Steam Cleaning Included in Every Premium Service" data-fi="Höyrypesu Sisältyy Jokaiseen Premium-palveluun"></h4>
+      <p data-en="Unlike standard providers, all our deep clean, move-out, and post-renovation services include high-temperature steam treatment at no extra charge. Steam sanitises without harsh chemicals and is included as standard across:" data-fi="Toisin kuin tavallisilla palveluntarjoajilla, kaikki syväsiivous-, muuttosiivoaus- ja remontin jälkisiivouspalvelumme sisältävät korkean lämpötilan höyrykäsittelyn ilman lisäkuluja. Höyry desinfioi ilman kovia kemikaaleja ja sisältyy vakiona:"></p>
+      <div class="steam-list">
+        <span class="steam-pill" data-en="Bathroom tiles &amp; grout" data-fi="Kylpyhuoneen kaakelit &amp; saumausaine"></span>
+        <span class="steam-pill" data-en="Kitchen surfaces &amp; hob" data-fi="Keittiöpinnat &amp; liesi"></span>
+        <span class="steam-pill" data-en="Toilet &amp; fixtures" data-fi="WC &amp; kalusteet"></span>
+        <span class="steam-pill" data-en="Sauna benches &amp; walls" data-fi="Saunan lauteet &amp; seinät"></span>
+        <span class="steam-pill" data-en="Hard floors" data-fi="Kovakovat lattiat"></span>
+        <span class="steam-pill" data-en="Window frames &amp; sills" data-fi="Ikkunankarmit &amp; laudat"></span>
+        <span class="steam-pill" data-en="Cabinet door fronts" data-fi="Kaappiovien etusivut"></span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── EXTRACTION & UPHOLSTERY ── -->
+  <div class="text-center py-14 pb-8">
+    <span class="section-label" data-en="Specialist Services" data-fi="Erikoispalvelut"></span>
+    <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em; color: var(--dark);" data-en="Extraction &amp; Upholstery Cleaning" data-fi="Ekstrahointi &amp; Verhoilujen Pesu"></h2>
+    <p class="mt-3 text-gray-500 leading-relaxed mx-auto" style="max-width: 560px; font-size: 0.95rem;" data-en="Professional hot-water extraction removes embedded dirt, allergens, dust mites, and bacteria from all textile surfaces. Fabric protection treatment included." data-fi="Ammattimainen kuumavesiuuttaminen poistaa upotetun lian, allergeenit, pölypunkit ja bakteerit kaikista tekstiilipinnoista. Kangassuojakäsittely sisältyy."></p>
+    <div class="green-rule"></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-en="Item" data-fi="Kohde"></th>
+          <th data-en="Includes" data-fi="Sisältää"></th>
+          <th style="text-align:right" data-en="Price (incl. VAT)" data-fi="Hinta (sis. ALV)"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong data-en="Single Mattress" data-fi="Yksittäinen Patja"></strong>
+            <span class="note" data-en="Hot-water extraction + allergen treatment" data-fi="Kuumavesiuuttaminen + allergeenikäsittely"></span>
+          </td>
+          <td data-en="Steam pre-treatment, extraction, deodorise, fabric protector" data-fi="Höyriesikäsittely, uuttaminen, deodorointi, kangassuoja"></td>
+          <td class="price-cell">€95<span class="tax-note" data-en="→ €61.75 after deduction" data-fi="→ €61.75 vähennyksen jälkeen"></span></td>
+        </tr>
+        <tr>
+          <td>
+            <strong data-en="Double / Queen Mattress" data-fi="Pari-/Queensize-patja"></strong>
+          </td>
+          <td data-en="Steam pre-treatment, extraction, deodorise, fabric protector" data-fi="Höyriesikäsittely, uuttaminen, deodorointi, kangassuoja"></td>
+          <td class="price-cell">€130<span class="tax-note" data-en="→ €84.50 after deduction" data-fi="→ €84.50 vähennyksen jälkeen"></span></td>
+        </tr>
+        <tr>
+          <td><strong data-en="Armchair / Single Chair" data-fi="Nojatuoli / Yksittäinen Tuoli"></strong></td>
+          <td data-en="Full extraction, stain treatment, protector" data-fi="Täysiekstrahointi, tahrankäsittely, suoja"></td>
+          <td class="price-cell">€80</td>
+        </tr>
+        <tr>
+          <td><strong data-en="2-Seat Fabric Sofa" data-fi="2-istuttava Kangassohva"></strong></td>
+          <td data-en="Full extraction, steam pre-treat, stain removal, protector" data-fi="Täysiekstrahointi, höyriesikäsittely, tahranpoisto, suoja"></td>
+          <td class="price-cell">€150<span class="tax-note" data-en="→ €97.50 after deduction" data-fi="→ €97.50 vähennyksen jälkeen"></span></td>
+        </tr>
+        <tr>
+          <td><strong data-en="3-Seat Fabric Sofa" data-fi="3-istuttava Kangassohva"></strong></td>
+          <td data-en="Full extraction, steam pre-treat, stain removal, protector" data-fi="Täysiekstrahointi, höyriesikäsittely, tahranpoisto, suoja"></td>
+          <td class="price-cell">€190<span class="tax-note" data-en="→ €123.50 after deduction" data-fi="→ €123.50 vähennyksen jälkeen"></span></td>
+        </tr>
+        <tr>
+          <td><strong data-en="Corner / Sectional Sofa" data-fi="Kulmasohva / Moduulisofa"></strong></td>
+          <td data-en="Full extraction, multiple sections, protector coat" data-fi="Täysiekstrahointi, useita osia, suojakerros"></td>
+          <td class="price-cell">€280<span class="tax-note" data-en="→ €182 after deduction" data-fi="→ €182 vähennyksen jälkeen"></span></td>
+        </tr>
+        <tr>
+          <td>
+            <strong data-en="Area Rug" data-fi="Matto"></strong>
+            <span class="note" data-en="Per square metre — minimum 2m²" data-fi="Neliömetriä kohden — minimi 2m²"></span>
+          </td>
+          <td data-en="Extraction wash, drying, deodorise" data-fi="Ekstrohointipesu, kuivaus, deodorointi"></td>
+          <td class="price-cell" data-en="€25 /m²" data-fi="€25 /m²">€25 /m²</td>
+        </tr>
+        <tr>
+          <td>
+            <strong data-en="Wall-to-Wall Carpet" data-fi="Kokolattiamatot"></strong>
+            <span class="note" data-en="Per square metre — on-site" data-fi="Neliömetriä kohden — paikan päällä"></span>
+          </td>
+          <td data-en="Pre-vacuum, extraction, deodorise" data-fi="Esiimurointi, ekstrahointi, deodorointi"></td>
+          <td class="price-cell" data-en="€18 /m²" data-fi="€18 /m²">€18 /m²</td>
+        </tr>
+        <tr>
+          <td><strong data-en="Dining Chair" data-fi="Ruokapöydän Tuoli"></strong></td>
+          <td data-en="Spot treatment + extraction" data-fi="Pistekäsittely + ekstrahointi"></td>
+          <td class="price-cell" data-en="€35 /chair" data-fi="€35 /tuoli">€35 /tuoli</td>
+        </tr>
+        <tr>
+          <td>
+            <strong data-en="Bundle: Mattress + 3-seat Sofa" data-fi="Paketti: Patja + 3-istuttava Sohva"></strong>
+            <span class="note" data-en="Both items in one visit" data-fi="Molemmat kohteet yhdellä käynnillä"></span>
+          </td>
+          <td data-en="Full service for both items" data-fi="Täysi palvelu molemmille kohteille"></td>
+          <td class="price-cell" style="color: var(--green)">€295
+            <span class="tax-note" style="color: var(--green)" data-en="Save €25 vs. individual" data-fi="Säästä €25 verrattuna yksittäisiin"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── ADD-ONS ── -->
+  <div class="text-center py-14 pb-8">
+    <span class="section-label" data-en="Add-on Services" data-fi="Lisäpalvelut"></span>
+    <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em; color: var(--dark);" data-en="Additional Cleaning Services" data-fi="Lisäsiivouspalvelut"></h2>
+    <p class="mt-3 text-gray-500 leading-relaxed mx-auto" style="max-width: 560px; font-size: 0.95rem;" data-en="Add any of the following to your booking. All add-ons are flat-fee and fully eligible for the household tax deduction." data-fi="Lisää jokin seuraavista varaukseesi. Kaikki lisäpalvelut ovat kiinteähintaisia ja täysin kotitalousvähennyksen piirissä."></p>
+    <div class="green-rule"></div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-10">
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🧖</span>
+        <span class="addon-name" data-en="Sauna Cleaning" data-fi="Saunanpesu"></span>
+      </div>
+      <p class="addon-desc" data-en="Benches, walls, floor, kiuas area, drain. Steam treatment included. Approx. 1–1.5 hours." data-fi="Lauteet, seinät, lattia, kiukaan alue, lattiakaivo. Höyrykäsittely sisältyy. Noin 1–1,5 tuntia."></p>
+      <div class="addon-price">€90<span data-en="→ €58.50 after deduction" data-fi="→ €58.50 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🧖</span>
+        <span class="addon-name" data-en="Sauna — Large / Luxury" data-fi="Sauna — Suuri / Luksus"></span>
+      </div>
+      <p class="addon-desc" data-en="XL sauna, multiple rooms or commercial-grade sauna. Extended steam + scrub treatment." data-fi="XL-sauna, useita huoneita tai kaupallisen tason sauna. Pidennetty höyry + hankaus."></p>
+      <div class="addon-price">€120<span data-en="→ €78 after deduction" data-fi="→ €78 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🔥</span>
+        <span class="addon-name" data-en="Oven Deep Clean" data-fi="Uunin Syväpesu"></span>
+      </div>
+      <p class="addon-desc" data-en="Interior degreasing, rack removal, steam treatment, door seals. Approx. 45–75 min." data-fi="Sisäpintojen rasvanpoisto, ritilöiden irrotus, höyrykäsittely, ovensuljintiivisteet. Noin 45–75 min."></p>
+      <div class="addon-price">€55<span data-en="→ €35.75 after deduction" data-fi="→ €35.75 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">❄️</span>
+        <span class="addon-name" data-en="Refrigerator Interior" data-fi="Jääkaapin Sisäpuoli"></span>
+      </div>
+      <p class="addon-desc" data-en="Full interior wipe, shelves, drawers, seals, odour treatment. Approx. 30–50 min." data-fi="Täysipyyhintä sisältä, hyllyt, vetolaatikot, tiivisteet, hajunkäsittely. Noin 30–50 min."></p>
+      <div class="addon-price">€45<span data-en="→ €29.25 after deduction" data-fi="→ €29.25 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🧊</span>
+        <span class="addon-name" data-en="Freezer Defrost &amp; Clean" data-fi="Pakastimen Sulatuspesu"></span>
+      </div>
+      <p class="addon-desc" data-en="Full defrost, interior wipe-down, deodorise. Customer must empty freezer beforehand." data-fi="Täyssulatus, sisäpyyhintä, deodorointi. Asiakkaan on tyhjennettävä pakastin etukäteen."></p>
+      <div class="addon-price">€40<span data-en="→ €26 after deduction" data-fi="→ €26 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">📡</span>
+        <span class="addon-name" data-en="Microwave Interior" data-fi="Mikroaaltouunin Sisäpuoli"></span>
+      </div>
+      <p class="addon-desc" data-en="Steam-clean interior, turntable removal, degreasing, deodorise. Quick add-on ~20 min." data-fi="Höyrypuhdistus sisältä, kääntöalustan irrotus, rasvanpoisto, deodorointi. Nopea lisäys ~20 min."></p>
+      <div class="addon-price">€25<span data-en="→ €16.25 after deduction" data-fi="→ €16.25 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🍽️</span>
+        <span class="addon-name" data-en="Dishwasher Interior" data-fi="Astianpesukoneen Sisäpuoli"></span>
+      </div>
+      <p class="addon-desc" data-en="Filter cleaning, interior descaling, door seal, spray arm treatment." data-fi="Suodattimen puhdistus, sisäpuolen kalkkipoistoaine, ovenlukon käsittely, suihkuvarren käsittely."></p>
+      <div class="addon-price">€30<span data-en="→ €19.50 after deduction" data-fi="→ €19.50 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">💨</span>
+        <span class="addon-name" data-en="Range Hood / Extractor" data-fi="Liesituuletin / Huppu"></span>
+      </div>
+      <p class="addon-desc" data-en="Filter removal & degreasing, interior wipe, fan blades, grease trap clean." data-fi="Suodattimen irrotus ja rasvanpoisto, sisäpyyhintä, tuulettimen lavat, rasvaloukun puhdistus."></p>
+      <div class="addon-price">€50<span data-en="→ €32.50 after deduction" data-fi="→ €32.50 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🌿</span>
+        <span class="addon-name" data-en="Balcony / Terrace" data-fi="Parveke / Terassi"></span>
+      </div>
+      <p class="addon-desc" data-en="Floor scrub, railings, furniture wipe-down, drain clearing. Steam available." data-fi="Lattian hankaus, kaiteet, huonekalujen pyyhintä, viemärin puhdistus. Höyry saatavilla."></p>
+      <div class="addon-price">€70<span data-en="→ €45.50 after deduction" data-fi="→ €45.50 vähennyksen jälkeen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🗄️</span>
+        <span class="addon-name" data-en="Cabinet Interiors" data-fi="Kaappien Sisäpuolet"></span>
+      </div>
+      <p class="addon-desc" data-en="Per unit. Empty shelves, wipe interior, sanitise. Ideal for kitchen deep cleans." data-fi="Per yksikkö. Tyhjennä hyllyt, pyyhintä sisältä, saneeraus. Ihanteellinen keittiön syväpuhdistukseen."></p>
+      <div class="addon-price">€25 <span style="font-size:0.8rem; font-weight:400" data-en="/unit" data-fi="/yksikkö">/yksikkö</span><span data-en="Price per cabinet unit" data-fi="Hinta per kaappiyksikkö"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🌬️</span>
+        <span class="addon-name" data-en="Allergy Deep-Clean Upgrade" data-fi="Allergiasyväpuhdistuspäivitys"></span>
+      </div>
+      <p class="addon-desc" data-en="HEPA-filtered vacuuming, anti-allergen treatment. Add to any service." data-fi="HEPA-suodatinimurointi, allergeenien torjuntakäsittely. Lisää mihin tahansa palveluun."></p>
+      <div class="addon-price">+€60 <span style="font-size:0.8rem; font-weight:400" data-en="/session" data-fi="/kerta">/kerta</span><span data-en="Add to any booking" data-fi="Lisää mihin tahansa varaukseen"></span></div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-top">
+        <span class="addon-icon">🧹</span>
+        <span class="addon-name" data-en="First-Visit Deep Clean" data-fi="Ensikäynti Syväsiivous"></span>
+      </div>
+      <p class="addon-desc" data-en="New customers: required initial deep clean before starting a recurring contract. One-time fee." data-fi="Uudet asiakkaat: vaadittu alkuperäinen syväsiivous ennen toistuvan sopimuksen aloittamista. Kertaluonteinen maksu."></p>
+      <div class="addon-price">€75/hr<span data-en="Min. 3 hours · then regular rate applies" data-fi="Min. 3 tuntia · sitten normaali hinta voimaan"></span></div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── PACKAGES ── -->
+  <div class="text-center py-14 pb-8">
+    <span class="section-label" data-en="Value Packages" data-fi="Arvopaketit"></span>
+    <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em; color: var(--dark);" data-en="Bundled Service Packages" data-fi="Yhdistetyt Palvelupaketit"></h2>
+    <p class="mt-3 text-gray-500 leading-relaxed mx-auto" style="max-width: 560px; font-size: 0.95rem;" data-en="Combine services for better value. All packages fully eligible for the 35% household deduction." data-fi="Yhdistä palvelut parempaan arvoon. Kaikki paketit ovat täysin 35 % kotitalousvähennyksen piirissä."></p>
+    <div class="green-rule"></div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+
+    <div class="pkg-card">
+      <div class="pkg-badge" data-en="Fresh Home" data-fi="Tuore Koti"></div>
+      <div class="pkg-name" data-en="Fresh Home Package" data-fi="Tuore Koti -paketti"></div>
+      <p class="pkg-desc" data-en="The most popular combination. Regular clean topped with kitchen appliance care." data-fi="Suosituin yhdistelmä. Säännöllinen siivous täydennettynä keittiölaitteiden hoidolla."></p>
+      <ul class="pkg-includes">
+        <li data-en="Regular home cleaning (3 hours)" data-fi="Kotisiivous (3 tuntia)"></li>
+        <li data-en="Oven deep clean" data-fi="Uunin syväpesu"></li>
+        <li data-en="Refrigerator interior" data-fi="Jääkaapin sisäpuoli"></li>
+        <li data-en="Microwave interior" data-fi="Mikroaaltouunin sisäpuoli"></li>
+        <li data-en="All supplies & eco products included" data-fi="Kaikki tarvikkeet ja ekologiset tuotteet mukana"></li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total" data-en="Package total" data-fi="Paketin kokonaishinta"></div>
+        <div class="pkg-price">€300</div>
+        <div class="pkg-save" data-en="Save €25 vs. individual pricing" data-fi="Säästä €25 verrattuna yksittäisiin hintoihin"></div>
+      </div>
+    </div>
+
+    <div class="pkg-card best">
+      <div class="pkg-badge" data-en="Best Value" data-fi="Paras Arvo"></div>
+      <div class="pkg-name" data-en="Seasonal Deep Clean" data-fi="Kausiluonteinen Syväsiivous"></div>
+      <p class="pkg-desc" data-en="The complete home reset. Ideal for spring and autumn. Includes steam & windows." data-fi="Täydellinen kodin nollaus. Ihanteellinen kevät- ja syyspuhdistukseen. Sisältää höyryn ja ikkunat."></p>
+      <ul class="pkg-includes">
+        <li data-en="Deep cleaning (5 hours, steam incl.)" data-fi="Syväsiivous (5 tuntia, höyry mukana)"></li>
+        <li data-en="Window cleaning (up to 10 windows)" data-fi="Ikkunanpesu (enintään 10 ikkunaa)"></li>
+        <li data-en="Sauna cleaning" data-fi="Saunanpesu"></li>
+        <li data-en="Oven + refrigerator add-ons" data-fi="Uuni + jääkaappi lisäpalvelut"></li>
+        <li data-en="Fabric protection spray for key surfaces" data-fi="Kangassuojasuihke keskeisille pinnoille"></li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total" data-en="Package total" data-fi="Paketin kokonaishinta"></div>
+        <div class="pkg-price">€620</div>
+        <div class="pkg-save" data-en="Save €55 vs. individual pricing" data-fi="Säästä €55 verrattuna yksittäisiin hintoihin"></div>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-badge" data-en="Textile Refresh" data-fi="Tekstiilien Uusinta"></div>
+      <div class="pkg-name" data-en="Textile Refresh Package" data-fi="Tekstiilien Uusinta -paketti"></div>
+      <p class="pkg-desc" data-en="Restore your textiles. Deep extraction of your main upholstered items in one visit." data-fi="Palauta tekstiilisi. Tärkeimpien verhoilukohteidesi syväekstrahointi yhdellä käynnillä."></p>
+      <ul class="pkg-includes">
+        <li data-en="Double mattress extraction" data-fi="Paripatjan ekstrahointi"></li>
+        <li data-en="3-seat sofa extraction" data-fi="3-istuttavan sohvan ekstrahointi"></li>
+        <li data-en="Area rug up to 4m²" data-fi="Matto enintään 4m²"></li>
+        <li data-en="Fabric protection on all items" data-fi="Kangassuoja kaikille kohteille"></li>
+        <li data-en="Drying guidance & aftercare advice" data-fi="Kuivausohjeet ja jälkihoitosuositukset"></li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total" data-en="Package total" data-fi="Paketin kokonaishinta"></div>
+        <div class="pkg-price">€400</div>
+        <div class="pkg-save" data-en="Save €20 vs. individual pricing" data-fi="Säästä €20 verrattuna yksittäisiin hintoihin"></div>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-badge" data-en="Move-out Complete" data-fi="Muuttosiivoaus Täydellinen"></div>
+      <div class="pkg-name" data-en="Move-out Complete" data-fi="Muuttosiivoaus Täydellinen"></div>
+      <p class="pkg-desc" data-en="Everything needed for a full end-of-tenancy clean with deposit-back guarantee." data-fi="Kaikki tarvittava täydelliseen vuokralaisen loppusiivoukseen takuuvuokran palautustakuulla."></p>
+      <ul class="pkg-includes">
+        <li data-en="Full move-out deep clean (60m² apt)" data-fi="Täysi muuttosiivoaus syväsiivous (60m² asunto)"></li>
+        <li data-en="Window cleaning (interior)" data-fi="Ikkunanpesu (sisäpuoli)"></li>
+        <li data-en="Oven + fridge + microwave" data-fi="Uuni + jääkaappi + mikroaaltouuni"></li>
+        <li data-en="Sauna (if applicable)" data-fi="Sauna (tarvittaessa)"></li>
+        <li data-en="Steam treatment of bathrooms & kitchen" data-fi="Höyrykäsittely kylpyhuoneissa ja keittiössä"></li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total" data-en="Starting from" data-fi="Alkaen"></div>
+        <div class="pkg-price">€480</div>
+        <div class="pkg-save" data-en="Larger homes: custom quote" data-fi="Suuremmille kodeille: yksilöllinen tarjous"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── NOTES BOX ── -->
+  <div class="notes-box">
+    <h4 data-en="📋 Booking Terms &amp; Notes" data-fi="📋 Varausehdot &amp; Huomiot"></h4>
+    <ul class="notes-list">
+      <li data-en="All prices include VAT at 25.5% as required by Finnish law." data-fi="Kaikki hinnat sisältävät ALV 25,5 % Suomen lain mukaisesti."></li>
+      <li data-en="Household tax deduction (kotitalousvähennys) 2025: 35%, max €1,600/person/year, €150 deductible." data-fi="Kotitalousvähennys 2025: 35 %, enintään €1 600 / henkilö / vuosi, €150 omavastuuosuus."></li>
+      <li data-en="Minimum booking: 2 hours for regular cleaning, 3 hours for deep cleaning." data-fi="Minimitilaus: 2 tuntia kotisiivoukselle, 3 tuntia syväsiivoukselle."></li>
+      <li data-en="New customers starting a recurring contract require an initial deep clean visit at €75/hr (min. 3h)." data-fi="Uudet asiakkaat, jotka aloittavat toistuvan sopimuksen, vaativat alkuperäisen syväsiivouskäynnin hintaan €75/h (min. 3h)."></li>
+      <li data-en="All professional cleaning supplies, eco-certified products, and equipment included — no surprise fees." data-fi="Kaikki ammattimaiset siivoustarvikkeet, eko-sertifioidut tuotteet ja laitteet mukana — ei yllätyskuluja."></li>
+      <li data-en="Steam cleaning is included at no extra cost in all deep clean, move-out, and post-renovation services." data-fi="Höyrypesu sisältyy ilman lisäkuluja kaikkiin syväsiivous-, muuttosiivoaus- ja remontin jälkisiivouspalveluihin."></li>
+      <li data-en="Extraction cleaning drying time: 4–8 hours. We recommend booking before a day off." data-fi="Ekstrohointisiivouksen kuivumisaika: 4–8 tuntia. Suosittelemme varaamaan ennen vapaapäivää."></li>
+      <li data-en="Cancellation: free with 48 hours notice. Less than 48 hours: 50% charge applies." data-fi="Peruutus: maksuton 48 tunnin irtisanomisajalla. Alle 48 tuntia: 50 % maksu peritään."></li>
+      <li data-en="We operate across Tampere, Kangasala, Ylöjärvi, Lempäälä, Pirkkala, and Nokia." data-fi="Toimialueemme kattaa Tampereen, Kangasalan, Ylöjärven, Lempäälän, Pirkkalan ja Nokian."></li>
+      <li data-en="Travel outside 20km radius of Tampere centre: surcharge from €30." data-fi="Matka yli 20 km Tampereen keskustasta: lisämaksu alkaen €30."></li>
+      <li data-en="Detailed annual invoices provided for tax deduction claims at no extra cost." data-fi="Yksityiskohtaiset vuosilaskut toimitetaan verovähennyshakemuksia varten ilman lisäkuluja."></li>
+      <li data-en="Quality guarantee: if unsatisfied, we return and re-clean the area free of charge within 48 hours." data-fi="Laatutakuu: jos olet tyytymätön, palaamme ja siivoamme alueen uudelleen veloituksetta 48 tunnin kuluessa."></li>
+    </ul>
+  </div>
+
+</div><!-- /max-w-6xl container -->
+
+<!-- ═══════════════════════ CTA SECTION ═══════════════════════ -->
+<section class="py-20 px-6" style="background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, #5dd65a 100%);">
+  <div class="max-w-4xl mx-auto text-center text-white">
+    <p class="text-sm font-semibold uppercase tracking-widest mb-4 opacity-80" data-en="Get Started Today" data-fi="Aloita Tänään"></p>
+    <h2 class="text-3xl md:text-5xl font-display font-extrabold mb-4" style="letter-spacing: -0.03em;" data-en="Book Your Cleaning Today" data-fi="Varaa Siivous Tänään"></h2>
+    <p class="text-white/85 text-lg mb-8 mx-auto" style="max-width: 560px;" data-en="Fixed transparent prices. Eco-certified professionals. Steam cleaning included. Quality guaranteed or we return free of charge." data-fi="Kiinteät läpinäkyvät hinnat. Eko-sertifioidut ammattilaiset. Höyrypesu mukana. Takuu laadusta tai palaamme veloituksetta."></p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="index.html#contact" class="inline-block bg-white font-display font-bold px-10 py-4 rounded-xl text-lg transition-transform hover:-translate-y-1 active:translate-y-0" style="color: var(--green); box-shadow: 0 4px 24px rgba(0,0,0,0.15);" data-en="Book Your Cleaning Now" data-fi="Varaa Siivous Nyt"></a>
+      <a href="index.html#contact" class="inline-block border-2 border-white text-white font-display font-bold px-10 py-4 rounded-xl text-lg transition-all hover:bg-white" style="hover-color: var(--green);" data-en="Get a Free Quote" data-fi="Pyydä Ilmainen Tarjous"></a>
+    </div>
+    <p class="text-white/60 text-sm mt-6" data-en="Prices valid from March 2026 · All prices include VAT 25.5% · Tampere Region, Finland" data-fi="Hinnat voimassa maaliskuusta 2026 · Kaikki hinnat sisältävät ALV 25,5 % · Tampereen alue, Suomi"></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="py-12 px-6" style="background: var(--dark); color: rgba(255,255,255,0.7);">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-8 mb-10">
+      <div class="flex-1">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" class="mb-4 brightness-200 grayscale" style="height: 200px; width: auto;" />
+        <p class="text-sm leading-relaxed" style="max-width: 280px;" data-en="Professional eco-friendly cleaning in Tampere. Reducing footprints, refreshing spaces." data-fi="Ammattimainen ympäristöystävällinen siivous Tampereella. Vähennämme jalanjälkiä, virkistämme tiloja."></p>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Services" data-fi="Palvelut"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#services" class="hover:text-white transition-colors" data-en="Regular Home Cleaning" data-fi="Kotisiivous"></a></li>
+          <li><a href="index.html#pricing" class="hover:text-white transition-colors" data-en="Deep Cleaning" data-fi="Syväsiivous"></a></li>
+          <li><a href="window-cleaning.html" class="hover:text-white transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a></li>
+          <li><a href="steam-cleaning.html" class="hover:text-white transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu"></a></li>
+          <li><a href="post-renovation-cleaning.html" class="hover:text-white transition-colors" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" style="color: var(--green);" data-en="All Pricing" data-fi="Kaikki Hinnat"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Company" data-fi="Yritys"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#why" class="hover:text-white transition-colors" data-en="Why BetterClean" data-fi="Miksi BetterClean"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="Pricing" data-fi="Hinnat"></a></li>
+          <li><a href="index.html#contact" class="hover:text-white transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4">Tampere</h4>
+        <p class="text-sm" data-en="Serving all of Tampere and surrounding areas." data-fi="Palvelemme koko Tamperetta ja lähialuetta."></p>
+        <p class="text-sm mt-2">+358 XX XXX XXXX</p>
+        <p class="text-sm">info@betterclean.fi</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+      <p>© 2026 BetterClean. <span data-en="All rights reserved." data-fi="Kaikki oikeudet pidätetään."></span></p>
+      <p data-en="Reducing Footprints, Refreshing Spaces." data-fi="Vähennämme Jalanjälkiä, Virkistämme Tiloja."></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════ LANGUAGE SCRIPT ═══════════════════════ -->
+<script>
+  let currentLang = 'fi';
+
+  function setLang(lang) {
+    currentLang = lang;
+
+    // Update toggle buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+
+    // Update all translatable elements
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (!text) return;
+
+      if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'P' ||
+          el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' ||
+          el.tagName === 'H4' || el.tagName === 'SPAN' || el.tagName === 'LABEL' ||
+          el.tagName === 'LI' || el.tagName === 'STRONG' || el.tagName === 'TD' ||
+          el.tagName === 'TH' || el.tagName === 'DIV') {
+        el.innerHTML = text;
+      } else {
+        el.textContent = text;
+      }
+    });
+
+    // Update html lang attr
+    document.documentElement.lang = lang;
+  }
+
+  // Initialize Finnish on load
+  setLang('fi');
+</script>
+
+</body>
+</html>
