@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Cleaning Services — Tampere</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --gold: #c9a84c;
+    --gold-light: #e8cc87;
+    --cream: #faf8f3;
+    --warm-white: #fff9f0;
+    --mid: #5a6070;
+    --light-border: rgba(201,168,76,0.25);
+    --card-bg: rgba(255,255,255,0.72);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    position: relative;
+    padding: 80px 40px 70px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%);
+  }
+  .hero-ornament {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin-bottom: 28px;
+  }
+  .hero-ornament span { display: block; height: 1px; width: 60px; background: var(--gold); opacity: 0.6; }
+  .hero-ornament i { color: var(--gold); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-style: normal; font-family: 'DM Sans'; font-weight: 500; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    position: relative;
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    margin-top: 16px;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    position: relative;
+  }
+  .tax-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 28px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 40px;
+    padding: 8px 20px;
+    position: relative;
+  }
+  .tax-badge span { color: var(--gold-light); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.3px; }
+  .tax-badge strong { color: var(--gold); font-size: 0.9rem; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── SECTION TITLE ── */
+  .section-head {
+    text-align: center;
+    padding: 60px 0 36px;
+  }
+  .section-head .label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .section-head p {
+    margin-top: 12px;
+    color: var(--mid);
+    font-size: 0.93rem;
+    font-weight: 300;
+    max-width: 560px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+  }
+  .rule { width: 48px; height: 2px; background: var(--gold); margin: 18px auto 0; border-radius: 2px; }
+
+  /* ── CORE SERVICES CARDS ── */
+  .core-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding-bottom: 24px;
+  }
+
+  .service-card {
+    background: #fff;
+    border: 1px solid rgba(15,31,61,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(15,31,61,0.1);
+  }
+  .service-card.featured {
+    border-color: var(--gold);
+    box-shadow: 0 4px 24px rgba(201,168,76,0.18);
+  }
+  .featured-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .card-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid rgba(15,31,61,0.06);
+  }
+  .card-icon {
+    width: 42px; height: 42px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+  .card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .card-header p {
+    font-size: 0.82rem;
+    color: var(--mid);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .card-price {
+    padding: 20px 28px;
+  }
+  .price-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(15,31,61,0.05);
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-label { font-size: 0.85rem; color: var(--mid); font-weight: 400; }
+  .price-label small { display: block; font-size: 0.72rem; color: #aaa; margin-top: 1px; }
+  .price-val { font-size: 1.05rem; font-weight: 600; color: var(--navy); text-align: right; }
+  .price-val .after { display: block; font-size: 0.72rem; color: var(--gold); font-weight: 500; margin-top: 2px; }
+  .price-val.highlight { color: var(--gold); font-size: 1.2rem; }
+
+  /* ── STEAM INCLUDED BANNER ── */
+  .steam-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3060 100%);
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex; align-items: center; gap: 20px;
+    margin: 32px 0;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .steam-banner .icon { font-size: 2rem; flex-shrink: 0; }
+  .steam-banner h4 { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 5px; }
+  .steam-banner p { color: rgba(255,255,255,0.6); font-size: 0.83rem; line-height: 1.55; font-weight: 300; }
+  .steam-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .steam-pill {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.75rem;
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  /* ── EXTRACTION TABLE ── */
+  .table-wrap {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(15,31,61,0.09);
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .table-wrap table { width: 100%; border-collapse: collapse; }
+  .table-wrap thead th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    text-align: left;
+  }
+  .table-wrap thead th:last-child { text-align: right; }
+  .table-wrap tbody tr { border-bottom: 1px solid rgba(15,31,61,0.06); }
+  .table-wrap tbody tr:last-child { border-bottom: none; }
+  .table-wrap tbody tr:nth-child(even) { background: rgba(250,248,243,0.6); }
+  .table-wrap tbody td { padding: 13px 20px; font-size: 0.88rem; color: var(--navy); }
+  .table-wrap tbody td:last-child { text-align: right; font-weight: 600; color: var(--navy); }
+  .table-wrap tbody td .note { font-size: 0.73rem; color: var(--mid); font-weight: 300; display: block; margin-top: 2px; }
+  .price-cell { font-size: 1rem !important; color: var(--navy) !important; }
+  .price-cell .tax-note { font-size: 0.72rem; color: var(--gold); display: block; margin-top: 2px; font-weight: 500; }
+
+  /* ── ADDONS GRID ── */
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .addon-card {
+    background: #fff;
+    border: 1px solid rgba(15,31,61,0.09);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .addon-card:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(201,168,76,0.1); }
+  .addon-top { display: flex; align-items: center; gap: 10px; }
+  .addon-icon { font-size: 1.3rem; }
+  .addon-name { font-size: 0.9rem; font-weight: 500; color: var(--navy); }
+  .addon-desc { font-size: 0.76rem; color: var(--mid); font-weight: 300; line-height: 1.5; }
+  .addon-price { font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+  .addon-price span { font-size: 0.72rem; color: var(--gold); font-weight: 500; display: block; margin-top: 1px; }
+
+  /* ── PACKAGES ── */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .pkg-card {
+    background: #fff;
+    border: 1px solid rgba(15,31,61,0.1);
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pkg-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,31,61,0.1); }
+  .pkg-card.best {
+    background: var(--navy);
+    border-color: var(--gold);
+  }
+  .pkg-card.best * { color: inherit; }
+  .pkg-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .pkg-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+  .pkg-card.best .pkg-name { color: #fff; }
+  .pkg-desc { font-size: 0.8rem; color: var(--mid); font-weight: 300; line-height: 1.55; margin-bottom: 16px; }
+  .pkg-card.best .pkg-desc { color: rgba(255,255,255,0.5); }
+  .pkg-includes { list-style: none; margin-bottom: 20px; }
+  .pkg-includes li {
+    font-size: 0.82rem;
+    color: var(--mid);
+    padding: 4px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .pkg-card.best .pkg-includes li { color: rgba(255,255,255,0.65); }
+  .pkg-includes li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .pkg-footer { border-top: 1px solid rgba(15,31,61,0.08); padding-top: 16px; }
+  .pkg-card.best .pkg-footer { border-color: rgba(255,255,255,0.1); }
+  .pkg-total { font-size: 0.75rem; color: var(--mid); margin-bottom: 4px; }
+  .pkg-card.best .pkg-total { color: rgba(255,255,255,0.4); }
+  .pkg-price { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--navy); }
+  .pkg-card.best .pkg-price { color: var(--gold); }
+  .pkg-save { font-size: 0.75rem; color: #27ae60; font-weight: 500; margin-top: 2px; }
+
+  /* ── NOTES BOX ── */
+  .notes-box {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 60px;
+  }
+  .notes-box h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 14px; }
+  .notes-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+  .notes-list li { list-style: none; font-size: 0.82rem; color: var(--mid); display: flex; gap: 8px; line-height: 1.5; }
+  .notes-list li::before { content: '◆'; color: var(--gold); font-size: 0.55rem; flex-shrink: 0; margin-top: 4px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 32px 24px;
+  }
+  footer p { color: rgba(255,255,255,0.35); font-size: 0.78rem; font-weight: 300; }
+  footer strong { color: var(--gold); font-weight: 500; }
+
+  /* ── DIVIDER ── */
+  .section-divider { border: none; border-top: 1px solid rgba(201,168,76,0.15); margin: 8px 0 0; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 60px 20px 50px; }
+    .steam-banner { flex-direction: column; gap: 14px; }
+    .container { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-ornament">
+    <span></span><i>Premium Cleaning Services</i><span></span>
+  </div>
+  <h1>Spotless Homes,<br><em>Exceptional Standards.</em></h1>
+  <p class="hero-sub">Tampere Region &nbsp;·&nbsp; Professional Grade &nbsp;·&nbsp; Steam Cleaning Included</p>
+  <div>
+    <div class="tax-badge">
+      <span>💡 All prices include VAT 25.5% &nbsp;|&nbsp; Save <strong>35%</strong> with kotitalousvähennys household deduction</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- CORE SERVICES -->
+  <div class="section-head">
+    <span class="label">Core Services</span>
+    <h2>Cleaning Services & Rates</h2>
+    <p>All services include professional eco-certified products, specialist equipment, and our quality guarantee. No hidden fees.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="core-grid">
+
+    <!-- Regular Cleaning -->
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-icon">🏠</div>
+        <h3>Regular Home Cleaning</h3>
+        <p>Recurring maintenance cleaning. Vacuuming, mopping, surface wiping, kitchen & bathroom. Same professional every visit.</p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">Recurring contract<small>Weekly / bi-weekly / monthly</small></div>
+          <div class="price-val highlight">€60 <small style="font-size:0.65rem;color:#aaa">/hr</small>
+            <span class="after">→ €39/hr after deduction</span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">One-off single visit</div>
+          <div class="price-val">€68 <small style="font-size:0.65rem;color:#aaa">/hr</small>
+            <span class="after">→ €44.20/hr after deduction</span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Minimum booking<small>All visits</small></div>
+          <div class="price-val">2 hours</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Visit fee<small>Covers travel & supplies</small></div>
+          <div class="price-val">Included</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Cleaning -->
+    <div class="service-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="card-header">
+        <div class="card-icon">✨</div>
+        <h3>Deep Cleaning</h3>
+        <p>Comprehensive intensive clean. Inside cabinets, behind appliances, detailed scrubbing of all neglected areas. Includes steam cleaning.</p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">Hourly rate</div>
+          <div class="price-val highlight">€75 <small style="font-size:0.65rem;color:#aaa">/hr</small>
+            <span class="after">→ €48.75/hr after deduction</span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Studio / 1-room flat<small>Approx. 3–4 hours</small></div>
+          <div class="price-val">€240–€280</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">2-room apartment<small>Approx. 4–5 hours</small></div>
+          <div class="price-val">€320–€380</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">3-room apartment<small>Approx. 5–7 hours</small></div>
+          <div class="price-val">€420–€520</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Large home (4+ rooms)<small>Custom quote</small></div>
+          <div class="price-val">From €580</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Move-out -->
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-icon">🔑</div>
+        <h3>Move-out / End of Tenancy</h3>
+        <p>Deposit-back guaranteed clean. Every surface, every corner. Includes oven, fridge, cabinets, and steam treatment of bathrooms.</p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">Studio / 1-room<small>~3–4 hours</small></div>
+          <div class="price-val">€280–€320</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">2-room apartment<small>~4–6 hours</small></div>
+          <div class="price-val">€360–€440</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">3-room apartment<small>~6–8 hours</small></div>
+          <div class="price-val">€480–€580</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Large home (4+ rooms)</div>
+          <div class="price-val">Custom quote</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Window Cleaning -->
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-icon">🪟</div>
+        <h3>Window Cleaning</h3>
+        <p>Streak-free interior & exterior glass, frames, sills, and tracks. Includes balcony doors. Professional squeegee technique.</p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">Hourly rate</div>
+          <div class="price-val highlight">€70 <small style="font-size:0.65rem;color:#aaa">/hr</small>
+            <span class="after">→ €45.50/hr after deduction</span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Small apartment<small>Up to 8 windows</small></div>
+          <div class="price-val">€90–€130</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Medium home<small>9–16 windows</small></div>
+          <div class="price-val">€140–€200</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">High/hard-to-reach windows<small>Ladder work</small></div>
+          <div class="price-val">+€50/visit</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post-renovation -->
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-icon">🏗️</div>
+        <h3>Post-Renovation Cleaning</h3>
+        <p>Specialist dust removal, cabinet washing, surface disinfection, and steam treatment after construction or renovation work.</p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">Hourly rate</div>
+          <div class="price-val highlight">€80 <small style="font-size:0.65rem;color:#aaa">/hr</small>
+            <span class="after">→ €52/hr after deduction</span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Minimum booking</div>
+          <div class="price-val">4 hours</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">HEPA filtration upgrade<small>Allergy-safe clean</small></div>
+          <div class="price-val">+€60/session</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Steam Cleaning standalone -->
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-icon">💨</div>
+        <h3>Steam Cleaning (Standalone)</h3>
+        <p>High-temperature steam sanitisation of tiles, grout, kitchen surfaces, bathroom fixtures, and hard floors. No chemicals needed.</p>
+      </div>
+      <div class="card-price">
+        <div class="price-row">
+          <div class="price-label">Hourly rate</div>
+          <div class="price-val highlight">€80 <small style="font-size:0.65rem;color:#aaa">/hr</small>
+            <span class="after">→ €52/hr after deduction</span>
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Kitchen (surfaces + floor)<small>Approx. 1.5–2 hours</small></div>
+          <div class="price-val">€120–€160</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Bathroom + toilet<small>Approx. 1–1.5 hours</small></div>
+          <div class="price-val">€80–€120</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Full home steam treatment<small>All steam-suitable surfaces</small></div>
+          <div class="price-val">Custom quote</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /core-grid -->
+
+  <!-- STEAM INCLUDED BANNER -->
+  <div class="steam-banner">
+    <div class="icon">💨</div>
+    <div>
+      <h4>Steam Cleaning Included in Every Premium Service</h4>
+      <p>Unlike standard providers, all our deep clean, move-out, and post-renovation services include high-temperature steam treatment at no extra charge. Steam sanitises without harsh chemicals and is included as standard across:</p>
+      <div class="steam-list">
+        <span class="steam-pill">Bathroom tiles & grout</span>
+        <span class="steam-pill">Kitchen surfaces & hob</span>
+        <span class="steam-pill">Toilet & fixtures</span>
+        <span class="steam-pill">Sauna benches & walls</span>
+        <span class="steam-pill">Hard floors</span>
+        <span class="steam-pill">Window frames & sills</span>
+        <span class="steam-pill">Cabinet door fronts</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- EXTRACTION CLEANING -->
+  <div class="section-head">
+    <span class="label">Specialist Services</span>
+    <h2>Extraction & Upholstery Cleaning</h2>
+    <p>Professional hot-water extraction removes embedded dirt, allergens, dust mites, and bacteria from all textile surfaces. Fabric protection treatment included.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Includes</th>
+          <th style="text-align:right">Price (incl. VAT)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Single Mattress</strong><span class="note">Hot-water extraction + allergen treatment</span></td>
+          <td>Steam pre-treatment, extraction, deodorise, fabric protector</td>
+          <td class="price-cell">€95<span class="tax-note">→ €61.75 after deduction</span></td>
+        </tr>
+        <tr>
+          <td><strong>Double / Queen Mattress</strong></td>
+          <td>Steam pre-treatment, extraction, deodorise, fabric protector</td>
+          <td class="price-cell">€130<span class="tax-note">→ €84.50 after deduction</span></td>
+        </tr>
+        <tr>
+          <td><strong>Armchair / Single Chair</strong></td>
+          <td>Full extraction, stain treatment, protector</td>
+          <td class="price-cell">€80</td>
+        </tr>
+        <tr>
+          <td><strong>2-Seat Fabric Sofa</strong></td>
+          <td>Full extraction, steam pre-treat, stain removal, protector</td>
+          <td class="price-cell">€150<span class="tax-note">→ €97.50 after deduction</span></td>
+        </tr>
+        <tr>
+          <td><strong>3-Seat Fabric Sofa</strong></td>
+          <td>Full extraction, steam pre-treat, stain removal, protector</td>
+          <td class="price-cell">€190<span class="tax-note">→ €123.50 after deduction</span></td>
+        </tr>
+        <tr>
+          <td><strong>Corner / Sectional Sofa</strong></td>
+          <td>Full extraction, multiple sections, protector coat</td>
+          <td class="price-cell">€280<span class="tax-note">→ €182 after deduction</span></td>
+        </tr>
+        <tr>
+          <td><strong>Area Rug</strong><span class="note">Per square metre — minimum 2m²</span></td>
+          <td>Extraction wash, drying, deodorise</td>
+          <td class="price-cell">€25 /m²</td>
+        </tr>
+        <tr>
+          <td><strong>Wall-to-Wall Carpet</strong><span class="note">Per square metre — on-site</span></td>
+          <td>Pre-vacuum, extraction, deodorise</td>
+          <td class="price-cell">€18 /m²</td>
+        </tr>
+        <tr>
+          <td><strong>Dining Chair</strong></td>
+          <td>Spot treatment + extraction</td>
+          <td class="price-cell">€35 /chair</td>
+        </tr>
+        <tr>
+          <td><strong>Bundle: Mattress + 3-seat Sofa</strong><span class="note">Both items in one visit</span></td>
+          <td>Full service for both items</td>
+          <td class="price-cell" style="color:var(--gold)">€295 <span class="tax-note" style="color:var(--gold)">Save €25 vs. individual</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ADD-ONS -->
+  <div class="section-head">
+    <span class="label">Add-on Services</span>
+    <h2>Additional Cleaning Services</h2>
+    <p>Add any of the following to your booking. All add-ons are flat-fee and fully eligible for the household tax deduction.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="addons-grid">
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🧖</span><span class="addon-name">Sauna Cleaning</span></div>
+      <p class="addon-desc">Benches, walls, floor, kiuas area, drain. Steam treatment included. Approx. 1–1.5 hours.</p>
+      <div class="addon-price">€90<span>→ €58.50 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🧖</span><span class="addon-name">Sauna — Large / Luxury</span></div>
+      <p class="addon-desc">XL sauna, multiple rooms or commercial-grade sauna. Extended steam + scrub treatment.</p>
+      <div class="addon-price">€120<span>→ €78 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🔥</span><span class="addon-name">Oven Deep Clean</span></div>
+      <p class="addon-desc">Interior degreasing, rack removal, steam treatment, door seals. Approx. 45–75 min.</p>
+      <div class="addon-price">€55<span>→ €35.75 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">❄️</span><span class="addon-name">Refrigerator Interior</span></div>
+      <p class="addon-desc">Full interior wipe, shelves, drawers, seals, odour treatment. Approx. 30–50 min.</p>
+      <div class="addon-price">€45<span>→ €29.25 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🧊</span><span class="addon-name">Freezer Defrost & Clean</span></div>
+      <p class="addon-desc">Full defrost, interior wipe-down, deodorise. Customer must empty freezer beforehand.</p>
+      <div class="addon-price">€40<span>→ €26 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">📡</span><span class="addon-name">Microwave Interior</span></div>
+      <p class="addon-desc">Steam-clean interior, turntable removal, degreasing, deodorise. Quick add-on ~20 min.</p>
+      <div class="addon-price">€25<span>→ €16.25 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🍽️</span><span class="addon-name">Dishwasher Interior</span></div>
+      <p class="addon-desc">Filter cleaning, interior descaling, door seal, spray arm treatment.</p>
+      <div class="addon-price">€30<span>→ €19.50 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">💨</span><span class="addon-name">Range Hood / Extractor</span></div>
+      <p class="addon-desc">Filter removal & degreasing, interior wipe, fan blades, grease trap clean.</p>
+      <div class="addon-price">€50<span>→ €32.50 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🌿</span><span class="addon-name">Balcony / Terrace</span></div>
+      <p class="addon-desc">Floor scrub, railings, furniture wipe-down, drain clearing. Steam available.</p>
+      <div class="addon-price">€70<span>→ €45.50 after deduction</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🗄️</span><span class="addon-name">Cabinet Interiors</span></div>
+      <p class="addon-desc">Per unit. Empty shelves, wipe interior, sanitise. Ideal for kitchen deep cleans.</p>
+      <div class="addon-price">€25 /unit<span>Price per cabinet unit</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🌬️</span><span class="addon-name">Allergy Deep-Clean Upgrade</span></div>
+      <p class="addon-desc">HEPA-filtered vacuuming, anti-allergen treatment. Add to any service.</p>
+      <div class="addon-price">+€60 /session<span>Add to any booking</span></div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-top"><span class="addon-icon">🧹</span><span class="addon-name">First-Visit Deep Clean</span></div>
+      <p class="addon-desc">New customers: required initial deep clean before starting a recurring contract. One-time fee.</p>
+      <div class="addon-price">€75 /hr<span>Min. 3 hours · then regular rate applies</span></div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- PACKAGES -->
+  <div class="section-head">
+    <span class="label">Value Packages</span>
+    <h2>Bundled Service Packages</h2>
+    <p>Combine services for better value. All packages fully eligible for the 35% household deduction.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="packages-grid">
+    <div class="pkg-card">
+      <div class="pkg-badge">Fresh Home</div>
+      <div class="pkg-name">Fresh Home Package</div>
+      <p class="pkg-desc">The most popular combination. Regular clean topped with kitchen appliance care.</p>
+      <ul class="pkg-includes">
+        <li>Regular home cleaning (3 hours)</li>
+        <li>Oven deep clean</li>
+        <li>Refrigerator interior</li>
+        <li>Microwave interior</li>
+        <li>All supplies & eco products included</li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total">Package total</div>
+        <div class="pkg-price">€300</div>
+        <div class="pkg-save">Save €25 vs. individual pricing</div>
+      </div>
+    </div>
+
+    <div class="pkg-card best">
+      <div class="pkg-badge">Best Value</div>
+      <div class="pkg-name">Seasonal Deep Clean</div>
+      <p class="pkg-desc">The complete home reset. Ideal for spring and autumn. Includes steam & windows.</p>
+      <ul class="pkg-includes">
+        <li>Deep cleaning (5 hours, steam incl.)</li>
+        <li>Window cleaning (up to 10 windows)</li>
+        <li>Sauna cleaning</li>
+        <li>Oven + refrigerator add-ons</li>
+        <li>Fabric protection spray for key surfaces</li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total">Package total</div>
+        <div class="pkg-price">€620</div>
+        <div class="pkg-save" style="color:var(--gold-light)">Save €55 vs. individual pricing</div>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-badge">Textile Refresh</div>
+      <div class="pkg-name">Textile Refresh Package</div>
+      <p class="pkg-desc">Restore your textiles. Deep extraction of your main upholstered items in one visit.</p>
+      <ul class="pkg-includes">
+        <li>Double mattress extraction</li>
+        <li>3-seat sofa extraction</li>
+        <li>Area rug up to 4m²</li>
+        <li>Fabric protection on all items</li>
+        <li>Drying guidance & aftercare advice</li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total">Package total</div>
+        <div class="pkg-price">€400</div>
+        <div class="pkg-save">Save €20 vs. individual pricing</div>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-badge">Move-out Complete</div>
+      <div class="pkg-name">Move-out Complete</div>
+      <p class="pkg-desc">Everything needed for a full end-of-tenancy clean with deposit-back guarantee.</p>
+      <ul class="pkg-includes">
+        <li>Full move-out deep clean (60m² apt)</li>
+        <li>Window cleaning (interior)</li>
+        <li>Oven + fridge + microwave</li>
+        <li>Sauna (if applicable)</li>
+        <li>Steam treatment of bathrooms & kitchen</li>
+      </ul>
+      <div class="pkg-footer">
+        <div class="pkg-total">Starting from</div>
+        <div class="pkg-price">€480</div>
+        <div class="pkg-save">Larger homes: custom quote</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="notes-box">
+    <h4>📋 Booking Terms & Notes</h4>
+    <ul class="notes-list">
+      <li>All prices include VAT at 25.5% as required by Finnish law.</li>
+      <li>Household tax deduction (kotitalousvähennys) 2025: 35%, max €1,600/person/year, €150 deductible.</li>
+      <li>Minimum booking: 2 hours for regular cleaning, 3 hours for deep cleaning.</li>
+      <li>New customers starting a recurring contract require an initial deep clean visit at €75/hr (min. 3h).</li>
+      <li>All professional cleaning supplies, eco-certified products, and equipment included — no surprise fees.</li>
+      <li>Steam cleaning is included at no extra cost in all deep clean, move-out, and post-renovation services.</li>
+      <li>Extraction cleaning drying time: 4–8 hours. We recommend booking before a day off.</li>
+      <li>Cancellation: free with 48 hours notice. Less than 48 hours: 50% charge applies.</li>
+      <li>We operate across Tampere, Kangasala, Ylöjärvi, Lempäälä, Pirkkala, and Nokia.</li>
+      <li>Travel outside 20km radius of Tampere centre: surcharge from €30.</li>
+      <li>Detailed annual invoices provided for tax deduction claims at no extra cost.</li>
+      <li>Quality guarantee: if unsatisfied, we return and re-clean the area free of charge within 48 hours.</li>
+    </ul>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>Prices valid from <strong>March 2026</strong> &nbsp;·&nbsp; All prices include VAT 25.5% &nbsp;·&nbsp; Subject to change with notice &nbsp;·&nbsp; Tampere Region, Finland</p>
+</footer>
+
+</body>
+</html>
