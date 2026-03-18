@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BetterClean — Professional Home Cleaning Tampere | Kotisiivous Tampere</title>
-  <meta name="description" content="Professional eco-friendly home cleaning in Tampere. Regular cleaning, deep cleaning, move-out cleaning, window cleaning and steam cleaning. Fixed prices, no hidden fees. Book in 60 seconds." />
-  <meta name="keywords" content="home cleaning tampere, kotisiivous tampere, siivouspalvelu tampere, deep cleaning tampere, muuttosiivoaus tampere, window cleaning tampere, ikkunanpesu tampere" />
-  <meta property="og:title" content="BetterClean — Professional Home Cleaning in Tampere" />
-  <meta property="og:description" content="Eco-friendly home cleaning in Tampere. Book in 60 seconds. Not satisfied? We come back free of charge." />
+  <title>BetterClean — Premium Home Cleaning Tampere | Kotisiivous Tampere</title>
+  <meta name="description" content="Premium home cleaning in Tampere for homes that deserve more time and more care. Detail-focused cleaning, professional steam treatment, carefully selected cleaners." />
+  <meta name="keywords" content="home cleaning tampere, kotisiivous tampere, siivouspalvelu tampere, deep cleaning tampere, muuttosiivoaus tampere, window cleaning tampere, ikkunanpesu tampere, premium cleaning tampere" />
+  <meta property="og:title" content="BetterClean — Premium Home Cleaning in Tampere" />
+  <meta property="og:description" content="Premium home cleaning in Tampere. More time per visit, detail-focused cleaning, professional steam treatment. For homes that deserve more." />
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://betterclean.fi/" />
   <script type="application/ld+json">
@@ -19,7 +19,7 @@
         "@id": "https://betterclean.fi/#business",
         "name": "BetterClean",
         "alternateName": "BetterClean Tampere",
-        "description": "Professional eco-friendly home cleaning in Tampere. Regular cleaning, deep cleaning, move-out cleaning, window cleaning and steam cleaning. Fixed prices, no hidden fees.",
+        "description": "Premium home cleaning in Tampere for homes that deserve more time and more care. Detail-focused cleaning, professional steam treatment, carefully selected cleaners.",
         "url": "https://betterclean.fi",
         "telephone": "+358XXXXXXXXX",
         "email": "info@betterclean.fi",
@@ -37,18 +37,19 @@
           {"@type": "City", "name": "Pirkkala"},
           {"@type": "City", "name": "Nokia"}
         ],
-        "priceRange": "€€",
+        "priceRange": "€€€",
         "currenciesAccepted": "EUR",
         "knowsLanguage": ["fi", "en"],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          "name": "Cleaning Services",
+          "name": "Premium Cleaning Services",
           "itemListElement": [
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Regular Home Cleaning", "description": "Regular home cleaning service in Tampere. Eco-friendly products, fixed prices.", "url": "https://betterclean.fi/"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Deep Cleaning", "description": "Deep cleaning service in Tampere. Thorough clean of entire home.", "url": "https://betterclean.fi/"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Essential Home Care", "description": "Regular home cleaning service in Tampere. More time per visit, detail-focused.", "url": "https://betterclean.fi/"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Signature Deep Clean", "description": "Detailed deep cleaning with steam treatment for homes needing a higher standard of finish.", "url": "https://betterclean.fi/"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Move / Reset Cleaning", "description": "Full reset cleaning for transitions and handovers.", "url": "https://betterclean.fi/"}},
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Window Cleaning", "description": "Professional streak-free window cleaning in Tampere.", "url": "https://betterclean.fi/window-cleaning.html"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Steam Cleaning", "description": "Chemical-free steam cleaning in Tampere. Kills 99.9% bacteria without chemicals.", "url": "https://betterclean.fi/steam-cleaning.html"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Post-Renovation Cleaning", "description": "Post-renovation cleaning in Tampere. Construction dust removal and deep clean after renovation.", "url": "https://betterclean.fi/post-renovation-cleaning.html"}}
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Steam Cleaning", "description": "Chemical-free steam cleaning in Tampere.", "url": "https://betterclean.fi/steam-cleaning.html"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Post-Renovation Cleaning", "description": "Post-renovation cleaning in Tampere.", "url": "https://betterclean.fi/post-renovation-cleaning.html"}}
           ]
         }
       },
@@ -64,10 +65,10 @@
   }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: #1a1a1a; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; }
     h1, h2, h3, h4, .font-display { font-family: 'Sora', sans-serif; }
 
     :root {
@@ -76,124 +77,148 @@
       --green-light: #edf7ec;
       --teal: #0fb8c9;
       --dark: #1a2e1a;
+      --deeper: #0d180d;
     }
 
+    /* ── Buttons ── */
     .btn-primary {
-      background: var(--green);
-      color: #fff;
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 8px;
-      display: inline-block;
-      transition: background 0.2s, transform 0.15s;
-      letter-spacing: -0.01em;
-      box-shadow: 0 4px 16px rgba(58,170,53,0.28);
+      background: var(--green); color: #fff; font-family: 'Sora', sans-serif;
+      font-weight: 700; padding: 14px 32px; border-radius: 8px; display: inline-block;
+      transition: background 0.2s, transform 0.15s; letter-spacing: -0.01em;
+      box-shadow: 0 4px 16px rgba(58,170,53,0.28); text-decoration: none;
     }
     .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
     .btn-primary:active { transform: translateY(0); }
-
     .btn-outline {
-      border: 2px solid var(--green);
-      color: var(--green);
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      padding: 12px 28px;
-      border-radius: 8px;
-      display: inline-block;
-      transition: background 0.2s, color 0.2s;
+      border: 2px solid var(--green); color: var(--green); font-family: 'Sora', sans-serif;
+      font-weight: 700; padding: 12px 28px; border-radius: 8px; display: inline-block;
+      transition: background 0.2s, color 0.2s; text-decoration: none;
     }
     .btn-outline:hover { background: var(--green); color: #fff; }
-
-    /* Lang toggle */
-    .lang-toggle { display: flex; background: #f1f5f0; border-radius: 6px; overflow: hidden; }
-    .lang-btn {
-      padding: 6px 14px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      border: none;
-      background: transparent;
-      color: #666;
+    .btn-ghost {
+      border: 2px solid rgba(255,255,255,0.35); color: #fff; font-family: 'Sora', sans-serif;
+      font-weight: 700; padding: 13px 28px; border-radius: 8px; display: inline-block;
+      transition: background 0.2s, border-color 0.2s; text-decoration: none;
     }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+    .btn-white {
+      background: #fff; color: var(--green-dark); font-family: 'Sora', sans-serif;
+      font-weight: 700; padding: 14px 36px; border-radius: 8px; display: inline-block;
+      transition: background 0.2s, transform 0.15s; text-decoration: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15); letter-spacing: -0.01em;
+    }
+    .btn-white:hover { background: #f4faf4; transform: translateY(-1px); }
+
+    /* ── Lang toggle ── */
+    .lang-toggle { display: flex; background: #f1f5f0; border-radius: 6px; overflow: hidden; }
+    .lang-btn { padding: 6px 14px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s, color 0.2s; border: none; background: transparent; color: #666; }
     .lang-btn.active { background: var(--green); color: #fff; }
 
-    /* Sections */
-    .section-green { background: var(--green-light); }
-    .section-dark { background: var(--dark); color: #fff; }
-
-    /* Check list */
-    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
-    .check-icon { width: 22px; height: 22px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-
-    /* Pricing card */
-    .price-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 32px 28px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(58,170,53,0.08);
-      border: 1px solid #e8f5e8;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(58,170,53,0.18); }
-    .price-card.featured { border: 2px solid var(--green); position: relative; }
-    .price-badge {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--green); color: #fff; font-size: 12px; font-weight: 700;
-      padding: 4px 16px; border-radius: 20px; font-family: 'Sora', sans-serif;
-      white-space: nowrap;
-    }
-
-    /* Reason card */
-    .reason-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 28px 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(58,170,53,0.07);
-    }
-    .reason-num {
-      width: 40px; height: 40px; background: var(--green); color: #fff;
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px; margin-bottom: 14px;
-    }
-
-    /* Step */
-    .step-circle {
-      width: 56px; height: 56px; border-radius: 50%; background: var(--green);
-      color: #fff; display: flex; align-items: center; justify-content: center;
-      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px;
-      margin: 0 auto 16px; box-shadow: 0 4px 16px rgba(58,170,53,0.3);
-    }
-
-    /* Hero */
-    .hero-bg {
-      background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%);
-    }
-
-    /* Nav */
+    /* ── Nav ── */
     nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
 
-    /* Animations */
-    [data-lang] { transition: opacity 0.2s; }
+    /* ── Hero ── */
+    .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: var(--deeper); }
+    .hero-bg-img {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat;
+      opacity: 0.28;
+    }
+    .hero-grain {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(13,24,13,0.82) 0%, rgba(13,24,13,0.55) 60%, rgba(26,46,26,0.75) 100%); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; }
 
-    /* Testimonial */
+    /* Glass */
+    .glass-card {
+      background: rgba(255,255,255,0.07); backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 18px;
+    }
+    .glass-dark {
+      background: rgba(13,24,13,0.5); backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+    }
+
+    /* ── Trust strip ── */
+    .trust-pill {
+      display: flex; align-items: center; gap: 10px; padding: 16px 20px;
+      background: #fff; border: 1px solid #e8f0e7; border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(58,170,53,0.06);
+    }
+    .trust-icon {
+      width: 36px; height: 36px; border-radius: 10px; background: var(--green-light);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    /* ── Section dark ── */
+    .section-dark { background: var(--dark); color: #fff; }
+    .section-deeper { background: var(--deeper); color: #fff; }
+
+    /* ── Service tiers ── */
+    .tier-card {
+      background: #fff; border-radius: 24px; overflow: hidden;
+      border: 1px solid #e8f0e7;
+      box-shadow: 0 4px 24px rgba(58,170,53,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .tier-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(58,170,53,0.14); }
+    .tier-card.featured { border: 2px solid var(--green); }
+    .tier-img { height: 220px; overflow: hidden; position: relative; }
+    .tier-img img { width: 100%; height: 100%; object-fit: cover; }
+    .tier-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,24,13,0.5) 0%, transparent 60%); }
+    .tier-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--green); color: #fff; font-size: 11px; font-weight: 700;
+      padding: 4px 14px; border-radius: 20px; font-family: 'Sora', sans-serif;
+    }
+    .tier-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+    .tier-from { font-size: 13px; color: #888; margin-bottom: 4px; }
+    .tier-price { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 28px; color: var(--dark); letter-spacing: -0.03em; margin-bottom: 16px; }
+
+    /* ── Step ── */
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%; background: var(--green-light);
+      color: var(--green-dark); font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; flex-shrink: 0;
+    }
+
+    /* ── Check item ── */
+    .check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .check-icon { width: 22px; height: 22px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── Testimonial ── */
     .testimonial-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      background: #fff; border-radius: 20px; padding: 36px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05), 0 8px 40px rgba(58,170,53,0.06);
+      border: 1px solid #f0f7f0;
     }
-    .stars { color: #f5a623; font-size: 18px; letter-spacing: 2px; }
+    .stars { color: #f5a623; font-size: 15px; letter-spacing: 3px; }
 
-    /* Form */
-    input, select, textarea {
-      width: 100%; padding: 12px 16px; border: 1.5px solid #d1e8d0;
-      border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 15px;
-      outline: none; transition: border-color 0.2s;
-    }
+    /* ── Quote mark ── */
+    .quote-mark { font-family: 'Sora', sans-serif; font-size: 72px; font-weight: 800; color: var(--green-light); line-height: 0.7; margin-bottom: 20px; display: block; }
+
+    /* ── Booking form ── */
+    .service-opt input { display: none; }
+    .time-btn.selected, .size-btn.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
+    .pay-method-btn.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
+    .cal-day { width: 100%; aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .cal-day:hover:not(.cal-past):not(.cal-empty) { background: var(--green-light); }
+    .cal-day.cal-selected { background: var(--green) !important; color: #fff !important; font-weight: 700; }
+    .cal-day.cal-today { color: var(--green); font-weight: 700; }
+    .cal-day.cal-past { color: #d1d5db; cursor: default; }
+    .cal-day.cal-empty { cursor: default; }
+    input, select, textarea { width: 100%; padding: 12px 16px; border: 1.5px solid #d1e8d0; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; }
     input:focus, select:focus, textarea:focus { border-color: var(--green); }
     label { font-weight: 500; font-size: 14px; margin-bottom: 4px; display: block; color: #444; }
+    .step-circle { width: 48px; height: 48px; border-radius: 50%; background: var(--green-light); color: var(--green-dark); font-family: 'Sora', sans-serif; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 16px; border-radius: 20px; font-family: 'Sora', sans-serif; white-space: nowrap; }
+    .price-card { background: #fff; border-radius: 16px; padding: 32px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(58,170,53,0.08); border: 1px solid #e8f5e8; }
+    .price-card.featured { border: 2px solid var(--green); position: relative; }
 
     /* ── Mobile nav ── */
     .nav-logo-wrap { height: 52px; overflow: hidden; display: flex; align-items: center; }
@@ -223,7 +248,7 @@
       <span class="text-xs font-semibold uppercase tracking-widest mt-1" style="color: var(--green); letter-spacing: 0.12em;" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
     </a>
     <div class="hidden md:flex items-center gap-8">
-      <a href="#why" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Why Us" data-fi="Miksi Me"></a>
+      <a href="#why" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Our Standards" data-fi="Standardimme"></a>
       <a href="#services" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Services" data-fi="Palvelut"></a>
       <a href="#pricing" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Pricing" data-fi="Hinnat"></a>
       <a href="#contact" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a>
@@ -233,7 +258,7 @@
         <button class="lang-btn" onclick="setLang('en')">EN</button>
         <button class="lang-btn active" onclick="setLang('fi')">FI</button>
       </div>
-      <a href="#contact" class="btn-primary text-sm hidden md:inline-block" data-en="Book Now" data-fi="Varaa Nyt"></a>
+      <a href="#contact" class="btn-primary text-sm hidden md:inline-block" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
       <button class="hamburger-btn" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
@@ -241,472 +266,605 @@
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="#why" onclick="closeMobileNav()" data-en="Why Us" data-fi="Miksi Me"></a>
+  <a href="#why" onclick="closeMobileNav()" data-en="Our Standards" data-fi="Standardimme"></a>
   <a href="#services" onclick="closeMobileNav()" data-en="Services" data-fi="Palvelut"></a>
   <a href="#pricing" onclick="closeMobileNav()" data-en="Pricing" data-fi="Hinnat"></a>
   <a href="#contact" onclick="closeMobileNav()" data-en="Contact" data-fi="Yhteystiedot"></a>
-  <a href="#contact" class="btn-primary mobile-cta" onclick="closeMobileNav()" data-en="Book Now" data-fi="Varaa Nyt"></a>
+  <a href="#contact" class="btn-primary mobile-cta" onclick="closeMobileNav()" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
 </div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero-bg py-20 px-6">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-    <div class="flex-1">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="Professional Cleaning · Tampere" data-fi="Ammattimainen Siivous · Tampere"></p>
-      <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-6" style="letter-spacing: -0.03em; color: #1a2e1a;" data-en="We clean — you enjoy your free weekend." data-fi="Me siivoamme — sinä nautit vapaasta viikonlopusta."></h1>
-      <p class="text-lg text-gray-600 leading-relaxed mb-8" style="max-width: 500px;" data-en="Book a cleaning in 60 seconds. Not satisfied? We come back free of charge. No contracts, no hidden fees." data-fi="Varaa siivous 60 sekunnissa. Jos et ole tyytyväinen, palaamme veloituksetta. Ei sopimuksia, ei piilomaksuja."></p>
-      <div class="flex flex-wrap gap-3">
-        <a href="#contact" class="btn-primary" data-en="Get a Free Quote" data-fi="Pyydä Ilmainen Tarjous"></a>
-        <a href="#services" class="btn-outline" data-en="See Services" data-fi="Katso Palvelut"></a>
+<section class="hero-section">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content w-full max-w-6xl mx-auto px-6 py-32 md:py-0">
+    <div class="max-w-2xl">
+      <p class="text-xs font-bold uppercase tracking-widest mb-6" style="color: rgba(58,170,53,0.9); letter-spacing: 0.2em;"
+        data-en="TAMPERE · FINLAND · PREMIUM HOME CLEANING"
+        data-fi="TAMPERE · SUOMI · PREMIUM-KOTISIIVOUS"></p>
+      <h1 class="text-4xl md:text-6xl font-display font-extrabold leading-tight mb-8 text-white"
+        style="letter-spacing: -0.03em; line-height: 1.1;"
+        data-en="Home cleaning in Tampere done with more time, more care, and higher standards."
+        data-fi="Kotisiivousta Tampereella enemmän aikaa, enemmän huolellisuutta ja korkeampaa laatua varten."></h1>
+      <p class="text-lg leading-relaxed mb-10" style="color: rgba(255,255,255,0.75); max-width: 560px; line-height: 1.75;"
+        data-en="BetterClean is for households that want more than a rushed clean. We take the time to clean thoroughly, work with care, and use professional steam treatment where suitable for a deeper, more refined result."
+        data-fi="BetterClean on koteihin, joissa ei haluta hätäisesti tehtyä siivousta. Käytämme enemmän aikaa, siivoamme tarkemmin ja hyödynnämme soveltuvissa kohteissa höyrypuhdistusta syvempään ja viimeistellympään lopputulokseen."></p>
+      <div class="flex flex-wrap gap-4 mb-16">
+        <a href="#contact" class="btn-primary" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
+        <a href="#why" class="btn-ghost" data-en="See Our Standards" data-fi="Katso Palvelustandardimme"></a>
       </div>
-      <div class="flex gap-8 mt-10">
+      <!-- Glass stats bar -->
+      <div class="glass-card inline-flex flex-wrap gap-8 px-8 py-5">
         <div>
-          <p class="text-2xl font-display font-bold" style="color: var(--green);">50+</p>
-          <p class="text-sm text-gray-500" data-en="Happy Clients" data-fi="Tyytyväistä Asiakasta"></p>
+          <p class="text-2xl font-display font-extrabold text-white" style="letter-spacing: -0.02em;">50+</p>
+          <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.6);" data-en="Satisfied clients" data-fi="Tyytyväistä asiakasta"></p>
         </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.15);"></div>
         <div>
-          <p class="text-2xl font-display font-bold" style="color: var(--green);">4.9★</p>
-          <p class="text-sm text-gray-500" data-en="Average Rating" data-fi="Keskiarvio"></p>
+          <p class="text-2xl font-display font-extrabold text-white" style="letter-spacing: -0.02em;">4.9★</p>
+          <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.6);" data-en="Average rating" data-fi="Keskiarvio"></p>
         </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.15);"></div>
         <div>
-          <p class="text-2xl font-display font-bold" style="color: var(--green);">100%</p>
-          <p class="text-sm text-gray-500" data-en="Eco Products" data-fi="Ekologiset Tuotteet"></p>
-        </div>
-      </div>
-    </div>
-    <div class="flex-1 w-full">
-      <div class="relative rounded-2xl overflow-hidden" style="height: 420px;">
-        <img src="https://placehold.co/600x420/c2e8c0/2a8226?text=Your+Clean+Home" alt="Clean home" class="w-full h-full object-cover" />
-        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(26,46,26,0.4) 0%, transparent 60%);"></div>
-        <div class="absolute bottom-6 left-6 right-6">
-          <div class="bg-white rounded-xl px-5 py-4 flex items-center gap-3 shadow-lg" style="max-width: 300px;">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#3aaa35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#3aaa35" stroke-width="2"/></svg>
-            </div>
-            <div>
-              <p class="text-xs font-semibold text-gray-800" data-en="Booking confirmed!" data-fi="Varaus vahvistettu!"></p>
-              <p class="text-xs text-gray-500" data-en="Today at 10:00 · Tampere" data-fi="Tänään klo 10:00 · Tampere"></p>
-            </div>
-          </div>
+          <p class="text-2xl font-display font-extrabold text-white" style="letter-spacing: -0.02em;">100%</p>
+          <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.6);" data-en="Eco-certified products" data-fi="Ekosertifioituja tuotteita"></p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════ WHY US ═══════════════════════ -->
-<section id="why" class="py-20 px-6 bg-white">
+<!-- ═══════════════════════ TRUST STRIP ═══════════════════════ -->
+<section class="py-16 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="Why BetterClean" data-fi="Miksi BetterClean"></p>
-      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;" data-en="5 Reasons to Choose Us" data-fi="5 Syytä Valita Meidät"></h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+
+      <div class="trust-pill">
+        <div class="trust-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#3aaa35" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <p class="text-sm font-semibold leading-tight" style="color: var(--dark);" data-en="More time per visit" data-fi="Enemmän aikaa per käynti"></p>
+      </div>
+
+      <div class="trust-pill">
+        <div class="trust-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#3aaa35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="#3aaa35" stroke-width="2"/></svg>
+        </div>
+        <p class="text-sm font-semibold leading-tight" style="color: var(--dark);" data-en="Detail-focused cleaning" data-fi="Yksityiskohtiin keskittyvä"></p>
+      </div>
+
+      <div class="trust-pill">
+        <div class="trust-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 2C12 2 8 7 8 11a4 4 0 008 0c0-4-4-9-4-9z" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/><path d="M8 21h8M12 17v4" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <p class="text-sm font-semibold leading-tight" style="color: var(--dark);" data-en="Steam treatment included" data-fi="Höyrypesu soveltuvissa kohteissa"></p>
+      </div>
+
+      <div class="trust-pill">
+        <div class="trust-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#3aaa35" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <p class="text-sm font-semibold leading-tight" style="color: var(--dark);" data-en="Carefully selected cleaners" data-fi="Huolella valitut siivoojat"></p>
+      </div>
+
+      <div class="trust-pill">
+        <div class="trust-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#3aaa35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="text-sm font-semibold leading-tight" style="color: var(--dark);" data-en="Consistent standards" data-fi="Johdonmukaiset standardit"></p>
+      </div>
+
+      <div class="trust-pill">
+        <div class="trust-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#3aaa35" stroke-width="2"/><path d="M9 22V12h6v10" stroke="#3aaa35" stroke-width="2"/></svg>
+        </div>
+        <p class="text-sm font-semibold leading-tight" style="color: var(--dark);" data-en="Respectful care for your home" data-fi="Kunnioittava huolenpito kodistasi"></p>
+      </div>
+
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="reason-card">
-        <div class="reason-num">1</div>
-        <h3 class="font-display font-bold text-lg mb-2" data-en="Eco-Friendly Products" data-fi="Ympäristöystävälliset Tuotteet"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="We only use certified eco-friendly cleaning products — safe for your family, pets, and the planet." data-fi="Käytämme vain sertifioituja ympäristöystävällisiä siivoustuotteita — turvallisia perheellesi, lemmikeillesi ja planeetalle."></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ WHY BETTERCLEAN ═══════════════════════ -->
+<section id="why" class="section-dark py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-6" style="color: rgba(58,170,53,0.85); letter-spacing: 0.18em;"
+          data-en="WHY BETTERCLEAN" data-fi="MIKSI BETTERCLEAN"></p>
+        <h2 class="text-4xl md:text-5xl font-display font-extrabold mb-8 text-white" style="letter-spacing: -0.03em; line-height: 1.1;"
+          data-en="We give your home the time it deserves."
+          data-fi="Annamme kodillesi sen ansaitseman ajan."></h2>
+        <div class="mb-10">
+          <p class="text-lg font-display font-semibold mb-3" style="color: rgba(255,255,255,0.55);"
+            data-en="Many cleaning services are built around speed."
+            data-fi="Moni siivouspalvelu on rakennettu nopeuden varaan."></p>
+          <p class="text-xl font-display font-bold text-white mb-8"
+            data-en="We are built around standards."
+            data-fi="Meidän palvelumme on rakennettu laadun varaan."></p>
+          <p class="leading-relaxed" style="color: rgba(255,255,255,0.7); line-height: 1.8;"
+            data-en="We allow more time for each visit so our cleaners can work thoroughly and carefully — not rush from task to task. That means more attention to surfaces, finishing touches, and the overall feel of your home."
+            data-fi="Varaamme käynnille enemmän aikaa, jotta siivous voidaan tehdä huolellisesti eikä kiireessä. Se näkyy pinnoissa, yksityiskohdissa ja koko kodin yleisilmeessä."></p>
+        </div>
+
+        <!-- 3 glass signal cards -->
+        <div class="space-y-3">
+          <div class="glass-dark px-5 py-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(58,170,53,0.2);">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#3aaa35" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-white" data-en="More time per visit — no rushing, no shortcuts" data-fi="Enemmän aikaa per käynti — ei kiirettä, ei oikoteitä"></p>
+          </div>
+          <div class="glass-dark px-5 py-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(58,170,53,0.2);">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#3aaa35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="#3aaa35" stroke-width="2"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-white" data-en="Attention to detail — surfaces, edges, finishing touches" data-fi="Huomio yksityiskohtiin — pinnat, reunat, viimeistelytyöt"></p>
+          </div>
+          <div class="glass-dark px-5 py-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(58,170,53,0.2);">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 2C12 2 8 7 8 11a4 4 0 008 0c0-4-4-9-4-9z" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/><path d="M8 21h8M12 17v4" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-white" data-en="Steam treatment where suitable — deeper, more refined results" data-fi="Höyrypesu soveltuvissa kohteissa — syvempi, viimeistellympi tulos"></p>
+          </div>
+        </div>
       </div>
-      <div class="reason-card">
-        <div class="reason-num">2</div>
-        <h3 class="font-display font-bold text-lg mb-2" data-en="Vetted & Insured Cleaners" data-fi="Tarkistetut ja Vakuutetut Siivoojat"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="All our cleaners are background-checked, professionally trained, and fully insured for your peace of mind." data-fi="Kaikki siivoojamme on taustoitettu, ammatillisesti koulutettu ja täysin vakuutettu mielesi rauhan takaamiseksi."></p>
+
+      <!-- Right: photo -->
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden" style="height: 540px;">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format&fit=crop"
+            alt="Clean premium kitchen" class="w-full h-full object-cover" />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(13,24,13,0.5) 0%, transparent 50%); mix-blend-mode: multiply;"></div>
+          <div class="absolute inset-0" style="background: rgba(58,170,53,0.06); mix-blend-mode: multiply;"></div>
+        </div>
+        <!-- Floating stat -->
+        <div class="glass-card absolute bottom-8 left-8 right-8 px-6 py-5">
+          <p class="text-white font-display font-bold text-lg mb-1" data-en="&ldquo;The most thorough clean we&rsquo;ve ever had.&rdquo;" data-fi="&ldquo;Perusteellisin siivous mitä olemme koskaan saaneet.&rdquo;"></p>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6);">— Minna K., Tampere</p>
+        </div>
       </div>
-      <div class="reason-card">
-        <div class="reason-num">3</div>
-        <h3 class="font-display font-bold text-lg mb-2" data-en="Flexible Scheduling" data-fi="Joustava Aikataulutus"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="Book a one-time clean or set up a regular schedule — mornings, evenings, or weekends. We work around you." data-fi="Varaa yksittäinen siivous tai säännöllinen aikataulu — aamuisin, iltaisin tai viikonloppuisin. Sopeudumme sinuun."></p>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">4</div>
-        <h3 class="font-display font-bold text-lg mb-2" data-en="Satisfaction Guaranteed" data-fi="Tyytyväisyys Taattu"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="Not happy with the result? We'll come back and re-clean for free. Your satisfaction is our guarantee." data-fi="Etkö ole tyytyväinen tulokseen? Tulemme takaisin ja siivomme uudelleen ilmaiseksi. Tyytyväisyytesi on takuumme."></p>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">5</div>
-        <h3 class="font-display font-bold text-lg mb-2" data-en="Transparent Pricing" data-fi="Läpinäkyvä Hinnoittelu"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="No hidden fees. You see the price before you book — straightforward and honest, every time." data-fi="Ei piilomaksuja. Näet hinnan ennen varausta — suoraviivainen ja rehellinen aina."></p>
-      </div>
-      <div class="reason-card" style="background: var(--green); color: #fff;">
-        <div class="reason-num" style="background: rgba(255,255,255,0.25);">✓</div>
-        <h3 class="font-display font-bold text-lg mb-2 text-white" data-en="Local & Trusted in Tampere" data-fi="Paikallinen & Luotettava Tampereella"></h3>
-        <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.85);" data-en="We're a Tampere-based company. We know the city and take pride in keeping it clean, one home at a time." data-fi="Olemme tamperelainen yritys. Tunnemme kaupungin ja olemme ylpeitä pitää sen siistinä, yksi koti kerrallaan."></p>
-      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════ SERVICES ═══════════════════════ -->
-<section id="services" class="py-20 px-6 section-green">
+<section id="services" class="py-28 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row gap-14 items-start">
-      <div class="flex-1">
-        <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="What We Clean" data-fi="Mitä Siivomme"></p>
-        <h2 class="text-3xl md:text-4xl font-display font-bold mb-6" style="letter-spacing: -0.02em;" data-en="What Does Home Cleaning Include?" data-fi="Mitä Kotisiivous Sisältää?"></h2>
-        <p class="text-gray-600 leading-relaxed mb-8" data-en="Our standard home cleaning covers all the essentials for a fresh, hygienic home. Here's what's included in every visit:" data-fi="Vakiokotisiivouksemme kattaa kaikki olennaiset asiat raikasta ja hygieenistä kotia varten. Tässä on mitä jokaiseen käyntiin sisältyy:"></p>
-        <div>
-          <div class="check-item">
-            <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="text-gray-700" data-en="Kitchen — surfaces, appliances, sink, floor" data-fi="Keittiö — pinnat, kodinkoneet, allas, lattia"></p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="text-gray-700" data-en="Bathrooms — toilet, shower/tub, sink, mirrors, tiles" data-fi="Kylpyhuoneet — WC, suihku/amme, allas, peilit, kaakelit"></p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="text-gray-700" data-en="All rooms — dusting, vacuuming, mopping" data-fi="Kaikki huoneet — pölynpyyhintä, imurointi, moppaus"></p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="text-gray-700" data-en="Windows (interior), sills, and frames" data-fi="Ikkunat (sisäpuoli), penkit ja kehykset"></p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="text-gray-700" data-en="Stairs and hallways" data-fi="Portaat ja käytävät"></p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="text-gray-700" data-en="Trash emptying and light tidying" data-fi="Roskakorien tyhjennys ja kevyt järjestely"></p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="text-gray-700" data-en="Eco-certified cleaning products only" data-fi="Vain ekosertifioituja siivoustuotteita"></p>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1 w-full">
-        <div class="grid grid-cols-1 gap-5">
-          <div class="bg-white rounded-xl p-6 flex gap-4 items-start shadow-sm">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="#3aaa35" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="#3aaa35" stroke-width="2"/></svg>
-            </div>
-            <div>
-              <h4 class="font-display font-bold mb-1" data-en="Home Cleaning" data-fi="Kotisiivous"></h4>
-              <p class="text-sm text-gray-500" data-en="Regular cleaning tailored to your home's size and needs." data-fi="Säännöllinen siivous räätälöitynä kotisi kokoon ja tarpeisiin."></p>
-            </div>
-          </div>
-          <div class="bg-white rounded-xl p-6 flex gap-4 items-start shadow-sm">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#3aaa35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <h4 class="font-display font-bold mb-1" data-en="Deep Cleaning" data-fi="Syväsiivous"></h4>
-              <p class="text-sm text-gray-500" data-en="A thorough top-to-bottom clean for move-in, move-out, or seasonal refresh." data-fi="Perusteellinen siivous ylhäältä alas muuttoa tai kausiluonteista virkistystä varten."></p>
-            </div>
-          </div>
-          <div class="bg-white rounded-xl p-6 flex gap-4 items-start shadow-sm">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#3aaa35" stroke-width="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#3aaa35" stroke-width="2"/></svg>
-            </div>
-            <div>
-              <h4 class="font-display font-bold mb-1" data-en="Office Cleaning" data-fi="Toimistosiivous"></h4>
-              <p class="text-sm text-gray-500" data-en="Keep your workplace clean and professional with our flexible office cleaning service." data-fi="Pidä työpaikkasi siistinä ja ammattimaisena joustavalla toimistosiivouksella."></p>
-            </div>
-          </div>
-          <div class="bg-white rounded-xl p-6 flex gap-4 items-start shadow-sm">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#3aaa35" stroke-width="2"/></svg>
-            </div>
-            <div>
-              <h4 class="font-display font-bold mb-1" data-en="After-Event Cleaning" data-fi="Tapahtumanjälkeinen Siivous"></h4>
-              <p class="text-sm text-gray-500" data-en="Post-party or post-event cleaning so you can enjoy the moment without the mess." data-fi="Juhlan tai tapahtuman jälkeinen siivous, jotta voit nauttia hetkestä ilman sotkua."></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
-<section class="py-20 px-6 bg-white">
-  <div class="max-w-6xl mx-auto text-center">
-    <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="Simple Process" data-fi="Yksinkertainen Prosessi"></p>
-    <h2 class="text-3xl md:text-4xl font-display font-bold mb-14" style="letter-spacing: -0.02em;" data-en="How It Works" data-fi="Miten Se Toimii"></h2>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <div class="step-circle">1</div>
-        <h3 class="font-display font-bold mb-2" data-en="Book Online" data-fi="Varaa Verkossa"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="Fill out our quick form or call us to schedule your cleaning." data-fi="Täytä nopea lomakkeemme tai soita meille ja sovi siivousaika."></p>
-      </div>
-      <div>
-        <div class="step-circle">2</div>
-        <h3 class="font-display font-bold mb-2" data-en="We Confirm" data-fi="Vahvistamme"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="You receive a confirmation with the assigned cleaner and time." data-fi="Saat vahvistuksen nimetystä siivoojasta ja ajasta."></p>
-      </div>
-      <div>
-        <div class="step-circle">3</div>
-        <h3 class="font-display font-bold mb-2" data-en="We Clean" data-fi="Siivomme"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="Our trained team arrives on time and gets to work with eco products." data-fi="Koulutettu tiimimme saapuu ajoissa ja aloittaa työn ekologisilla tuotteilla."></p>
-      </div>
-      <div>
-        <div class="step-circle">4</div>
-        <h3 class="font-display font-bold mb-2" data-en="Enjoy Your Home" data-fi="Nauti Kodistasi"></h3>
-        <p class="text-gray-500 text-sm leading-relaxed" data-en="Sit back and enjoy a spotless, fresh home. Rate us when we're done!" data-fi="Nauti puhtaasta, raikkaasta kodistasi. Anna meille arvio kun olemme valmiit!"></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════ PRICING ═══════════════════════ -->
-<section id="pricing" class="py-20 px-6 section-green">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="Transparent Pricing" data-fi="Läpinäkyvät Hinnat"></p>
-      <h2 class="text-3xl md:text-4xl font-display font-bold mb-4" style="letter-spacing: -0.02em;" data-en="How Much Does Home Cleaning Cost?" data-fi="Kuinka Paljon Kotisiivous Maksaa?"></h2>
-      <p class="text-gray-600" data-en="All prices include VAT (25.5%). No hidden fees." data-fi="Kaikki hinnat sisältävät ALV:n (25,5%). Ei piilomaksuja."></p>
-    </div>
-    <!-- Main 3 pricing cards from photo -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mb-10">
-
-      <!-- Regular Home Cleaning -->
-      <div class="price-card">
-        <h3 class="font-display font-bold text-xl mb-2" data-en="Regular Home Cleaning" data-fi="Säännöllinen Kotisiivous"></h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed" data-en="Recurring maintenance cleaning. Vacuuming, mopping, surface wiping, kitchen & bathroom. Same professional every visit." data-fi="Toistuva ylläpitosiivoaus. Imurointi, moppaus, pintojen pyyhintä, keittiö ja kylpyhuone. Sama ammattilainen joka kerta."></p>
-        <div class="border-t border-gray-100 pt-4 space-y-0">
-          <div class="flex justify-between items-start py-3 border-b border-gray-50">
-            <div><p class="text-sm font-medium text-gray-700" data-en="Recurring contract" data-fi="Toistuva sopimus"></p><p class="text-xs text-gray-400" data-en="Weekly / bi-weekly / monthly" data-fi="Viikottain / 2 vk välein / kuukausittain"></p></div>
-            <div class="text-right"><p class="text-xl font-display font-bold" style="color:var(--green);">€60<span class="text-xs font-normal text-gray-400">/hr</span></p><p class="text-xs font-medium" style="color:var(--green);">→ €39/hr after deduction</p></div>
-          </div>
-          <div class="flex justify-between items-start py-3 border-b border-gray-50">
-            <p class="text-sm font-medium text-gray-700" data-en="One-off single visit" data-fi="Kertaluonteinen käynti"></p>
-            <div class="text-right"><p class="text-lg font-display font-bold text-gray-800">€68<span class="text-xs font-normal text-gray-400">/hr</span></p><p class="text-xs font-medium" style="color:var(--green);">→ €44.20/hr after deduction</p></div>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b border-gray-50">
-            <div><p class="text-sm font-medium text-gray-700" data-en="Minimum booking" data-fi="Minimikesto"></p><p class="text-xs text-gray-400" data-en="All visits" data-fi="Kaikki käynnit"></p></div>
-            <p class="text-sm font-bold text-gray-800" data-en="2 hours" data-fi="2 tuntia"></p>
-          </div>
-          <div class="flex justify-between items-center py-3">
-            <div><p class="text-sm font-medium text-gray-700" data-en="Visit fee" data-fi="Käyntimaksu"></p><p class="text-xs text-gray-400" data-en="Covers travel & supplies" data-fi="Sisältää matkan ja tarvikkeet"></p></div>
-            <p class="text-sm font-bold text-gray-800" data-en="Included" data-fi="Sisältyy"></p>
-          </div>
-        </div>
-        <a href="#contact" class="btn-outline w-full text-center block mt-6" data-en="Book Now" data-fi="Varaa Nyt"></a>
-      </div>
-
-      <!-- Deep Cleaning — featured -->
-      <div class="price-card featured">
-        <div class="price-badge" data-en="Most Popular" data-fi="Suosituin"></div>
-        <h3 class="font-display font-bold text-xl mb-2 mt-4" data-en="Deep Cleaning" data-fi="Syväsiivous"></h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed" data-en="Inside cabinets, behind appliances, detailed scrubbing of all neglected areas. Steam cleaning included." data-fi="Kaappien sisäpuolet, laitteiden takaa, yksityiskohtainen pesu kaikista laiminlyödyistä alueista. Höyrypesu sisältyy."></p>
-        <div class="border-t border-gray-100 pt-4 space-y-0">
-          <div class="flex justify-between items-start py-3 border-b border-gray-50">
-            <p class="text-sm font-medium text-gray-700" data-en="Hourly rate" data-fi="Tuntihinta"></p>
-            <div class="text-right"><p class="text-xl font-display font-bold" style="color:var(--green);">€75<span class="text-xs font-normal text-gray-400">/hr</span></p><p class="text-xs font-medium" style="color:var(--green);">→ €48.75/hr after deduction</p></div>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b border-gray-50">
-            <div><p class="text-sm text-gray-700" data-en="Studio / 1-room flat" data-fi="Yksiö / 1 huone"></p><p class="text-xs text-gray-400" data-en="Approx. 3–4 hours" data-fi="n. 3–4 tuntia"></p></div>
-            <p class="text-sm font-bold text-gray-800">€240–€280</p>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b border-gray-50">
-            <div><p class="text-sm text-gray-700" data-en="2-room apartment" data-fi="2 huoneen asunto"></p><p class="text-xs text-gray-400" data-en="Approx. 4–5 hours" data-fi="n. 4–5 tuntia"></p></div>
-            <p class="text-sm font-bold text-gray-800">€320–€380</p>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b border-gray-50">
-            <div><p class="text-sm text-gray-700" data-en="3-room apartment" data-fi="3 huoneen asunto"></p><p class="text-xs text-gray-400" data-en="Approx. 5–7 hours" data-fi="n. 5–7 tuntia"></p></div>
-            <p class="text-sm font-bold text-gray-800">€420–€520</p>
-          </div>
-          <div class="flex justify-between items-center py-3">
-            <div><p class="text-sm text-gray-700" data-en="Large home (4+ rooms)" data-fi="Iso koti (4+ huonetta)"></p><p class="text-xs text-gray-400" data-en="Custom quote" data-fi="Tarjous pyynnöstä"></p></div>
-            <p class="text-sm font-bold text-gray-800" data-en="From €580" data-fi="Alkaen €580"></p>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary w-full text-center block mt-6" data-en="Get Started" data-fi="Aloita Nyt"></a>
-      </div>
-
-      <!-- Move-out -->
-      <div class="price-card">
-        <h3 class="font-display font-bold text-xl mb-2" data-en="Move-out / End of Tenancy" data-fi="Muuttosiivoaus"></h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed" data-en="Deposit-back guaranteed clean. Every surface, every corner. Includes oven, fridge, cabinets, and steam treatment of bathrooms." data-fi="Takuuvuokran palautustakuu. Jokainen pinta ja kulma. Sisältää uunin, jääkaapin, kaapit ja höyrykäsittelyn."></p>
-        <div class="border-t border-gray-100 pt-4 space-y-0">
-          <div class="flex justify-between items-center py-3 border-b border-gray-50">
-            <div><p class="text-sm text-gray-700" data-en="Studio / 1-room" data-fi="Yksiö / 1 huone"></p><p class="text-xs text-gray-400" data-en="~3–4 hours" data-fi="~3–4 tuntia"></p></div>
-            <p class="text-sm font-bold text-gray-800">€280–€320</p>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b border-gray-50">
-            <div><p class="text-sm text-gray-700" data-en="2-room apartment" data-fi="2 huoneen asunto"></p><p class="text-xs text-gray-400" data-en="~4–6 hours" data-fi="~4–6 tuntia"></p></div>
-            <p class="text-sm font-bold text-gray-800">€360–€440</p>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b border-gray-50">
-            <div><p class="text-sm text-gray-700" data-en="3-room apartment" data-fi="3 huoneen asunto"></p><p class="text-xs text-gray-400" data-en="~6–8 hours" data-fi="~6–8 tuntia"></p></div>
-            <p class="text-sm font-bold text-gray-800">€480–€580</p>
-          </div>
-          <div class="flex justify-between items-center py-3">
-            <p class="text-sm text-gray-700" data-en="Large home (4+ rooms)" data-fi="Iso koti (4+ huonetta)"></p>
-            <p class="text-sm font-bold text-gray-800" data-en="Custom quote" data-fi="Tarjous pyynnöstä"></p>
-          </div>
-        </div>
-        <a href="#contact" class="btn-outline w-full text-center block mt-6" data-en="Request Quote" data-fi="Pyydä Tarjous"></a>
-      </div>
+    <div class="text-center mb-16">
+      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--green); letter-spacing: 0.18em;"
+        data-en="OUR SERVICES" data-fi="PALVELUMME"></p>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold" style="letter-spacing: -0.03em; color: var(--dark);"
+        data-en="Cleaning done to a higher standard."
+        data-fi="Siivous korkeampaan standardiin."></h2>
+      <p class="mt-5 text-gray-500 text-lg" style="max-width: 560px; margin: 20px auto 0; line-height: 1.7;"
+        data-en="Each service is priced by time, not a flat rate — so you only pay for the care your home actually needs."
+        data-fi="Jokainen palvelu hinnoitellaan ajan mukaan, ei kiinteästi — joten maksat vain siitä huolenpidosta, jota kotisi todella tarvitsee."></p>
     </div>
 
-    <!-- Other services quick links -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-12">
+
+      <!-- Essential -->
+      <div class="tier-card">
+        <div class="tier-img">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80&auto=format&fit=crop" alt="Clean living room" />
+          <div class="tier-img-overlay"></div>
+        </div>
+        <div class="tier-body">
+          <p class="tier-from" data-en="Starting from" data-fi="Alkaen"></p>
+          <p class="tier-price">€60<span class="text-base font-normal text-gray-400">/hr</span></p>
+          <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Essential Home Care" data-fi="Peruskodin Hoito"></h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5"
+            data-en="For regular upkeep of well-maintained homes. A thorough recurring clean with the same professional every visit."
+            data-fi="Säännölliseen ylläpitoon hyvin hoidetuille kodeille. Perusteellinen toistuva siivous samalla ammattilaisella joka käynnillä."></p>
+          <div class="space-y-2 mb-6 flex-1">
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Kitchen, bathrooms, all rooms" data-fi="Keittiö, kylpyhuoneet, kaikki huoneet"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Vacuuming, mopping, surface cleaning" data-fi="Imurointi, moppaus, pintojen puhdistus"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Minimum 2 hours per visit" data-fi="Vähintään 2 tuntia per käynti"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Eco-certified products only" data-fi="Vain ekosertifioituja tuotteita"></p>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 italic mb-4" data-en="For: households wanting dependable regular maintenance." data-fi="Sopii: kotitalouksille, jotka haluavat luotettavan säännöllisen ylläpidon."></p>
+          <a href="#contact" class="btn-outline w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
+        </div>
+      </div>
+
+      <!-- Signature — featured -->
+      <div class="tier-card featured">
+        <div class="tier-img">
+          <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&q=80&auto=format&fit=crop" alt="Deep cleaning" />
+          <div class="tier-img-overlay"></div>
+          <div class="tier-badge" data-en="Most Requested" data-fi="Eniten Pyydetty"></div>
+        </div>
+        <div class="tier-body">
+          <p class="tier-from" data-en="Custom quote" data-fi="Räätälöity tarjous"></p>
+          <p class="tier-price" data-en="From €75/hr" data-fi="Alkaen €75/h"></p>
+          <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Signature Deep Clean" data-fi="Syväsiivous — Meidän Tavallamme"></h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5"
+            data-en="A more detailed service with extra time, ideal for homes that need a higher standard of finish. Every corner, every surface."
+            data-fi="Yksityiskohtaisempi palvelu lisäajalla — ihanteellinen kodeille, jotka tarvitsevat korkeampaa viimeistelyä. Jokainen nurkkaus, jokainen pinta."></p>
+          <div class="space-y-2 mb-6 flex-1">
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Everything in Essential, plus inside cabinets" data-fi="Kaikki Perushoitopaketista, lisäksi kaappien sisäpuolet"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Behind and beneath appliances" data-fi="Kodinkoneiden takaa ja alta"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Steam treatment where suitable" data-fi="Höyrypesu soveltuvissa kohteissa"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Detailed scrubbing of all neglected areas" data-fi="Yksityiskohtainen pesu kaikista laiminlyödyistä alueista"></p>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 italic mb-4" data-en="For: homes needing a higher standard of finish." data-fi="Sopii: kodeille, jotka tarvitsevat korkeampaa viimeistelyä."></p>
+          <a href="#contact" class="btn-primary w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
+        </div>
+      </div>
+
+      <!-- Move/Reset -->
+      <div class="tier-card">
+        <div class="tier-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop" alt="Move out cleaning" />
+          <div class="tier-img-overlay"></div>
+        </div>
+        <div class="tier-body">
+          <p class="tier-from" data-en="Custom quote" data-fi="Räätälöity tarjous"></p>
+          <p class="tier-price" data-en="From €75/hr" data-fi="Alkaen €75/h"></p>
+          <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Move / Reset Cleaning" data-fi="Muutto- ja Nollaussiivous"></h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5"
+            data-en="Thorough cleaning for transitions, handovers, and homes needing a full refresh. Oven, fridge, every surface — deposit-back ready."
+            data-fi="Perusteellinen siivous muutoille, luovutuksille ja kodeille, jotka tarvitsevat täydellisen virkistyksen. Uuni, jääkaappi, jokainen pinta — takuuvuokrataso."></p>
+          <div class="space-y-2 mb-6 flex-1">
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Complete top-to-bottom clean" data-fi="Kattava siivous ylhäältä alas"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Oven, fridge, all cabinets included" data-fi="Uuni, jääkaappi, kaikki kaapit mukaan lukien"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Steam bathroom treatment" data-fi="Kylpyhuoneen höyrykäsittely"></p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="text-sm text-gray-600" data-en="Deposit-back standard of finish" data-fi="Takuuvuokran palautustaso"></p>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 italic mb-4" data-en="For: moving in, moving out, or a full home reset." data-fi="Sopii: muuttoon, poismuuttoon tai kodin täydelliseen nollaukseen."></p>
+          <a href="#contact" class="btn-outline w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Specialty services strip -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <a href="window-cleaning.html" class="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-gray-100 hover:border-green-300 hover:shadow-md transition-all group">
-        <span class="text-2xl">🪟</span>
-        <div><p class="font-display font-semibold text-sm text-gray-800" data-en="Window Cleaning" data-fi="Ikkunanpesu"></p><p class="text-xs text-gray-400" data-en="From €90" data-fi="Alkaen €90"></p></div>
-        <svg class="ml-auto w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <a href="window-cleaning.html" class="flex items-center gap-4 bg-white rounded-2xl px-6 py-5 border border-gray-100 hover:border-green-300 hover:shadow-lg transition-all group" style="box-shadow: 0 2px 8px rgba(58,170,53,0.05);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#3aaa35" stroke-width="1.5"/><path d="M12 3v18M3 12h18" stroke="#3aaa35" stroke-width="1.5"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="font-display font-bold text-sm" style="color: var(--dark);" data-en="Window Cleaning" data-fi="Ikkunanpesu"></p>
+          <p class="text-xs text-gray-400 mt-0.5" data-en="From €90 — streak-free, inside & out" data-fi="Alkaen €90 — juovaton, sisä- ja ulkopuoli"></p>
+        </div>
+        <svg class="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
-      <a href="steam-cleaning.html" class="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-gray-100 hover:border-green-300 hover:shadow-md transition-all group">
-        <span class="text-2xl">💨</span>
-        <div><p class="font-display font-semibold text-sm text-gray-800" data-en="Steam Cleaning" data-fi="Höyrypesu"></p><p class="text-xs text-gray-400" data-en="From €80/hr" data-fi="Alkaen €80/h"></p></div>
-        <svg class="ml-auto w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <a href="steam-cleaning.html" class="flex items-center gap-4 bg-white rounded-2xl px-6 py-5 border border-gray-100 hover:border-green-300 hover:shadow-lg transition-all group" style="box-shadow: 0 2px 8px rgba(58,170,53,0.05);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 2C12 2 8 7 8 11a4 4 0 008 0c0-4-4-9-4-9z" stroke="#3aaa35" stroke-width="1.5" stroke-linecap="round"/><path d="M8 21h8M12 17v4" stroke="#3aaa35" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="font-display font-bold text-sm" style="color: var(--dark);" data-en="Steam Cleaning" data-fi="Höyrypesu"></p>
+          <p class="text-xs text-gray-400 mt-0.5" data-en="From €80/hr — chemical-free sanitisation" data-fi="Alkaen €80/h — kemikaaliton sanitointi"></p>
+        </div>
+        <svg class="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
-      <a href="post-renovation-cleaning.html" class="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-gray-100 hover:border-green-300 hover:shadow-md transition-all group">
-        <span class="text-2xl">🏗️</span>
-        <div><p class="font-display font-semibold text-sm text-gray-800" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></p><p class="text-xs text-gray-400" data-en="From €80/hr" data-fi="Alkaen €80/h"></p></div>
-        <svg class="ml-auto w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <a href="post-renovation-cleaning.html" class="flex items-center gap-4 bg-white rounded-2xl px-6 py-5 border border-gray-100 hover:border-green-300 hover:shadow-lg transition-all group" style="box-shadow: 0 2px 8px rgba(58,170,53,0.05);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#3aaa35" stroke-width="1.5"/><path d="M9 22V12h6v10" stroke="#3aaa35" stroke-width="1.5"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="font-display font-bold text-sm" style="color: var(--dark);" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></p>
+          <p class="text-xs text-gray-400 mt-0.5" data-en="From €80/hr — HEPA dust removal" data-fi="Alkaen €80/h — HEPA-pölynerotus"></p>
+        </div>
+        <svg class="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
     </div>
 
     <div class="text-center">
-      <p class="text-sm text-gray-500 mb-4" data-en="💡 Finnish households may be eligible for Kotitalousvähennys (35% household tax deduction, up to €1,600/year). Ask us for details." data-fi="💡 Suomalaiset kotitaloudet voivat olla oikeutettuja kotitalousvähennykseen (35%, max €1 600/vuosi). Kysy meiltä lisätietoja."></p>
-      <a href="pricing.html" class="btn-outline" data-en="See Full Pricing & Add-ons →" data-fi="Katso Täydet Hinnat & Lisäpalvelut →"></a>
+      <a href="pricing.html" class="btn-outline" data-en="View Full Pricing →" data-fi="Katso Täydet Hinnat →"></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ WHY WE COST MORE ═══════════════════════ -->
+<section id="pricing" class="section-deeper py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Grain overlay -->
+    <div style="position: absolute; inset: 0; pointer-events: none; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.04%22/%3E%3C/svg%3E'); z-index: 0;"></div>
+
+    <div class="relative text-center mb-20">
+      <p class="text-xs font-bold uppercase tracking-widest mb-6" style="color: rgba(58,170,53,0.85); letter-spacing: 0.18em;"
+        data-en="WHY CLIENTS CHOOSE BETTERCLEAN" data-fi="MIKSI ASIAKKAAT VALITSEVAT BETTERCLEANIN"></p>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-5" style="letter-spacing: -0.03em; line-height: 1.1;">
+        <span data-en="Many cleaning services are built around speed." data-fi="Moni siivouspalvelu on rakennettu nopeuden varaan."></span><br>
+        <span style="color: var(--green);" data-en="We are built around standards." data-fi="Meidän palvelumme on rakennettu laadun varaan."></span>
+      </h2>
+      <p class="text-lg" style="color: rgba(255,255,255,0.65); max-width: 640px; margin: 0 auto; line-height: 1.75;"
+        data-en="We allow more time for each visit so our cleaners can work thoroughly and carefully — not rush from task to task. That means more attention to surfaces, finishing touches, and the overall feel of your home."
+        data-fi="Varaamme käynnille enemmän aikaa, jotta siivous voidaan tehdä huolellisesti eikä kiireessä. Se näkyy pinnoissa, yksityiskohdissa ja koko kodin yleisilmeessä."></p>
+    </div>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass-card px-8 py-10 text-center">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(58,170,53,0.15);">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#3aaa35" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3 text-white" data-en="More time" data-fi="Enemmän aikaa"></h3>
+        <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.6);"
+          data-en="We book fewer jobs per day so each cleaner can give your home the time it actually needs — not a rushed average."
+          data-fi="Varaamme vähemmän töitä päivässä, jotta jokainen siivooja voi antaa kodillesi sen tarvitseman ajan — ei kiireistä keskiarvoa."></p>
+      </div>
+      <div class="glass-card px-8 py-10 text-center">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(58,170,53,0.15);">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#3aaa35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="#3aaa35" stroke-width="2"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3 text-white" data-en="Higher detail" data-fi="Korkeampi tarkkuus"></h3>
+        <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.6);"
+          data-en="We train our cleaners to notice and address the things most services overlook — edges, skirting boards, light switches, and the surfaces behind things."
+          data-fi="Koulutamme siivoojamme huomaamaan ja käsittelemään asiat, jotka useimmat palvelut sivuuttavat — reunat, jallistat, valokytkimet ja pinnat tavaroiden takana."></p>
+      </div>
+      <div class="glass-card px-8 py-10 text-center">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(58,170,53,0.15);">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#3aaa35" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#3aaa35" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3 text-white" data-en="Careful selection" data-fi="Huolellinen valinta"></h3>
+        <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.6);"
+          data-en="We are selective about who we work with. Every cleaner is chosen for their reliability, care, and attention to how a home should feel when it's done."
+          data-fi="Olemme tarkkoja siitä, kenen kanssa työskentelemme. Jokainen siivooja valitaan luotettavuuden, huolellisuuden ja sen perusteella, miltä kodin tulee tuntua lopuksi."></p>
+      </div>
+    </div>
+
+    <!-- Kotitalousvähennys note -->
+    <div class="relative mt-12 glass-card px-8 py-6 flex flex-col md:flex-row items-center gap-6">
+      <div class="flex-1">
+        <p class="font-display font-bold text-white mb-1" data-en="Finnish household tax deduction (Kotitalousvähennys)" data-fi="Kotitalousvähennys"></p>
+        <p class="text-sm" style="color: rgba(255,255,255,0.6);"
+          data-en="Finnish households may deduct 35% of labour costs from their taxes — effectively reducing the cost of every visit by over a third."
+          data-fi="Suomalaiset kotitaloudet voivat vähentää 35 % työkustannuksista veroistaan — mikä pienentää jokaisen käynnin kustannuksia yli kolmanneksella."></p>
+      </div>
+      <a href="pricing.html" class="btn-primary flex-shrink-0 text-sm" data-en="See All Prices" data-fi="Katso Kaikki Hinnat"></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
+<section class="py-28 px-6 bg-white">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--green); letter-spacing: 0.18em;"
+      data-en="THE PROCESS" data-fi="PROSESSI"></p>
+    <h2 class="text-4xl md:text-5xl font-display font-extrabold mb-20" style="letter-spacing: -0.03em; color: var(--dark);"
+      data-en="Simple from start to finish."
+      data-fi="Yksinkertainen alusta loppuun."></h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div>
+        <div class="step-num">1</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color: var(--dark);" data-en="Request a quote" data-fi="Pyydä tarjous"></h3>
+        <p class="text-gray-500 text-sm leading-relaxed" style="line-height: 1.75;"
+          data-en="Tell us about your home. We'll respond with a clear quote within 24 hours — no surprises."
+          data-fi="Kerro meille kodistasi. Vastaamme selkeällä tarjouksella 24 tunnin kuluessa — ei yllätyksiä."></p>
+      </div>
+      <div>
+        <div class="step-num">2</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color: var(--dark);" data-en="We confirm" data-fi="Vahvistamme"></h3>
+        <p class="text-gray-500 text-sm leading-relaxed" style="line-height: 1.75;"
+          data-en="You receive a confirmation with your assigned cleaner, time, and any specific instructions noted."
+          data-fi="Saat vahvistuksen nimetystä siivoojastasi, ajasta ja kaikista erityisohjeista."></p>
+      </div>
+      <div>
+        <div class="step-num">3</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color: var(--dark);" data-en="We clean — properly" data-fi="Siivomme — kunnolla"></h3>
+        <p class="text-gray-500 text-sm leading-relaxed" style="line-height: 1.75;"
+          data-en="Our cleaner arrives on time, works carefully and thoroughly, and uses eco-certified products throughout."
+          data-fi="Siivoojamme saapuu ajoissa, työskentelee huolellisesti ja perusteellisesti ja käyttää koko ajan ekosertifioituja tuotteita."></p>
+      </div>
+      <div>
+        <div class="step-num">4</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color: var(--dark);" data-en="Enjoy your home" data-fi="Nauti kodistasi"></h3>
+        <p class="text-gray-500 text-sm leading-relaxed" style="line-height: 1.75;"
+          data-en="Come home to a result that actually feels different. Not just clean — cared for."
+          data-fi="Tule kotiin tulokseen, joka todella tuntuu erilaiselta. Ei vain puhdas — vaan huolella tehty."></p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
-<section class="py-20 px-6 bg-white">
+<section class="py-28 px-6" style="background: #f8faf8;">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="Reviews" data-fi="Arvostelut"></p>
-      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;" data-en="What Our Clients Say" data-fi="Mitä Asiakkaamme Sanovat"></h2>
+    <div class="text-center mb-16">
+      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--green); letter-spacing: 0.18em;"
+        data-en="CLIENT FEEDBACK" data-fi="ASIAKASPALAUTE"></p>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold" style="letter-spacing: -0.03em; color: var(--dark);"
+        data-en="What our clients say."
+        data-fi="Mitä asiakkaamme sanovat."></h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
       <div class="testimonial-card">
-        <p class="stars mb-3">★★★★★</p>
-        <p class="text-gray-700 text-sm leading-relaxed mb-4" data-en="&ldquo;BetterClean has been a game changer for us. The team is professional, thorough, and always on time. Our home has never felt cleaner!&rdquo;" data-fi="&ldquo;BetterClean on ollut meille elämää muuttava. Tiimi on ammattimainen, perusteellinen ja aina ajoissa. Kotimme ei ole koskaan tuntunut puhtaammalta!&rdquo;"></p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-700 font-display">M</div>
-          <div><p class="font-semibold text-sm">Minna K.</p><p class="text-xs text-gray-400">Tampere</p></div>
+        <span class="quote-mark">"</span>
+        <p class="text-gray-700 leading-relaxed mb-8" style="line-height: 1.8;"
+          data-en="BetterClean is genuinely different. They take their time and it shows. Our home has never felt this thoroughly cleaned — not just tidy, but actually clean in every corner."
+          data-fi="BetterClean on aidosti erilainen. He käyttävät aikansa ja se näkyy. Kotimme ei ole koskaan tuntunut näin perusteellisesti siivotulta — ei vain siistiltä, vaan todella puhtaalta joka nurkassa."></p>
+        <div class="flex items-center gap-3 mt-auto">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white font-display text-sm flex-shrink-0" style="background: var(--green);">M</div>
+          <div>
+            <p class="font-display font-bold text-sm" style="color: var(--dark);">Minna K.</p>
+            <p class="text-xs text-gray-400">Tampere · <span class="stars">★★★★★</span></p>
+          </div>
         </div>
       </div>
+
       <div class="testimonial-card">
-        <p class="stars mb-3">★★★★★</p>
-        <p class="text-gray-700 text-sm leading-relaxed mb-4" data-en="&ldquo;I booked the monthly plan and it was the best decision. Same cleaner every time — she knows exactly how I like things. Highly recommend!&rdquo;" data-fi="&ldquo;Tilasin kuukausisuunnitelman ja se oli paras päätökseni. Sama siivooja joka kerta — hän tietää tarkalleen miten pidän asiat. Suosittelen lämpimästi!&rdquo;"></p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-700 font-display">J</div>
-          <div><p class="font-semibold text-sm">Juhani P.</p><p class="text-xs text-gray-400">Tampere</p></div>
+        <span class="quote-mark">"</span>
+        <p class="text-gray-700 leading-relaxed mb-8" style="line-height: 1.8;"
+          data-en="I've used other cleaning services before. BetterClean is the only one where I come home and immediately notice the difference. The detail they put into the work is something else."
+          data-fi="Olen käyttänyt muita siivouspalveluja aiemmin. BetterClean on ainoa, jonka jälkeen tulen kotiin ja huomaan eron heti. Heidän työssään näkyvä huolellisuus on aivan omaa luokkaansa."></p>
+        <div class="flex items-center gap-3 mt-auto">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white font-display text-sm flex-shrink-0" style="background: var(--green);">J</div>
+          <div>
+            <p class="font-display font-bold text-sm" style="color: var(--dark);">Juhani P.</p>
+            <p class="text-xs text-gray-400">Tampere · <span class="stars">★★★★★</span></p>
+          </div>
         </div>
       </div>
+
       <div class="testimonial-card">
-        <p class="stars mb-3">★★★★★</p>
-        <p class="text-gray-700 text-sm leading-relaxed mb-4" data-en="&ldquo;Used BetterClean for a move-out deep clean. The apartment was spotless — I got my full deposit back. Worth every cent!&rdquo;" data-fi="&ldquo;Käytin BetterCleania muuton syväsiivoukseen. Asunto oli virheetön — sain koko panttini takaisin. Jokaisen sentin arvoinen!&rdquo;"></p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-700 font-display">S</div>
-          <div><p class="font-semibold text-sm">Siiri L.</p><p class="text-xs text-gray-400">Tampere</p></div>
+        <span class="quote-mark">"</span>
+        <p class="text-gray-700 leading-relaxed mb-8" style="line-height: 1.8;"
+          data-en="We booked the Signature Deep Clean before a viewing. The apartment looked better than the day we moved in. Got our full deposit back without any issues — completely worth it."
+          data-fi="Varasimme Syväsiivous-palvelun ennen näyttöä. Asunto näytti paremmalta kuin muuttopäivänä. Saimme koko takuuvuokramme takaisin ilman ongelmia — täysin sen arvoinen."></p>
+        <div class="flex items-center gap-3 mt-auto">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white font-display text-sm flex-shrink-0" style="background: var(--green);">S</div>
+          <div>
+            <p class="font-display font-bold text-sm" style="color: var(--dark);">Siiri L.</p>
+            <p class="text-xs text-gray-400">Tampere · <span class="stars">★★★★★</span></p>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════ CTA BANNER ═══════════════════════ -->
-<section class="py-20 px-6" style="background: linear-gradient(135deg, #2a8226 0%, #3aaa35 50%, #0fb8c9 100%);">
-  <div class="max-w-4xl mx-auto text-center text-white">
-    <h2 class="text-3xl md:text-5xl font-display font-extrabold mb-4" style="letter-spacing: -0.03em;" data-en="Ready for a Cleaner Home?" data-fi="Valmis Puhtaampaan Kotiin?"></h2>
-    <p class="text-white/85 text-lg mb-8" data-en="Book today and let us take cleaning off your to-do list — for good." data-fi="Varaa tänään ja anna meidän poistaa siivous tehtävälistaltasi — lopullisesti."></p>
-    <a href="#contact" class="inline-block bg-white font-display font-bold px-10 py-4 rounded-xl text-lg transition-transform hover:-translate-y-1 active:translate-y-0" style="color: var(--green); box-shadow: 0 4px 24px rgba(0,0,0,0.15);" data-en="Book Your Cleaning Now" data-fi="Varaa Siivous Nyt"></a>
+<section class="section-dark py-24 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-xs font-bold uppercase tracking-widest mb-6" style="color: rgba(58,170,53,0.85); letter-spacing: 0.18em;"
+      data-en="READY TO BEGIN" data-fi="VALMIS ALOITTAMAAN"></p>
+    <h2 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-6" style="letter-spacing: -0.03em; line-height: 1.1;"
+      data-en="Your home deserves more time and more care."
+      data-fi="Kotisi ansaitsee enemmän aikaa ja huolellisuutta."></h2>
+    <p class="text-lg mb-10" style="color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 40px; line-height: 1.75;"
+      data-en="Request a quote today. We respond within 24 hours with a clear, honest price."
+      data-fi="Pyydä tarjous tänään. Vastaamme 24 tunnin kuluessa selkeällä, rehellisellä hinnalla."></p>
+    <a href="#contact" class="btn-white" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
+    <p class="text-xs mt-6" style="color: rgba(255,255,255,0.35);"
+      data-en="Serving Tampere, Kangasala, Ylöjärvi, Lempäälä, Pirkkala & Nokia"
+      data-fi="Palvelemme Tampere, Kangasala, Ylöjärvi, Lempäälä, Pirkkala & Nokia"></p>
   </div>
 </section>
 
 <!-- ═══════════════════════ BOOKING ═══════════════════════ -->
-<section id="contact" class="py-20 px-6 bg-white">
+<section id="contact" class="py-24 px-6" style="background: #f8faf8;">
   <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-10">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="Online Booking" data-fi="Varaa Verkossa"></p>
-      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;" data-en="Book Your Cleaning" data-fi="Varaa Siivous"></h2>
+    <div class="text-center mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--green); letter-spacing: 0.18em;" data-en="ONLINE BOOKING" data-fi="VARAA VERKOSSA"></p>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold" style="letter-spacing: -0.03em; color: var(--dark);"
+        data-en="Request a Quote" data-fi="Pyydä Tarjous"></h2>
     </div>
 
     <!-- Step indicators -->
     <div class="flex items-center justify-center gap-0 mb-10">
-      <div class="step-indicator flex items-center gap-2" id="ind-1">
+      <div class="flex items-center gap-2" id="ind-1">
         <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold font-display text-white" style="background: var(--green);">1</div>
         <span class="text-sm font-semibold hidden sm:block" style="color: var(--green);" data-en="Date & Time" data-fi="Aika"></span>
       </div>
       <div class="w-10 h-px bg-gray-200 mx-2"></div>
-      <div class="step-indicator flex items-center gap-2" id="ind-2">
+      <div class="flex items-center gap-2" id="ind-2">
         <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold font-display text-gray-400 bg-gray-100" id="ind-2-circle">2</div>
         <span class="text-sm font-semibold hidden sm:block text-gray-400" id="ind-2-label" data-en="Your Details" data-fi="Tietosi"></span>
       </div>
       <div class="w-10 h-px bg-gray-200 mx-2"></div>
-      <div class="step-indicator flex items-center gap-2" id="ind-3">
+      <div class="flex items-center gap-2" id="ind-3">
         <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold font-display text-gray-400 bg-gray-100" id="ind-3-circle">3</div>
         <span class="text-sm font-semibold hidden sm:block text-gray-400" id="ind-3-label" data-en="Payment" data-fi="Maksu"></span>
       </div>
     </div>
 
-    <div class="bg-white rounded-2xl border border-gray-100 shadow-lg overflow-hidden">
+    <div class="bg-white rounded-3xl border border-gray-100 overflow-hidden" style="box-shadow: 0 8px 48px rgba(58,170,53,0.08);">
 
-      <!-- ── STEP 1: Service + Calendar + Time ── -->
+      <!-- ── STEP 1 ── -->
       <div id="step-1" class="p-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-
-          <!-- Left: service + size -->
           <div>
             <h3 class="font-display font-bold text-lg mb-4" data-en="1. Select Service" data-fi="1. Valitse Palvelu"></h3>
             <div class="space-y-3 mb-6" id="service-options">
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all" style="border-color: var(--green); background: var(--green-light);">
                 <input type="radio" name="service" value="home" class="accent-green-600" checked />
                 <div class="flex-1">
-                  <p class="font-semibold text-sm" data-en="Home Cleaning" data-fi="Kotisiivous"></p>
-                  <p class="text-xs text-gray-500" data-en="Regular clean — from 39 €/h" data-fi="Vakiosiivous — alkaen 39 €/h"></p>
+                  <p class="font-semibold text-sm" data-en="Essential Home Care" data-fi="Peruskodin Hoito"></p>
+                  <p class="text-xs text-gray-500" data-en="Regular clean — from €60/hr" data-fi="Säännöllinen siivous — alkaen €60/h"></p>
                 </div>
               </label>
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition-all hover:border-green-300">
                 <input type="radio" name="service" value="deep" class="accent-green-600" />
                 <div class="flex-1">
-                  <p class="font-semibold text-sm" data-en="Deep Cleaning" data-fi="Syväsiivous"></p>
-                  <p class="text-xs text-gray-500" data-en="Top-to-bottom — custom quote" data-fi="Perusteellinen — tarjouspyyntö"></p>
+                  <p class="font-semibold text-sm" data-en="Signature Deep Clean" data-fi="Syväsiivous — Meidän Tavallamme"></p>
+                  <p class="text-xs text-gray-500" data-en="Detailed clean — custom quote" data-fi="Yksityiskohtainen siivous — tarjouspyyntö"></p>
                 </div>
               </label>
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition-all hover:border-green-300">
                 <input type="radio" name="service" value="office" class="accent-green-600" />
                 <div class="flex-1">
-                  <p class="font-semibold text-sm" data-en="Office Cleaning" data-fi="Toimistosiivous"></p>
-                  <p class="text-xs text-gray-500" data-en="Commercial spaces — custom quote" data-fi="Toimistotilat — tarjouspyyntö"></p>
+                  <p class="font-semibold text-sm" data-en="Move / Reset Cleaning" data-fi="Muutto- ja Nollaussiivous"></p>
+                  <p class="text-xs text-gray-500" data-en="Full reset — custom quote" data-fi="Täydellinen nollaus — tarjouspyyntö"></p>
                 </div>
               </label>
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition-all hover:border-green-300">
                 <input type="radio" name="service" value="event" class="accent-green-600" />
                 <div class="flex-1">
-                  <p class="font-semibold text-sm" data-en="After-Event Cleaning" data-fi="Tapahtumanjälkeinen Siivous"></p>
-                  <p class="text-xs text-gray-500" data-en="Post-party clean — from 44 €/h" data-fi="Juhlien jälkeen — alkaen 44 €/h"></p>
+                  <p class="font-semibold text-sm" data-en="Specialty Services" data-fi="Erikoispalvelut"></p>
+                  <p class="text-xs text-gray-500" data-en="Windows, steam, post-renovation" data-fi="Ikkunat, höyry, remonttisiivous"></p>
                 </div>
               </label>
             </div>
-
             <h3 class="font-display font-bold text-lg mb-3" data-en="2. Home Size" data-fi="2. Kodin Koko"></h3>
             <div class="grid grid-cols-3 gap-2">
               <button onclick="selectSize(this,'studio')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all">
-                <p data-en="Studio" data-fi="Studio"></p>
-                <p class="text-xs text-gray-400 font-normal">~25 m²</p>
+                <p data-en="Studio" data-fi="Studio"></p><p class="text-xs text-gray-400 font-normal">~25 m²</p>
               </button>
               <button onclick="selectSize(this,'small')" class="size-btn px-3 py-3 rounded-xl border-2 text-sm font-semibold transition-all" style="border-color: var(--green); background: var(--green-light);">
-                <p data-en="Small" data-fi="Pieni"></p>
-                <p class="text-xs font-normal" style="color: var(--green);">~50 m²</p>
+                <p data-en="Small" data-fi="Pieni"></p><p class="text-xs font-normal" style="color: var(--green);">~50 m²</p>
               </button>
               <button onclick="selectSize(this,'medium')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all">
-                <p data-en="Medium" data-fi="Keski"></p>
-                <p class="text-xs text-gray-400 font-normal">~80 m²</p>
+                <p data-en="Medium" data-fi="Keski"></p><p class="text-xs text-gray-400 font-normal">~80 m²</p>
               </button>
               <button onclick="selectSize(this,'large')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all">
-                <p data-en="Large" data-fi="Suuri"></p>
-                <p class="text-xs text-gray-400 font-normal">~120 m²</p>
+                <p data-en="Large" data-fi="Suuri"></p><p class="text-xs text-gray-400 font-normal">~120 m²</p>
               </button>
               <button onclick="selectSize(this,'xlarge')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all col-span-2">
-                <p data-en="Extra Large" data-fi="Erittäin Suuri"></p>
-                <p class="text-xs text-gray-400 font-normal">120+ m²</p>
+                <p data-en="Extra Large" data-fi="Erittäin Suuri"></p><p class="text-xs text-gray-400 font-normal">120+ m²</p>
               </button>
             </div>
           </div>
-
-          <!-- Right: Calendar + time -->
           <div>
             <h3 class="font-display font-bold text-lg mb-4" data-en="3. Pick a Date" data-fi="3. Valitse Päivä"></h3>
-            <!-- Calendar -->
             <div class="rounded-xl border border-gray-200 overflow-hidden mb-5">
               <div class="flex items-center justify-between px-4 py-3" style="background: var(--green);">
                 <button onclick="changeMonth(-1)" class="text-white font-bold text-lg leading-none hover:opacity-70 transition-opacity px-1">‹</button>
@@ -724,8 +882,6 @@
               </div>
               <div id="cal-grid" class="grid grid-cols-7 text-center p-2 gap-1 bg-white"></div>
             </div>
-
-            <!-- Time slots -->
             <h3 class="font-display font-bold text-base mb-3" data-en="4. Pick a Time" data-fi="4. Valitse Aika"></h3>
             <div id="time-slots" class="grid grid-cols-3 gap-2">
               <button onclick="selectTime(this,'08:00')" class="time-btn py-2 rounded-lg border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all">08:00</button>
@@ -736,65 +892,40 @@
               <button onclick="selectTime(this,'14:00')" class="time-btn py-2 rounded-lg border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all">14:00</button>
               <button onclick="selectTime(this,'15:00')" class="time-btn py-2 rounded-lg border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all">15:00</button>
               <button onclick="selectTime(this,'16:00')" class="time-btn py-2 rounded-lg border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition-all">16:00</button>
-              <button onclick="selectTime(this,'17:00')" class="time-btn disabled py-2 rounded-lg border-2 border-gray-100 text-sm font-semibold text-gray-300 cursor-not-allowed">17:00</button>
+              <button class="time-btn disabled py-2 rounded-lg border-2 border-gray-100 text-sm font-semibold text-gray-300 cursor-not-allowed">17:00</button>
             </div>
           </div>
         </div>
-
         <div class="flex justify-end mt-8 pt-6 border-t border-gray-100">
           <button onclick="goToStep(2)" class="btn-primary" data-en="Continue →" data-fi="Jatka →"></button>
         </div>
       </div>
 
-      <!-- ── STEP 2: Personal details ── -->
+      <!-- ── STEP 2 ── -->
       <div id="step-2" class="p-8 hidden">
         <h3 class="font-display font-bold text-lg mb-6" data-en="Your Details" data-fi="Tietosi"></h3>
-
-        <!-- Booking summary -->
         <div class="rounded-xl p-4 mb-6 flex flex-wrap gap-4 text-sm" style="background: var(--green-light);">
           <div><span class="text-gray-500" data-en="Service: " data-fi="Palvelu: "></span><span id="summary-service" class="font-semibold"></span></div>
           <div><span class="text-gray-500" data-en="Date: " data-fi="Päivä: "></span><span id="summary-date" class="font-semibold"></span></div>
           <div><span class="text-gray-500" data-en="Time: " data-fi="Aika: "></span><span id="summary-time" class="font-semibold"></span></div>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
-            <label data-en="First Name *" data-fi="Etunimi *"></label>
-            <input type="text" id="inp-first" />
-          </div>
-          <div>
-            <label data-en="Last Name *" data-fi="Sukunimi *"></label>
-            <input type="text" id="inp-last" />
-          </div>
-          <div>
-            <label>Email *</label>
-            <input type="email" id="inp-email" />
-          </div>
-          <div>
-            <label data-en="Phone *" data-fi="Puhelin *"></label>
-            <input type="tel" id="inp-phone" placeholder="+358" />
-          </div>
-          <div class="md:col-span-2">
-            <label data-en="Address (street & city) *" data-fi="Osoite (katu ja kaupunki) *"></label>
-            <input type="text" id="inp-address" />
-          </div>
-          <div class="md:col-span-2">
-            <label data-en="Special instructions (optional)" data-fi="Erityisohjeet (valinnainen)"></label>
-            <textarea rows="3" id="inp-notes"></textarea>
-          </div>
+          <div><label data-en="First Name *" data-fi="Etunimi *"></label><input type="text" id="inp-first" /></div>
+          <div><label data-en="Last Name *" data-fi="Sukunimi *"></label><input type="text" id="inp-last" /></div>
+          <div><label>Email *</label><input type="email" id="inp-email" /></div>
+          <div><label data-en="Phone *" data-fi="Puhelin *"></label><input type="tel" id="inp-phone" placeholder="+358" /></div>
+          <div class="md:col-span-2"><label data-en="Address (street & city) *" data-fi="Osoite (katu ja kaupunki) *"></label><input type="text" id="inp-address" /></div>
+          <div class="md:col-span-2"><label data-en="Special instructions (optional)" data-fi="Erityisohjeet (valinnainen)"></label><textarea rows="3" id="inp-notes"></textarea></div>
         </div>
-
         <div class="flex justify-between mt-8 pt-6 border-t border-gray-100">
           <button onclick="goToStep(1)" class="btn-outline" data-en="← Back" data-fi="← Takaisin"></button>
           <button onclick="goToStep(3)" class="btn-primary" data-en="Continue to Payment →" data-fi="Jatka Maksuun →"></button>
         </div>
       </div>
 
-      <!-- ── STEP 3: Payment ── -->
+      <!-- ── STEP 3 ── -->
       <div id="step-3" class="p-8 hidden">
         <h3 class="font-display font-bold text-lg mb-6" data-en="Payment" data-fi="Maksu"></h3>
-
-        <!-- Order summary -->
         <div class="rounded-xl p-5 mb-6" style="background: var(--green-light);">
           <div class="flex justify-between items-start mb-3">
             <div>
@@ -810,10 +941,7 @@
           </div>
           <p class="text-xs text-gray-500 border-t border-green-200 pt-3" data-en="💡 Finnish households may be eligible for Kotitalousvähennys (household tax deduction) — reducing your net cost significantly." data-fi="💡 Suomalaiset kotitaloudet voivat olla oikeutettuja kotitalousvähennykseen — mikä vähentää todellista kustannustasi merkittävästi."></p>
         </div>
-
-        <!-- Payment method selection -->
         <p class="font-display font-bold text-base mb-4" data-en="Choose Payment Method" data-fi="Valitse Maksutapa"></p>
-
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6" id="pay-method-btns">
           <button onclick="selectPayMethod(this,'card')" class="pay-method-btn flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all font-semibold text-sm" style="border-color: var(--green); background: var(--green-light);">
             <svg width="28" height="20" viewBox="0 0 28 20" fill="none"><rect width="28" height="20" rx="3" fill="#1a1a2e"/><rect y="5" width="28" height="5" fill="#444"/><rect x="3" y="13" width="8" height="3" rx="1" fill="#aaa"/></svg>
@@ -832,13 +960,8 @@
             <span>MobilePay</span>
           </button>
         </div>
-
-        <!-- Card form (shown when card selected) -->
         <div id="card-form" class="space-y-4 mb-6">
-          <div>
-            <label data-en="Cardholder Name" data-fi="Kortinhaltijan Nimi"></label>
-            <input type="text" placeholder="Anna Mäkinen" />
-          </div>
+          <div><label data-en="Cardholder Name" data-fi="Kortinhaltijan Nimi"></label><input type="text" placeholder="Anna Mäkinen" /></div>
           <div>
             <label data-en="Card Number" data-fi="Kortin Numero"></label>
             <div class="relative">
@@ -850,26 +973,17 @@
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label data-en="Expiry Date" data-fi="Voimassaoloaika"></label>
-              <input type="text" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)" />
-            </div>
-            <div>
-              <label>CVV</label>
-              <input type="text" placeholder="123" maxlength="4" />
-            </div>
+            <div><label data-en="Expiry Date" data-fi="Voimassaoloaika"></label><input type="text" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)" /></div>
+            <div><label>CVV</label><input type="text" placeholder="123" maxlength="4" /></div>
           </div>
           <div class="flex items-center gap-2 text-xs text-gray-500 mt-2">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#3aaa35" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#3aaa35" stroke-width="2"/></svg>
             <span data-en="Secured by SSL — your payment info is encrypted" data-fi="SSL-suojattu — maksutietosi on salattu"></span>
           </div>
         </div>
-
-        <!-- Bank / MobilePay redirect notice -->
         <div id="redirect-notice" class="hidden rounded-xl p-5 border border-gray-200 text-center text-sm text-gray-600 mb-6">
           <p data-en="You'll be redirected to your bank's secure login to complete payment." data-fi="Sinut ohjataan pankkinsi turvalliseen kirjautumiseen maksun suorittamiseksi."></p>
         </div>
-
         <div class="flex justify-between pt-6 border-t border-gray-100">
           <button onclick="goToStep(2)" class="btn-outline" data-en="← Back" data-fi="← Takaisin"></button>
           <button onclick="submitBooking()" class="btn-primary text-lg px-10" data-en="Confirm & Pay 78 €" data-fi="Vahvista & Maksa 78 €"></button>
@@ -882,12 +996,12 @@
           <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#3aaa35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#3aaa35" stroke-width="2"/></svg>
         </div>
         <h3 class="font-display font-extrabold text-3xl mb-3" style="color: var(--dark);" data-en="Booking Confirmed!" data-fi="Varaus Vahvistettu!"></h3>
-        <p class="text-gray-600 mb-2" id="confirm-msg" data-en="Thank you! We'll see you soon." data-fi="Kiitos! Nähdään pian."></p>
+        <p class="text-gray-600 mb-2" id="confirm-msg" data-en="Thank you! We'll be in touch shortly." data-fi="Kiitos! Olemme pian yhteydessä."></p>
         <p class="text-gray-400 text-sm" data-en="A confirmation email has been sent to your address." data-fi="Vahvistussähköposti on lähetetty osoitteeseesi."></p>
         <button onclick="goToStep(1)" class="btn-outline mt-8" data-en="Book Another" data-fi="Varaa Uudelleen"></button>
       </div>
 
-    </div><!-- end card -->
+    </div>
   </div>
 </section>
 
@@ -904,113 +1018,60 @@
 </style>
 
 <script>
-  // ── Booking state ──
   const booking = { service: 'home', size: 'small', date: null, time: null };
   let calYear, calMonth;
-
-  // ── Calendar ──
   const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const MONTHS_FI = ['Tammikuu','Helmikuu','Maaliskuu','Huhtikuu','Toukokuu','Kesäkuu','Heinäkuu','Elokuu','Syyskuu','Lokakuu','Marraskuu','Joulukuu'];
 
-  function initCal() {
-    const now = new Date();
-    calYear = now.getFullYear();
-    calMonth = now.getMonth();
-    renderCal();
-  }
-
-  function changeMonth(dir) {
-    calMonth += dir;
-    if (calMonth > 11) { calMonth = 0; calYear++; }
-    if (calMonth < 0) { calMonth = 11; calYear--; }
-    renderCal();
-  }
-
+  function initCal() { const now = new Date(); calYear = now.getFullYear(); calMonth = now.getMonth(); renderCal(); }
+  function changeMonth(dir) { calMonth += dir; if (calMonth > 11) { calMonth = 0; calYear++; } if (calMonth < 0) { calMonth = 11; calYear--; } renderCal(); }
   function renderCal() {
     const lang = window.currentLang || 'fi';
     const months = lang === 'fi' ? MONTHS_FI : MONTHS_EN;
     document.getElementById('cal-month').textContent = `${months[calMonth]} ${calYear}`;
-
-    const grid = document.getElementById('cal-grid');
-    grid.innerHTML = '';
-    const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=Sun
-    const startOffset = firstDay === 0 ? 6 : firstDay - 1; // Mon-first
+    const grid = document.getElementById('cal-grid'); grid.innerHTML = '';
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const startOffset = firstDay === 0 ? 6 : firstDay - 1;
     const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
     const today = new Date(); today.setHours(0,0,0,0);
-
-    for (let i = 0; i < startOffset; i++) {
-      const empty = document.createElement('div');
-      empty.className = 'cal-day cal-empty';
-      grid.appendChild(empty);
-    }
+    for (let i = 0; i < startOffset; i++) { const e = document.createElement('div'); e.className = 'cal-day cal-empty'; grid.appendChild(e); }
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(calYear, calMonth, d);
-      const isPast = date < today;
-      const isSun = date.getDay() === 0;
+      const isPast = date < today; const isSun = date.getDay() === 0;
       const isSelected = booking.date && booking.date.getTime() === date.getTime();
       const div = document.createElement('div');
       div.className = 'cal-day' + (isPast || isSun ? ' cal-past' : '') + (date.getTime() === today.getTime() ? ' cal-today' : '') + (isSelected ? ' cal-selected' : '');
       div.textContent = d;
-      if (!isPast && !isSun) {
-        div.onclick = () => selectDate(date);
-      }
+      if (!isPast && !isSun) { div.onclick = () => selectDate(date); }
       grid.appendChild(div);
     }
   }
-
   function selectDate(date) {
-    booking.date = date;
-    renderCal();
-    // Update summary
+    booking.date = date; renderCal();
     const lang = window.currentLang || 'fi';
     const months = lang === 'fi' ? MONTHS_FI : MONTHS_EN;
     document.getElementById('summary-date').textContent = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
   }
-
-  function selectTime(btn, time) {
-    document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    booking.time = time;
-    document.getElementById('summary-time').textContent = time;
-  }
-
-  function selectSize(btn, size) {
-    document.querySelectorAll('.size-btn').forEach(b => {
-      b.classList.remove('selected');
-      b.style.borderColor = '';
-      b.style.background = '';
-    });
-    btn.classList.add('selected');
-    booking.size = size;
-  }
-
-  // ── Service radio styling ──
+  function selectTime(btn, time) { document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); booking.time = time; document.getElementById('summary-time').textContent = time; }
+  function selectSize(btn, size) { document.querySelectorAll('.size-btn').forEach(b => { b.classList.remove('selected'); b.style.borderColor = ''; b.style.background = ''; }); btn.classList.add('selected'); booking.size = size; }
   document.querySelectorAll('input[name="service"]').forEach(radio => {
     radio.addEventListener('change', function() {
-      document.querySelectorAll('.service-opt').forEach(opt => {
-        opt.style.borderColor = '';
-        opt.style.background = '';
-      });
+      document.querySelectorAll('.service-opt').forEach(opt => { opt.style.borderColor = ''; opt.style.background = ''; });
       this.closest('.service-opt').style.borderColor = 'var(--green)';
       this.closest('.service-opt').style.background = 'var(--green-light)';
       booking.service = this.value;
-      const serviceNames = { home: ['Home Cleaning','Kotisiivous'], deep: ['Deep Cleaning','Syväsiivous'], office: ['Office Cleaning','Toimistosiivous'], event: ['After-Event Cleaning','Tapahtumanjälkeinen Siivous'] };
+      const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const lang = window.currentLang || 'fi';
       document.getElementById('summary-service').textContent = serviceNames[this.value][lang === 'fi' ? 1 : 0];
     });
   });
-
-  // ── Step navigation ──
   function goToStep(n) {
-    [1,2,3,4].forEach(i => {
-      document.getElementById('step-' + i).classList.add('hidden');
-    });
+    [1,2,3,4].forEach(i => document.getElementById('step-' + i).classList.add('hidden'));
     document.getElementById('step-' + n).classList.remove('hidden');
     updateStepIndicators(n);
-
     if (n === 3) {
       const lang = window.currentLang || 'fi';
-      const serviceNames = { home: ['Home Cleaning','Kotisiivous'], deep: ['Deep Cleaning','Syväsiivous'], office: ['Office Cleaning','Toimistosiivous'], event: ['After-Event Cleaning','Tapahtumanjälkeinen Siivous'] };
+      const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const months = lang === 'fi' ? MONTHS_FI : MONTHS_EN;
       document.getElementById('pay-service-name').textContent = serviceNames[booking.service][lang === 'fi' ? 1 : 0];
       if (booking.date) document.getElementById('pay-datetime').textContent = `${booking.date.getDate()} ${months[booking.date.getMonth()]} · ${booking.time || ''}`;
@@ -1018,24 +1079,14 @@
     }
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-
   function updateStepIndicators(n) {
     [2,3].forEach(i => {
       const circle = document.getElementById('ind-' + i + '-circle');
       const label = document.getElementById('ind-' + i + '-label');
-      if (i <= n) {
-        circle.style.background = 'var(--green)';
-        circle.style.color = '#fff';
-        if (label) { label.style.color = 'var(--green)'; }
-      } else {
-        circle.style.background = '#f3f4f6';
-        circle.style.color = '#9ca3af';
-        if (label) { label.style.color = '#9ca3af'; }
-      }
+      if (i <= n) { circle.style.background = 'var(--green)'; circle.style.color = '#fff'; if (label) label.style.color = 'var(--green)'; }
+      else { circle.style.background = '#f3f4f6'; circle.style.color = '#9ca3af'; if (label) label.style.color = '#9ca3af'; }
     });
   }
-
-  // ── Payment method ──
   function selectPayMethod(btn, method) {
     document.querySelectorAll('.pay-method-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
@@ -1043,42 +1094,28 @@
     document.getElementById('card-form').classList.toggle('hidden', !isCard);
     document.getElementById('redirect-notice').classList.toggle('hidden', isCard);
   }
-
-  // ── Card formatting ──
-  function formatCard(el) {
-    let v = el.value.replace(/\D/g, '').slice(0, 16);
-    el.value = v.replace(/(.{4})/g, '$1 ').trim();
-  }
-  function formatExpiry(el) {
-    let v = el.value.replace(/\D/g, '').slice(0, 4);
-    if (v.length >= 3) v = v.slice(0,2) + '/' + v.slice(2);
-    el.value = v;
-  }
-
-  // ── Submit ──
-  function submitBooking() {
-    goToStep(4);
-  }
-
-  // ── Init ──
+  function formatCard(el) { let v = el.value.replace(/\D/g, '').slice(0, 16); el.value = v.replace(/(.{4})/g, '$1 ').trim(); }
+  function formatExpiry(el) { let v = el.value.replace(/\D/g, '').slice(0, 4); if (v.length >= 3) v = v.slice(0,2) + '/' + v.slice(2); el.value = v; }
+  function submitBooking() { goToStep(4); }
   initCal();
-  // Set default summary values
-  document.getElementById('summary-service').textContent = window.currentLang === 'fi' ? 'Kotisiivous' : 'Home Cleaning';
+  document.getElementById('summary-service').textContent = 'Peruskodin Hoito';
 </script>
 
 <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
-<footer class="py-12 px-6" style="background: var(--dark); color: rgba(255,255,255,0.7);">
+<footer class="py-16 px-6" style="background: var(--deeper); color: rgba(255,255,255,0.6);">
   <div class="max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row justify-between gap-8 mb-10">
+    <div class="flex flex-col md:flex-row justify-between gap-10 mb-12">
       <div class="flex-1">
-        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" class="h-[200px] mb-4 brightness-200 grayscale" />
-        <p class="text-sm leading-relaxed" style="max-width: 280px;" data-en="Professional eco-friendly cleaning in Tampere. Reducing footprints, refreshing spaces." data-fi="Ammattimainen ympäristöystävällinen siivous Tampereella. Vähennämme jalanjälkiä, virkistämme tiloja."></p>
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" class="mb-6 brightness-200 grayscale" style="height: 160px; width: auto;" />
+        <p class="text-sm leading-relaxed" style="max-width: 260px; line-height: 1.75;"
+          data-en="Premium home cleaning in Tampere. More time, more care, higher standards."
+          data-fi="Premium-kotisiivous Tampereella. Enemmän aikaa, enemmän huolellisuutta, korkeammat standardit."></p>
       </div>
       <div>
-        <h4 class="text-white font-display font-bold mb-4" data-en="Services" data-fi="Palvelut"></h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#services" class="hover:text-white transition-colors" data-en="Regular Home Cleaning" data-fi="Kotisiivous"></a></li>
-          <li><a href="#pricing" class="hover:text-white transition-colors" data-en="Deep Cleaning" data-fi="Syväsiivous"></a></li>
+        <h4 class="text-white font-display font-bold mb-5 text-sm uppercase tracking-widest" data-en="Services" data-fi="Palvelut"></h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#services" class="hover:text-white transition-colors" data-en="Essential Home Care" data-fi="Peruskodin Hoito"></a></li>
+          <li><a href="#services" class="hover:text-white transition-colors" data-en="Signature Deep Clean" data-fi="Syväsiivous"></a></li>
           <li><a href="window-cleaning.html" class="hover:text-white transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a></li>
           <li><a href="steam-cleaning.html" class="hover:text-white transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu"></a></li>
           <li><a href="post-renovation-cleaning.html" class="hover:text-white transition-colors" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></a></li>
@@ -1086,23 +1123,23 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-white font-display font-bold mb-4" data-en="Company" data-fi="Yritys"></h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#why" class="hover:text-white transition-colors" data-en="Why BetterClean" data-fi="Miksi BetterClean"></a></li>
-          <li><a href="#pricing" class="hover:text-white transition-colors" data-en="Pricing" data-fi="Hinnat"></a></li>
-          <li><a href="#contact" class="hover:text-white transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a></li>
+        <h4 class="text-white font-display font-bold mb-5 text-sm uppercase tracking-widest" data-en="Company" data-fi="Yritys"></h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#why" class="hover:text-white transition-colors" data-en="Our Standards" data-fi="Standardimme"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="Pricing" data-fi="Hinnat"></a></li>
+          <li><a href="#contact" class="hover:text-white transition-colors" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-white font-display font-bold mb-4">Tampere</h4>
-        <p class="text-sm" data-en="Serving all of Tampere and surrounding areas." data-fi="Palvelemme koko Tamperetta ja lähialuetta."></p>
-        <p class="text-sm mt-2">+358 XX XXX XXXX</p>
-        <p class="text-sm">info@betterclean.fi</p>
+        <h4 class="text-white font-display font-bold mb-5 text-sm uppercase tracking-widest">Tampere</h4>
+        <p class="text-sm leading-relaxed mb-3" data-en="Serving Tampere and surrounding areas." data-fi="Palvelemme Tamperetta ja lähialuetta."></p>
+        <p class="text-sm">+358 XX XXX XXXX</p>
+        <p class="text-sm mt-1">info@betterclean.fi</p>
       </div>
     </div>
-    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+    <div class="border-t pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs" style="border-color: rgba(255,255,255,0.08);">
       <p>© 2026 BetterClean. <span data-en="All rights reserved." data-fi="Kaikki oikeudet pidätetään."></span></p>
-      <p data-en="Reducing Footprints, Refreshing Spaces." data-fi="Vähennämme Jalanjälkiä, Virkistämme Tiloja."></p>
+      <p style="color: rgba(255,255,255,0.3);" data-en="We give your home the time it deserves." data-fi="Annamme kodillesi sen ansaitseman ajan."></p>
     </div>
   </div>
 </footer>
@@ -1113,18 +1150,12 @@
 
   function setLang(lang) {
     currentLang = lang;
-
-    // Update toggle buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
     });
-
-    // Update all translatable elements
     document.querySelectorAll('[data-en]').forEach(el => {
       const text = el.getAttribute('data-' + lang);
       if (!text) return;
-
-      // Handle elements that are links/buttons (set text content)
       if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'SPAN' || el.tagName === 'LABEL' || el.tagName === 'LI') {
         el.innerHTML = text;
       } else if (el.tagName === 'OPTION') {
@@ -1133,8 +1164,6 @@
         el.textContent = text;
       }
     });
-
-    // Update html lang attr
     document.documentElement.lang = lang;
   }
 
@@ -1147,7 +1176,7 @@
     document.getElementById('hamburger').classList.remove('open');
   }
 
-  // Initialize English on load
+  // Initialize Finnish on load
   setLang('fi');
 </script>
 
