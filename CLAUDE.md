@@ -105,6 +105,12 @@
 - **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
 - **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
 
+## Typography — Punctuation
+- **Never use en dashes (–) or em dashes (—)** anywhere in the site copy.
+- Replace em dash (—) with ` - ` (space-hyphen-space) if a pause/separator is needed.
+- Replace en dash (–) with a regular hyphen `-` for ranges (e.g., `3-6 months`).
+- This applies to all HTML attributes, visible text, `data-en`/`data-fi` values, JSON-LD strings, `<title>`, and `<meta>` tags.
+
 ## Hard Rules
 - Do not add sections, features, or content not in the reference
 - Do not "improve" a reference design — match it
@@ -113,3 +119,4 @@
 - Do not use default Tailwind blue/indigo as primary color
 - Do not remove or alter JSON-LD structured data blocks
 - Do not add content in only one language — always both FI and EN
+- Do not use en dashes (–) or em dashes (—) — use hyphens instead
