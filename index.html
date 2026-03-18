@@ -234,6 +234,7 @@
     .mobile-nav a { display: block; padding: 14px 0; font-size: 15px; font-weight: 600; color: #374151; border-bottom: 1px solid #f0f4f0; font-family: 'Sora', sans-serif; text-decoration: none; }
     .mobile-nav a:hover { color: var(--green); }
     .mobile-nav .mobile-cta { border-bottom: none; margin-top: 16px; text-align: center; }
+    nav { position: sticky; top: 0; z-index: 100; }
   </style>
 </head>
 <body>
@@ -248,9 +249,10 @@
       <span class="text-xs font-semibold uppercase tracking-widest mt-1" style="color: var(--green); letter-spacing: 0.12em;" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
     </a>
     <div class="hidden md:flex items-center gap-8">
-      <a href="#why" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Our Standards" data-fi="Standardimme"></a>
-      <a href="#services" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Services" data-fi="Palvelut"></a>
-      <a href="#pricing" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Pricing" data-fi="Hinnat"></a>
+      <a href="window-cleaning.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a>
+      <a href="steam-cleaning.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu"></a>
+      <a href="post-renovation-cleaning.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Post-Renovation" data-fi="Remonttisiivous"></a>
+      <a href="pricing.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Pricing" data-fi="Hinnat"></a>
       <a href="#contact" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a>
     </div>
     <div class="flex items-center gap-4">
@@ -264,14 +266,16 @@
       </button>
     </div>
   </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileNav()" data-en="Home" data-fi="Etusivu"></a>
+    <a href="window-cleaning.html" onclick="closeMobileNav()" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a>
+    <a href="steam-cleaning.html" onclick="closeMobileNav()" data-en="Steam Cleaning" data-fi="Höyrypesu"></a>
+    <a href="post-renovation-cleaning.html" onclick="closeMobileNav()" data-en="Post-Renovation Cleaning" data-fi="Remonttisiivous"></a>
+    <a href="pricing.html" onclick="closeMobileNav()" data-en="Pricing" data-fi="Hinnat"></a>
+    <a href="#contact" onclick="closeMobileNav()" data-en="Contact" data-fi="Yhteystiedot"></a>
+    <a href="#contact" class="btn-primary mobile-cta" onclick="closeMobileNav()" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
+  </div>
 </nav>
-<div class="mobile-nav" id="mobileNav">
-  <a href="#why" onclick="closeMobileNav()" data-en="Our Standards" data-fi="Standardimme"></a>
-  <a href="#services" onclick="closeMobileNav()" data-en="Services" data-fi="Palvelut"></a>
-  <a href="#pricing" onclick="closeMobileNav()" data-en="Pricing" data-fi="Hinnat"></a>
-  <a href="#contact" onclick="closeMobileNav()" data-en="Contact" data-fi="Yhteystiedot"></a>
-  <a href="#contact" class="btn-primary mobile-cta" onclick="closeMobileNav()" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
-</div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero-section">
@@ -295,18 +299,18 @@
         <a href="#why" class="btn-ghost" data-en="See Our Standards" data-fi="Katso Palvelustandardimme"></a>
       </div>
       <!-- Glass stats bar -->
-      <div class="glass-card inline-flex flex-wrap gap-8 px-8 py-5">
-        <div>
+      <div class="glass-card flex w-full px-4 py-5" style="max-width: 480px;">
+        <div class="flex-1 text-center">
           <p class="text-2xl font-display font-extrabold text-white" style="letter-spacing: -0.02em;">50+</p>
           <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.6);" data-en="Satisfied clients" data-fi="Tyytyväistä asiakasta"></p>
         </div>
         <div style="width: 1px; background: rgba(255,255,255,0.15);"></div>
-        <div>
+        <div class="flex-1 text-center">
           <p class="text-2xl font-display font-extrabold text-white" style="letter-spacing: -0.02em;">4.9★</p>
           <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.6);" data-en="Average rating" data-fi="Keskiarvio"></p>
         </div>
         <div style="width: 1px; background: rgba(255,255,255,0.15);"></div>
-        <div>
+        <div class="flex-1 text-center">
           <p class="text-2xl font-display font-extrabold text-white" style="letter-spacing: -0.02em;">100%</p>
           <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.6);" data-en="Eco-certified products" data-fi="Ekosertifioituja tuotteita"></p>
         </div>
