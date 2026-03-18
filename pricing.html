@@ -91,6 +91,7 @@
       --green-dark: #2a8226;
       --green-light: #edf7ec;
       --dark: #1a2e1a;
+      --deeper: #0d180d;
     }
 
     /* ── Buttons ── */
@@ -140,9 +141,50 @@
     /* ── Nav ── */
     nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
 
-    /* ── Hero bg ── */
-    .hero-bg {
-      background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%);
+    /* ── Hero ── */
+    .hero-section-page {
+      position: relative;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+      background: var(--deeper);
+      text-align: center;
+    }
+    .hero-photo-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+    }
+    .hero-overlay-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,24,13,0.65) 0%, rgba(13,24,13,0.3) 50%, rgba(13,24,13,0.8) 100%);
+    }
+    .hero-content-z { position: relative; z-index: 2; }
+    .glass-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .glass-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(58,170,53,0.18);
+      border: 1px solid rgba(58,170,53,0.4);
+      border-radius: 40px;
+      padding: 10px 24px;
+      color: #6ddd68;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
 
     /* ── Section label ── */
@@ -452,13 +494,16 @@
 </div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero-bg py-20 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: var(--green-dark);" data-en="Läpinäkyvät Hinnat / Transparent Pricing" data-fi="Läpinäkyvät Hinnat / Transparent Pricing"></p>
-    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-5" style="letter-spacing: -0.03em; color: var(--dark);" data-en="How Much Does Cleaning Cost in Tampere?" data-fi="Kuinka Paljon Siivous Maksaa Tampereella?"></h1>
-    <p class="text-lg leading-relaxed mb-8 mx-auto" style="color: #3a5a3a; max-width: 600px;" data-en="All prices include VAT 25.5% as required by Finnish law. Finnish households are eligible for the Kotitalousvähennys household tax deduction — reducing your net cost by up to 35%." data-fi="Kaikki hinnat sisältävät ALV 25,5 % Suomen lain mukaisesti. Suomalaiset kotitaloudet voivat hyödyntää kotitalousvähennystä — joka pienentää todellisia kustannuksiasi jopa 35 %."></p>
-    <div class="tax-badge">
-      <span data-en="💡 Save 35% with Kotitalousvähennys household deduction" data-fi="💡 Säästä 35 % kotitalousvähennyksellä"></span>
+<section class="hero-section-page">
+  <div class="hero-photo-bg" style="background-image: url('https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=1400&q=80&auto=format&fit=crop');"></div>
+  <div class="hero-overlay-page"></div>
+  <div class="hero-content-z max-w-4xl mx-auto">
+    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: #6ddd68; letter-spacing: 0.12em;" data-en="Läpinäkyvät Hinnat / Transparent Pricing" data-fi="Läpinäkyvät Hinnat / Transparent Pricing"></p>
+    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-5" style="letter-spacing: -0.03em; color: #fff;" data-en="How Much Does Cleaning Cost in Tampere?" data-fi="Kuinka Paljon Siivous Maksaa Tampereella?"></h1>
+    <p class="text-lg leading-relaxed mb-8 mx-auto" style="color: rgba(255,255,255,0.72); max-width: 600px; line-height: 1.75;" data-en="All prices include VAT 25.5% as required by Finnish law. Finnish households are eligible for the Kotitalousvähennys household tax deduction — reducing your net cost by up to 35%." data-fi="Kaikki hinnat sisältävät ALV 25,5 % Suomen lain mukaisesti. Suomalaiset kotitaloudet voivat hyödyntää kotitalousvähennystä — joka pienentää todellisia kustannuksiasi jopa 35 %."></p>
+    <div class="glass-badge">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z" fill="#6ddd68"/></svg>
+      <span data-en="Save 35% with Kotitalousvähennys household deduction" data-fi="Säästä 35 % kotitalousvähennyksellä"></span>
     </div>
   </div>
 </section>

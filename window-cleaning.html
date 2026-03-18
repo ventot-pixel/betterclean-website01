@@ -94,7 +94,7 @@
     * { box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; color: #1a1a1a; }
     h1, h2, h3, h4, .font-display { font-family: 'Sora', sans-serif; }
-    :root { --green: #3aaa35; --green-dark: #2a8226; --green-light: #edf7ec; --teal: #0fb8c9; --dark: #1a2e1a; }
+    :root { --green: #3aaa35; --green-dark: #2a8226; --green-light: #edf7ec; --teal: #0fb8c9; --dark: #1a2e1a; --deeper: #0d180d; }
     .btn-primary { background: var(--green); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; padding: 14px 32px; border-radius: 8px; display: inline-block; transition: background 0.2s, transform 0.15s; letter-spacing: -0.01em; box-shadow: 0 4px 16px rgba(58,170,53,0.28); }
     .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
     .btn-outline { border: 2px solid var(--green); color: var(--green); font-family: 'Sora', sans-serif; font-weight: 700; padding: 12px 28px; border-radius: 8px; display: inline-block; transition: background 0.2s, color 0.2s; }
@@ -103,7 +103,38 @@
     .lang-btn { padding: 6px 14px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s, color 0.2s; border: none; background: transparent; color: #666; }
     .lang-btn.active { background: var(--green); color: #fff; }
     nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
-    .hero-bg { background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%); }
+    .hero-section-page {
+      position: relative;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+      background: var(--deeper);
+      text-align: center;
+    }
+    .hero-photo-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+    }
+    .hero-overlay-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,24,13,0.65) 0%, rgba(13,24,13,0.3) 50%, rgba(13,24,13,0.8) 100%);
+    }
+    .hero-content-z { position: relative; z-index: 2; }
+    .glass-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     /* FAQ accordion */
     details summary { cursor: pointer; list-style: none; }
@@ -181,27 +212,33 @@
 </div>
 
 <!-- HERO -->
-<section class="hero-bg px-6 py-20 md:py-28">
-  <div class="max-w-6xl mx-auto text-center">
-    <!-- Label -->
-    <p class="text-sm font-semibold uppercase tracking-widest mb-5" style="color: var(--green); letter-spacing: 0.1em;">
+<section class="hero-section-page">
+  <div class="hero-photo-bg" style="background-image: url('https://images.unsplash.com/photo-1527515637462-cff94aca7b4e?w=1400&q=80&auto=format&fit=crop');"></div>
+  <div class="hero-overlay-page"></div>
+  <div class="hero-content-z max-w-6xl mx-auto">
+    <p class="text-sm font-semibold uppercase tracking-widest mb-5" style="color: #6ddd68; letter-spacing: 0.12em;">
       <span data-en="Ikkunanpesu Tampere / Window Cleaning Tampere" data-fi="Ikkunanpesu Tampere / Window Cleaning Tampere"></span>
     </p>
-    <!-- H1 -->
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style="color: var(--dark); letter-spacing: -0.03em;">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style="color: #fff; letter-spacing: -0.03em;">
       <span data-en="Professional Window Cleaning in Tampere" data-fi="Ammattimainen Ikkunanpesu Tampereella"></span>
     </h1>
-    <!-- Subtitle -->
-    <p class="text-lg md:text-xl leading-relaxed mb-10 text-gray-600 max-w-2xl mx-auto" style="line-height: 1.7;">
+    <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.72); line-height: 1.75;">
       <span data-en="Streak-free, crystal-clear results. Interior &amp; exterior glass, frames, sills and balcony doors. All prices include VAT." data-fi="Täysin juovaton lopputulos. Sisä- ja ulkopuolinen lasi, karmit, ikkunalaudat ja parvekeovet. Kaikki hinnat sisältävät ALV:n."></span>
     </p>
-    <!-- Stat chips -->
     <div class="flex flex-wrap justify-center gap-3 mb-10">
-      <span class="stat-chip"><span style="color: var(--green);">✓</span> <span data-en="Streak-free guarantee" data-fi="Juovatomuustakuu"></span></span>
-      <span class="stat-chip"><span style="color: var(--green);">✓</span> <span data-en="Interior &amp; exterior" data-fi="Sisä- ja ulkopuoli"></span></span>
-      <span class="stat-chip"><span style="color: var(--green);">✓</span> <span data-en="All prices incl. VAT" data-fi="Kaikki hinnat sis. ALV"></span></span>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="Streak-free guarantee" data-fi="Juovatomuustakuu"></span>
+      </span>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="Interior &amp; exterior" data-fi="Sisä- ja ulkopuoli"></span>
+      </span>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="All prices incl. VAT" data-fi="Kaikki hinnat sis. ALV"></span>
+      </span>
     </div>
-    <!-- CTA -->
     <a href="index.html#contact" class="btn-primary text-base" data-en="Book Now" data-fi="Varaa Nyt"></a>
   </div>
 </section>

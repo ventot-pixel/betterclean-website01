@@ -87,6 +87,7 @@
       --green-light: #edf7ec;
       --teal: #0fb8c9;
       --dark: #1a2e1a;
+      --deeper: #0d180d;
     }
 
     .btn-primary {
@@ -163,8 +164,36 @@
       margin: 0 auto 16px; box-shadow: 0 4px 16px rgba(58,170,53,0.3);
     }
 
-    .hero-bg {
-      background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%);
+    .hero-section-page {
+      position: relative;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+      background: var(--deeper);
+    }
+    .hero-photo-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+    }
+    .hero-overlay-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,24,13,0.65) 0%, rgba(13,24,13,0.3) 50%, rgba(13,24,13,0.8) 100%);
+    }
+    .hero-content-z { position: relative; z-index: 2; }
+    .glass-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
@@ -300,25 +329,36 @@
 </div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero-bg py-20 px-6">
-  <div class="max-w-6xl mx-auto">
-    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: var(--green);">
+<section class="hero-section-page">
+  <div class="hero-photo-bg" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80&auto=format&fit=crop');"></div>
+  <div class="hero-overlay-page"></div>
+  <div class="hero-content-z max-w-6xl mx-auto">
+    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: #6ddd68; letter-spacing: 0.12em;">
       Remontin Jälkisiivous / Post-Renovation Cleaning
     </p>
-    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-6" style="letter-spacing: -0.03em; color: #1a2e1a; max-width: 760px;"
+    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-6" style="letter-spacing: -0.03em; color: #fff; max-width: 760px;"
         data-en="Post-Renovation Cleaning in Tampere"
         data-fi="Ammattimainen Remontin Jälkisiivous Tampereella"></h1>
-    <p class="text-lg text-gray-600 leading-relaxed mb-8" style="max-width: 600px;"
+    <p class="text-lg leading-relaxed mb-8" style="max-width: 600px; color: rgba(255,255,255,0.72); line-height: 1.75;"
        data-en="Specialist construction dust removal, cabinet washing, surface disinfection and steam treatment after renovation or construction work. We make your newly renovated home truly move-in ready."
        data-fi="Erikoistunut rakennuspölyn poisto, kaappien pesu, pintojen desinfiointi ja höyrykäsittely remontin tai rakennustöiden jälkeen. Teemme juuri remontoidusta kodistasi todella muuttovalmiin."></p>
     <div class="flex flex-wrap gap-3 mb-10">
-      <span class="stat-chip">✓ <span data-en="HEPA filtration" data-fi="HEPA-suodatus"></span></span>
-      <span class="stat-chip">✓ <span data-en="Steam treatment included" data-fi="Höyrykäsittely sisältyy"></span></span>
-      <span class="stat-chip">✓ <span data-en="Move-in ready" data-fi="Muuttovalmis"></span></span>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="HEPA filtration" data-fi="HEPA-suodatus"></span>
+      </span>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="Steam treatment included" data-fi="Höyrykäsittely sisältyy"></span>
+      </span>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="Move-in ready" data-fi="Muuttovalmis"></span>
+      </span>
     </div>
     <div class="flex flex-wrap gap-3">
       <a href="index.html#contact" class="btn-primary" data-en="Get a Free Quote" data-fi="Pyydä Ilmainen Tarjous"></a>
-      <a href="#what-included" class="btn-outline" data-en="See What's Included" data-fi="Katso Mitä Sisältyy"></a>
+      <a href="#what-included" class="btn-outline" style="border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.85);" data-en="See What's Included" data-fi="Katso Mitä Sisältyy"></a>
     </div>
   </div>
 </section>

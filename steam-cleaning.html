@@ -95,6 +95,7 @@
       --green-light: #edf7ec;
       --teal: #0fb8c9;
       --dark: #1a2e1a;
+      --deeper: #0d180d;
     }
 
     .btn-primary {
@@ -161,8 +162,36 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(58,170,53,0.07);
     }
 
-    .hero-bg {
-      background: linear-gradient(135deg, #edf7ec 0%, #d4eed3 60%, #c2e8c0 100%);
+    .hero-section-page {
+      position: relative;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+      background: var(--deeper);
+    }
+    .hero-photo-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+    }
+    .hero-overlay-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,24,13,0.65) 0%, rgba(13,24,13,0.3) 50%, rgba(13,24,13,0.8) 100%);
+    }
+    .hero-content-z { position: relative; z-index: 2; }
+    .glass-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
@@ -307,30 +336,32 @@
 </div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero-bg py-20 px-6">
-  <div class="max-w-6xl mx-auto">
-    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: var(--green);">
+<section class="hero-section-page">
+  <div class="hero-photo-bg" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1400&q=80&auto=format&fit=crop');"></div>
+  <div class="hero-overlay-page"></div>
+  <div class="hero-content-z max-w-6xl mx-auto">
+    <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: #6ddd68; letter-spacing: 0.12em;">
       Höyrypesu Tampere / Steam Cleaning Tampere
     </p>
-    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-6" style="letter-spacing: -0.03em; color: #1a2e1a; max-width: 760px;"
+    <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-6" style="letter-spacing: -0.03em; color: #fff; max-width: 760px;"
       data-en="Professional Steam Cleaning in Tampere"
       data-fi="Ammattimainen Höyrypesu Tampereella">
     </h1>
-    <p class="text-lg text-gray-600 leading-relaxed mb-8" style="max-width: 600px;"
+    <p class="text-lg leading-relaxed mb-8" style="max-width: 600px; color: rgba(255,255,255,0.72); line-height: 1.75;"
       data-en="Chemical-free, high-temperature steam sanitisation that kills 99.9% of bacteria and allergens. No harsh chemicals — safe for children, pets and allergy sufferers."
       data-fi="Kemikaaliton, korkean lämpötilan höyrysanitaatio, joka tuhoaa 99,9 % bakteereista ja allergeeneista. Ei voimakkaita kemikaaleja — turvallinen lapsille, lemmikeille ja allergikoille.">
     </p>
     <div class="flex flex-wrap gap-3 mb-8">
-      <span class="stat-chip">
-        <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#2a8226" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span data-en="No chemicals" data-fi="Ei kemikaaleja"></span>
       </span>
-      <span class="stat-chip">
-        <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#2a8226" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span data-en="99.9% bacteria-free" data-fi="99,9 % bakteerivapaa"></span>
       </span>
-      <span class="stat-chip">
-        <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#2a8226" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="glass-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#6ddd68" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span data-en="Safe for allergies" data-fi="Turvallinen allergikoille"></span>
       </span>
     </div>
