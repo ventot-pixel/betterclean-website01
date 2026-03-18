@@ -252,6 +252,21 @@
       font-size: 13px; font-weight: 600;
       color: var(--green-dark);
     }
+
+    /* ── Mobile nav ── */
+    .nav-logo-wrap { height: 52px; overflow: hidden; display: flex; align-items: center; }
+    @media (min-width: 768px) { .nav-logo-wrap { height: 72px; } }
+    .hamburger-btn { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: #f1f5f0; border-radius: 6px; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
+    .hamburger-btn span { display: block; width: 100%; height: 2px; background: var(--dark); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (min-width: 768px) { .hamburger-btn { display: none; } }
+    .mobile-nav { display: none; background: #fff; border-top: 1px solid #e8f0e7; padding: 8px 24px 24px; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 14px 0; font-size: 15px; font-weight: 600; color: #374151; border-bottom: 1px solid #f0f4f0; font-family: 'Sora', sans-serif; text-decoration: none; }
+    .mobile-nav a:hover { color: var(--green); }
+    .mobile-nav .mobile-cta { border-bottom: none; margin-top: 16px; text-align: center; }
   </style>
 </head>
 <body>
@@ -260,7 +275,7 @@
 <nav class="px-6 py-4">
   <div class="max-w-6xl mx-auto flex items-center justify-between">
     <a href="index.html" class="flex flex-col items-start">
-      <div style="height: 72px; overflow: hidden; display: flex; align-items: center;">
+      <div class="nav-logo-wrap">
         <img src="brand_assets/betterclean-logo.png" alt="BetterClean" style="height: 296px; width: auto;" />
       </div>
       <span class="text-xs font-semibold uppercase tracking-widest mt-1" style="color: var(--green); letter-spacing: 0.12em;" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
@@ -277,9 +292,19 @@
         <button class="lang-btn active" onclick="setLang('fi')">FI</button>
       </div>
       <a href="index.html#contact" class="btn-primary text-sm hidden md:inline-block" data-en="Book Now" data-fi="Varaa Nyt"></a>
+      <button class="hamburger-btn" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#why" onclick="closeMobileNav()" data-en="Why Us" data-fi="Miksi Me"></a>
+  <a href="index.html#services" onclick="closeMobileNav()" data-en="Services" data-fi="Palvelut"></a>
+  <a href="pricing.html" onclick="closeMobileNav()" data-en="Pricing" data-fi="Hinnat"></a>
+  <a href="index.html#contact" onclick="closeMobileNav()" data-en="Contact" data-fi="Yhteystiedot"></a>
+  <a href="index.html#contact" class="btn-primary mobile-cta" onclick="closeMobileNav()" data-en="Book Now" data-fi="Varaa Nyt"></a>
+</div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero-bg py-20 px-6">
@@ -817,6 +842,15 @@
 
     // Update html lang attr
     document.documentElement.lang = lang;
+  }
+
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
   }
 
   // Initialize Finnish on load
