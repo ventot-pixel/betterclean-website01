@@ -15,7 +15,7 @@
 - If the server is already running, do not start a second instance.
 
 ## Screenshot Workflow
-- Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
+- **macOS machine** — Puppeteer paths from older sessions (C:/Users/nateh/...) are Windows paths and do not apply here.
 - **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
 - Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
 - Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
@@ -33,10 +33,69 @@
 ## Brand Assets
 - Always check the `brand_assets/` folder before designing. It may contain logos, color guides, style guides, or images.
 - If assets exist there, use them. Do not use placeholders where real assets are available.
-- If a logo is present, use it. If a color palette is defined, use those exact values — do not invent brand colors.
+- **Canonical logo:** `brand_assets/betterclean-logo.png` — use this on all pages. Do not use other logo variants.
+- `brand_assets/premium_pricing.html` is a design reference for the pricing page — check it when working on pricing.
+
+## Brand Tokens (do not invent, do not override)
+- **Primary green:** `--green: #3aaa35`
+- **Dark green:** `--green-dark: #2a8226`
+- **Light green:** `--green-light: #edf7ec`
+- **Teal accent:** `--teal: #0fb8c9`
+- **Dark:** `--dark: #1a2e1a`
+- **Display font:** Sora (all headings, buttons, labels)
+- **Body font:** Inter
+- **Button shadow:** `0 4px 16px rgba(58,170,53,0.28)`
+- These tokens are defined in every page's `<style>` block. Never change them or add alternatives.
+
+## Multi-Page Consistency
+- This site has 5 pages: `index.html`, `pricing.html`, `window-cleaning.html`, `steam-cleaning.html`, `post-renovation-cleaning.html`.
+- Before editing any page, read at least one other page to verify nav, footer, CSS variable definitions, and button styles — then match them exactly.
+- Nav and footer HTML must be **identical** across all pages (same links, same logo, same lang toggle, same contact CTA).
+- Do not add CSS variables or redefine brand tokens inside a single page — they are always in `:root {}` at the top of `<style>`.
+
+## Bilingual Copy (FI / EN)
+- All user-facing copy must exist in **both Finnish and English**.
+- **Finnish is the primary language** (`lang="fi"`). Every page initialises to Finnish on load: `setLang('fi')`.
+- The toggle uses `data-en="..."` and `data-fi="..."` attributes on every translatable element.
+- The language script (`setLang` function) is identical on all pages — copy it exactly, do not modify.
+- Never add English-only content. Every string added must have both `data-en` and `data-fi` values.
+- When adding new translatable elements, follow the existing pattern: `<element data-en="English text" data-fi="Finnish text"></element>`.
+
+## SEO
+- Every page must have: `<title>`, `<meta name="description">`, `<meta name="keywords">`, `<link rel="canonical">`, `og:title`, `og:description`, `og:type`.
+- Include Finnish keywords in `<meta name="keywords">` alongside English terms.
+- Canonical URLs use the format `https://betterclean.fi/page-name.html` (no trailing slash except on index: `https://betterclean.fi/`).
+- Never remove or simplify existing meta tags when editing a page.
+
+## AEO — AI Search Optimisation (Answer Engine Optimisation)
+- Every page must include a `<script type="application/ld+json">` block with appropriate Schema.org structured data.
+- Schema types by page:
+  - `index.html` → `LocalBusiness` + `WebSite`
+  - `pricing.html` → `LocalBusiness` + `Service` offers with prices
+  - `window-cleaning.html` → `Service` + `FAQPage`
+  - `steam-cleaning.html` → `Service` + `FAQPage`
+  - `post-renovation-cleaning.html` → `Service` + `FAQPage`
+- FAQ sections must use plain conversational language — AI assistants pull answers directly from these.
+- Never remove structured data when editing pages.
+- When adding new FAQ items to the HTML, add matching `Question`/`Answer` entries to the JSON-LD block on the same page.
+
+## Before Major Changes — Bug & Error Prevention
+- **Create a git save point first:** `git add -A && git commit -m "Save point before [description]"` — always do this before significant edits.
+- **Take a "before" screenshot** of all affected pages before making changes.
+- After changes, validate HTML: `npx html-validate *.html`
+- Do a visual pass across **all 5 pages**, not just the edited one — nav/footer changes affect every page.
+- After changes, take an "after" screenshot and compare explicitly against the "before".
+
+## Git — Save Points & Revert
+- The project is a git repository. Every commit is a save point you can return to at any time.
+- To see all save points: `git log --oneline`
+- To revert a single file to the last commit: `git checkout -- filename.html`
+- To revert everything to the last commit: `git checkout -- .`
+- To restore a specific file from any past commit: `git checkout <hash> -- filename.html`
+- Never force-push or reset hard without user confirmation.
 
 ## Anti-Generic Guardrails
-- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Pick a custom brand color and derive from it.
+- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Use the brand tokens above.
 - **Shadows:** Never use flat `shadow-md`. Use layered, color-tinted shadows with low opacity.
 - **Typography:** Never use the same font for headings and body. Pair a display/serif with a clean sans. Apply tight tracking (`-0.03em`) on large headings, generous line-height (`1.7`) on body.
 - **Gradients:** Layer multiple radial gradients. Add grain/texture via SVG noise filter for depth.
@@ -52,3 +111,5 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+- Do not remove or alter JSON-LD structured data blocks
+- Do not add content in only one language — always both FI and EN
