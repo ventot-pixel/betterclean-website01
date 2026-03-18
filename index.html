@@ -221,14 +221,14 @@
     .price-card.featured { border: 2px solid var(--green); position: relative; }
 
     /* ── Mobile nav ── */
-    .nav-logo-wrap { height: 52px; overflow: hidden; display: flex; align-items: center; }
+    .nav-logo-wrap { height: 42px; overflow: hidden; display: flex; align-items: center; }
     @media (min-width: 768px) { .nav-logo-wrap { height: 72px; } }
+    .nav-slogan { display: block; color: var(--green); font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; margin-top: 3px; }
     .hamburger-btn { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: #f1f5f0; border-radius: 6px; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
     .hamburger-btn span { display: block; width: 100%; height: 2px; background: var(--dark); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
     .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger-btn.open span:nth-child(2) { opacity: 0; }
     .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    @media (min-width: 768px) { .hamburger-btn { display: none; } }
     .mobile-nav { display: none; background: #fff; border-top: 1px solid #e8f0e7; padding: 8px 24px 24px; }
     .mobile-nav.open { display: block; }
     .mobile-nav a { display: block; padding: 14px 0; font-size: 15px; font-weight: 600; color: #374151; border-bottom: 1px solid #f0f4f0; font-family: 'Sora', sans-serif; text-decoration: none; }
@@ -242,25 +242,17 @@
 <!-- ═══════════════════════ NAV ═══════════════════════ -->
 <nav class="px-6 py-4">
   <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <a href="index.html" class="flex flex-col items-start">
+    <a href="index.html" class="flex flex-col items-start" style="min-width: 0;">
       <div class="nav-logo-wrap">
         <img src="brand_assets/betterclean-logo.png" alt="BetterClean" style="height: 296px; width: auto;" />
       </div>
-      <span class="text-xs font-semibold uppercase tracking-widest mt-1" style="color: var(--green); letter-spacing: 0.12em;" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
+      <span class="nav-slogan" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
     </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="window-cleaning.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a>
-      <a href="steam-cleaning.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu"></a>
-      <a href="post-renovation-cleaning.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Post-Renovation" data-fi="Remonttisiivous"></a>
-      <a href="pricing.html" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Pricing" data-fi="Hinnat"></a>
-      <a href="#contact" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition-colors" data-en="Contact" data-fi="Yhteystiedot"></a>
-    </div>
     <div class="flex items-center gap-4">
       <div class="lang-toggle">
         <button class="lang-btn" onclick="setLang('en')">EN</button>
         <button class="lang-btn active" onclick="setLang('fi')">FI</button>
       </div>
-      <a href="#contact" class="btn-primary text-sm hidden md:inline-block" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
       <button class="hamburger-btn" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
