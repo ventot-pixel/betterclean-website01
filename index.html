@@ -65,6 +65,7 @@
   }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="pricing.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -930,9 +931,9 @@
               <p class="text-sm text-gray-500" id="pay-address"></p>
             </div>
             <div class="text-right">
-              <p class="text-xs text-gray-500 mb-1" data-en="Estimated total" data-fi="Arvioitu hinta"></p>
-              <p class="text-2xl font-display font-bold" style="color: var(--green);">114 €</p>
-              <p class="text-xs text-gray-400" data-en="2h · incl. VAT 25.5%" data-fi="2h · sis. ALV 25,5%"></p>
+              <p class="text-xs text-gray-500 mb-1" id="widget-price-label" data-en="Estimated total" data-fi="Arvioitu hinta"></p>
+              <p class="text-2xl font-display font-bold" id="widget-price-display" style="color: var(--green);">114 €</p>
+              <p class="text-xs text-gray-400" id="widget-hours-label" data-en="2h · incl. VAT 25.5%" data-fi="2h · sis. ALV 25,5%"></p>
             </div>
           </div>
           <p class="text-xs text-gray-500 border-t border-green-200 pt-3" data-en="💡 Finnish households may be eligible for Kotitalousvähennys (household tax deduction)  -  reducing your net cost significantly." data-fi="💡 Suomalaiset kotitaloudet voivat olla oikeutettuja kotitalousvähennykseen  -  mikä vähentää todellista kustannustasi merkittävästi."></p>
@@ -1049,7 +1050,32 @@
     document.getElementById('summary-date').textContent = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
   }
   function selectTime(btn, time) { document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); booking.time = time; document.getElementById('summary-time').textContent = time; }
-  function selectSize(btn, size) { document.querySelectorAll('.size-btn').forEach(b => { b.classList.remove('selected'); b.style.borderColor = ''; b.style.background = ''; }); btn.classList.add('selected'); booking.size = size; }
+  function selectSize(btn, size) { document.querySelectorAll('.size-btn').forEach(b => { b.classList.remove('selected'); b.style.borderColor = ''; b.style.background = ''; }); btn.classList.add('selected'); booking.size = size; updateWidgetPrice(); }
+
+  function updateWidgetPrice() {
+    const lang = window.currentLang || 'fi';
+    const est = calcWidgetEstimate(booking.service, booking.size);
+    const priceEl = document.getElementById('widget-price-display');
+    const hoursEl = document.getElementById('widget-hours-label');
+    const labelEl = document.getElementById('widget-price-label');
+    if (!est) {
+      // Specialty / custom quote
+      priceEl.textContent = lang === 'fi' ? 'Tarjouspyyntö' : 'Request a quote';
+      hoursEl.setAttribute('data-en', 'We\'ll send a personalised quote');
+      hoursEl.setAttribute('data-fi', 'Lähetämme henkilökohtaisen tarjouksen');
+      hoursEl.textContent = lang === 'fi' ? 'Lähetämme henkilökohtaisen tarjouksen' : 'We\'ll send a personalised quote';
+      labelEl.setAttribute('data-en', 'Pricing'); labelEl.setAttribute('data-fi', 'Hinta');
+      labelEl.textContent = lang === 'fi' ? 'Hinta' : 'Pricing';
+    } else {
+      priceEl.textContent = est.price + ' €';
+      const hoursEn = est.hours + 'h · incl. VAT 25.5%';
+      const hoursFi = est.hours + 'h · sis. ALV 25,5%';
+      hoursEl.setAttribute('data-en', hoursEn); hoursEl.setAttribute('data-fi', hoursFi);
+      hoursEl.textContent = lang === 'fi' ? hoursFi : hoursEn;
+      labelEl.setAttribute('data-en', 'Estimated total'); labelEl.setAttribute('data-fi', 'Arvioitu hinta');
+      labelEl.textContent = lang === 'fi' ? 'Arvioitu hinta' : 'Estimated total';
+    }
+  }
   document.querySelectorAll('input[name="service"]').forEach(radio => {
     radio.addEventListener('change', function() {
       document.querySelectorAll('.service-opt').forEach(opt => { opt.style.borderColor = ''; opt.style.background = ''; });
@@ -1059,6 +1085,7 @@
       const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const lang = window.currentLang || 'fi';
       document.getElementById('summary-service').textContent = serviceNames[this.value][lang === 'fi' ? 1 : 0];
+      updateWidgetPrice();
     });
   });
   function goToStep(n) {
@@ -1095,6 +1122,7 @@
   function submitBooking() { goToStep(4); }
   initCal();
   document.getElementById('summary-service').textContent = 'Peruskodin Hoito';
+  updateWidgetPrice();
 </script>
 
 <!-- ═══════════════════════ FOOTER ═══════════════════════ -->

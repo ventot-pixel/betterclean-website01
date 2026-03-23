@@ -120,3 +120,122 @@
 - Do not remove or alter JSON-LD structured data blocks
 - Do not add content in only one language — always both FI and EN
 - Do not use en dashes (–) or em dashes (—) — use hyphens instead
+
+---
+
+## Project Overview
+
+**Business:** BetterClean — premium home cleaning company based in Tampere, Finland.
+**Goal:** Keep the website running, improve SEO + AEO (AI search optimisation), and convert visitors to quote requests.
+**Local path:** `/Users/venm3/Desktop/FINLAND BUSINESS/Better Clean/Better Clean Website/`
+**GitHub:** `https://github.com/ventot-pixel/betterclean-website01` (branch: main)
+**Live domain:** `https://betterclean.fi`
+**Stack:** Static HTML5, Tailwind CSS via CDN, vanilla JS, no build tools.
+**Dev server:** `node serve.mjs` → `http://localhost:3000`
+
+---
+
+## Canonical Pricing (source of truth — update here first, then update pricing.js)
+
+All prices include VAT 25.5%. Kotitalousvähennys = 35% off labour, omavastuu 150 €/hlö/vuosi.
+
+| Service | Rate | After kotitalousvähennys | Minimum |
+|---|---|---|---|
+| Recurring home cleaning | 57 €/h | 37,05 €/h | 2 h |
+| One-time home cleaning | 65 €/h | 42,25 €/h | 2 h |
+| Deep cleaning / suursiivous | 69 €/h | 44,85 €/h | 3 h |
+| Move-out / muuttosiivous | 69 €/h | 44,85 €/h | 4 h |
+| Window cleaning / ikkunanpesu | 69 €/h | 44,85 €/h | 2 h |
+| Post-renovation / remonttisiivous | 75 €/h | 48,75 €/h | 4 h |
+
+**Window cleaning estimates:**
+- Apartment: 119-159 €
+- House: 179-229 €
+- Balcony glazing add-on: +59 €
+
+**Steam cleaning (fixed-price menu — no per-hour rate shown):**
+- Single mattress: 89 €
+- Double mattress: 129 €
+- 2-seat sofa: 129 €, additional seat +35 €
+- Armchair: 89 €
+- Bathroom / sauna: alkaen 149 €
+
+**Kotitalousvähennys disclaimer (use verbatim):**
+FI: "Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä. Omavastuu 150 €/hlö/vuosi. Materiaalit ja matkakulut eivät kuulu vähennykseen."
+EN: "Household tax deduction: 35% of labour costs when purchased from a registered company. Personal deductible: €150/person/year. Materials and travel costs are not deductible."
+
+**Price format rules:**
+- Finnish format always: `57 €/h`, `37,05 €/h`, `119 €`, `+59 €`
+- Never: `€57/hr`, `€57/h`, `45.50`, `+€60/session`
+- Show kotitalousvähennys exact amounts ONLY for labor-only hourly rates
+- Do NOT show exact after-tax amounts for fixed-price or bundled items
+
+---
+
+## File Map
+
+| File | Purpose | Key sections |
+|---|---|---|
+| `index.html` | Homepage | Hero, service tier cards (3), specialty strip, why section, booking widget (3-step), testimonials, contact |
+| `pricing.html` | Full pricing page | Core service cards, steam fixed menu, extraction table, add-ons, packages, notes box |
+| `window-cleaning.html` | Window cleaning service | What's included checklist, price table card, why professional, FAQ (5 items) |
+| `steam-cleaning.html` | Steam cleaning service | What we steam, fixed-price card, why steam, comparison table, FAQ |
+| `post-renovation-cleaning.html` | Post-reno service | What's included checklist, price card, why specialist, 4-step process, FAQ |
+| `pricing.js` | Centralized price constants | All prices as JS constants, booking widget calculator |
+| `serve.mjs` | Dev server | Serves project root at localhost:3000 |
+| `screenshot.mjs` | Puppeteer screenshots | Saves to `./temporary screenshots/screenshot-N.png` |
+| `brand_assets/` | Logo, images | `betterclean-logo.png` is canonical logo |
+| `brand_assets/premium_pricing.html` | Design reference | Check when working on pricing page layout |
+
+**Important shared patterns across all pages:**
+- Nav: logo + lang toggle (FI default) + hamburger mobile menu
+- Footer: logo, services list, company links, Tampere contact
+- Language script: `setLang(lang)` function — identical on all pages, never modify
+- CSS variables in `:root {}` — never redefine per-page
+- JSON-LD structured data block — never remove
+
+---
+
+## AEO Strategy (AI Search Optimisation)
+
+The goal is for AI assistants (ChatGPT, Claude, Perplexity, Google AI) to recommend BetterClean when someone asks "best cleaning company in Tampere" or "how much does window cleaning cost in Finland."
+
+**What's in place:**
+- JSON-LD on every page (LocalBusiness, Service, FAQPage schemas)
+- FAQ sections written in plain conversational Finnish + English
+- Prices in visible text AND JSON-LD (AI crawlers read both)
+- Bilingual content (Finnish primary, English secondary)
+- Canonical URLs + og: tags
+
+**What to improve next:**
+- Add `Review`/`AggregateRating` schema once reviews are collected
+- Add `HowTo` schema to the booking process section on index.html
+- Expand FAQ sections — aim for 8-10 questions per service page
+- Add a blog/articles section for long-tail keyword capture
+- Add `serviceArea` with postcodes to JSON-LD for hyper-local signals
+
+---
+
+## Known Issues / Next Steps
+
+**Active issues:**
+- Booking widget on index.html shows a dynamic estimated price but no real payment integration — it is UI only. Treat it as a quote request form.
+- No analytics yet (Google Analytics / Plausible) — no conversion tracking.
+- No contact form backend — the booking form submits nowhere currently.
+
+**Priority backlog (in order):**
+1. Contact form backend (Formspree or similar — no server needed)
+2. Google Analytics 4 + conversion event on form submit
+3. Add 3-5 real customer reviews + AggregateRating schema
+4. Expand FAQ to 8+ questions per service page (AEO boost)
+5. Blog section: "How often should you clean your windows in Finland?" type posts
+6. Add HowTo schema to booking process section
+
+**Pricing change workflow (when prices change):**
+1. Update the table in this CLAUDE.md first
+2. Update `pricing.js` constants
+3. Run `node update-prices.mjs` if it exists, or manually grep + update all 5 HTML files
+4. Update JSON-LD price values in each page's structured data
+5. Run `npx html-validate *.html`
+6. Screenshot all 5 pages
+7. Commit with message "Update pricing: [what changed]"
