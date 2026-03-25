@@ -790,8 +790,8 @@
     <!-- Step indicators -->
     <div class="flex items-center justify-center gap-0 mb-10">
       <div class="flex items-center gap-2" id="ind-1">
-        <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold font-display text-white" style="background: var(--green);">1</div>
-        <span class="text-sm font-semibold hidden sm:block" style="color: var(--green);" data-en="Date & Time" data-fi="Aika"></span>
+        <div id="ind-1-circle" class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold font-display text-white" style="background: var(--green);">1</div>
+        <span id="ind-1-label" class="text-sm font-semibold hidden sm:block" style="color: var(--green);" data-en="Date & Time" data-fi="Aika"></span>
       </div>
       <div class="w-10 h-px bg-gray-200 mx-2"></div>
       <div class="flex items-center gap-2" id="ind-2">
@@ -894,7 +894,8 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-end mt-8 pt-6 border-t border-gray-100">
+        <div class="flex justify-end items-center gap-4 mt-8 pt-6 border-t border-gray-100">
+          <p id="step-1-error" class="hidden text-sm text-red-600"></p>
           <button onclick="goToStep(2)" class="btn-primary" data-en="Continue →" data-fi="Jatka →"></button>
         </div>
       </div>
@@ -915,7 +916,8 @@
           <div class="md:col-span-2"><label data-en="Address (street & city) *" data-fi="Osoite (katu ja kaupunki) *"></label><input type="text" id="inp-address" /></div>
           <div class="md:col-span-2"><label data-en="Special instructions (optional)" data-fi="Erityisohjeet (valinnainen)"></label><textarea rows="3" id="inp-notes"></textarea></div>
         </div>
-        <div class="flex justify-between mt-8 pt-6 border-t border-gray-100">
+        <p id="step-2-error" class="hidden text-sm text-red-600 mt-4"></p>
+        <div class="flex justify-between mt-4 pt-6 border-t border-gray-100">
           <button onclick="goToStep(1)" class="btn-outline" data-en="← Back" data-fi="← Takaisin"></button>
           <button onclick="goToStep(3)" class="btn-primary" data-en="Continue to Payment →" data-fi="Jatka Maksuun →"></button>
         </div>
@@ -982,9 +984,10 @@
         <div id="redirect-notice" class="hidden rounded-xl p-5 border border-gray-200 text-center text-sm text-gray-600 mb-6">
           <p data-en="You'll be redirected to your bank's secure login to complete payment." data-fi="Sinut ohjataan pankkinsi turvalliseen kirjautumiseen maksun suorittamiseksi."></p>
         </div>
+        <p id="step-3-error" class="hidden text-sm text-red-600 mb-3"></p>
         <div class="flex justify-between pt-6 border-t border-gray-100">
           <button onclick="goToStep(2)" class="btn-outline" data-en="← Back" data-fi="← Takaisin"></button>
-          <button onclick="submitBooking()" class="btn-primary text-lg px-10" data-en="Vahvista varaus" data-fi="Vahvista varaus"></button>
+          <button onclick="submitBooking()" class="btn-primary text-lg px-10" data-en="Confirm Booking" data-fi="Vahvista varaus"></button>
         </div>
       </div>
 
@@ -1016,10 +1019,22 @@
 </style>
 
 <script>
+  const BOOKING_EMAIL = 'info@betterclean.fi';
+  const FORMSPREE_ENDPOINT = ''; // Optional: set to 'https://formspree.io/f/xxxxx' when ready
+
   const booking = { service: 'home', size: 'small', date: null, time: null };
   let calYear, calMonth;
   const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const MONTHS_FI = ['Tammikuu','Helmikuu','Maaliskuu','Huhtikuu','Toukokuu','Kesäkuu','Heinäkuu','Elokuu','Syyskuu','Lokakuu','Marraskuu','Joulukuu'];
+
+  function showStepError(step, msg) {
+    const el = document.getElementById('step-' + step + '-error');
+    if (el) { el.textContent = msg; el.classList.remove('hidden'); }
+  }
+  function hideStepError(step) {
+    const el = document.getElementById('step-' + step + '-error');
+    if (el) el.classList.add('hidden');
+  }
 
   function initCal() { const now = new Date(); calYear = now.getFullYear(); calMonth = now.getMonth(); renderCal(); }
   function changeMonth(dir) { calMonth += dir; if (calMonth > 11) { calMonth = 0; calYear++; } if (calMonth < 0) { calMonth = 11; calYear--; } renderCal(); }
@@ -1060,7 +1075,6 @@
     const hoursEl = document.getElementById('widget-hours-label');
     const labelEl = document.getElementById('widget-price-label');
     if (!est) {
-      // Specialty / custom quote
       priceEl.textContent = lang === 'fi' ? 'Tarjouspyyntö' : 'Request a quote';
       hoursEl.setAttribute('data-en', 'We\'ll send a personalised quote');
       hoursEl.setAttribute('data-fi', 'Lähetämme henkilökohtaisen tarjouksen');
@@ -1089,12 +1103,32 @@
       updateWidgetPrice();
     });
   });
+
   function goToStep(n) {
+    const lang = window.currentLang || 'fi';
+    if (n === 2) {
+      if (!booking.date) { showStepError(1, lang === 'fi' ? 'Valitse päivä ennen jatkamista.' : 'Please select a date before continuing.'); return; }
+      if (!booking.time) { showStepError(1, lang === 'fi' ? 'Valitse aika ennen jatkamista.' : 'Please select a time before continuing.'); return; }
+      hideStepError(1);
+    }
+    if (n === 3) {
+      const first = document.getElementById('inp-first').value.trim();
+      const last = document.getElementById('inp-last').value.trim();
+      const email = document.getElementById('inp-email').value.trim();
+      const phone = document.getElementById('inp-phone').value.trim();
+      const address = document.getElementById('inp-address').value.trim();
+      if (!first || !last || !email || !phone || !address) {
+        showStepError(2, lang === 'fi' ? 'Täytä kaikki pakolliset kentät (*).' : 'Please fill in all required fields (*).'); return;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        showStepError(2, lang === 'fi' ? 'Tarkista sähköpostiosoite.' : 'Please enter a valid email address.'); return;
+      }
+      hideStepError(2);
+    }
     [1,2,3,4].forEach(i => document.getElementById('step-' + i).classList.add('hidden'));
     document.getElementById('step-' + n).classList.remove('hidden');
     updateStepIndicators(n);
     if (n === 3) {
-      const lang = window.currentLang || 'fi';
       const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const months = lang === 'fi' ? MONTHS_FI : MONTHS_EN;
       document.getElementById('pay-service-name').textContent = serviceNames[booking.service][lang === 'fi' ? 1 : 0];
@@ -1103,14 +1137,17 @@
     }
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
   function updateStepIndicators(n) {
-    [2,3].forEach(i => {
+    [1,2,3].forEach(i => {
       const circle = document.getElementById('ind-' + i + '-circle');
       const label = document.getElementById('ind-' + i + '-label');
+      if (!circle) return;
       if (i <= n) { circle.style.background = 'var(--green)'; circle.style.color = '#fff'; if (label) label.style.color = 'var(--green)'; }
       else { circle.style.background = '#f3f4f6'; circle.style.color = '#9ca3af'; if (label) label.style.color = '#9ca3af'; }
     });
   }
+
   function selectPayMethod(btn, method) {
     document.querySelectorAll('.pay-method-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
@@ -1120,7 +1157,81 @@
   }
   function formatCard(el) { let v = el.value.replace(/\D/g, '').slice(0, 16); el.value = v.replace(/(.{4})/g, '$1 ').trim(); }
   function formatExpiry(el) { let v = el.value.replace(/\D/g, '').slice(0, 4); if (v.length >= 3) v = v.slice(0,2) + '/' + v.slice(2); el.value = v; }
-  function submitBooking() { goToStep(4); }
+
+  async function submitBooking() {
+    const lang = window.currentLang || 'fi';
+    const btn = document.querySelector('#step-3 button[onclick="submitBooking()"]');
+    const serviceNames = { home: 'Essential Home Care', deep: 'Signature Deep Clean', office: 'Move / Reset Cleaning', event: 'Specialty Services' };
+    const dateStr = booking.date ? `${booking.date.getDate()} ${MONTHS_EN[booking.date.getMonth()]} ${booking.date.getFullYear()}` : '';
+    const selectedPayBtn = document.querySelector('.pay-method-btn.selected');
+    const payMethod = selectedPayBtn ? (selectedPayBtn.querySelector('span')?.textContent || 'Card') : 'Card';
+    const firstName = document.getElementById('inp-first').value.trim();
+    const lastName = document.getElementById('inp-last').value.trim();
+    const email = document.getElementById('inp-email').value.trim();
+
+    const data = {
+      service: serviceNames[booking.service] || booking.service,
+      size: booking.size,
+      date: dateStr,
+      time: booking.time || '',
+      firstName, lastName, email,
+      phone: document.getElementById('inp-phone').value.trim(),
+      address: document.getElementById('inp-address').value.trim(),
+      notes: document.getElementById('inp-notes').value.trim(),
+      paymentMethod: payMethod,
+      estimatedPrice: document.getElementById('widget-price-display').textContent,
+      _subject: 'New BetterClean Booking — ' + firstName + ' ' + lastName,
+      _replyto: email
+    };
+
+    btn.disabled = true;
+    btn.textContent = lang === 'fi' ? 'Lähetetään...' : 'Sending...';
+    hideStepError(3);
+
+    let success = false;
+
+    if (FORMSPREE_ENDPOINT) {
+      try {
+        const r = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        success = r.ok;
+      } catch(e) { success = false; }
+    }
+
+    if (!success) {
+      const body = [
+        'New Booking Request',
+        '',
+        'Service: ' + data.service,
+        'Size: ' + data.size,
+        'Date: ' + data.date,
+        'Time: ' + data.time,
+        '',
+        'Name: ' + data.firstName + ' ' + data.lastName,
+        'Email: ' + data.email,
+        'Phone: ' + data.phone,
+        'Address: ' + data.address,
+        'Notes: ' + (data.notes || '—'),
+        '',
+        'Payment Method: ' + data.paymentMethod,
+        'Estimated Price: ' + data.estimatedPrice
+      ].join('\n');
+      window.location.href = 'mailto:' + BOOKING_EMAIL + '?subject=' + encodeURIComponent(data._subject) + '&body=' + encodeURIComponent(body);
+      success = true;
+    }
+
+    if (success) {
+      goToStep(4);
+    } else {
+      btn.disabled = false;
+      btn.textContent = lang === 'fi' ? 'Vahvista varaus' : 'Confirm Booking';
+      showStepError(3, lang === 'fi' ? 'Lähetys epäonnistui. Yritä uudelleen.' : 'Submission failed. Please try again.');
+    }
+  }
+
   initCal();
   document.getElementById('summary-service').textContent = 'Peruskodin Hoito';
   updateWidgetPrice();
