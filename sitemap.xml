@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://betterclean.fi/</loc>
+    <loc>https://www.betterclean.fi/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://betterclean.fi/pricing.html</loc>
+    <loc>https://www.betterclean.fi/pricing.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://betterclean.fi/steam-cleaning.html</loc>
+    <loc>https://www.betterclean.fi/steam-cleaning.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://betterclean.fi/window-cleaning.html</loc>
+    <loc>https://www.betterclean.fi/window-cleaning.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://betterclean.fi/post-renovation-cleaning.html</loc>
+    <loc>https://www.betterclean.fi/post-renovation-cleaning.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.betterclean.fi/privacy-policy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>
