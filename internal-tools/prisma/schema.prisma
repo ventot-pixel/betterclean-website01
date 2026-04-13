@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  NEW
+  AWAITING_REPLY
+  CONTACTED
+  QUALIFIED
+  QUOTE_SENT
+  WON
+  LOST
+  SPAM
+  OUT_OF_AREA
+}
+
+enum LeadPriority {
+  HOT
+  WARM
+  COLD
+}
+
+model Contact {
+  id               String   @id @default(cuid())
+  fullName         String
+  email            String?
+  phone            String?
+  address          String?
+  city             String?
+  language         String   @default("fi")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  leads            Lead[]
+}
+
+model Lead {
+  id               String       @id @default(cuid())
+  contactId        String
+  sourceChannel    String
+  sourcePlatform   String
+  sourcePage       String?
+  serviceType      String
+  propertySize     String?
+  preferredDate    DateTime?
+  preferredTime    String?
+  notes            String?
+  estimatedPrice   String?
+  score            Int          @default(0)
+  priority         LeadPriority @default(COLD)
+  status           LeadStatus   @default(NEW)
+  assignedTo       String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  contact          Contact      @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  events           LeadEvent[]
+
+  @@index([status, priority, createdAt])
+  @@index([sourcePlatform, sourceChannel])
+}
+
+model LeadEvent {
+  id               String   @id @default(cuid())
+  leadId           String
+  eventType        String
+  payloadJson      String
+  createdAt        DateTime @default(now())
+  lead             Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId, createdAt])
+}
