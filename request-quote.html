@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BetterClean Quote Request | Book Home Cleaning or Ask for a Quote</title>
+  <meta name="description" content="Book BetterClean home cleaning in Tampere or send a quick inquiry if you are not ready to book yet. Premium kotisiivous, clear pricing, and fast personal follow-up." />
+  <meta name="keywords" content="request quote tampere cleaning, kotisiivous tarjous tampere, home cleaning booking tampere, siivous tarjouspyyntö tampere, recurring cleaning tampere" />
+  <link rel="canonical" href="https://www.betterclean.fi/request-quote.html" />
+  <meta property="og:title" content="BetterClean Quote Request | Book or Ask for a Quote" />
+  <meta property="og:description" content="Choose between a structured home cleaning booking request and a lighter inquiry form. BetterClean premium cleaning in Tampere." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.betterclean.fi/brand_assets/betterclean-logo.png" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://www.betterclean.fi/#business",
+        "name": "BetterClean",
+        "url": "https://www.betterclean.fi",
+        "telephone": "+358415769236",
+        "email": "info@betterclean.fi",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tampere",
+          "addressRegion": "Pirkanmaa",
+          "addressCountry": "FI"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Home Cleaning Booking and Quote Requests",
+        "provider": {"@id": "https://www.betterclean.fi/#business"},
+        "url": "https://www.betterclean.fi/request-quote.html",
+        "description": "Structured BetterClean booking request and inquiry page for premium home cleaning in Tampere.",
+        "areaServed": [
+          {"@type": "City", "name": "Tampere"},
+          {"@type": "City", "name": "Kangasala"},
+          {"@type": "City", "name": "Ylöjärvi"},
+          {"@type": "City", "name": "Lempäälä"},
+          {"@type": "City", "name": "Pirkkala"},
+          {"@type": "City", "name": "Nokia"}
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "name": "BetterClean Booking and Quote Request",
+        "url": "https://www.betterclean.fi/request-quote.html",
+        "isPartOf": {"@id": "https://www.betterclean.fi/#business"},
+        "inLanguage": ["fi", "en"]
+      }
+    ]
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="pricing.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: linear-gradient(180deg, #f6fbf5 0%, #ffffff 26%); }
+    h1, h2, h3, h4, .font-display { font-family: 'Sora', sans-serif; }
+
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --deeper: #0d180d;
+      --pearl: #f7faf6;
+      --stroke: #dce8da;
+      --orange-soft: #fff1e1;
+    }
+
+    .btn-primary {
+      background: var(--green); color: #fff; font-family: 'Sora', sans-serif;
+      font-weight: 700; padding: 14px 30px; border-radius: 10px; display: inline-block;
+      transition: background 0.2s, transform 0.15s; letter-spacing: -0.01em;
+      box-shadow: 0 4px 16px rgba(58,170,53,0.28); text-decoration: none; border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline {
+      border: 2px solid var(--green); color: var(--green); font-family: 'Sora', sans-serif;
+      font-weight: 700; padding: 12px 26px; border-radius: 10px; display: inline-block;
+      transition: background 0.2s, color 0.2s, border-color 0.2s; text-decoration: none; background: transparent; cursor: pointer;
+    }
+    .btn-outline:hover { background: var(--green); color: #fff; }
+    .btn-soft {
+      background: #fff; color: var(--dark); border: 1px solid var(--stroke); font-family: 'Sora', sans-serif;
+      font-weight: 700; padding: 12px 22px; border-radius: 10px; display: inline-block; text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s; cursor: pointer;
+      box-shadow: 0 10px 28px rgba(26,46,26,0.06);
+    }
+    .btn-soft:hover { border-color: rgba(58,170,53,0.45); transform: translateY(-1px); box-shadow: 0 14px 36px rgba(58,170,53,0.12); }
+
+    .lang-toggle { display: flex; background: #f1f5f0; border-radius: 6px; overflow: hidden; }
+    .lang-btn { padding: 6px 14px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s, color 0.2s; border: none; background: transparent; color: #666; }
+    .lang-btn.active { background: var(--green); color: #fff; }
+    nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
+
+    .nav-logo-wrap { height: 42px; overflow: hidden; display: flex; align-items: center; }
+    @media (min-width: 768px) { .nav-logo-wrap { height: 72px; } }
+    .nav-slogan { display: block; color: var(--green); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; width: 100%; margin-top: 3px; }
+    .hamburger-btn { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: #f1f5f0; border-radius: 6px; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
+    .hamburger-btn span { display: block; width: 100%; height: 2px; background: var(--dark); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display: none; background: #fff; border-top: 1px solid #e8f0e7; padding: 8px 24px 24px; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 14px 0; font-size: 15px; font-weight: 600; color: #374151; border-bottom: 1px solid #f0f4f0; font-family: 'Sora', sans-serif; text-decoration: none; }
+    .mobile-nav a:hover { color: var(--green); }
+    .mobile-nav .mobile-cta { border-bottom: none; margin-top: 16px; text-align: center; }
+
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(58,170,53,0.16), transparent 32%),
+        radial-gradient(circle at right 20%, rgba(15,184,201,0.12), transparent 24%),
+        linear-gradient(180deg, #f5faf4 0%, #ffffff 70%);
+      border-bottom: 1px solid #eef5ed;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.9fr);
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .surface {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--stroke);
+      border-radius: 24px;
+      box-shadow: 0 22px 44px rgba(26,46,26,0.07);
+    }
+    .progress-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .progress-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid var(--stroke);
+      background: #fff;
+      color: #587058;
+    }
+    .progress-pill.active {
+      color: var(--green-dark);
+      border-color: rgba(58,170,53,0.4);
+      background: var(--green-light);
+    }
+
+    .intent-toggle {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 640px) {
+      .intent-toggle { grid-template-columns: 1fr; }
+    }
+    .intent-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 26px rgba(26,46,26,0.04);
+    }
+    .intent-card:hover { transform: translateY(-1px); border-color: rgba(58,170,53,0.32); }
+    .intent-card.active { border-color: rgba(58,170,53,0.48); background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%); box-shadow: 0 18px 40px rgba(58,170,53,0.11); }
+    .intent-card h2 {
+      width: 100%;
+      min-height: 5.5rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .intent-card .muted {
+      width: 100%;
+      margin: 0;
+    }
+    .intent-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .planner-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .planner-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel { padding: 28px; }
+    .panel h2 { letter-spacing: -0.03em; }
+    .muted { color: #5c715c; line-height: 1.7; }
+    .step-card { padding: 24px; border-radius: 20px; border: 1px solid var(--stroke); background: linear-gradient(180deg, #fcfefd 0%, #ffffff 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
+    .field-label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; color: var(--dark); font-family: 'Sora', sans-serif; }
+    .field-help { margin-top: -2px; margin-bottom: 12px; color: #687d68; font-size: 13px; line-height: 1.5; }
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--stroke);
+      border-radius: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      outline: none;
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: rgba(58,170,53,0.56); box-shadow: 0 0 0 4px rgba(58,170,53,0.08); }
+    .choice-grid { display: grid; gap: 12px; }
+    .choice-card {
+      border: 1.5px solid var(--stroke);
+      border-radius: 16px;
+      padding: 16px 18px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 10px 24px rgba(26,46,26,0.04);
+    }
+    .choice-card:hover { transform: translateY(-1px); border-color: rgba(58,170,53,0.35); }
+    .choice-card.active { border-color: rgba(58,170,53,0.55); background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%); box-shadow: 0 18px 38px rgba(58,170,53,0.12); }
+    .choice-row { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .mini-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--orange-soft);
+      color: #ba6d11;
+    }
+    .tiny-note {
+      margin-top: 10px;
+      padding: 14px 16px;
+      background: var(--orange-soft);
+      border: 1px solid rgba(186,109,17,0.12);
+      border-radius: 16px;
+      color: #7f5c24;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .tiny-note strong { color: #5f4114; }
+
+    .extras-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .extra-card {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1.5px solid var(--stroke);
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .extra-card.active { border-color: rgba(58,170,53,0.52); background: var(--green-light); box-shadow: 0 16px 34px rgba(58,170,53,0.12); }
+
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
+      gap: 10px;
+    }
+    .slot-btn {
+      padding: 12px 10px;
+      border-radius: 12px;
+      border: 1.5px solid var(--stroke);
+      background: #fff;
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.2s, background 0.2s;
+    }
+    .slot-btn.active { border-color: rgba(58,170,53,0.58); background: var(--green-light); color: var(--green-dark); }
+
+    .summary-card {
+      overflow: hidden;
+      position: sticky;
+      top: 92px;
+    }
+    .summary-head {
+      padding: 18px 22px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .summary-body { padding: 22px; }
+    .summary-line { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #edf3ec; font-size: 14px; }
+    .summary-line:last-child { border-bottom: none; }
+    .summary-callout {
+      background: linear-gradient(180deg, #f8fbf7 0%, #eef7ed 100%);
+      border: 1px solid #e0ecdf;
+      border-radius: 18px;
+      padding: 16px;
+      color: #576f57;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 18px 0 22px;
+    }
+    .scope-item { border-bottom: 1px solid #edf3ec; }
+    .scope-head {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      color: var(--dark);
+      cursor: pointer;
+      text-align: left;
+    }
+    .scope-body {
+      display: none;
+      padding: 0 0 14px;
+      color: #5b735b;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .scope-item.open .scope-body { display: block; }
+
+    .hidden-panel { display: none; }
+    .step-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .success-box {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f3fbf2 0%, #ffffff 100%);
+      border: 1px solid rgba(58,170,53,0.25);
+      color: #496149;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="px-6 py-4">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex flex-col items-start" style="min-width: 0;">
+      <div class="nav-logo-wrap">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" style="height: 296px; width: auto;" />
+      </div>
+      <span class="nav-slogan" data-en="Reducing Footprints, Refreshing Spaces" data-fi="Pienempi jalanjälki, puhtaampi tila."></span>
+    </a>
+    <div class="flex items-center gap-4">
+      <div class="lang-toggle">
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" onclick="setLang('fi')">FI</button>
+      </div>
+      <button class="hamburger-btn" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileNav()" data-en="Home" data-fi="Etusivu"></a>
+    <a href="window-cleaning.html" onclick="closeMobileNav()" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a>
+    <a href="steam-cleaning.html" onclick="closeMobileNav()" data-en="Steam Cleaning" data-fi="Höyrypesu"></a>
+    <a href="post-renovation-cleaning.html" onclick="closeMobileNav()" data-en="Post-Renovation Cleaning" data-fi="Remonttisiivous"></a>
+    <a href="pricing.html" onclick="closeMobileNav()" data-en="Pricing" data-fi="Hinnat"></a>
+    <a href="index.html#contact" onclick="closeMobileNav()" data-en="Contact" data-fi="Yhteystiedot"></a>
+    <a href="request-quote.html" class="btn-primary mobile-cta" onclick="closeMobileNav()" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a>
+  </div>
+</nav>
+
+<section class="hero-wrap">
+  <div class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+    <div class="hero-grid">
+      <div class="surface panel">
+        <div class="progress-bar" id="progressBar">
+          <span class="progress-pill active" data-step="1" data-en="Service" data-fi="Palvelu"></span>
+          <span class="progress-pill" data-step="2" data-en="Date &amp; Area" data-fi="Ajankohta &amp; Alue"></span>
+          <span class="progress-pill" data-step="3" data-en="Confirm" data-fi="Vahvista"></span>
+        </div>
+        <div class="intent-toggle">
+          <button class="intent-card active" id="bookingModeBtn" type="button" onclick="setMode('booking')">
+            <span class="intent-badge" data-en="Ready to book" data-fi="Valmis varaamaan"></span>
+            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Build your home cleaning request" data-fi="Rakenna kotisiivouspyyntösi"></h2>
+            <p class="muted" data-en="For customers who already know they want regular home cleaning and want to choose the service setup before we confirm the booking." data-fi="Asiakkaille, jotka tietävät haluavansa kotisiivousta ja haluavat valita palvelun rakenteen ennen kuin vahvistamme varauksen."></p>
+          </button>
+          <button class="intent-card" id="inquiryModeBtn" type="button" onclick="setMode('inquiry')">
+            <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?"></span>
+            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin"></h2>
+            <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or not ready to choose a date and time yet." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä."></p>
+          </button>
+        </div>
+
+        <div id="bookingPanel">
+          <div class="step-card" id="bookingStep1">
+            <h2 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Tell us about the home you need cleaned" data-fi="Kerro kodista, johon tarvitset siivousta"></h2>
+            <p class="muted mb-8" data-en="This structured request helps us recommend the right visit length, organise the right cleaner, and reply faster with a confident next step." data-fi="Tämä jäsennelty pyyntö auttaa meitä suosittelemaan oikean käyntikeston, järjestämään sopivan siivoojan ja vastaamaan nopeammin varmemmalla seuraavalla askeleella."></p>
+
+            <div class="grid md:grid-cols-2 gap-5 mb-6">
+              <div>
+                <label class="field-label" for="homeSize" data-en="Apartment size" data-fi="Asunnon koko"></label>
+                <select id="homeSize" onchange="updateBookingSummary()">
+                  <option value="studio" data-en="Under 50m²" data-fi="Alle 50m²">Alle 50m²</option>
+                  <option value="small" selected data-en="50 - 89m²" data-fi="50 - 89m²">50 - 89m²</option>
+                  <option value="medium" data-en="90 - 119m²" data-fi="90 - 119m²">90 - 119m²</option>
+                  <option value="large" data-en="120 - 154m²" data-fi="120 - 154m²">120 - 154m²</option>
+                  <option value="xlarge" data-en="155m² or larger" data-fi="155m² tai suurempi">155m² tai suurempi</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label" for="cleanDuration" data-en="Cleaning duration" data-fi="Siivouksen kesto"></label>
+                <select id="cleanDuration" onchange="updateBookingSummary()">
+                  <option value="4">4h</option>
+                  <option value="5">5h</option>
+                  <option value="6" selected data-en="6h (recommendation)" data-fi="6h (suositus)">6h (suositus)</option>
+                  <option value="7">7h</option>
+                  <option value="8">8h</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="field-label" data-en="How often do you want your home cleaned?" data-fi="Kuinka usein haluat kotisiivouksen?"></label>
+              <p class="field-help" data-en="Recurring cleaning usually gives the best long-term value and the most consistent result." data-fi="Toistuva siivous antaa yleensä parhaan pitkäaikaisen arvon ja tasaisimman lopputuloksen."></p>
+              <div class="choice-grid">
+                <button type="button" class="choice-card" id="freq-weekly" onclick="selectFrequency('weekly')">
+                  <div class="choice-row">
+                    <div>
+                      <strong data-en="Every week" data-fi="Joka viikko"></strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="Best for busy households that want continuous calm" data-fi="Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta"></p>
+                    </div>
+                  </div>
+                </button>
+                <button type="button" class="choice-card active" id="freq-biweekly" onclick="selectFrequency('biweekly')">
+                  <div class="choice-row">
+                    <div>
+                      <strong data-en="Every second week" data-fi="Joka toinen viikko"></strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="A balanced rhythm for most premium home cleaning clients" data-fi="Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille"></p>
+                    </div>
+                    <span class="mini-tag" data-en="Most popular" data-fi="Suosituin"></span>
+                  </div>
+                </button>
+                <button type="button" class="choice-card" id="freq-monthly" onclick="selectFrequency('monthly')">
+                  <div class="choice-row">
+                    <div>
+                      <strong data-en="Every four weeks" data-fi="Joka neljäs viikko"></strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="Best when you mainly want a professional reset visit" data-fi="Paras silloin, kun haluat pääasiassa ammattilaisen tekemän nollauskäynnin"></p>
+                    </div>
+                  </div>
+                </button>
+                <button type="button" class="choice-card" id="freq-once" onclick="selectFrequency('once')">
+                  <div class="choice-row">
+                    <div>
+                      <strong data-en="One time only" data-fi="Vain kerran"></strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="Ideal if you want to try BetterClean first or need a single support visit" data-fi="Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin"></p>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="field-label" data-en="Additional services" data-fi="Lisäpalvelut"></label>
+              <p class="field-help" data-en="Choose only what you already know you need. If you are unsure, switch to the inquiry route and we will recommend the right setup." data-fi="Valitse vain ne, joiden jo tiedät olevan tarpeen. Jos olet epävarma, siirry tarjousreittiin ja suosittelemme oikeaa kokonaisuutta."></p>
+              <div class="extras-grid">
+                <button type="button" class="extra-card" id="extra-fridge" onclick="toggleExtra('fridge')">
+                  <div class="choice-row">
+                    <div>
+                      <strong data-en="Fridge" data-fi="Jääkaappi"></strong>
+                      <p class="text-sm text-gray-500 mt-1">+60 min</p>
+                    </div>
+                    <span style="font-size: 1.5rem;">🧊</span>
+                  </div>
+                </button>
+                <button type="button" class="extra-card" id="extra-oven" onclick="toggleExtra('oven')">
+                  <div class="choice-row">
+                    <div>
+                      <strong data-en="Oven" data-fi="Uuni"></strong>
+                      <p class="text-sm text-gray-500 mt-1">+60 min</p>
+                    </div>
+                    <span style="font-size: 1.5rem;">🔥</span>
+                  </div>
+                </button>
+                <button type="button" class="extra-card" id="extra-sauna" onclick="toggleExtra('sauna')">
+                  <div class="choice-row">
+                    <div>
+                      <strong data-en="Sauna" data-fi="Sauna"></strong>
+                      <p class="text-sm text-gray-500 mt-1">+60 min</p>
+                    </div>
+                    <span style="font-size: 1.5rem;">🧖</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="tiny-note mb-6">
+              <strong data-en="Need window cleaning, steam cleaning, or post-renovation cleaning?" data-fi="Tarvitsetko ikkunanpesua, höyrypesua tai remonttisiivousta?"></strong>
+              <span data-en="Use the quote route on this page instead of forcing the request into a home-cleaning booking flow. We will guide you to the right service personally." data-fi="Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun."></span>
+            </div>
+
+            <div class="step-actions">
+              <a href="pricing.html" class="btn-soft" data-en="Review pricing first" data-fi="Katso hinnat ensin"></a>
+              <button type="button" class="btn-primary" onclick="goBookingStep(2)" data-en="Continue to date &amp; area" data-fi="Jatka ajankohtaan &amp; alueeseen"></button>
+            </div>
+          </div>
+
+          <div class="step-card hidden-panel" id="bookingStep2">
+            <h2 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Where and when should we plan the cleaning?" data-fi="Missä ja milloin siivous kannattaa suunnitella?"></h2>
+            <p class="muted mb-8" data-en="Choose a preferred area and time window. This is still a request, not a paid order. We will confirm the final slot with you after review." data-fi="Valitse toivottu alue ja aikaikkuna. Tämä on edelleen pyyntö, ei maksettu tilaus. Vahvistamme lopullisen ajan kanssasi tarkistuksen jälkeen."></p>
+
+            <div class="grid md:grid-cols-2 gap-5 mb-6">
+              <div>
+                <label class="field-label" for="streetAddress" data-en="Street address" data-fi="Katuosoite"></label>
+                <input id="streetAddress" type="text" onchange="updateBookingSummary()" />
+              </div>
+              <div>
+                <label class="field-label" for="postcode" data-en="Postcode" data-fi="Postinumero"></label>
+                <input id="postcode" type="text" onchange="updateBookingSummary()" />
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="field-label" data-en="Preferred arrival window" data-fi="Toivottu saapumisikkuna"></label>
+              <div class="slot-grid">
+                <button type="button" class="slot-btn" onclick="selectSlot('Monday 20.4, 07:00 - 09:00')">07:00</button>
+                <button type="button" class="slot-btn" onclick="selectSlot('Monday 20.4, 08:30 - 10:30')">08:30</button>
+                <button type="button" class="slot-btn" onclick="selectSlot('Monday 20.4, 10:00 - 12:00')">10:00</button>
+                <button type="button" class="slot-btn" onclick="selectSlot('Monday 20.4, 11:30 - 13:30')">11:30</button>
+                <button type="button" class="slot-btn" onclick="selectSlot('Tuesday 21.4, 07:00 - 09:00')">Tue 07:00</button>
+                <button type="button" class="slot-btn" onclick="selectSlot('Tuesday 21.4, 09:00 - 11:00')">Tue 09:00</button>
+              </div>
+            </div>
+
+            <label class="flex items-start gap-3 mb-6" style="cursor:pointer;">
+              <input type="checkbox" id="petsHome" onchange="updateBookingSummary()" style="width:18px;height:18px;margin-top:3px;" />
+              <span class="muted text-sm" data-en="Pets live here. Let us know early so we can prepare the right cleaner and arrival notes." data-fi="Tässä kodissa asuu lemmikkejä. Kerro siitä ajoissa, jotta voimme valmistella oikean siivoojan ja saapumisohjeet."></span>
+            </label>
+
+            <div class="step-actions">
+              <button type="button" class="btn-outline" onclick="goBookingStep(1)" data-en="Back" data-fi="Takaisin"></button>
+              <button type="button" class="btn-primary" onclick="goBookingStep(3)" data-en="Continue to confirmation" data-fi="Jatka vahvistukseen"></button>
+            </div>
+          </div>
+
+          <div class="step-card hidden-panel" id="bookingStep3">
+            <h2 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Confirm your booking request" data-fi="Vahvista varauspyyntösi"></h2>
+            <p class="muted mb-8" data-en="You are not paying online at this stage. We will review your request, confirm the best cleaner and timing, and then get back to you personally." data-fi="Et maksa verkossa tässä vaiheessa. Käymme pyyntösi läpi, vahvistamme parhaan siivoojan ja ajankohdan ja palaamme sinulle henkilökohtaisesti."></p>
+
+            <div class="grid md:grid-cols-2 gap-5 mb-6">
+              <div>
+                <label class="field-label" for="bookFirstName" data-en="First name" data-fi="Etunimi"></label>
+                <input id="bookFirstName" type="text" />
+              </div>
+              <div>
+                <label class="field-label" for="bookLastName" data-en="Last name" data-fi="Sukunimi"></label>
+                <input id="bookLastName" type="text" />
+              </div>
+              <div>
+                <label class="field-label" for="bookEmail" data-en="Email" data-fi="Sähköposti"></label>
+                <input id="bookEmail" type="email" />
+              </div>
+              <div>
+                <label class="field-label" for="bookPhone" data-en="Phone" data-fi="Puhelin"></label>
+                <input id="bookPhone" type="tel" />
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="field-label" for="bookNotes" data-en="Anything else we should know?" data-fi="Onko jotain muuta, mitä meidän olisi hyvä tietää?"></label>
+              <textarea id="bookNotes" rows="4"></textarea>
+            </div>
+
+            <div class="tiny-note mb-6">
+              <strong data-en="No pressure commitment." data-fi="Ei painostavaa sitoutumista."></strong>
+              <span data-en="This page is designed to feel clear like a booking flow, but BetterClean still confirms the final visit with you personally before anything becomes fixed." data-fi="Tämä sivu on suunniteltu tuntumaan selkeältä kuten varauspolku, mutta BetterClean vahvistaa lopullisen käynnin kanssasi henkilökohtaisesti ennen kuin mikään lukitaan."></span>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-outline" onclick="goBookingStep(2)" data-en="Back" data-fi="Takaisin"></button>
+              <button type="button" class="btn-primary" onclick="submitBookingRequest()" data-en="Send booking request" data-fi="Lähetä varauspyyntö"></button>
+            </div>
+            <div class="success-box" id="bookingSuccess">
+              <strong data-en="Your email app is ready." data-fi="Sähköpostisovelluksesi on valmis."></strong>
+              <span data-en=" Please review the draft request to BetterClean and send it. We will reply personally after reviewing the details." data-fi=" Tarkista BetterCleanille avattu viestiluonnos ja lähetä se. Vastaamme henkilökohtaisesti tarkistettuamme tiedot."></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="inquiryPanel" class="hidden-panel">
+          <div class="step-card">
+            <h2 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Tell us what you need and we will guide you" data-fi="Kerro mitä tarvitset, niin ohjaamme sinua"></h2>
+            <p class="muted mb-8" data-en="This path is for customers who want advice, a call-back, a rough price range, or help choosing the right BetterClean service before committing to a booking request." data-fi="Tämä reitti on asiakkaille, jotka haluavat neuvoja, takaisinsoiton, karkean hinta-arvion tai apua oikean BetterClean-palvelun valintaan ennen sitoutumista varauspyyntöön."></p>
+
+            <div class="grid md:grid-cols-2 gap-5 mb-6">
+              <div>
+                <label class="field-label" for="inqService" data-en="Service you are interested in" data-fi="Palvelu, josta olet kiinnostunut"></label>
+                <select id="inqService" onchange="updateInquirySummary()">
+                  <option value="home-cleaning" data-en="Home cleaning" data-fi="Kotisiivous">Kotisiivous</option>
+                  <option value="deep-cleaning" data-en="Deep cleaning" data-fi="Syväsiivous">Syväsiivous</option>
+                  <option value="window-cleaning" data-en="Window cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</option>
+                  <option value="steam-cleaning" data-en="Steam cleaning" data-fi="Höyrypesu">Höyrypesu</option>
+                  <option value="post-renovation" data-en="Post-renovation cleaning" data-fi="Remonttisiivous">Remonttisiivous</option>
+                  <option value="not-sure" data-en="I am not sure yet" data-fi="En ole vielä varma">En ole vielä varma</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label" for="inqArea" data-en="Area or postcode" data-fi="Alue tai postinumero"></label>
+                <input id="inqArea" type="text" onchange="updateInquirySummary()" />
+              </div>
+              <div>
+                <label class="field-label" for="inqName" data-en="Name" data-fi="Nimi"></label>
+                <input id="inqName" type="text" />
+              </div>
+              <div>
+                <label class="field-label" for="inqPhone" data-en="Phone" data-fi="Puhelin"></label>
+                <input id="inqPhone" type="tel" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="field-label" for="inqEmail" data-en="Email" data-fi="Sähköposti"></label>
+                <input id="inqEmail" type="email" />
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="field-label" for="inqNeed" data-en="What would you like help with?" data-fi="Missä haluaisit apua?"></label>
+              <textarea id="inqNeed" rows="5" onchange="updateInquirySummary()"></textarea>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5 mb-6">
+              <div>
+                <label class="field-label" for="inqSize" data-en="Approximate home size (optional)" data-fi="Arvioitu kodin koko (valinnainen)"></label>
+                <select id="inqSize" onchange="updateInquirySummary()">
+                  <option value="" data-en="Not sure yet" data-fi="En ole varma">En ole varma</option>
+                  <option value="under-50" data-en="Under 50m²" data-fi="Alle 50m²">Alle 50m²</option>
+                  <option value="50-89" data-en="50 - 89m²" data-fi="50 - 89m²">50 - 89m²</option>
+                  <option value="90-119" data-en="90 - 119m²" data-fi="90 - 119m²">90 - 119m²</option>
+                  <option value="120-plus" data-en="120m² or larger" data-fi="120m² tai suurempi">120m² tai suurempi</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label" for="inqContactMethod" data-en="Preferred contact method" data-fi="Toivottu yhteydenottotapa"></label>
+                <select id="inqContactMethod" onchange="updateInquirySummary()">
+                  <option value="phone" data-en="Phone call" data-fi="Puhelu">Puhelu</option>
+                  <option value="email" data-en="Email" data-fi="Sähköposti">Sähköposti</option>
+                  <option value="either" data-en="Either is fine" data-fi="Kumpi tahansa sopii">Kumpi tahansa sopii</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="tiny-note mb-6">
+              <strong data-en="Designed for low pressure." data-fi="Suunniteltu ilman painetta."></strong>
+              <span data-en="No date, no payment details, and no commitment to a booking yet. Just enough for BetterClean to understand your needs and reply usefully." data-fi="Ei päivämäärää, ei maksutietoja eikä vielä sitoutumista varaukseen. Juuri sen verran tietoa, että BetterClean ymmärtää tarpeesi ja pystyy vastaamaan hyödyllisesti."></span>
+            </div>
+
+            <div class="step-actions">
+              <a href="pricing.html" class="btn-soft" data-en="Review pricing first" data-fi="Katso hinnat ensin"></a>
+              <button type="button" class="btn-primary" onclick="submitInquiryRequest()" data-en="Send inquiry" data-fi="Lähetä kysely"></button>
+            </div>
+            <div class="success-box" id="inquirySuccess">
+              <strong data-en="Your inquiry draft is ready." data-fi="Kyselyluonnoksesi on valmis."></strong>
+              <span data-en=" Please review the email draft and send it so BetterClean can respond with the right recommendation." data-fi=" Tarkista avattu sähköpostiluonnos ja lähetä se, jotta BetterClean voi vastata oikealla suosituksella."></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="surface summary-card">
+        <div class="summary-head">
+          <p class="text-xs uppercase tracking-[0.14em] font-bold mb-2" style="color: rgba(255,255,255,0.78);" data-en="BetterClean Planner" data-fi="BetterClean-suunnittelija"></p>
+          <h3 class="text-2xl font-display font-bold" id="summaryTitle">Kotisiivouspyyntö</h3>
+        </div>
+        <div class="summary-body">
+          <div class="summary-line">
+            <span data-en="Mode" data-fi="Tila"></span>
+            <strong id="summaryMode" data-en="Booking request" data-fi="Varauspyyntö">Varauspyyntö</strong>
+          </div>
+          <div class="summary-line">
+            <span data-en="Service" data-fi="Palvelu"></span>
+            <strong id="summaryService" data-en="Home cleaning" data-fi="Kotisiivous">Kotisiivous</strong>
+          </div>
+          <div class="summary-line booking-only">
+            <span data-en="Cleaning duration" data-fi="Siivouksen kesto"></span>
+            <strong id="summaryDuration">6h</strong>
+          </div>
+          <div class="summary-line booking-only">
+            <span data-en="Frequency" data-fi="Toistuvuus"></span>
+            <strong id="summaryFrequency" data-en="Every second week" data-fi="Joka toinen viikko">Joka toinen viikko</strong>
+          </div>
+          <div class="summary-line booking-only">
+            <span data-en="Additional services" data-fi="Lisäpalvelut"></span>
+            <strong id="summaryExtras" data-en="Cleaning supplies only" data-fi="Vain siivoustarvikkeet">Vain siivoustarvikkeet</strong>
+          </div>
+          <div class="summary-line booking-only">
+            <span data-en="Estimated total" data-fi="Arvioitu yhteensä"></span>
+            <strong id="summaryEstimate">342 €</strong>
+          </div>
+          <div class="summary-line inquiry-only hidden-panel">
+            <span data-en="Preferred contact" data-fi="Toivottu yhteydenotto"></span>
+            <strong id="summaryInquiryContact" data-en="Phone call" data-fi="Puhelu">Puhelu</strong>
+          </div>
+          <div class="summary-line inquiry-only hidden-panel">
+            <span data-en="Area" data-fi="Alue"></span>
+            <strong id="summaryInquiryArea" data-en="To be confirmed" data-fi="Vahvistetaan">Vahvistetaan</strong>
+          </div>
+
+          <div class="summary-callout" id="summaryCallout" data-en="Choose the structured booking request if you already know you want home cleaning. If you are still comparing, switch to the inquiry route and BetterClean will guide you personally." data-fi="Valitse jäsennelty varauspyyntö, jos tiedät jo haluavasi kotisiivousta. Jos vertailet vielä, vaihda kyselyreittiin ja BetterClean ohjaa sinua henkilökohtaisesti."></div>
+
+          <div class="booking-only">
+            <h4 class="font-display font-bold text-lg mb-2" data-en="What is included in a basic home cleaning?" data-fi="Mitä tavalliseen kotisiivoukseen kuuluu?"></h4>
+            <div class="scope-item open">
+              <button class="scope-head" type="button" onclick="toggleScope(this)">
+                <span data-en="Whole apartment" data-fi="Koko asunto"></span>
+                <span>⌄</span>
+              </button>
+              <div class="scope-body">
+                <ul class="list-disc pl-5">
+                  <li data-en="Dusting reachable surfaces, mirrors, and glass details" data-fi="Ulottuvien pintojen, peilien ja lasiyksityiskohtien pölyjen pyyhintä"></li>
+                  <li data-en="Vacuuming floors, rugs, and visible corners" data-fi="Lattioiden, mattojen ja näkyvien nurkkien imurointi"></li>
+                  <li data-en="Mopping and fresh finishing of the main living areas" data-fi="Pääasiallisten oleskelutilojen moppaus ja raikas viimeistely"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="scope-item">
+              <button class="scope-head" type="button" onclick="toggleScope(this)">
+                <span data-en="Kitchen" data-fi="Keittiö"></span>
+                <span>⌄</span>
+              </button>
+              <div class="scope-body">
+                <ul class="list-disc pl-5">
+                  <li data-en="Countertops, sink, hob surface, and cabinet fronts" data-fi="Työtasot, allas, liesitaso ja kaappien ulkopinnat"></li>
+                  <li data-en="Visible appliance surfaces and splash areas" data-fi="Näkyvät laitepinnat ja roiskealueet"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="scope-item">
+              <button class="scope-head" type="button" onclick="toggleScope(this)">
+                <span data-en="Bathroom" data-fi="Kylpyhuone"></span>
+                <span>⌄</span>
+              </button>
+              <div class="scope-body">
+                <ul class="list-disc pl-5">
+                  <li data-en="Mirror, sink, faucet, toilet, and visible surfaces" data-fi="Peili, allas, hana, wc-istuin ja näkyvät pinnat"></li>
+                  <li data-en="Freshening of shower and main bathroom zones" data-fi="Suihkun ja tärkeimpien kylpyhuonealueiden raikastus"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="scope-item">
+              <button class="scope-head" type="button" onclick="toggleScope(this)">
+                <span data-en="Optional additional services" data-fi="Valinnaiset lisäpalvelut"></span>
+                <span>⌄</span>
+              </button>
+              <div class="scope-body">
+                <ul class="list-disc pl-5">
+                  <li data-en="Fridge cleaning" data-fi="Jääkaapin puhdistus"></li>
+                  <li data-en="Oven cleaning" data-fi="Uunin puhdistus"></li>
+                  <li data-en="Sauna cleaning" data-fi="Saunan puhdistus"></li>
+                  <li data-en="Window cleaning, steam cleaning, and post-renovation cleaning should start as a quote inquiry first" data-fi="Ikkunanpesu, höyrypesu ja remonttisiivous kannattaa aloittaa ensin tarjouskyselynä"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="inquiry-only hidden-panel">
+            <h4 class="font-display font-bold text-lg mb-2" data-en="What happens after an inquiry?" data-fi="Mitä tapahtuu kyselyn jälkeen?"></h4>
+            <div class="summary-callout" style="margin-top: 0;" data-en="BetterClean reviews your message, recommends the right service, and replies personally instead of forcing you into a booking before you are ready." data-fi="BetterClean käy viestisi läpi, suosittelee oikeaa palvelua ja vastaa henkilökohtaisesti sen sijaan, että pakottaisi sinut varaukseen ennen kuin olet valmis."></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="py-12 px-6" style="background: var(--dark); color: rgba(255,255,255,0.7);">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-8 mb-10">
+      <div class="flex-1">
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" class="mb-4 brightness-200 grayscale" style="height: 200px; width: auto;" />
+        <p class="text-sm leading-relaxed" style="max-width: 280px;" data-en="Professional eco-friendly cleaning in Tampere. Reducing footprints, refreshing spaces." data-fi="Ammattimainen ympäristöystävällinen siivous Tampereella. Vähennämme jalanjälkiä, virkistämme tiloja."></p>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Services" data-fi="Palvelut"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#services" class="hover:text-white transition-colors" data-en="Regular Home Cleaning" data-fi="Kotisiivous"></a></li>
+          <li><a href="index.html#pricing" class="hover:text-white transition-colors" data-en="Deep Cleaning" data-fi="Syväsiivous"></a></li>
+          <li><a href="window-cleaning.html" class="hover:text-white transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu"></a></li>
+          <li><a href="steam-cleaning.html" class="hover:text-white transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu"></a></li>
+          <li><a href="post-renovation-cleaning.html" class="hover:text-white transition-colors" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="All Pricing" data-fi="Kaikki Hinnat"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4" data-en="Company" data-fi="Yritys"></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#why" class="hover:text-white transition-colors" data-en="Why BetterClean" data-fi="Miksi BetterClean"></a></li>
+          <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="Pricing" data-fi="Hinnat"></a></li>
+          <li><a href="request-quote.html" class="hover:text-white transition-colors" style="color: var(--green);" data-en="Request a Quote" data-fi="Pyydä Tarjous"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold mb-4">Tampere</h4>
+        <p class="text-sm" data-en="Serving all of Tampere and surrounding areas." data-fi="Palvelemme koko Tamperetta ja lähialuetta."></p>
+        <p class="text-sm mt-2"><a href="tel:+358415769236" class="hover:text-white transition-colors">+358 41 576 9236</a></p>
+        <p class="text-sm"><a href="mailto:info@betterclean.fi" class="hover:text-white transition-colors">info@betterclean.fi</a></p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+      <p>© 2026 BetterClean. <span data-en="All rights reserved." data-fi="Kaikki oikeudet pidätetään."></span></p>
+      <p data-en="Reducing Footprints, Refreshing Spaces." data-fi="Vähennämme Jalanjälkiä, Virkistämme Tiloja."></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let currentLang = 'fi';
+
+  function setLang(lang) {
+    currentLang = lang;
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (!text) return;
+
+      if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'P' ||
+          el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' ||
+          el.tagName === 'H4' || el.tagName === 'SPAN' || el.tagName === 'LABEL' ||
+          el.tagName === 'LI' || el.tagName === 'STRONG' || el.tagName === 'TD' ||
+          el.tagName === 'TH' || el.tagName === 'DIV') {
+        el.innerHTML = text;
+      } else {
+        el.textContent = text;
+      }
+    });
+
+    document.documentElement.lang = lang;
+  }
+
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  const originalSetLang = setLang;
+  setLang = function(lang) {
+    originalSetLang(lang);
+    refreshUi();
+  };
+
+  const bookingState = {
+    step: 1,
+    mode: 'booking',
+    size: 'small',
+    duration: 6,
+    frequency: 'biweekly',
+    extras: [],
+    slot: '',
+    address: '',
+    postcode: '',
+    pets: false
+  };
+
+  function getFrequencyLabel(key, lang) {
+    const labels = {
+      weekly: { en: 'Every week', fi: 'Joka viikko' },
+      biweekly: { en: 'Every second week', fi: 'Joka toinen viikko' },
+      monthly: { en: 'Every four weeks', fi: 'Joka neljäs viikko' },
+      once: { en: 'One time only', fi: 'Vain kerran' }
+    };
+    return labels[key][lang];
+  }
+
+  function getServiceLabel(lang) {
+    if (bookingState.mode === 'inquiry') {
+      const service = document.getElementById('inqService').selectedOptions[0];
+      return service ? service.textContent : (lang === 'fi' ? 'Tarjouskysely' : 'Quote inquiry');
+    }
+    return lang === 'fi' ? 'Kotisiivous' : 'Home cleaning';
+  }
+
+  function formatPriceFi(amount) {
+    return (amount % 1 === 0 ? String(amount) : amount.toFixed(2).replace('.', ',')) + ' €';
+  }
+
+  function calculateEstimate() {
+    const recurring = bookingState.frequency !== 'once';
+    const rate = recurring ? PRICES.recurring : PRICES.oneTime;
+    const totalHours = bookingState.duration + bookingState.extras.length;
+    return rate * totalHours;
+  }
+
+  function setMode(mode) {
+    bookingState.mode = mode;
+    document.getElementById('bookingPanel').style.display = mode === 'booking' ? 'block' : 'none';
+    document.getElementById('inquiryPanel').style.display = mode === 'inquiry' ? 'block' : 'none';
+    document.getElementById('bookingModeBtn').classList.toggle('active', mode === 'booking');
+    document.getElementById('inquiryModeBtn').classList.toggle('active', mode === 'inquiry');
+    document.querySelectorAll('.booking-only').forEach(el => el.style.display = mode === 'booking' ? '' : 'none');
+    document.querySelectorAll('.inquiry-only').forEach(el => el.style.display = mode === 'inquiry' ? '' : 'none');
+    document.getElementById('progressBar').style.display = mode === 'booking' ? 'flex' : 'none';
+    refreshUi();
+  }
+
+  function goBookingStep(step) {
+    bookingState.step = step;
+    document.getElementById('bookingStep1').style.display = step === 1 ? 'block' : 'none';
+    document.getElementById('bookingStep2').style.display = step === 2 ? 'block' : 'none';
+    document.getElementById('bookingStep3').style.display = step === 3 ? 'block' : 'none';
+    document.querySelectorAll('.progress-pill').forEach(pill => {
+      pill.classList.toggle('active', Number(pill.dataset.step) === step);
+    });
+    refreshUi();
+  }
+
+  function selectFrequency(key) {
+    bookingState.frequency = key;
+    ['weekly', 'biweekly', 'monthly', 'once'].forEach(name => {
+      document.getElementById('freq-' + name).classList.toggle('active', name === key);
+    });
+    refreshUi();
+  }
+
+  function toggleExtra(name) {
+    if (bookingState.extras.includes(name)) {
+      bookingState.extras = bookingState.extras.filter(item => item !== name);
+    } else {
+      bookingState.extras.push(name);
+    }
+    document.getElementById('extra-' + name).classList.toggle('active', bookingState.extras.includes(name));
+    refreshUi();
+  }
+
+  function selectSlot(slot) {
+    bookingState.slot = slot;
+    document.querySelectorAll('.slot-btn').forEach(btn => btn.classList.toggle('active', btn.textContent === slot || slot.includes(btn.textContent)));
+    refreshUi();
+  }
+
+  function updateBookingSummary() {
+    bookingState.size = document.getElementById('homeSize').value;
+    bookingState.duration = Number(document.getElementById('cleanDuration').value);
+    bookingState.address = document.getElementById('streetAddress') ? document.getElementById('streetAddress').value.trim() : '';
+    bookingState.postcode = document.getElementById('postcode') ? document.getElementById('postcode').value.trim() : '';
+    bookingState.pets = document.getElementById('petsHome') ? document.getElementById('petsHome').checked : false;
+    refreshUi();
+  }
+
+  function updateInquirySummary() {
+    refreshUi();
+  }
+
+  function toggleScope(button) {
+    button.parentElement.classList.toggle('open');
+  }
+
+  function refreshUi() {
+    const lang = currentLang || 'fi';
+    document.getElementById('summaryTitle').textContent = bookingState.mode === 'booking'
+      ? (lang === 'fi' ? 'Kotisiivouspyyntö' : 'Home Cleaning Request')
+      : (lang === 'fi' ? 'Tarjouskysely' : 'Quote Inquiry');
+    document.getElementById('summaryMode').textContent = bookingState.mode === 'booking'
+      ? (lang === 'fi' ? 'Varauspyyntö' : 'Booking request')
+      : (lang === 'fi' ? 'Kysely' : 'Inquiry');
+    document.getElementById('summaryService').textContent = getServiceLabel(lang);
+    document.getElementById('summaryDuration').textContent = bookingState.duration + 'h';
+    document.getElementById('summaryFrequency').textContent = getFrequencyLabel(bookingState.frequency, lang);
+    const extraLabels = {
+      fridge: { en: 'Fridge', fi: 'Jääkaappi' },
+      oven: { en: 'Oven', fi: 'Uuni' },
+      sauna: { en: 'Sauna', fi: 'Sauna' }
+    };
+    const extrasText = bookingState.extras.length
+      ? bookingState.extras.map(item => extraLabels[item][lang]).join(', ')
+      : (lang === 'fi' ? 'Vain siivoustarvikkeet' : 'Cleaning supplies only');
+    document.getElementById('summaryExtras').textContent = extrasText;
+    document.getElementById('summaryEstimate').textContent = formatPriceFi(calculateEstimate());
+    const contactMethod = document.getElementById('inqContactMethod');
+    if (contactMethod) {
+      document.getElementById('summaryInquiryContact').textContent = contactMethod.options[contactMethod.selectedIndex].textContent;
+    }
+    const areaInput = document.getElementById('inqArea');
+    if (areaInput) {
+      document.getElementById('summaryInquiryArea').textContent = areaInput.value.trim() || (lang === 'fi' ? 'Vahvistetaan' : 'To be confirmed');
+    }
+  }
+
+  function submitBookingRequest() {
+    const lang = currentLang || 'fi';
+    const first = document.getElementById('bookFirstName').value.trim();
+    const last = document.getElementById('bookLastName').value.trim();
+    const email = document.getElementById('bookEmail').value.trim();
+    const phone = document.getElementById('bookPhone').value.trim();
+    const notes = document.getElementById('bookNotes').value.trim();
+    const extrasText = bookingState.extras.length ? bookingState.extras.join(', ') : 'none';
+    const subject = (lang === 'fi' ? 'BetterClean varauspyyntö - ' : 'BetterClean booking request - ') + [first, last].filter(Boolean).join(' ');
+    const body = [
+      lang === 'fi' ? 'Uusi BetterClean varauspyyntö' : 'New BetterClean booking request',
+      '',
+      (lang === 'fi' ? 'Palvelu: ' : 'Service: ') + (lang === 'fi' ? 'Kotisiivous' : 'Home cleaning'),
+      (lang === 'fi' ? 'Kesto: ' : 'Duration: ') + bookingState.duration + 'h',
+      (lang === 'fi' ? 'Toistuvuus: ' : 'Frequency: ') + getFrequencyLabel(bookingState.frequency, lang),
+      (lang === 'fi' ? 'Lisäpalvelut: ' : 'Additional services: ') + extrasText,
+      (lang === 'fi' ? 'Arvioitu yhteensä: ' : 'Estimated total: ') + formatPriceFi(calculateEstimate()),
+      (lang === 'fi' ? 'Osoite: ' : 'Address: ') + (bookingState.address || '-'),
+      (lang === 'fi' ? 'Postinumero: ' : 'Postcode: ') + (bookingState.postcode || '-'),
+      (lang === 'fi' ? 'Toivottu aika: ' : 'Preferred time: ') + (bookingState.slot || '-'),
+      (lang === 'fi' ? 'Lemmikit kotona: ' : 'Pets at home: ') + (bookingState.pets ? (lang === 'fi' ? 'Kyllä' : 'Yes') : (lang === 'fi' ? 'Ei' : 'No')),
+      '',
+      (lang === 'fi' ? 'Nimi: ' : 'Name: ') + [first, last].filter(Boolean).join(' '),
+      'Email: ' + (email || '-'),
+      (lang === 'fi' ? 'Puhelin: ' : 'Phone: ') + (phone || '-'),
+      (lang === 'fi' ? 'Lisätiedot: ' : 'Notes: ') + (notes || '-')
+    ].join('\n');
+    window.location.href = 'mailto:info@betterclean.fi?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('bookingSuccess').style.display = 'block';
+  }
+
+  function submitInquiryRequest() {
+    const lang = currentLang || 'fi';
+    const service = document.getElementById('inqService').options[document.getElementById('inqService').selectedIndex].textContent;
+    const area = document.getElementById('inqArea').value.trim();
+    const name = document.getElementById('inqName').value.trim();
+    const phone = document.getElementById('inqPhone').value.trim();
+    const email = document.getElementById('inqEmail').value.trim();
+    const size = document.getElementById('inqSize').options[document.getElementById('inqSize').selectedIndex].textContent;
+    const method = document.getElementById('inqContactMethod').options[document.getElementById('inqContactMethod').selectedIndex].textContent;
+    const need = document.getElementById('inqNeed').value.trim();
+    const subject = (lang === 'fi' ? 'BetterClean tarjouskysely - ' : 'BetterClean quote inquiry - ') + (name || service);
+    const body = [
+      lang === 'fi' ? 'Uusi BetterClean tarjouskysely' : 'New BetterClean quote inquiry',
+      '',
+      (lang === 'fi' ? 'Kiinnostuksen kohde: ' : 'Interested service: ') + service,
+      (lang === 'fi' ? 'Alue tai postinumero: ' : 'Area or postcode: ') + (area || '-'),
+      (lang === 'fi' ? 'Kodin koko: ' : 'Home size: ') + (size || '-'),
+      (lang === 'fi' ? 'Toivottu yhteydenotto: ' : 'Preferred contact method: ') + method,
+      '',
+      (lang === 'fi' ? 'Nimi: ' : 'Name: ') + (name || '-'),
+      (lang === 'fi' ? 'Puhelin: ' : 'Phone: ') + (phone || '-'),
+      'Email: ' + (email || '-'),
+      '',
+      (lang === 'fi' ? 'Tarve / viesti: ' : 'Need / message: ') + (need || '-')
+    ].join('\n');
+    window.location.href = 'mailto:info@betterclean.fi?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('inquirySuccess').style.display = 'block';
+  }
+
+  goBookingStep(1);
+  selectFrequency('biweekly');
+  setMode('booking');
+  setLang('fi');
+</script>
+
+</body>
+</html>
