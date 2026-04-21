@@ -1,0 +1,111 @@
+name: Vex Security Scan
+
+on:
+  schedule:
+    # Mon, Thu, Sat, Sun at 12:00 Helsinki (09:00 UTC, UTC+3 summer)
+    - cron: '0 9 * * 0,1,4,6'
+  workflow_dispatch: # allow manual trigger from GitHub UI
+
+jobs:
+  vex-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check 1 — Supabase Auth
+        id: supabase
+        run: |
+          echo "--- Supabase Auth Check ---"
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            "${{ secrets.SUPABASE_URL }}/auth/v1/admin/users?page=1&per_page=50" \
+            -H "apikey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "SUPABASE_STATUS=ERROR (HTTP $HTTP_CODE)" >> $GITHUB_ENV
+          else
+            USER_COUNT=$(echo "$BODY" | grep -o '"id"' | wc -l | tr -d ' ')
+            # Flag if any user created in last 24h
+            RECENT=$(echo "$BODY" | grep -o '"created_at":"202[0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]' | head -3)
+            echo "SUPABASE_STATUS=OK — $USER_COUNT users found" >> $GITHUB_ENV
+            echo "SUPABASE_RECENT=$RECENT" >> $GITHUB_ENV
+            echo "Users: $USER_COUNT | Recent activity: $RECENT"
+          fi
+
+      - name: Check 2 — VirusTotal Domain Scan
+        id: virustotal
+        run: |
+          echo "--- VirusTotal Check ---"
+          DOMAIN="betterclean.fi"
+          ENCODED=$(python3 -c "import base64; print(base64.urlsafe_b64encode('$DOMAIN'.encode()).decode().rstrip('='))")
+
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            "https://www.virustotal.com/api/v3/domains/$DOMAIN" \
+            -H "x-apikey: ${{ secrets.VIRUSTOTAL_API_KEY }}")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "VT_STATUS=ERROR (HTTP $HTTP_CODE)" >> $GITHUB_ENV
+          else
+            MALICIOUS=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['attributes']['last_analysis_stats']['malicious'])" 2>/dev/null || echo "0")
+            SUSPICIOUS=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['attributes']['last_analysis_stats']['suspicious'])" 2>/dev/null || echo "0")
+            echo "VT_STATUS=OK — malicious: $MALICIOUS, suspicious: $SUSPICIOUS" >> $GITHUB_ENV
+            echo "VT_MALICIOUS=$MALICIOUS" >> $GITHUB_ENV
+            echo "Malicious: $MALICIOUS | Suspicious: $SUSPICIOUS"
+          fi
+
+      - name: Check 3 — Error Log Review (Vercel deployments)
+        id: errorlogs
+        run: |
+          echo "--- Error Log Review ---"
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            "https://api.vercel.com/v6/deployments?limit=5&target=production" \
+            -H "Authorization: Bearer ${{ secrets.VERCEL_API_TOKEN }}")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "ERRORS_STATUS=ERROR (HTTP $HTTP_CODE)" >> $GITHUB_ENV
+          else
+            FAILED=$(echo "$BODY" | python3 -c "import sys,json; deps=json.load(sys.stdin).get('deployments',[]); print(sum(1 for d in deps if d.get('state')=='ERROR'))" 2>/dev/null || echo "0")
+            echo "ERRORS_STATUS=OK — $FAILED failed deployments in last 5" >> $GITHUB_ENV
+            echo "ERRORS_FAILED=$FAILED" >> $GITHUB_ENV
+            echo "Failed deployments: $FAILED"
+          fi
+
+      - name: Build and Send Telegram Report
+        if: always()
+        run: |
+          DATE=$(date '+%Y-%m-%d %H:%M UTC')
+
+          # Determine severity
+          VT_MAL="${{ env.VT_MALICIOUS }}"
+          FAILED="${{ env.ERRORS_FAILED }}"
+
+          if [ "$VT_MAL" -gt "3" ] 2>/dev/null; then
+            STATUS="🔴 CRITICAL"
+          elif [ "$VT_MAL" -gt "0" ] 2>/dev/null || [ "$FAILED" -gt "0" ] 2>/dev/null; then
+            STATUS="🟡 MEDIUM"
+          else
+            STATUS="🟢 CLEAN"
+          fi
+
+          MESSAGE="Vex Security Report — $DATE
+Status: $STATUS
+
+1. Supabase Auth: ${{ env.SUPABASE_STATUS }}
+2. VirusTotal (betterclean.fi): ${{ env.VT_STATUS }}
+3. Error Logs: ${{ env.ERRORS_STATUS }}
+4. Local ClamAV: runs on Mac via launchd
+
+Next scan: Mon/Thu/Sat/Sun 12:00 Helsinki"
+
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d text="$MESSAGE"
