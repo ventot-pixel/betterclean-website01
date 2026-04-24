@@ -31,8 +31,35 @@
           "address": {"@type": "PostalAddress", "addressLocality": "Tampere", "addressCountry": "FI"}
         },
         "url": "https://betterclean.fi/steam-cleaning.html",
-        "description": "Kemikaaliton höyrypesu Tampereella kylpyhuoneisiin, saunoihin ja kalusteisiin. Patja alkaen 89 €, kylpyhuone tai sauna alkaen 149 €.",
-        "areaServed": {"@type": "City", "name": "Tampere"},
+        "description": "Kemikaaliton höyrypesu Tampereella kylpyhuoneisiin, saunoihin, patjoihin ja sohviin. Patja alkaen 89 €, kylpyhuone tai sauna alkaen 149 €.",
+        "areaServed": [
+          {"@type": "City", "name": "Tampere"},
+          {"@type": "Place", "name": "Tammela 33500"},
+          {"@type": "Place", "name": "Kaleva 33540"},
+          {"@type": "Place", "name": "Pyynikki 33230"},
+          {"@type": "Place", "name": "Hervanta 33720"},
+          {"@type": "Place", "name": "Tesoma 33310"},
+          {"@type": "Place", "name": "Linnainmaa 33580"},
+          {"@type": "City", "name": "Kangasala 36200"},
+          {"@type": "City", "name": "Ylöjärvi 33470"},
+          {"@type": "City", "name": "Lempäälä 37500"},
+          {"@type": "City", "name": "Pirkkala 33960"},
+          {"@type": "City", "name": "Nokia 37100"}
+        ],
+        "serviceArea": [
+          {"@type": "City", "name": "Tampere"},
+          {"@type": "Place", "name": "Tammela 33500"},
+          {"@type": "Place", "name": "Kaleva 33540"},
+          {"@type": "Place", "name": "Pyynikki 33230"},
+          {"@type": "Place", "name": "Hervanta 33720"},
+          {"@type": "Place", "name": "Tesoma 33310"},
+          {"@type": "Place", "name": "Linnainmaa 33580"},
+          {"@type": "City", "name": "Kangasala 36200"},
+          {"@type": "City", "name": "Ylöjärvi 33470"},
+          {"@type": "City", "name": "Lempäälä 37500"},
+          {"@type": "City", "name": "Pirkkala 33960"},
+          {"@type": "City", "name": "Nokia 37100"}
+        ],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Steam cleaning fixed prices",
@@ -49,46 +76,14 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is steam cleaning safe for all surfaces?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Not for all surfaces. Hardwood floors, delicate laminates and unsealed natural stone need extra care. Steam is highly effective on tiles, grout, glass, stainless steel, porcelain, vinyl and many sealed hard surfaces."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does steam cleaning kill mould?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. High-temperature steam helps kill mould spores and loosen grime in grout lines, tile edges and other damp areas where normal wiping does not reach as effectively."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is steam cleaning eligible for kotitalousvähennys?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Steam cleaning in your own home qualifies for the Finnish household tax deduction, kotitalousvähennys, when purchased from a registered company."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How often should I steam clean my bathroom?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Most bathrooms benefit from professional steam cleaning every 3 to 6 months, depending on use, ventilation and how quickly limescale or mould returns."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is steam cleaning good for sauna cleaning in Finland?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Steam cleaning is well suited to Finnish sauna cleaning because it sanitises wood and surrounding surfaces without leaving harsh chemical residue behind."
-            }
-          }
+          {"@type": "Question", "name": "Is steam cleaning safe for all surfaces?", "acceptedAnswer": {"@type": "Answer", "text": "Steam cleaning is safe for many sealed hard surfaces, tiles, grout, glass and sanitary areas, but delicate materials still need to be assessed case by case."}},
+          {"@type": "Question", "name": "Does steam cleaning kill mould?", "acceptedAnswer": {"@type": "Answer", "text": "High-temperature steam helps kill mould spores and loosen grime in grout lines, tile edges and other damp bathroom and sauna areas."}},
+          {"@type": "Question", "name": "Is steam cleaning eligible for kotitalousvähennys?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Steam cleaning in your own home qualifies for the Finnish household tax deduction, kotitalousvähennys, when purchased from a registered company."}},
+          {"@type": "Question", "name": "How often should I steam clean my bathroom?", "acceptedAnswer": {"@type": "Answer", "text": "Most bathrooms benefit from professional steam cleaning every 3 to 6 months, depending on use, ventilation and how quickly limescale or mould returns."}},
+          {"@type": "Question", "name": "Is steam cleaning good for sauna cleaning in Finland?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Steam cleaning is well suited to Finnish saunas because it sanitises wood and surrounding surfaces without leaving harsh chemical residue behind."}},
+          {"@type": "Question", "name": "Can you steam clean mattresses and sofas?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. BetterClean offers fixed-price steam cleaning for single mattresses, double mattresses, 2-seat sofas, extra seats and armchairs."}},
+          {"@type": "Question", "name": "Do you use chemicals in steam cleaning?", "acceptedAnswer": {"@type": "Answer", "text": "No harsh chemicals are needed for the steam-cleaning process itself. The service relies on high-temperature steam to loosen dirt and sanitise surfaces."}},
+          {"@type": "Question", "name": "How quickly do surfaces dry after steam cleaning?", "acceptedAnswer": {"@type": "Answer", "text": "Most hard surfaces dry quite quickly after steam cleaning, while thicker fabrics such as mattresses and sofas take longer depending on material, ventilation and room temperature."}}
         ]
       }
     ]
@@ -651,68 +646,19 @@
 <section class="py-20 px-6 section-green">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-14">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);"
-        data-en="Common Questions" data-fi="Usein Kysytyt Kysymykset">Usein Kysytyt Kysymykset</p>
-      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;"
-        data-en="Steam Cleaning FAQ"
-        data-fi="Höyrypesu UKK">Höyrypesu UKK</h2>
+      <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--green);" data-en="Common Questions" data-fi="Usein Kysytyt Kysymykset">Usein Kysytyt Kysymykset</p>
+      <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em;" data-en="Steam Cleaning FAQ for Tampere Homes" data-fi="Höyrypesun UKK Tampereen koteihin">Höyrypesun UKK Tampereen koteihin</h2>
+      <p class="text-gray-600 mt-4" style="line-height: 1.75;" data-en="Answers about bathroom steam cleaning, sauna cleaning, mattress and sofa steam cleaning, drying times and fixed prices in Tampere." data-fi="Vastaukset kylpyhuoneen höyrypesuun, saunan puhdistukseen, patjojen ja sohvien höyrypesuun, kuivumisaikoihin ja kiinteisiin hintoihin Tampereella.">Vastaukset kylpyhuoneen höyrypesuun, saunan puhdistukseen, patjojen ja sohvien höyrypesuun, kuivumisaikoihin ja kiinteisiin hintoihin Tampereella.</p>
     </div>
 
-    <details>
-      <summary>
-        <span data-en="Is steam cleaning safe for all surfaces?" data-fi="Onko höyrypesu turvallinen kaikille pinnoille?">Onko höyrypesu turvallinen kaikille pinnoille?</span>
-        <span class="faq-chevron">+</span>
-      </summary>
-      <div class="faq-body">
-        <p data-en="Not for all surfaces  -  hardwood floors, for example, require caution as excessive moisture can cause warping. Delicate laminates and unsealed natural stone also need special assessment. Before starting, our team assesses every surface in your home to determine suitability. Steam is highly effective and completely safe on tiles, grout, glass, stainless steel, porcelain, vinyl and most sealed stone."
-           data-fi="Ei kaikille pinnoille  -  esimerkiksi puulattiat vaativat varovaisuutta, koska liiallinen kosteus voi aiheuttaa käyristymistä. Myös herkät laminaatit ja sinetöimättömät luonnonkivet tarvitsevat erityisarviointia. Ennen aloittamista tiimimme arvioi jokaisen pinnan kelpoisuuden. Höyry on erittäin tehokas ja täysin turvallinen kaakeleille, saumoille, lasille, ruostumattomalle teräkselle, posliinille, vinyyliille ja useimmille sinetöidyille kiville.">Ei kaikille pinnoille  -  esimerkiksi puulattiat vaativat varovaisuutta, koska liiallinen kosteus voi aiheuttaa käyristymistä. Myös herkät laminaatit ja sinetöimättömät luonnonkivet tarvitsevat erityisarviointia. Ennen aloittamista tiimimme arvioi jokaisen pinnan kelpoisuuden. Höyry on erittäin tehokas ja täysin turvallinen kaakeleille, saumoille, lasille, ruostumattomalle teräkselle, posliinille, vinyyliille ja useimmille sinetöidyille kiville.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <span data-en="Does steam cleaning kill mould?" data-fi="Tappaa höyrypesu homeen?">Tappaa höyrypesu homeen?</span>
-        <span class="faq-chevron">+</span>
-      </summary>
-      <div class="faq-body">
-        <p data-en="Yes. Steam at 140°C+ kills mould spores at the root, including in grout lines and behind tile edges where standard cleaning products cannot penetrate. This makes steam cleaning particularly effective in Finnish bathrooms and saunas where high humidity creates ideal conditions for mould growth. Regular steam cleaning every 3-6 months is the most effective prevention strategy."
-           data-fi="Kyllä. Yli 140°C:n höyry tappaa homeitiöt juuresta, myös saumoissa ja kaakelirenkaiden takana, joihin tavalliset siivoustuotteet eivät pysty tunkeutumaan. Tämä tekee höyrypesuista erityisen tehokkaita suomalaisissa kylpyhuoneissa ja saunoissa, joissa korkea kosteus luo ihanteelliset olosuhteet homeenkasvulle. Säännöllinen höyrypesu 3-6 kuukauden välein on tehokkain ehkäisystrategia.">Kyllä. Yli 140°C:n höyry tappaa homeitiöt juuresta, myös saumoissa ja kaakelirenkaiden takana, joihin tavalliset siivoustuotteet eivät pysty tunkeutumaan. Tämä tekee höyrypesuista erityisen tehokkaita suomalaisissa kylpyhuoneissa ja saunoissa, joissa korkea kosteus luo ihanteelliset olosuhteet homeenkasvulle. Säännöllinen höyrypesu 3-6 kuukauden välein on tehokkain ehkäisystrategia.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <span data-en="Is steam cleaning eligible for kotitalousvähennys?" data-fi="Onko höyrypesu oikeutettu kotitalousvähennykseen?">Onko höyrypesu oikeutettu kotitalousvähennykseen?</span>
-        <span class="faq-chevron">+</span>
-      </summary>
-      <div class="faq-body">
-        <p data-en="Yes. Steam cleaning in your own home qualifies for the Finnish household tax deduction (kotitalousvähennys) - 35% of labour costs, deducted directly from taxes. The personal deductible is €150/person/year. We provide all necessary documentation for your tax return."
-           data-fi="Kyllä. Kotonasi suoritettava höyrypesu oikeuttaa kotitalousvähennykseen - 35 % työkustannuksista vähennetään suoraan veroista. Omavastuu on 150 €/henkilö/vuosi. Toimitamme kaikki tarvittavat asiakirjat veroilmoitustasi varten.">Kyllä. Kotonasi suoritettava höyrypesu oikeuttaa kotitalousvähennykseen - 35 % työkustannuksista vähennetään suoraan veroista. Omavastuu on 150 €/henkilö/vuosi. Toimitamme kaikki tarvittavat asiakirjat veroilmoitustasi varten.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <span data-en="How often should I steam clean my bathroom?" data-fi="Kuinka usein kylpyhuone tulisi höyrypesuuttaa?">Kuinka usein kylpyhuone tulisi höyrypesuuttaa?</span>
-        <span class="faq-chevron">+</span>
-      </summary>
-      <div class="faq-body">
-        <p data-en="We recommend professional steam cleaning of grout and tiles every 3-6 months, depending on how frequently the bathroom is used and how well it is ventilated. In Finnish homes where bathrooms are used daily and often have limited ventilation, a quarterly steam clean keeps mould and limescale at bay most effectively. Between professional sessions, regular wiping after showers helps significantly."
-           data-fi="Suosittelemme ammattimaista höyrypesuuta saumoille ja kaakeleille 3-6 kuukauden välein, riippuen kylpyhuoneen käyttötiheydestä ja tuuletuksesta. Suomalaisissa kodeissa, joissa kylpyhuoneet ovat päivittäisessä käytössä ja usein rajallisella tuuletuksella, neljännesvuosittainen höyrypesu pitää homeen ja kalkin parhaiten kurissa. Ammattimaisten käyntien välillä suihkun jälkeinen säännöllinen pyyhkiminen auttaa merkittävästi.">Suosittelemme ammattimaista höyrypesuuta saumoille ja kaakeleille 3-6 kuukauden välein, riippuen kylpyhuoneen käyttötiheydestä ja tuuletuksesta. Suomalaisissa kodeissa, joissa kylpyhuoneet ovat päivittäisessä käytössä ja usein rajallisella tuuletuksella, neljännesvuosittainen höyrypesu pitää homeen ja kalkin parhaiten kurissa. Ammattimaisten käyntien välillä suihkun jälkeinen säännöllinen pyyhkiminen auttaa merkittävästi.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <span data-en="Is steam cleaning good for sauna cleaning in Finland?" data-fi="Sopiiko höyrypesu saunan puhdistukseen Suomessa?">Sopiiko höyrypesu saunan puhdistukseen Suomessa?</span>
-        <span class="faq-chevron">+</span>
-      </summary>
-      <div class="faq-body">
-        <p data-en="Absolutely  -  steam is the ideal solution for sauna cleaning in Finland. The sauna environment, with its extreme heat cycles and wood surfaces, demands a cleaning method that sanitises thoroughly without introducing harsh chemicals that could be inhaled during löyly. Steam sanitises sauna benches, walls and the kiuas area naturally and safely. It kills bacteria and mould from wood fibres without any detergents, leaving nothing behind but a clean, fresh sauna."
-           data-fi="Ehdottomasti  -  höyry on ihanteellinen ratkaisu saunan puhdistukseen Suomessa. Saunaympäristö, jonka äärimmäiset lämpösyklit ja puupinnat vaativat puhdistusmenetelmän, joka sanitoi perusteellisesti ilman voimakkaita kemikaaleja, joita voitaisiin hengittää löylyn aikana. Höyry sanitoi lauteet, seinät ja kiukaan alueen luonnollisesti ja turvallisesti. Se tappaa bakteerit ja homeen puukuiduista ilman pesuaineita, jättäen jälkeensä vain puhtaan, raikkaan saunan.">Ehdottomasti  -  höyry on ihanteellinen ratkaisu saunan puhdistukseen Suomessa. Saunaympäristö, jonka äärimmäiset lämpösyklit ja puupinnat vaativat puhdistusmenetelmän, joka sanitoi perusteellisesti ilman voimakkaita kemikaaleja, joita voitaisiin hengittää löylyn aikana. Höyry sanitoi lauteet, seinät ja kiukaan alueen luonnollisesti ja turvallisesti. Se tappaa bakteerit ja homeen puukuiduista ilman pesuaineita, jättäen jälkeensä vain puhtaan, raikkaan saunan.</p>
-      </div>
-    </details>
-
+    <details><summary><span data-en="Is steam cleaning safe for all surfaces?" data-fi="Onko höyrypesu turvallinen kaikille pinnoille?">Onko höyrypesu turvallinen kaikille pinnoille?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="Not for all surfaces. Hardwood floors, delicate laminates and unsealed natural stone need extra care, but steam is highly effective on tiles, grout, glass, porcelain, stainless steel and many sealed hard surfaces." data-fi="Ei kaikille pinnoille. Puulattiat, herkät laminaatit ja suojaamattomat luonnonkivet vaativat erityistä varovaisuutta, mutta höyry toimii erinomaisesti laatoilla, saumoissa, lasilla, posliinilla, ruostumattomalla teräksellä ja monilla suojatuilla kovilla pinnoilla.">Ei kaikille pinnoille. Puulattiat, herkät laminaatit ja suojaamattomat luonnonkivet vaativat erityistä varovaisuutta, mutta höyry toimii erinomaisesti laatoilla, saumoissa, lasilla, posliinilla, ruostumattomalla teräksellä ja monilla suojatuilla kovilla pinnoilla.</p></div></details>
+    <details><summary><span data-en="Does steam cleaning kill mould?" data-fi="Tappaako höyrypesu homeen?">Tappaako höyrypesu homeen?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="Yes. High-temperature steam helps kill mould spores and loosen dirt deep in grout lines, tile edges and other damp areas where regular wiping does not reach effectively." data-fi="Kyllä. Korkean lämpötilan höyry auttaa tappamaan homeitiöitä ja irrottamaan likaa syvältä saumoista, laattojen reunoista ja muista kosteista kohdista, joihin tavallinen pyyhintä ei yllä tehokkaasti.">Kyllä. Korkean lämpötilan höyry auttaa tappamaan homeitiöitä ja irrottamaan likaa syvältä saumoista, laattojen reunoista ja muista kosteista kohdista, joihin tavallinen pyyhintä ei yllä tehokkaasti.</p></div></details>
+    <details><summary><span data-en="Is steam cleaning eligible for kotitalousvähennys?" data-fi="Onko höyrypesu oikeutettu kotitalousvähennykseen?">Onko höyrypesu oikeutettu kotitalousvähennykseen?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="Yes. Steam cleaning in your own home qualifies for kotitalousvähennys when purchased from a registered company. The deduction applies to labour, not materials or travel costs." data-fi="Kyllä. Omassa kodissa tehty höyrypesu kuuluu kotitalousvähennyksen piiriin, kun palvelu ostetaan rekisteröidyltä yritykseltä. Vähennys koskee työn osuutta, ei materiaaleja tai matkakuluja.">Kyllä. Omassa kodissa tehty höyrypesu kuuluu kotitalousvähennyksen piiriin, kun palvelu ostetaan rekisteröidyltä yritykseltä. Vähennys koskee työn osuutta, ei materiaaleja tai matkakuluja.</p></div></details>
+    <details><summary><span data-en="How often should I steam clean my bathroom?" data-fi="Kuinka usein kylpyhuone kannattaa höyrypestä?">Kuinka usein kylpyhuone kannattaa höyrypestä?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="Most bathrooms benefit from professional steam cleaning every 3-6 months, depending on ventilation, shower use and how quickly limescale or mould comes back." data-fi="Useimmat kylpyhuoneet hyötyvät ammattimaisesta höyrypesusta 3-6 kuukauden välein riippuen ilmanvaihdosta, suihkun käytöstä ja siitä, kuinka nopeasti kalkki tai home palaa.">Useimmat kylpyhuoneet hyötyvät ammattimaisesta höyrypesusta 3-6 kuukauden välein riippuen ilmanvaihdosta, suihkun käytöstä ja siitä, kuinka nopeasti kalkki tai home palaa.</p></div></details>
+    <details><summary><span data-en="Is steam cleaning good for sauna cleaning in Finland?" data-fi="Sopiiko höyrypesu saunan puhdistukseen Suomessa?">Sopiiko höyrypesu saunan puhdistukseen Suomessa?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="Yes. Steam cleaning suits Finnish sauna cleaning well because it sanitises wood and surrounding surfaces without leaving behind harsh chemical residue." data-fi="Kyllä. Höyrypesu sopii hyvin suomalaisen saunan puhdistukseen, koska se sanitoi puun ja ympäröivät pinnat ilman voimakkaita kemikaalijäämiä.">Kyllä. Höyrypesu sopii hyvin suomalaisen saunan puhdistukseen, koska se sanitoi puun ja ympäröivät pinnat ilman voimakkaita kemikaalijäämiä.</p></div></details>
+    <details><summary><span data-en="Can you steam clean mattresses and sofas?" data-fi="Voitteko höyrypestä patjat ja sohvat?">Voitteko höyrypestä patjat ja sohvat?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="Yes. BetterClean offers fixed-price steam cleaning for single mattresses, double mattresses, 2-seat sofas, extra seats and armchairs. This is popular for allergy-sensitive homes in Tampere." data-fi="Kyllä. BetterClean tarjoaa kiinteähintaisen höyrypesun yhden hengen patjoille, paripatjoille, 2-istuttaville sohville, lisäistuimille ja nojatuoleille. Palvelu on suosittu allergiaherkissä kodeissa Tampereella.">Kyllä. BetterClean tarjoaa kiinteähintaisen höyrypesun yhden hengen patjoille, paripatjoille, 2-istuttaville sohville, lisäistuimille ja nojatuoleille. Palvelu on suosittu allergiaherkissä kodeissa Tampereella.</p></div></details>
+    <details><summary><span data-en="Do you use chemicals in steam cleaning?" data-fi="Käytättekö höyrypesussa kemikaaleja?">Käytättekö höyrypesussa kemikaaleja?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="No harsh chemicals are needed for the steam-cleaning process itself. The cleaning power comes from high-temperature steam and the correct professional technique." data-fi="Ei. Höyrypesun puhdistusteho perustuu korkealämpöiseen höyryyn ja oikeaan ammattitekniikkaan, joten voimakkaita kemikaaleja ei tarvita itse prosessissa.">Ei. Höyrypesun puhdistusteho perustuu korkealämpöiseen höyryyn ja oikeaan ammattitekniikkaan, joten voimakkaita kemikaaleja ei tarvita itse prosessissa.</p></div></details>
+    <details><summary><span data-en="How quickly do surfaces dry after steam cleaning?" data-fi="Kuinka nopeasti pinnat kuivuvat höyrypesun jälkeen?">Kuinka nopeasti pinnat kuivuvat höyrypesun jälkeen?</span><span class="faq-chevron">+</span></summary><div class="faq-body"><p data-en="Most hard surfaces dry fairly quickly after steam cleaning. Mattresses, sofas and thicker fabrics take longer, depending on material, ventilation and room temperature." data-fi="Useimmat kovat pinnat kuivuvat melko nopeasti höyrypesun jälkeen. Patjat, sohvat ja paksummat tekstiilit kuivuvat pidempään materiaalin, ilmanvaihdon ja huonelämpötilan mukaan.">Useimmat kovat pinnat kuivuvat melko nopeasti höyrypesun jälkeen. Patjat, sohvat ja paksummat tekstiilit kuivuvat pidempään materiaalin, ilmanvaihdon ja huonelämpötilan mukaan.</p></div></details>
   </div>
 </section>
 

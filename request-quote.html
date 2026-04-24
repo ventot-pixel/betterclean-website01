@@ -29,7 +29,37 @@
           "addressLocality": "Tampere",
           "addressRegion": "Pirkanmaa",
           "addressCountry": "FI"
-        }
+        },
+        "areaServed": [
+          {"@type": "City", "name": "Tampere"},
+          {"@type": "Place", "name": "Tampere city centre 33100"},
+          {"@type": "Place", "name": "Tammela 33500"},
+          {"@type": "Place", "name": "Kaleva 33540"},
+          {"@type": "Place", "name": "Pyynikki 33230"},
+          {"@type": "Place", "name": "Hervanta 33720"},
+          {"@type": "Place", "name": "Tesoma 33310"},
+          {"@type": "Place", "name": "Linnainmaa 33580"},
+          {"@type": "City", "name": "Kangasala 36200"},
+          {"@type": "City", "name": "Ylöjärvi 33470"},
+          {"@type": "City", "name": "Lempäälä 37500"},
+          {"@type": "City", "name": "Pirkkala 33960"},
+          {"@type": "City", "name": "Nokia 37100"}
+        ],
+        "serviceArea": [
+          {"@type": "City", "name": "Tampere"},
+          {"@type": "Place", "name": "Tampere city centre 33100"},
+          {"@type": "Place", "name": "Tammela 33500"},
+          {"@type": "Place", "name": "Kaleva 33540"},
+          {"@type": "Place", "name": "Pyynikki 33230"},
+          {"@type": "Place", "name": "Hervanta 33720"},
+          {"@type": "Place", "name": "Tesoma 33310"},
+          {"@type": "Place", "name": "Linnainmaa 33580"},
+          {"@type": "City", "name": "Kangasala 36200"},
+          {"@type": "City", "name": "Ylöjärvi 33470"},
+          {"@type": "City", "name": "Lempäälä 37500"},
+          {"@type": "City", "name": "Pirkkala 33960"},
+          {"@type": "City", "name": "Nokia 37100"}
+        ]
       },
       {
         "@type": "Service",
@@ -39,11 +69,33 @@
         "description": "Structured BetterClean booking request and inquiry page for premium home cleaning in Tampere.",
         "areaServed": [
           {"@type": "City", "name": "Tampere"},
-          {"@type": "City", "name": "Kangasala"},
-          {"@type": "City", "name": "Ylöjärvi"},
-          {"@type": "City", "name": "Lempäälä"},
-          {"@type": "City", "name": "Pirkkala"},
-          {"@type": "City", "name": "Nokia"}
+          {"@type": "Place", "name": "Tampere city centre 33100"},
+          {"@type": "Place", "name": "Tammela 33500"},
+          {"@type": "Place", "name": "Kaleva 33540"},
+          {"@type": "Place", "name": "Pyynikki 33230"},
+          {"@type": "Place", "name": "Hervanta 33720"},
+          {"@type": "Place", "name": "Tesoma 33310"},
+          {"@type": "Place", "name": "Linnainmaa 33580"},
+          {"@type": "City", "name": "Kangasala 36200"},
+          {"@type": "City", "name": "Ylöjärvi 33470"},
+          {"@type": "City", "name": "Lempäälä 37500"},
+          {"@type": "City", "name": "Pirkkala 33960"},
+          {"@type": "City", "name": "Nokia 37100"}
+        ],
+        "serviceArea": [
+          {"@type": "City", "name": "Tampere"},
+          {"@type": "Place", "name": "Tampere city centre 33100"},
+          {"@type": "Place", "name": "Tammela 33500"},
+          {"@type": "Place", "name": "Kaleva 33540"},
+          {"@type": "Place", "name": "Pyynikki 33230"},
+          {"@type": "Place", "name": "Hervanta 33720"},
+          {"@type": "Place", "name": "Tesoma 33310"},
+          {"@type": "Place", "name": "Linnainmaa 33580"},
+          {"@type": "City", "name": "Kangasala 36200"},
+          {"@type": "City", "name": "Ylöjärvi 33470"},
+          {"@type": "City", "name": "Lempäälä 37500"},
+          {"@type": "City", "name": "Pirkkala 33960"},
+          {"@type": "City", "name": "Nokia 37100"}
         ]
       },
       {
@@ -52,6 +104,19 @@
         "url": "https://betterclean.fi/request-quote.html",
         "isPartOf": {"@id": "https://betterclean.fi/#business"},
         "inLanguage": ["fi", "en"]
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://betterclean.fi/request-quote.html#howto-request",
+        "name": "How to request cleaning from BetterClean",
+        "description": "Step-by-step guide for sending a booking request or quote inquiry to BetterClean in Tampere.",
+        "inLanguage": ["fi", "en"],
+        "step": [
+          {"@type": "HowToStep", "position": 1, "name": "Choose request type", "text": "Select whether you want a structured home-cleaning booking request or a lighter quote inquiry."},
+          {"@type": "HowToStep", "position": 2, "name": "Add service details", "text": "Enter home size, visit length, frequency and any extra services or describe the service you need."},
+          {"@type": "HowToStep", "position": 3, "name": "Add area and contact details", "text": "Share your address or area, preferred time window and the best contact method for follow-up."},
+          {"@type": "HowToStep", "position": 4, "name": "Send request", "text": "Review the request summary and send it so BetterClean can confirm the next step personally."}
+        ]
       }
     ]
   }

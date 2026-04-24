@@ -2,7 +2,7 @@
 # Vex — Local ClamAV Scan
 # Runs via launchd daily at 12:00 Helsinki
 
-LOG="$HOME/Desktop/Ven AI/Team/Vex/vex_reports.log"
+LOG="$HOME/Desktop/Ven AI/Team/logs/vex_reports.log"
 DATE=$(date '+%Y-%m-%d %H:%M')
 
 echo "[$DATE] Vex Local Scan — starting" >> "$LOG"
