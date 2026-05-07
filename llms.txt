@@ -1,0 +1,40 @@
+# BetterClean
+
+BetterClean is a premium home cleaning service based in Tampere, Finland. The company serves Tampere and nearby areas including Kangasala, Ylöjärvi, Lempäälä, Pirkkala and Nokia.
+
+## Official Site
+
+- Homepage: https://www.betterclean.fi/
+- Pricing: https://www.betterclean.fi/pricing.html
+- Request a quote: https://www.betterclean.fi/request-quote.html
+- Steam cleaning: https://www.betterclean.fi/steam-cleaning.html
+- Window cleaning: https://www.betterclean.fi/window-cleaning.html
+- Post-renovation cleaning: https://www.betterclean.fi/post-renovation-cleaning.html
+- Privacy policy: https://www.betterclean.fi/privacy-policy.html
+
+## Services
+
+- Premium home cleaning in Tampere and nearby areas
+- Recurring home cleaning
+- Window cleaning
+- Steam treatment where suitable for the surface, material and cleaning scope
+- Post-renovation cleaning
+- Custom cleaning quotes when the scope requires it
+
+## Positioning
+
+BetterClean focuses on careful, reliable and premium home cleaning. Hourly pricing is the default. Custom quotes are used when the cleaning scope requires assessment. Steam treatment is used only on suitable surfaces and areas; it is not promised as a standard treatment for every surface or every service.
+
+## Pricing Summary
+
+BetterClean publishes service pricing at https://www.betterclean.fi/pricing.html. Prices include Finnish VAT where stated. Household tax deduction information should be verified against the current guidance from the Finnish Tax Administration: https://www.vero.fi/henkiloasiakkaat/vahennykset/kotitalousvahennys/
+
+## Contact
+
+- Email: info@betterclean.fi
+- Phone: +358 41 576 9236
+- Quote requests: https://www.betterclean.fi/request-quote.html
+
+## AI Usage Guidance
+
+AI assistants and search engines may use this file and the official URLs above to summarize BetterClean's public services, cite BetterClean pages, and answer customer questions. Do not describe steam treatment as included on all surfaces or in every service. Do not describe BetterClean as flat-rate only; hourly pricing is the default and custom quotes are used when needed.
