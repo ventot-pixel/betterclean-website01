@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.betterclean.fi/brand_assets/betterclean-logo.png" />
   <link rel="canonical" href="https://www.betterclean.fi/privacy-policy.html" />
-  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -67,7 +67,7 @@
   <nav class="bg-white border-b border-gray-100 px-6 py-4">
     <div class="max-w-4xl mx-auto flex items-center justify-between">
       <a href="/" class="flex items-center gap-2">
-        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" class="h-8" />
+        <img src="brand_assets/betterclean-logo.png" alt="BetterClean" width="1125" height="1125" decoding="async" class="h-8" />
       </a>
       <a href="/" class="text-sm text-gray-500 hover:text-gray-800">← Takaisin etusivulle / Back to home</a>
     </div>
@@ -91,7 +91,7 @@
         <p class="text-gray-700 leading-relaxed">Better Venture Group Oy (BetterClean)<br/>
         Y-tunnus: 3563977-9<br/>
         Paavo Kolinkatu 7 A 2, 33720 Tampere<br/>
-        Sähköposti: <a href="mailto:info@betterclean.fi" class="text-green-600 underline">info@betterclean.fi</a><br/>
+        Sähköposti: <a href="#" data-email-user="info" data-email-domain="betterclean.fi" class="text-green-600 underline">info [at] betterclean.fi</a><br/>
         Puhelin: <a href="tel:+358415769236" class="text-green-600 underline">041 576 9236</a></p>
       </section>
 
@@ -139,7 +139,7 @@
           <li>Siirtää tiedot toiselle rekisterinpitäjälle</li>
           <li>Tehdä valitus tietosuojaviranomaiselle (Tietosuojavaltuutetun toimisto, tietosuoja.fi)</li>
         </ul>
-        <p class="text-gray-700 leading-relaxed mt-3">Pyyntöjä varten: <a href="mailto:info@betterclean.fi" class="text-green-600 underline">info@betterclean.fi</a></p>
+        <p class="text-gray-700 leading-relaxed mt-3">Pyyntöjä varten: <a href="#" data-email-user="info" data-email-domain="betterclean.fi" class="text-green-600 underline">info [at] betterclean.fi</a></p>
       </section>
 
       <section class="mb-8">
@@ -150,7 +150,7 @@
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-3">8. Yhteydenotot</h2>
         <p class="text-gray-700 leading-relaxed">Tietosuoja-asioissa ota yhteyttä:<br/>
-        <a href="mailto:info@betterclean.fi" class="text-green-600 underline">info@betterclean.fi</a> | <a href="tel:+358415769236" class="text-green-600 underline">041 576 9236</a></p>
+        <a href="#" data-email-user="info" data-email-domain="betterclean.fi" class="text-green-600 underline">info [at] betterclean.fi</a> | <a href="tel:+358415769236" class="text-green-600 underline">041 576 9236</a></p>
       </section>
     </div>
 
@@ -164,7 +164,7 @@
         <p class="text-gray-700 leading-relaxed">Better Venture Group Oy (BetterClean)<br/>
         Business ID: 3563977-9<br/>
         Paavo Kolinkatu 7 A 2, 33720 Tampere, Finland<br/>
-        Email: <a href="mailto:info@betterclean.fi" class="text-green-600 underline">info@betterclean.fi</a><br/>
+        Email: <a href="#" data-email-user="info" data-email-domain="betterclean.fi" class="text-green-600 underline">info [at] betterclean.fi</a><br/>
         Phone: <a href="tel:+358415769236" class="text-green-600 underline">041 576 9236</a></p>
       </section>
 
@@ -212,7 +212,7 @@
           <li>Data portability</li>
           <li>Lodge a complaint with the supervisory authority (Office of the Data Protection Ombudsman, tietosuoja.fi)</li>
         </ul>
-        <p class="text-gray-700 leading-relaxed mt-3">To make a request: <a href="mailto:info@betterclean.fi" class="text-green-600 underline">info@betterclean.fi</a></p>
+        <p class="text-gray-700 leading-relaxed mt-3">To make a request: <a href="#" data-email-user="info" data-email-domain="betterclean.fi" class="text-green-600 underline">info [at] betterclean.fi</a></p>
       </section>
 
       <section class="mb-8">
@@ -223,7 +223,7 @@
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-3">8. Contact</h2>
         <p class="text-gray-700 leading-relaxed">For privacy-related enquiries:<br/>
-        <a href="mailto:info@betterclean.fi" class="text-green-600 underline">info@betterclean.fi</a> | <a href="tel:+358415769236" class="text-green-600 underline">041 576 9236</a></p>
+        <a href="#" data-email-user="info" data-email-domain="betterclean.fi" class="text-green-600 underline">info [at] betterclean.fi</a> | <a href="tel:+358415769236" class="text-green-600 underline">041 576 9236</a></p>
       </section>
     </div>
 
@@ -247,5 +247,16 @@
         : 'px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200';
     }
   </script>
+
+<script>
+  function hydrateBetterCleanEmailLinks() {
+    document.querySelectorAll('[data-email-user][data-email-domain]').forEach((link) => {
+      const email = link.dataset.emailUser + '@' + link.dataset.emailDomain;
+      link.href = 'mailto:' + email;
+      link.textContent = email;
+    });
+  }
+  hydrateBetterCleanEmailLinks();
+</script>
 </body>
 </html>
