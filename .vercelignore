@@ -1,0 +1,13 @@
+node_modules
+automation
+internal-tools
+document_templates
+temporary screenshots
+brand_assets/premium_pricing.html
+CLAUDE.md
+AGENTS.md
+WEBSITE_IMPROVEMENTS_LOG.md
+serve.mjs
+screenshot.mjs
+package.json
+package-lock.json

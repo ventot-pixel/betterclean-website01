@@ -14,6 +14,7 @@
   <meta property="og:url" content="https://www.betterclean.fi/request-quote.html" />
   <meta property="og:image" content="https://www.betterclean.fi/brand_assets/betterclean-logo.png" />
   <link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64" />
+  <script src="/consent.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1196,6 +1197,7 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
       });
+      if (response.ok && typeof window.bcTrackLead === 'function') window.bcTrackLead();
       return response.ok;
     } catch (error) {
       return false;

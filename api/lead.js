@@ -39,6 +39,35 @@ async function sendResend(payload, text) {
   return response.ok;
 }
 
+async function sendWhatsApp(text) {
+  if (!process.env.CALLMEBOT_PHONE || !process.env.CALLMEBOT_APIKEY) return false;
+  const url = 'https://api.callmebot.com/whatsapp.php' +
+    '?phone=' + encodeURIComponent(process.env.CALLMEBOT_PHONE) +
+    '&apikey=' + encodeURIComponent(process.env.CALLMEBOT_APIKEY) +
+    '&text=' + encodeURIComponent(text.slice(0, 1500));
+  const response = await fetch(url);
+  return response.ok;
+}
+
+async function sendSheet(payload) {
+  if (!process.env.SHEETS_WEBHOOK_URL) return false;
+  const response = await fetch(process.env.SHEETS_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      secret: process.env.SHEETS_WEBHOOK_SECRET || '',
+      receivedAt: new Date().toISOString(),
+      source: payload.source || 'website',
+      subject: payload.subject || '',
+      customer: payload.customer || {},
+      booking: payload.booking || null,
+      inquiry: payload.inquiry || null,
+      body: payload.body || ''
+    })
+  });
+  return response.ok;
+}
+
 async function sendTelegram(payload, text) {
   if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) return false;
   const url = 'https://api.telegram.org/bot' + process.env.TELEGRAM_BOT_TOKEN + '/sendMessage';
@@ -73,6 +102,9 @@ module.exports = async function handler(req, res) {
   try {
     delivered = await sendResend(payload, text);
     delivered = (await sendTelegram(payload, text)) || delivered;
+    delivered = (await sendWhatsApp(text).catch(() => false)) || delivered;
+    // Sheet logging is storage, not delivery — a sheet failure must not block the lead.
+    await sendSheet(payload).catch(() => false);
   } catch (error) {
     return res.status(502).json({ ok: false, error: 'Lead delivery failed' });
   }
