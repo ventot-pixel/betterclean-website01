@@ -2,3 +2,11 @@ node_modules/
 temporary screenshots/
 package-lock.json
 tmp/
+.vercel
+
+# Secrets — never commit (2026-06-15: .env.local held ADMIN_PASSWORD + DATABASE_URL)
+.env
+.env*.local
+
+# Build output (generated; do not version)
+.next/
