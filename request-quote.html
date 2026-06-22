@@ -15,12 +15,13 @@
   <meta property="og:image" content="https://www.betterclean.fi/brand_assets/betterclean-logo.png" />
   <link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64" />
   <script src="/consent.js" defer></script>
+  <script src="/whatsapp-widget.js?v=20260615-auto" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
         "@id": "https://www.betterclean.fi/#business",
         "name": "BetterClean",
         "url": "https://www.betterclean.fi/",
@@ -896,8 +897,10 @@
           <li><a href="/#services" class="hover:text-white transition-colors" data-en="Regular Home Cleaning" data-fi="Kotisiivous">Kotisiivous</a></li>
           <li><a href="/#pricing" class="hover:text-white transition-colors" data-en="Deep Cleaning" data-fi="Syväsiivous">Syväsiivous</a></li>
           <li><a href="window-cleaning.html" class="hover:text-white transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</a></li>
+          <li><a href="textile-cleaning.html" class="hover:text-white transition-colors" data-en="Textile Cleaning" data-fi="Tekstiilipesu">Tekstiilipesu</a></li>
           <li><a href="steam-cleaning.html" class="hover:text-white transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu">Höyrypesu</a></li>
           <li><a href="post-renovation-cleaning.html" class="hover:text-white transition-colors" data-en="Post-Renovation Cleaning" data-fi="Remonttisiivous">Remonttisiivous</a></li>
+          <li><a href="additional-cleaning-services.html" class="hover:text-white transition-colors" data-en="Additional Cleaning Services" data-fi="Lisäsiivouspalvelut">Lisäsiivouspalvelut</a></li>
           <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="All Pricing" data-fi="Kaikki Hinnat">Kaikki Hinnat</a></li>
         </ul>
       </div>
@@ -1138,6 +1141,7 @@
       source: 'request-quote-booking',
       subject,
       body,
+      language: lang,
       customer: { firstName: first, lastName: last, email, phone },
       booking: bookingState
     });
@@ -1178,6 +1182,7 @@
       source: 'request-quote-inquiry',
       subject,
       body,
+      language: lang,
       customer: { name, email, phone },
       inquiry: { service, area, size, method, need }
     });

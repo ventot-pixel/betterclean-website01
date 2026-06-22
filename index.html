@@ -16,12 +16,13 @@
   <meta name="google-site-verification" content="zxyCzs72blaK_Xf4XHhVp0PNrPd6wGYukGEuThp6xfA" />
   <link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64" />
   <script src="/consent.js" defer></script>
+  <script src="/whatsapp-widget.js?v=20260615-auto" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
         "@id": "https://www.betterclean.fi/#business",
         "name": "BetterClean",
         "alternateName": "BetterClean Tampere",
@@ -77,8 +78,10 @@
           "itemListElement": [
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kotisiivous", "url": "https://www.betterclean.fi/"}},
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ikkunanpesu", "url": "https://www.betterclean.fi/window-cleaning.html"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tekstiilipesu", "url": "https://www.betterclean.fi/textile-cleaning.html"}},
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Höyrypesu", "url": "https://www.betterclean.fi/steam-cleaning.html"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Remonttisiivous", "url": "https://www.betterclean.fi/post-renovation-cleaning.html"}}
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Remonttisiivous", "url": "https://www.betterclean.fi/post-renovation-cleaning.html"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Lisäsiivouspalvelut", "url": "https://www.betterclean.fi/additional-cleaning-services.html"}}
           ]
         }
       },
@@ -516,7 +519,7 @@
       <!-- Signature  -  featured -->
       <div class="tier-card featured">
         <div class="tier-img">
-          <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&q=75&auto=format&fit=crop" alt="Deep cleaning" width="800" height="533" loading="lazy" decoding="async" />
+          <img src="brand_assets/signature-deep-clean-steam-card-v3.jpg" alt="BetterClean signature deep cleaning with steam in a regular Finnish home, black pants and black ON Cloud style shoes / BetterClean syväsiivous höyrypesulla tavallisessa suomalaisessa kodissa, mustat housut ja mustat ON Cloud -tyyliset kengät" width="800" height="533" loading="lazy" decoding="async" />
           <div class="tier-img-overlay"></div>
           <div class="tier-badge" data-en="Most Requested" data-fi="Eniten Pyydetty">Eniten Pyydetty</div>
         </div>
@@ -553,7 +556,7 @@
       <!-- Move/Reset -->
       <div class="tier-card">
         <div class="tier-img">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75&auto=format&fit=crop" alt="Move out cleaning" width="800" height="533" loading="lazy" decoding="async" />
+          <img src="brand_assets/move-reset-sofa-cleaning-card-v3.jpg" alt="BetterClean move-out cleaning under a sofa with connected vacuum hose and window cleaning / BetterClean muuttosiivous sohvan alta ja ikkunoiden puhdistus" width="800" height="533" loading="lazy" decoding="async" />
           <div class="tier-img-overlay"></div>
         </div>
         <div class="tier-body">
@@ -600,13 +603,13 @@
         </div>
         <svg class="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
-      <a href="steam-cleaning.html" class="flex items-center gap-4 bg-white rounded-2xl px-6 py-5 border border-gray-100 hover:border-green-300 hover:shadow-lg transition group" style="box-shadow: 0 2px 8px rgba(36,122,36,0.05);">
+      <a href="textile-cleaning.html" class="flex items-center gap-4 bg-white rounded-2xl px-6 py-5 border border-gray-100 hover:border-green-300 hover:shadow-lg transition group" style="box-shadow: 0 2px 8px rgba(36,122,36,0.05);">
         <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--green-light);">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 2C12 2 8 7 8 11a4 4 0 008 0c0-4-4-9-4-9z" stroke="#247a24" stroke-width="1.5" stroke-linecap="round"/><path d="M8 21h8M12 17v4" stroke="#247a24" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M5 11h14a2 2 0 012 2v5H3v-5a2 2 0 012-2z" stroke="#247a24" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 11V8a3 3 0 013-3h4a3 3 0 013 3v3M6 18v2M18 18v2" stroke="#247a24" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="flex-1">
-          <p class="font-display font-bold text-sm" style="color: var(--dark);" data-en="Steam Cleaning" data-fi="Höyrypesu">Höyrypesu</p>
-          <p class="text-xs text-gray-400 mt-0.5" data-en="from 89 €  -  steam treatment for suitable surfaces" data-fi="alkaen 89 €  -  höyrykäsittely soveltuville pinnoille">alkaen 89 €  -  höyrykäsittely soveltuville pinnoille</p>
+          <p class="font-display font-bold text-sm" style="color: var(--dark);" data-en="Textile Cleaning" data-fi="Tekstiilipesu">Tekstiilipesu</p>
+          <p class="text-xs text-gray-400 mt-0.5" data-en="from 69 €  -  sofas, mattresses and carpets" data-fi="alkaen 69 €  -  sohvat, patjat ja matot">alkaen 69 €  -  sohvat, patjat ja matot</p>
         </div>
         <svg class="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
@@ -1142,6 +1145,45 @@
       _subject: 'New BetterClean Booking - ' + firstName + ' ' + lastName,
       _replyto: email
     };
+    const body = [
+      'New Booking Request',
+      '',
+      'Service: ' + data.service,
+      'Size: ' + data.size,
+      'Date: ' + data.date,
+      'Time: ' + data.time,
+      '',
+      'Name: ' + data.firstName + ' ' + data.lastName,
+      'Email: ' + data.email,
+      'Phone: ' + data.phone,
+      'Address: ' + data.address,
+      'Notes: ' + (data.notes || '-'),
+      '',
+      'Payment Method: ' + data.paymentMethod,
+      'Estimated Price: ' + data.estimatedPrice
+    ].join('\n');
+    const leadPayload = {
+      source: 'homepage-booking',
+      subject: data._subject,
+      body,
+      language: lang,
+      customer: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone
+      },
+      booking: {
+        service: data.service,
+        size: data.size,
+        date: data.date,
+        time: data.time,
+        address: data.address,
+        notes: data.notes,
+        paymentMethod: data.paymentMethod,
+        estimatedPrice: data.estimatedPrice
+      }
+    };
 
     btn.disabled = true;
     btn.textContent = lang === 'fi' ? 'Lähetetään...' : 'Sending...';
@@ -1155,30 +1197,13 @@
         const r = await fetch(LEAD_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data)
+          body: JSON.stringify(leadPayload)
         });
         success = r.ok;
       } catch(e) { success = false; }
     }
 
     if (!success) {
-      const body = [
-        'New Booking Request',
-        '',
-        'Service: ' + data.service,
-        'Size: ' + data.size,
-        'Date: ' + data.date,
-        'Time: ' + data.time,
-        '',
-        'Name: ' + data.firstName + ' ' + data.lastName,
-        'Email: ' + data.email,
-        'Phone: ' + data.phone,
-        'Address: ' + data.address,
-        'Notes: ' + (data.notes || '-'),
-        '',
-        'Payment Method: ' + data.paymentMethod,
-        'Estimated Price: ' + data.estimatedPrice
-      ].join('\n');
       window.location.href = 'mailto:' + BOOKING_EMAIL + '?subject=' + encodeURIComponent(data._subject) + '&body=' + encodeURIComponent(body);
       usedMailto = true;
       setConfirmationState('email');
@@ -1214,8 +1239,10 @@
           <li><a href="/#services" class="hover:text-white transition-colors" data-en="Regular Home Cleaning" data-fi="Kotisiivous">Kotisiivous</a></li>
           <li><a href="/#pricing" class="hover:text-white transition-colors" data-en="Deep Cleaning" data-fi="Syväsiivous">Syväsiivous</a></li>
           <li><a href="window-cleaning.html" class="hover:text-white transition-colors" data-en="Window Cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</a></li>
+          <li><a href="textile-cleaning.html" class="hover:text-white transition-colors" data-en="Textile Cleaning" data-fi="Tekstiilipesu">Tekstiilipesu</a></li>
           <li><a href="steam-cleaning.html" class="hover:text-white transition-colors" data-en="Steam Cleaning" data-fi="Höyrypesu">Höyrypesu</a></li>
           <li><a href="post-renovation-cleaning.html" class="hover:text-white transition-colors" data-en="Post-Renovation Cleaning" data-fi="Remonttisiivous">Remonttisiivous</a></li>
+          <li><a href="additional-cleaning-services.html" class="hover:text-white transition-colors" data-en="Additional Cleaning Services" data-fi="Lisäsiivouspalvelut">Lisäsiivouspalvelut</a></li>
           <li><a href="pricing.html" class="hover:text-white transition-colors" data-en="All Pricing" data-fi="Kaikki Hinnat">Kaikki Hinnat</a></li>
         </ul>
       </div>
