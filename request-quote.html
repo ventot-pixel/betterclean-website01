@@ -513,7 +513,7 @@
             <div class="grid md:grid-cols-2 gap-5 mb-6">
               <div>
                 <label class="field-label" for="homeSize" data-en="Apartment size" data-fi="Asunnon koko">Asunnon koko</label>
-                <select id="homeSize" onchange="updateBookingSummary()">
+                <select id="homeSize" onchange="handleHomeSizeChange()">
                   <option value="studio" data-en="Under 50m²" data-fi="Alle 50m²">Alle 50m²</option>
                   <option value="small" selected data-en="50 - 89m²" data-fi="50 - 89m²">50 - 89m²</option>
                   <option value="medium" data-en="90 - 119m²" data-fi="90 - 119m²">90 - 119m²</option>
@@ -523,10 +523,12 @@
               </div>
               <div>
                 <label class="field-label" for="cleanDuration" data-en="Cleaning duration" data-fi="Siivouksen kesto">Siivouksen kesto</label>
-                <select id="cleanDuration" onchange="updateBookingSummary()">
+                <select id="cleanDuration" onchange="handleDurationChange()">
+                  <option value="2">2h</option>
+                  <option value="3" selected>3h</option>
                   <option value="4">4h</option>
                   <option value="5">5h</option>
-                  <option value="6" selected data-en="6h (recommendation)" data-fi="6h (suositus)">6h (suositus)</option>
+                  <option value="6">6h</option>
                   <option value="7">7h</option>
                   <option value="8">8h</option>
                 </select>
@@ -977,7 +979,7 @@
     step: 1,
     mode: 'booking',
     size: 'small',
-    duration: 6,
+    duration: 3,
     frequency: 'biweekly',
     extras: [],
     slot: '',
@@ -985,6 +987,41 @@
     postcode: '',
     pets: false
   };
+
+  const RECOMMENDED_DURATION_BY_SIZE = {
+    studio: 2,
+    small: 3,
+    medium: 4,
+    large: 5,
+    xlarge: 6
+  };
+
+  function getRecommendedDuration(size) {
+    return RECOMMENDED_DURATION_BY_SIZE[size] || RECOMMENDED_DURATION_BY_SIZE.small;
+  }
+
+  function updateDurationRecommendationLabels() {
+    const durationSelect = document.getElementById('cleanDuration');
+    if (!durationSelect) return;
+    const lang = currentLang || 'fi';
+    const recommendedDuration = getRecommendedDuration(bookingState.size);
+
+    Array.from(durationSelect.options).forEach(option => {
+      const baseLabel = option.value + 'h';
+      option.textContent = Number(option.value) === recommendedDuration
+        ? baseLabel + (lang === 'fi' ? ' (suositus)' : ' (recommendation)')
+        : baseLabel;
+    });
+  }
+
+  function setDurationFromRecommendedSize() {
+    const durationSelect = document.getElementById('cleanDuration');
+    if (!durationSelect) return;
+    const recommendedDuration = getRecommendedDuration(bookingState.size);
+    durationSelect.value = String(recommendedDuration);
+    bookingState.duration = recommendedDuration;
+    updateDurationRecommendationLabels();
+  }
 
   function getFrequencyLabel(key, lang) {
     const labels = {
@@ -1062,6 +1099,18 @@
     refreshUi();
   }
 
+  function handleHomeSizeChange() {
+    bookingState.size = document.getElementById('homeSize').value;
+    setDurationFromRecommendedSize();
+    updateBookingSummary();
+  }
+
+  function handleDurationChange() {
+    bookingState.duration = Number(document.getElementById('cleanDuration').value);
+    updateDurationRecommendationLabels();
+    updateBookingSummary();
+  }
+
   function updateBookingSummary() {
     bookingState.size = document.getElementById('homeSize').value;
     bookingState.duration = Number(document.getElementById('cleanDuration').value);
@@ -1081,6 +1130,7 @@
 
   function refreshUi() {
     const lang = currentLang || 'fi';
+    updateDurationRecommendationLabels();
     document.getElementById('summaryTitle').textContent = bookingState.mode === 'booking'
       ? (lang === 'fi' ? 'Kotisiivouspyyntö' : 'Home Cleaning Request')
       : (lang === 'fi' ? 'Tarjouskysely' : 'Quote Inquiry');

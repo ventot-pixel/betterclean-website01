@@ -457,7 +457,7 @@
             </div>
             <div>
               <label class="field-label" for="homeSize" data-en="Apartment size" data-fi="Asunnon koko">Asunnon koko</label>
-              <select id="homeSize" name="homeSize">
+              <select id="homeSize" name="homeSize" onchange="updateNeighborRecommendation()">
                 <option value="under-40" data-en="Studio or under 40m²" data-fi="Yksiö tai alle 40m²">Yksiö tai alle 40m²</option>
                 <option value="40-59" data-en="40 - 59m²" data-fi="40 - 59m²">40 - 59m²</option>
                 <option value="60-79" data-en="60 - 79m²" data-fi="60 - 79m²">60 - 79m²</option>
@@ -487,6 +487,14 @@
                 <option value="open" data-en="Balcony, no glazing" data-fi="Parveke, ei lasitusta">Parveke, ei lasitusta</option>
                 <option value="glazed" data-en="Balcony with glazing" data-fi="Parveke lasituksella">Parveke lasituksella</option>
               </select>
+            </div>
+          </div>
+
+          <div class="soft-surface p-4 mb-5" aria-live="polite">
+            <p class="field-label mb-1" data-en="Recommended visit length" data-fi="Suositeltu käyntikesto">Suositeltu käyntikesto</p>
+            <div class="flex flex-col sm:flex-row sm:items-end gap-1 sm:gap-3">
+              <strong id="recommendedVisitLength" class="font-display text-3xl" style="color: var(--green-dark); white-space: nowrap;">2-3 h</strong>
+              <span class="fine-print" data-en="Final time is confirmed with your personal quote." data-fi="Lopullinen aika vahvistetaan henkilökohtaisessa tarjouksessa.">Lopullinen aika vahvistetaan henkilökohtaisessa tarjouksessa.</span>
             </div>
           </div>
 
@@ -604,6 +612,12 @@
 <script>
   let currentLang = 'fi';
   const LEAD_ENDPOINT = '/api/lead';
+  const NEIGHBOR_VISIT_RECOMMENDATIONS = {
+    'under-40': '2-3 h',
+    '40-59': '3-4 h',
+    '60-79': '4-5 h',
+    '80-plus': '5-6 h'
+  };
 
   function setLang(lang) {
     currentLang = lang;
@@ -631,6 +645,7 @@
     });
 
     document.documentElement.lang = lang;
+    updateNeighborRecommendation();
   }
 
   function toggleMobileNav() {
@@ -652,6 +667,17 @@
     return select.options[select.selectedIndex].textContent;
   }
 
+  function getNeighborRecommendedVisitLength() {
+    const homeSize = document.getElementById('homeSize');
+    if (!homeSize) return NEIGHBOR_VISIT_RECOMMENDATIONS['under-40'];
+    return NEIGHBOR_VISIT_RECOMMENDATIONS[homeSize.value] || NEIGHBOR_VISIT_RECOMMENDATIONS['under-40'];
+  }
+
+  function updateNeighborRecommendation() {
+    const recommendation = document.getElementById('recommendedVisitLength');
+    if (recommendation) recommendation.textContent = getNeighborRecommendedVisitLength();
+  }
+
   function getExtraLabels(extras, lang) {
     const labels = {
       sofa: { fi: 'Sohvan raikastus', en: 'Sofa refresh' },
@@ -668,6 +694,7 @@
     const phone = document.getElementById('phone').value.trim();
     const email = document.getElementById('email').value.trim();
     const homeSize = getSelectText('homeSize');
+    const recommendedVisitLength = getNeighborRecommendedVisitLength();
     const windowCount = getSelectText('windowCount');
     const sauna = getSelectText('sauna');
     const balcony = getSelectText('balcony');
@@ -682,6 +709,7 @@
       '',
       (lang === 'fi' ? 'Tarjous: ' : 'Offer: ') + 'Naapurietu alkaen 39 €/h',
       (lang === 'fi' ? 'Kodin koko: ' : 'Home size: ') + homeSize,
+      (lang === 'fi' ? 'Suositeltu käyntikesto: ' : 'Recommended visit length: ') + recommendedVisitLength,
       (lang === 'fi' ? 'Ikkunoiden määrä: ' : 'Window count: ') + windowCount,
       (lang === 'fi' ? 'Sauna: ' : 'Sauna: ') + sauna,
       (lang === 'fi' ? 'Parveke: ' : 'Balcony: ') + balcony,
@@ -705,6 +733,7 @@
         service: 'Naapurietu kotisiivous alkaen 39 €/h',
         area: 'Tampere',
         size: homeSize,
+        recommendedVisitLength,
         windowCount,
         sauna,
         balcony,
