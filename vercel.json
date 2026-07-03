@@ -5,5 +5,11 @@
       "destination": "/",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/naapurietu",
+      "destination": "/naapurietu.html"
+    }
   ]
 }

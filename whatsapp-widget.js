@@ -265,7 +265,9 @@
       attributeFilter: ['lang']
     });
 
-    window.setTimeout(() => setOpen(true, { focus: false }), 700);
+    if (document.body.dataset.noWhatsappAutoOpen !== 'true') {
+      window.setTimeout(() => setOpen(true, { focus: false }), 700);
+    }
   }
 
   if (document.querySelector('.bc-whatsapp-widget')) return;
