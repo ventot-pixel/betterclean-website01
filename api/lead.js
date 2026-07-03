@@ -191,6 +191,14 @@ async function sendTelegram(payload, text) {
   return response.ok;
 }
 
+async function attemptDelivery(fn) {
+  try {
+    return await fn();
+  } catch {
+    return false;
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -208,9 +216,9 @@ module.exports = async function handler(req, res) {
   let delivered = false;
 
   try {
-    delivered = await sendResend(payload, text);
-    delivered = (await sendTelegram(payload, text)) || delivered;
-    delivered = (await sendWhatsApp(text).catch(() => false)) || delivered;
+    delivered = (await attemptDelivery(() => sendResend(payload, text))) || delivered;
+    delivered = (await attemptDelivery(() => sendTelegram(payload, text))) || delivered;
+    delivered = (await attemptDelivery(() => sendWhatsApp(text))) || delivered;
     await sendCustomerAutoReply(payload).catch(() => false);
     // Sheet logging is storage, not delivery — a sheet failure must not block the lead.
     await sendSheet(payload).catch(() => false);
