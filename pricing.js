@@ -34,10 +34,9 @@ const PRICES = {
   steamBathroomSauna:   149,  // alkaen
 
   // ── Window cleaning estimates (€) ─────────────────────────────────────
-  windowApartmentMin:   119,
-  windowApartmentMax:   159,
-  windowHouseMin:       179,
-  windowHouseMax:       229,
+  // Window job prices come from WINDOW_COUNT_BRACKETS x PRICES.window.
+  // Do not add apartment/house estimate constants back: they drifted out of
+  // sync with the hourly rate twice.
   windowBalconyAddon:   59,
 
   // ── Minimum booking hours ──────────────────────────────────────────────
@@ -62,6 +61,31 @@ const HOME_RATE_BY_FREQUENCY = {
   biweekly: 55,
   monthly:  59,   // every four weeks
   once:     PRICES.oneTime,
+};
+
+/**
+ * Window cleaning is bookable on its own, at PRICES.window with a two-hour
+ * minimum. Windows scale with how many there are, not with floor area, so the
+ * booking form asks for a count rather than square metres.
+ *
+ * Beyond 24 windows we quote by hand instead of guessing.
+ */
+const WINDOW_COUNT_BRACKETS = [
+  { key: 'win8',  min: 1,  max: 8,  hours: 2, labels: { en: 'Up to 8 windows', fi: 'Enintään 8 ikkunaa' } },
+  { key: 'win16', min: 9,  max: 16, hours: 3, labels: { en: '9-16 windows',    fi: '9-16 ikkunaa' } },
+  { key: 'win24', min: 17, max: 24, hours: 4, labels: { en: '17-24 windows',   fi: '17-24 ikkunaa' } },
+];
+
+function getWindowCountBracket(windowCount) {
+  const value = Number(windowCount);
+  if (!Number.isFinite(value) || value <= 0) return null;
+  return WINDOW_COUNT_BRACKETS.find(b => value >= b.min && value <= b.max) || null;
+}
+
+// Fixed-euro window add-ons. Priced, never "confirmed in our reply".
+const WINDOW_ADDON_PRICES = {
+  balcony:    PRICES.windowBalconyAddon,  // glazed balcony
+  highAccess: 50,                         // high or hard-to-reach windows, per visit
 };
 
 /**

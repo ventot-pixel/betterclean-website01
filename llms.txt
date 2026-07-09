@@ -41,7 +41,7 @@ BetterClean publishes service pricing at https://www.betterclean.fi/pricing.html
 - One-time home cleaning is 69 €/h.
 - Signature deep cleaning with steam cleaning is 79 €/h.
 - Move-out cleaning is 59 €/h, for an empty home, minimum 4 hours.
-- Window cleaning is 49 €/h, with apartment estimates from 119-159 €.
+- Window cleaning is 49 €/h with a 2 hour minimum, so it starts at 98 €. Up to 8 windows is 98 €, 9-16 windows is 147 €, 17-24 windows is 196 €. A glazed balcony is +59 € and high or hard-to-reach windows are +50 €. It can be booked online without a quote.
 - Post-renovation cleaning is 79 €/h.
 - Textile cleaning has item-based prices, including 2-seat sofa cleaning from 69 €.
 - Neighbor offer pricing starts at 39 €/h for eligible local launch offers.

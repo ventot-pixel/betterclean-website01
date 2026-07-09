@@ -16,7 +16,8 @@ vm.runInContext(
       HOME_SIZE_BRACKETS: typeof HOME_SIZE_BRACKETS === 'undefined' ? null : HOME_SIZE_BRACKETS,
       getHomeSizeBracket: typeof getHomeSizeBracket === 'undefined' ? null : getHomeSizeBracket,
       calcWidgetEstimate,
-      formatPrice
+      formatPrice,
+      WINDOW_COUNT_BRACKETS
     };
   `,
   context
@@ -41,22 +42,33 @@ assert.deepStrictEqual(
   'canonical hourly rates: Essential from 49, one-time home 69, deep 79, move-out 59'
 );
 
+// Window job prices are derived from the rate and the window count, not from
+// standalone estimate constants. Those constants existed twice and drifted out
+// of sync with the hourly rate both times.
+assert.strictEqual(
+  api.PRICES.windowApartmentMin, undefined,
+  'window estimate constants must stay deleted; derive prices from WINDOW_COUNT_BRACKETS'
+);
+assert.strictEqual(api.PRICES.windowBalconyAddon, 59, 'glazed balcony add-on is 59 €');
+
+// plain() re-hydrates the array in this realm; the vm context has its own
+// Array prototype, which deepStrictEqual would otherwise reject.
 assert.deepStrictEqual(
-  {
-    windowApartmentMin: api.PRICES.windowApartmentMin,
-    windowApartmentMax: api.PRICES.windowApartmentMax,
-    windowHouseMin: api.PRICES.windowHouseMin,
-    windowHouseMax: api.PRICES.windowHouseMax,
-    windowBalconyAddon: api.PRICES.windowBalconyAddon
-  },
-  {
-    windowApartmentMin: 119,
-    windowApartmentMax: 159,
-    windowHouseMin: 179,
-    windowHouseMax: 229,
-    windowBalconyAddon: 59
-  },
-  'canonical window estimates match the visible pricing page and AGENTS source'
+  plain(api.WINDOW_COUNT_BRACKETS.map(b => b.hours * api.PRICES.window)),
+  [98, 147, 196],
+  'window jobs cost 98 / 147 / 196 € for up to 8, 9-16 and 17-24 windows'
+);
+
+// The homepage must advertise the real minimum, not a stale estimate range.
+assert.match(
+  indexHtml,
+  /alkaen 98 €/,
+  'homepage window strip shows the 2-hour minimum price of 98 €'
+);
+assert.doesNotMatch(
+  indexHtml,
+  /alkaen 119 €/,
+  'the old 119 € window estimate, priced against the retired 69 €/h rate, must be gone'
 );
 
 assert.deepStrictEqual(

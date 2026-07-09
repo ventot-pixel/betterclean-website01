@@ -12,7 +12,7 @@ const REAL_PRICING = (() => {
   vm.createContext(ctx);
   vm.runInContext(
     fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
-      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY };',
+      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY, WINDOW_COUNT_BRACKETS, getWindowCountBracket, WINDOW_ADDON_PRICES };',
     ctx
   );
   return ctx.__p;
@@ -227,6 +227,9 @@ function loadQuoteFormApi() {
     // the price table is exactly how 49/59/79/59 outlived the real ladder.
     PRICES: REAL_PRICING.PRICES,
     HOME_RATE_BY_FREQUENCY: REAL_PRICING.HOME_RATE_BY_FREQUENCY,
+    WINDOW_COUNT_BRACKETS: REAL_PRICING.WINDOW_COUNT_BRACKETS,
+    getWindowCountBracket: REAL_PRICING.getWindowCountBracket,
+    WINDOW_ADDON_PRICES: REAL_PRICING.WINDOW_ADDON_PRICES,
     URLSearchParams,
     console
   };
