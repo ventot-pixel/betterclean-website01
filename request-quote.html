@@ -128,7 +128,7 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BetterClean","item":"https://www.betterclean.fi/"},{"@type":"ListItem","position":2,"name":"Pyydä tarjous","item":"https://www.betterclean.fi/request-quote.html"}]}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="pricing.js?v=20260709-window"></script>
+  <script src="pricing.js?v=20260709-noWindowSvc"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -856,10 +856,6 @@
                     <strong data-en="Signature Deep Clean" data-fi="Syväsiivous - Meidän Tavallamme">Syväsiivous - Meidän Tavallamme</strong>
                     <p id="service-deep-desc" data-en="One-time deep cleaning with steam from <span class=&quot;price-nowrap&quot;>79 €/h</span>" data-fi="Kertaluonteinen syväsiivous höyrypesulla alkaen <span class=&quot;price-nowrap&quot;>79 €/h</span>">Kertaluonteinen syväsiivous höyrypesulla alkaen <span class="price-nowrap">79 €/h</span></p>
                   </button>
-                  <button type="button" class="choice-card" id="service-window" role="radio" aria-checked="false" aria-describedby="service-window-desc" onclick="selectBookingService('window')" onkeydown="handleServiceKeydown(event, 'window')">
-                    <strong data-en="Window Cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</strong>
-                    <p id="service-window-desc" data-en="Streak-free, inside and out, min. 2 h, from <span class=&quot;price-nowrap&quot;>98 €</span>" data-fi="Juovaton, sisä- ja ulkopuoli, väh. 2 h, alkaen <span class=&quot;price-nowrap&quot;>98 €</span>">Juovaton, sisä- ja ulkopuoli, väh. 2 h, alkaen <span class="price-nowrap">98 €</span></p>
-                  </button>
                   <button type="button" class="choice-card" id="service-office" role="radio" aria-checked="false" aria-describedby="service-office-desc" onclick="selectBookingService('office')" onkeydown="handleServiceKeydown(event, 'office')">
                     <strong data-en="Move-out Cleaning" data-fi="Muuttosiivous">Muuttosiivous</strong>
                     <p id="service-office-desc" data-en="For an empty home, min. 4 h, from <span class=&quot;price-nowrap&quot;>59 €/h</span>" data-fi="Tyhjälle asunnolle, väh. 4 h, alkaen <span class=&quot;price-nowrap&quot;>59 €/h</span>">Tyhjälle asunnolle, väh. 4 h, alkaen <span class="price-nowrap">59 €/h</span></p>
@@ -925,7 +921,7 @@
 
             <div class="duration-setup-grid mb-6">
               <div class="form-reveal duration-field" id="homeSizePanel" data-reveal="frequency">
-                <label class="field-label" for="homeSize" id="homeSizeLabel" data-en="Apartment or house size" data-fi="Asunnon tai talon koko">Asunnon tai talon koko</label>
+                <label class="field-label" for="homeSize" data-en="Apartment or house size" data-fi="Asunnon tai talon koko">Asunnon tai talon koko</label>
                 <input id="homeSize" type="number" min="1" max="300" inputmode="decimal" onchange="handleHomeSizeChange()" oninput="handleHomeSizeChange()" aria-describedby="homeSizeBracketHelp" disabled />
                 <p id="homeSizeBracketHelp" class="field-help" data-en="Enter your home size in square meters." data-fi="Kirjoita kodin koko neliömetreinä.">Kirjoita kodin koko neliömetreinä.</p>
                 <button type="button" id="customEstimateLink" class="inline-link" hidden onclick="setMode('inquiry')" data-en="Request a personal quote" data-fi="Pyydä henkilökohtainen tarjous">Pyydä henkilökohtainen tarjous</button>
@@ -993,24 +989,6 @@
                     <div style="flex: 1;">
                       <strong data-en="Microwave" data-fi="Mikroaaltouuni">Mikroaaltouuni</strong>
                       <p class="text-sm text-gray-500 mt-1" data-en="+0.5 h" data-fi="+0,5 h">+0,5 h</p>
-                    </div>
-                  </div>
-                </button>
-                <button type="button" class="extra-card" id="extra-balcony" role="checkbox" aria-checked="false" onclick="toggleExtra('balcony')">
-                  <div class="choice-row">
-                    <span class="extra-check" aria-hidden="true"></span>
-                    <div style="flex: 1;">
-                      <strong data-en="Glazed balcony" data-fi="Lasitettu parveke">Lasitettu parveke</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="+59 €" data-fi="+59 €">+59 €</p>
-                    </div>
-                  </div>
-                </button>
-                <button type="button" class="extra-card" id="extra-highAccess" role="checkbox" aria-checked="false" onclick="toggleExtra('highAccess')">
-                  <div class="choice-row">
-                    <span class="extra-check" aria-hidden="true"></span>
-                    <div style="flex: 1;">
-                      <strong data-en="High or hard-to-reach windows" data-fi="Korkeat tai vaikeapääsyiset ikkunat">Korkeat tai vaikeapääsyiset ikkunat</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="+50 € per visit" data-fi="+50 € / käynti">+50 € / käynti</p>
                     </div>
                   </div>
                 </button>
@@ -1514,12 +1492,6 @@
       rateKey: 'deep',
       forcedFrequency: 'once'
     },
-    window: {
-      labels: { en: 'Window Cleaning', fi: 'Ikkunanpesu' },
-      pricingServiceKey: 'window',
-      rateKey: 'window',
-      forcedFrequency: 'once'
-    },
     office: {
       labels: { en: 'Move-out Cleaning', fi: 'Muuttosiivous' },
       pricingServiceKey: 'office',
@@ -1536,9 +1508,7 @@
     hood: ['home', 'deep'],
     microwave: ['home', 'deep'],
     sauna: ['home', 'deep', 'office'],
-    windows: ['home', 'deep', 'office'],
-    balcony: ['window'],
-    highAccess: ['window']
+    windows: ['home', 'deep', 'office']
   };
 
   const EXTRA_HOURS = {
@@ -1548,11 +1518,6 @@
     microwave: 0.5
   };
 
-  // Add-ons billed as a flat euro amount rather than extra hours.
-  const EXTRA_FIXED_EUROS = {
-    balcony: WINDOW_ADDON_PRICES.balcony,
-    highAccess: WINDOW_ADDON_PRICES.highAccess
-  };
 
   const FREQUENCY_LABELS = {
     weekly: { en: 'Every week', fi: 'Joka viikko' },
@@ -1621,9 +1586,7 @@
     hood: { en: 'Range hood', fi: 'Liesituuletin' },
     microwave: { en: 'Microwave', fi: 'Mikroaaltouuni' },
     sauna: { en: 'Sauna (price confirmed separately)', fi: 'Sauna (hinta vahvistetaan erikseen)' },
-    windows: { en: 'Window cleaning (price confirmed separately)', fi: 'Ikkunanpesu (hinta vahvistetaan erikseen)' },
-    balcony: { en: 'Glazed balcony (+59 €)', fi: 'Lasitettu parveke (+59 €)' },
-    highAccess: { en: 'High or hard-to-reach windows (+50 €)', fi: 'Korkeat tai vaikeapääsyiset ikkunat (+50 €)' }
+    windows: { en: 'Window cleaning (price confirmed separately)', fi: 'Ikkunanpesu (hinta vahvistetaan erikseen)' }
   };
 
   const QUOTE_HOME_SIZE_BRACKETS = typeof HOME_SIZE_BRACKETS !== 'undefined'
@@ -1668,18 +1631,12 @@
     if (BOOKING_SERVICE_CONFIG[service]) return service;
     if (['move', 'move-out', 'moveout', 'reset', 'move-reset'].includes(service)) return 'office';
     if (['essential', 'regular', 'home-cleaning'].includes(service)) return 'home';
-    if (['windows', 'window-cleaning', 'ikkunanpesu'].includes(service)) return 'window';
     return '';
   }
 
   function getSizeLabel(key, lang) {
     if (!key || !SIZE_LABELS[key]) return lang === 'fi' ? 'Valitse kodin koko' : 'Select home size';
     return SIZE_LABELS[key][lang];
-  }
-
-  // Window cleaning is sized by window count; everything else by square metres.
-  function getSizeBracketForService(value) {
-    return isWindowService() ? getWindowCountBracket(value) : getQuoteHomeSizeBracket(value);
   }
 
   function getQuoteHomeSizeBracket(squareMeters) {
@@ -1711,20 +1668,9 @@
     return bookingState.extras.reduce((sum, name) => sum + (EXTRA_HOURS[name] || 0), 0);
   }
 
-  function getExtrasFixedEuros() {
-    return bookingState.extras.reduce((sum, name) => sum + (EXTRA_FIXED_EUROS[name] || 0), 0);
-  }
-
-  function isWindowService() {
-    return bookingState.selectedServiceType === 'window';
-  }
 
   function getRecommendedDuration(size) {
     const config = getBookingServiceConfig();
-    if (config.pricingServiceKey === 'window') {
-      const win = WINDOW_COUNT_BRACKETS.find(item => item.key === size);
-      return win ? win.hours : null;
-    }
     const bracket = QUOTE_HOME_SIZE_BRACKETS.find(item => item.key === size);
     if (bracket && bracket.hours && bracket.hours[config.pricingServiceKey]) {
       return bracket.hours[config.pricingServiceKey];
@@ -1912,13 +1858,6 @@
     setRevealVisible(durationPanel, hasRecommendation);
 
     if (homeSize) homeSize.disabled = !canChooseHomeSize;
-    const forWindows = isWindowService();
-    const homeSizeLabel = document.getElementById('homeSizeLabel');
-    if (homeSizeLabel) {
-      homeSizeLabel.textContent = forWindows
-        ? (lang === 'fi' ? 'Kuinka monta ikkunaa?' : 'How many windows?')
-        : (lang === 'fi' ? 'Asunnon tai talon koko' : 'Apartment or house size');
-    }
     // Out-of-range sizes used to disable Continue with no way forward. Offer the
     // quote route instead: it is the highest-value job that reaches this branch.
     const customEstimateLink = document.getElementById('customEstimateLink');
@@ -1927,17 +1866,17 @@
     if (homeSizeBracketHelp) {
       if (!bookingState.homeSizeM2) {
         homeSizeBracketHelp.hidden = false;
-        homeSizeBracketHelp.textContent = forWindows
-          ? (lang === 'fi' ? 'Kirjoita ikkunoiden lukumäärä.' : 'Enter how many windows you have.')
-          : (lang === 'fi' ? 'Kirjoita kodin koko neliömetreinä.' : 'Enter your home size in square meters.');
+        homeSizeBracketHelp.textContent = lang === 'fi'
+          ? 'Kirjoita kodin koko neliömetreinä.'
+          : 'Enter your home size in square meters.';
       } else if (hasSize) {
         homeSizeBracketHelp.hidden = true;
         homeSizeBracketHelp.textContent = '';
       } else {
         homeSizeBracketHelp.hidden = false;
-        homeSizeBracketHelp.textContent = forWindows
-          ? (lang === 'fi' ? 'Yli 24 ikkunaa: annamme henkilökohtaisen arvion.' : 'Over 24 windows: we will give you a personal estimate.')
-          : (lang === 'fi' ? 'Tälle koolle annamme henkilökohtaisen arvion.' : 'For this size, we will provide a custom estimate.');
+        homeSizeBracketHelp.textContent = lang === 'fi'
+          ? 'Tälle koolle annamme henkilökohtaisen arvion.'
+          : 'For this size, we will provide a custom estimate.';
       }
     }
     if (cleanDuration) cleanDuration.disabled = !hasRecommendation;
@@ -2159,6 +2098,23 @@
     return true;
   }
 
+  // ?mode=inquiry[&inquiry=window-cleaning] opens the quote form directly, with
+  // the service preselected. Window cleaning arrives here: its duration depends
+  // on window count and glass surfaces, which the booking flow cannot price.
+  function applyInquiryFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mode') !== 'inquiry') return false;
+    setMode('inquiry');
+    const wanted = params.get('inquiry');
+    const select = document.getElementById('inqService');
+    if (wanted && select) {
+      const match = Array.prototype.find.call(select.options, option => option.value === wanted);
+      if (match) select.value = match.value;
+    }
+    refreshUi();
+    return true;
+  }
+
   function getServiceLabel(lang) {
     if (bookingState.mode === 'inquiry') {
       const service = document.getElementById('inqService').selectedOptions[0];
@@ -2175,7 +2131,7 @@
     if (!isBookingSetupValid()) return 0;
     const rate = getBookingHourlyRate();
     const totalHours = Number(bookingState.selectedDuration) + getExtrasHours();
-    return rate * totalHours + getExtrasFixedEuros();
+    return rate * totalHours;
   }
 
   function calculateEstimateAfterHouseholdDeduction() {
@@ -2297,7 +2253,7 @@
 
   function handleHomeSizeChange() {
     bookingState.homeSizeM2 = readHomeSizeInputValue();
-    const bracket = getSizeBracketForService(bookingState.homeSizeM2);
+    const bracket = getQuoteHomeSizeBracket(bookingState.homeSizeM2);
     bookingState.selectedPropertySize = bracket ? bracket.key : '';
     updateDurationRecommendationState(true);
     refreshUi();
@@ -2315,7 +2271,7 @@
     const cleanDuration = document.getElementById('cleanDuration');
     if (homeSize) {
       bookingState.homeSizeM2 = readHomeSizeInputValue();
-      const bracket = getSizeBracketForService(bookingState.homeSizeM2);
+      const bracket = getQuoteHomeSizeBracket(bookingState.homeSizeM2);
       bookingState.selectedPropertySize = bracket ? bracket.key : '';
     }
     if (cleanDuration && cleanDuration.value) bookingState.selectedDuration = Number(cleanDuration.value);
@@ -2559,7 +2515,7 @@
   setLang('fi');
   goBookingStep(1);
   setMode('booking');
-  if (!restoreQuoteDraftFromSession()) {
+  if (!applyInquiryFromQuery() && !restoreQuoteDraftFromSession()) {
     applyBookingServiceFromQuery();
   }
 </script>

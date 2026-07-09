@@ -16,8 +16,7 @@ vm.runInContext(
       HOME_SIZE_BRACKETS: typeof HOME_SIZE_BRACKETS === 'undefined' ? null : HOME_SIZE_BRACKETS,
       getHomeSizeBracket: typeof getHomeSizeBracket === 'undefined' ? null : getHomeSizeBracket,
       calcWidgetEstimate,
-      formatPrice,
-      WINDOW_COUNT_BRACKETS
+      formatPrice
     };
   `,
   context
@@ -47,16 +46,12 @@ assert.deepStrictEqual(
 // of sync with the hourly rate both times.
 assert.strictEqual(
   api.PRICES.windowApartmentMin, undefined,
-  'window estimate constants must stay deleted; derive prices from WINDOW_COUNT_BRACKETS'
+  'window estimate constants must stay deleted; they drifted from the hourly rate twice'
 );
 assert.strictEqual(api.PRICES.windowBalconyAddon, 59, 'glazed balcony add-on is 59 €');
-
-// plain() re-hydrates the array in this realm; the vm context has its own
-// Array prototype, which deepStrictEqual would otherwise reject.
-assert.deepStrictEqual(
-  plain(api.WINDOW_COUNT_BRACKETS.map(b => b.hours * api.PRICES.window)),
-  [98, 147, 196],
-  'window jobs cost 98 / 147 / 196 € for up to 8, 9-16 and 17-24 windows'
+assert.strictEqual(
+  api.PRICES.window * api.PRICES.minWindow, 98,
+  'the smallest window visit is the 2 hour minimum at 49 €/h'
 );
 
 // The homepage must advertise the real minimum, not a stale estimate range.
