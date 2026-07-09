@@ -183,18 +183,6 @@
         letter-spacing: 0;
       }
 
-      .bc-whatsapp-toggle::after {
-        content: "";
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        width: 13px;
-        height: 13px;
-        border: 2px solid #ffffff;
-        border-radius: 999px;
-        background: #74d680;
-      }
-
       @media (max-width: 640px) {
         .bc-whatsapp-widget {
           right: 14px;
