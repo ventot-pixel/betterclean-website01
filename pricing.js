@@ -10,8 +10,8 @@
 
 const PRICES = {
   // ── Hourly service rates (€/h) ─────────────────────────────────────────
-  recurring:    49,   // Essential / toistuva kotisiivous
-  oneTime:      59,   // Kertaluonteinen kotisiivous
+  recurring:    49,   // Essential "alkaen" rate. MUST equal HOME_RATE_BY_FREQUENCY.weekly
+  oneTime:      69,   // Kertaluonteinen kotisiivous
   deep:         79,   // Signature syväsiivous / suursiivous (sis. höyrypesu)
   moveOut:      59,   // Muuttosiivous
   window:       49,   // Ikkunanpesu
@@ -19,7 +19,7 @@ const PRICES = {
 
   // ── After kotitalousvähennys (labour-only hourly rates) ────────────────
   recurringAfterTax:  31.85,
-  oneTimeAfterTax:    38.35,
+  oneTimeAfterTax:    44.85,
   deepAfterTax:       51.35,
   moveOutAfterTax:    38.35,
   windowAfterTax:     31.85,
@@ -47,6 +47,31 @@ const PRICES = {
   minMoveOut:   4,
   minWindow:    2,
   minPostReno:  4,
+};
+
+/**
+ * Essential Home Care rate ladder (€/h, incl VAT).
+ *
+ * Commitment buys a lower rate. Weekly is the cheapest hour we sell on a
+ * contract; a walk-in one-time clean pays the most.
+ */
+const HOME_RATE_BY_FREQUENCY = {
+  weekly:   49,
+  biweekly: 55,
+  monthly:  59,   // every four weeks
+  once:     PRICES.oneTime,
+};
+
+/**
+ * The first visit is a longer reset clean. Weekly and bi-weekly customers are
+ * billed for it at their own contract rate. Four-weekly customers pay the
+ * one-time rate for that first visit, then drop to their contract rate.
+ */
+const RESET_VISIT_RATE_BY_FREQUENCY = {
+  weekly:   HOME_RATE_BY_FREQUENCY.weekly,
+  biweekly: HOME_RATE_BY_FREQUENCY.biweekly,
+  monthly:  PRICES.oneTime,
+  once:     PRICES.oneTime,
 };
 
 /**

@@ -1559,10 +1559,25 @@
     return getBookingServiceConfig().labels[lang] || getBookingServiceConfig().labels.fi;
   }
 
-  function getBookingHourlyRate() {
+  // The ongoing contract rate for a cadence. Deep and Move/Reset ignore
+  // cadence entirely and use their own flat rate.
+  function getContractRate(frequency) {
     const config = getBookingServiceConfig();
     if (config.rateKey && PRICES[config.rateKey]) return PRICES[config.rateKey];
-    return bookingState.selectedFrequency === 'once' ? PRICES.oneTime : PRICES.recurring;
+    return HOME_RATE_BY_FREQUENCY[frequency] || PRICES.oneTime;
+  }
+
+  // The first visit is a longer reset clean. Weekly and bi-weekly pay their
+  // own contract rate for it; four-weekly pays the one-time rate.
+  function getFirstVisitRate(frequency) {
+    const config = getBookingServiceConfig();
+    if (config.rateKey && PRICES[config.rateKey]) return PRICES[config.rateKey];
+    return RESET_VISIT_RATE_BY_FREQUENCY[frequency] || PRICES.oneTime;
+  }
+
+  // The estimate prices the first visit, so that is the rate it must use.
+  function getBookingHourlyRate() {
+    return getFirstVisitRate(bookingState.selectedFrequency);
   }
 
   function normalizeBookingServiceType(value) {

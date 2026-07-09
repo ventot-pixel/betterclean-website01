@@ -6,6 +6,18 @@ const vm = require('vm');
 const root = path.resolve(__dirname, '..');
 const requestQuoteHtml = fs.readFileSync(path.join(root, 'request-quote.html'), 'utf8');
 
+// Load the real rate tables rather than restating them in this file.
+const REAL_PRICING = (() => {
+  const ctx = {};
+  vm.createContext(ctx);
+  vm.runInContext(
+    fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
+      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY, RESET_VISIT_RATE_BY_FREQUENCY };',
+    ctx
+  );
+  return ctx.__p;
+})();
+
 function countOccurrences(needle) {
   return (requestQuoteHtml.match(new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
 }
@@ -211,7 +223,11 @@ function loadQuoteFormApi() {
     document,
     window: { location: { href: '', search: '' } },
     sessionStorage: { getItem() { return null; }, setItem() {} },
-    PRICES: { recurring: 49, oneTime: 59, deep: 79, moveOut: 59 },
+    // Real values from pricing.js. Never restate rates here: a second copy of
+    // the price table is exactly how 49/59/79/59 outlived the real ladder.
+    PRICES: REAL_PRICING.PRICES,
+    HOME_RATE_BY_FREQUENCY: REAL_PRICING.HOME_RATE_BY_FREQUENCY,
+    RESET_VISIT_RATE_BY_FREQUENCY: REAL_PRICING.RESET_VISIT_RATE_BY_FREQUENCY,
     URLSearchParams,
     console
   };

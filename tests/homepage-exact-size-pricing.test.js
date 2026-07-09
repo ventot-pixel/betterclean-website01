@@ -34,11 +34,11 @@ assert.deepStrictEqual(
   },
   {
     recurring: 49,
-    oneTime: 59,
+    oneTime: 69,
     deep: 79,
     moveOut: 59
   },
-  'canonical hourly rates use the updated 49/59/79/59 €/h structure'
+  'canonical hourly rates: Essential from 49, one-time home 69, deep 79, move-out 59'
 );
 
 assert.deepStrictEqual(
