@@ -78,3 +78,18 @@ assert.strictEqual(PRICES.recurringAfterTax, after(49), 'weekly after deduction 
 assert.strictEqual(PRICES.moveOutAfterTax, after(59), 'move-out after deduction is 38,35');
 
 console.log('home-rate-ladder: OK (49 / 55 / 59 / 69, no reset-visit pricing)');
+
+// pricing.js is served with max-age=14400. If a page loads it without a cache
+// -busting query, a returning visitor gets new HTML against a four-hour-old
+// pricing.js, HOME_RATE_BY_FREQUENCY is undefined, and the booking form throws.
+const html = require('fs');
+for (const page of ['index.html', 'request-quote.html']) {
+  const src = html.readFileSync(path.join(root, page), 'utf8');
+  if (!src.includes('pricing.js')) continue;
+  assert.match(
+    src,
+    /src="pricing\.js\?v=[^"]+"/,
+    `${page} must load pricing.js with a ?v= cache-buster; bump it whenever pricing.js changes`
+  );
+}
+console.log('home-rate-ladder: pricing.js is cache-busted in every page that loads it');

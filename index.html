@@ -115,7 +115,7 @@
             "name": "Paljonko kotisiivous maksaa Tampereella?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 59 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista."
+              "text": "BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 69 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista."
             }
           },
           {
@@ -151,7 +151,7 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BetterClean","item":"https://www.betterclean.fi/"}]}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="pricing.js"></script>
+  <script src="pricing.js?v=20260709-ladder"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -628,7 +628,7 @@
         <div class="tier-body">
           <p class="tier-from" data-en="Custom quote" data-fi="Räätälöity tarjous">Räätälöity tarjous</p>
           <p class="tier-price"><span class="price-nowrap">59 €/h</span></p>
-          <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Move / Reset Cleaning" data-fi="Muutto- ja Nollaussiivous">Muutto- ja Nollaussiivous</h3>
+          <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Move-out Cleaning" data-fi="Muuttosiivous">Muuttosiivous</h3>
           <p class="text-sm text-gray-500 leading-relaxed mb-5"
             data-en="Thorough cleaning for transitions, handovers, and homes needing a full refresh. Oven, fridge, every surface  -  deposit-back ready."
             data-fi="Perusteellinen siivous muutoille, luovutuksille ja kodeille, jotka tarvitsevat täydellisen virkistyksen. Uuni, jääkaappi, jokainen pinta  -  takuuvuokrataso.">Perusteellinen siivous muutoille, luovutuksille ja kodeille, jotka tarvitsevat täydellisen virkistyksen. Uuni, jääkaappi, jokainen pinta  -  takuuvuokrataso.</p>
@@ -816,7 +816,7 @@
     <div class="faq-grid">
       <details class="faq-card">
         <summary><span data-en="How much does home cleaning cost in Tampere?" data-fi="Paljonko kotisiivous maksaa Tampereella?">Paljonko kotisiivous maksaa Tampereella?</span></summary>
-        <p data-en="BetterClean home cleaning in Tampere starts at 49 €/h for recurring Essential cleaning. One-time home cleaning starts at 59 €/h. The final estimate depends on home size, frequency, condition and requested add-ons." data-fi="BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 59 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista.">BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 59 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista.</p>
+        <p data-en="BetterClean home cleaning in Tampere starts at 49 €/h for recurring Essential cleaning. One-time home cleaning starts at 69 €/h. The final estimate depends on home size, frequency, condition and requested add-ons." data-fi="BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 69 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista.">BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 69 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista.</p>
       </details>
       <details class="faq-card">
         <summary><span data-en="What is included in a regular home cleaning visit?" data-fi="Mitä tavalliseen kotisiivoukseen kuuluu?">Mitä tavalliseen kotisiivoukseen kuuluu?</span></summary>
@@ -905,7 +905,7 @@
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition hover:border-green-300">
                 <input type="radio" name="service" value="office" class="accent-green-600" />
                 <div class="flex-1">
-                  <p class="font-semibold text-sm" data-en="Move / Reset Cleaning" data-fi="Muutto- ja Nollaussiivous">Muutto- ja Nollaussiivous</p>
+                  <p class="font-semibold text-sm" data-en="Move-out Cleaning" data-fi="Muuttosiivous">Muuttosiivous</p>
                   <p class="text-xs text-gray-500" data-en="One-time move-out cleaning - from <span class=&quot;price-nowrap&quot;>59 €/h</span>" data-fi="Kertaluonteinen muuttosiivous - alkaen <span class=&quot;price-nowrap&quot;>59 €/h</span>">Kertaluonteinen muuttosiivous - alkaen <span class="price-nowrap">59 €/h</span></p>
                 </div>
               </label>
@@ -1182,7 +1182,7 @@
       selectedCard.style.setProperty('border-color', 'var(--green)', 'important');
       selectedCard.style.setProperty('background', 'var(--green-light)', 'important');
       booking.service = this.value;
-      const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
+      const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move-out Cleaning','Muuttosiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const lang = window.currentLang || 'fi';
       document.getElementById('summary-service').textContent = serviceNames[this.value][lang === 'fi' ? 1 : 0];
       updateWidgetPrice();
@@ -1219,7 +1219,7 @@
     document.getElementById('step-' + n).classList.remove('hidden');
     updateStepIndicators(n);
     if (n === 3) {
-      const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
+      const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move-out Cleaning','Muuttosiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const months = lang === 'fi' ? MONTHS_FI : MONTHS_EN;
       document.getElementById('pay-service-name').textContent = serviceNames[booking.service][lang === 'fi' ? 1 : 0];
       document.getElementById('pay-size').textContent = getWidgetSizeSummary(lang);
@@ -1277,7 +1277,7 @@
   async function submitBooking() {
     const lang = window.currentLang || 'fi';
     const btn = document.querySelector('#step-3 button[onclick="submitBooking()"]');
-    const serviceNames = { home: 'Essential Home Care', deep: 'Signature Deep Clean', office: 'Move / Reset Cleaning', event: 'Specialty Services' };
+    const serviceNames = { home: 'Essential Home Care', deep: 'Signature Deep Clean', office: 'Move-out Cleaning', event: 'Specialty Services' };
     const dateStr = booking.date ? `${booking.date.getDate()} ${MONTHS_EN[booking.date.getMonth()]} ${booking.date.getFullYear()}` : '';
     const payMethod = 'Invoice after service';
     const firstName = document.getElementById('inp-first').value.trim();

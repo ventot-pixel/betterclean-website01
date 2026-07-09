@@ -21,7 +21,7 @@ BetterClean is a premium home cleaning service based in Tampere, Finland. The co
 - Recurring home cleaning
 - One-time home cleaning
 - Deep cleaning
-- Move-out and reset cleaning
+- Move-out cleaning
 - Window cleaning
 - Textile cleaning for sofas, mattresses, beds, chairs and carpets
 - Steam treatment where suitable for the surface, material and cleaning scope
@@ -37,15 +37,14 @@ BetterClean focuses on careful, reliable and premium home cleaning. Hourly prici
 
 BetterClean publishes service pricing at https://www.betterclean.fi/pricing.html. Prices include Finnish VAT where stated.
 
-- Essential home cleaning starts at 49 €/h.
-- One-time home cleaning is 59 €/h.
+- Essential home cleaning is priced by how often you book: 49 €/h weekly, 55 €/h every second week, 59 €/h every fourth week. Every visit is billed at that rate, including the first one, which is longer because the home has not been maintained yet.
+- One-time home cleaning is 69 €/h.
 - Signature deep cleaning with steam cleaning is 79 €/h.
-- Move-out or reset cleaning is 59 €/h.
-- Window cleaning is 49 €/h, with apartment estimates from 99-129 €.
+- Move-out cleaning is 59 €/h, for an empty home, minimum 4 hours.
+- Window cleaning is 49 €/h, with apartment estimates from 119-159 €.
 - Post-renovation cleaning is 79 €/h.
 - Textile cleaning has item-based prices, including 2-seat sofa cleaning from 69 €.
 - Neighbor offer pricing starts at 39 €/h for eligible local launch offers.
-- Until 30 September 2026, new weekly and every-second-week contract customers get the initial reset cleaning at the contract rate of 49 €/h instead of 59 €/h. BetterClean accepts only 4 new contract customers per month.
 
 Household tax deduction information should be verified against the current guidance from the Finnish Tax Administration: https://www.vero.fi/henkiloasiakkaat/vahennykset/kotitalousvahennys/
 
