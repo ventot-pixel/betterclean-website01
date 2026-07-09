@@ -393,6 +393,25 @@
     }
     /* Headline rate, top-left. Offset past the selection dot so the two never
        overlap once a card is active. */
+    .step1-estimate {
+      margin: 0 0 20px;
+      padding: 16px 18px;
+      border: 1.5px solid rgba(36,122,36,0.35);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%);
+    }
+    .step1-estimate-row {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    }
+    .step1-estimate-row strong {
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.45rem;
+      letter-spacing: -0.03em; color: var(--dark);
+    }
+    .step1-estimate-row.after { margin-top: 4px; }
+    .step1-estimate-row.after span,
+    .step1-estimate-row.after strong { color: var(--green); font-size: 0.9rem; }
+    .step1-estimate-row.after strong { font-size: 1rem; }
+    .step1-estimate-note { margin-top: 8px; font-size: 0.8rem; color: #6b776c; }
     .inline-link {
       background: none; border: 0; padding: 4px 0 0; cursor: pointer;
       font: inherit; font-weight: 700; color: var(--green);
@@ -1023,6 +1042,19 @@
             <div class="tiny-note mb-6" id="steamRenoNote">
               <strong data-en="Need steam cleaning or post-renovation cleaning?" data-fi="Tarvitsetko höyrypesua tai remonttisiivousta?">Tarvitsetko höyrypesua tai remonttisiivousta?</strong>
               <span data-en="Use the quote route on this page instead of forcing the request into a home-cleaning booking flow. We will guide you to the right service personally." data-fi="Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</span>
+            </div>
+
+            <!-- The price, before we ask for an address. -->
+            <div class="step1-estimate" id="step1Estimate" hidden aria-live="polite">
+              <div class="step1-estimate-row">
+                <span data-en="Estimated total" data-fi="Arvioitu yhteensä">Arvioitu yhteensä</span>
+                <strong id="step1EstimateValue">-</strong>
+              </div>
+              <div class="step1-estimate-row after">
+                <span data-en="After 35% household deduction" data-fi="35 % kotitalousvähennyksen jälkeen">35 % kotitalousvähennyksen jälkeen</span>
+                <strong id="step1EstimateAfter">-</strong>
+              </div>
+              <p class="step1-estimate-note" data-en="No obligation. You can still change the details on the next step." data-fi="Ei sitoumusta. Voit muuttaa tietoja vielä seuraavassa vaiheessa.">Ei sitoumusta. Voit muuttaa tietoja vielä seuraavassa vaiheessa.</p>
             </div>
 
             <div class="step-actions">
@@ -2354,10 +2386,22 @@
     }
   }
 
+  // Show the total on step 1, before the address is asked for.
+  function updateStep1Estimate() {
+    const box = document.getElementById('step1Estimate');
+    if (!box) return;
+    const ready = bookingState.mode === 'booking' && isBookingSetupValid();
+    box.hidden = !ready;
+    if (!ready) return;
+    document.getElementById('step1EstimateValue').textContent = formatPriceFi(calculateEstimate());
+    document.getElementById('step1EstimateAfter').textContent = formatPriceFi(calculateEstimateAfterHouseholdDeduction());
+  }
+
   function refreshUi() {
     const lang = currentLang || 'fi';
     refreshBookingSetupControls();
     updateServiceScopeUi();
+    updateStep1Estimate();
     document.getElementById('summaryTitle').textContent = bookingState.mode === 'booking'
       ? (lang === 'fi' ? 'Kotisiivouspyyntö' : 'Home Cleaning Request')
       : (lang === 'fi' ? 'Tarjouskysely' : 'Quote Inquiry');

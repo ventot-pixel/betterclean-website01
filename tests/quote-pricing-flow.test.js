@@ -80,3 +80,20 @@ assert.doesNotMatch(
   /\+€50/,
   'window cleaning page uses Finnish price format for the hard-to-reach window add-on'
 );
+
+// The price must be visible before the customer types an address. It used to
+// appear only in #summaryEstimate on step 3, after street address + postcode.
+assert.match(
+  requestQuoteHtml,
+  /id="step1Estimate"/,
+  'step 1 shows the estimated total'
+);
+{
+  const step1 = requestQuoteHtml.indexOf('id="bookingStep1"');
+  const step2 = requestQuoteHtml.indexOf('id="bookingStep2"');
+  const estimate = requestQuoteHtml.indexOf('id="step1Estimate"');
+  const address = requestQuoteHtml.indexOf('id="streetAddress"');
+  assert.ok(step1 < estimate && estimate < step2, 'the total lives inside step 1');
+  assert.ok(estimate < address, 'the total is shown before the address field');
+}
+console.log('quote-pricing-flow: price shown on step 1, before the address');
