@@ -10,20 +10,20 @@
 
 const PRICES = {
   // ── Hourly service rates (€/h) ─────────────────────────────────────────
-  recurring:    57,   // Toistuvat kotisiivous
-  oneTime:      65,   // Kertaluonteinen kotisiivous
-  deep:         69,   // Syväsiivous / suursiivous
-  moveOut:      69,   // Muuttosiivous
-  window:       69,   // Ikkunanpesu
-  postReno:     75,   // Remonttisiivous
+  recurring:    49,   // Essential / toistuva kotisiivous
+  oneTime:      59,   // Kertaluonteinen kotisiivous
+  deep:         79,   // Signature syväsiivous / suursiivous (sis. höyrypesu)
+  moveOut:      59,   // Muuttosiivous
+  window:       49,   // Ikkunanpesu
+  postReno:     79,   // Remonttisiivous
 
   // ── After kotitalousvähennys (labour-only hourly rates) ────────────────
-  recurringAfterTax:  37.05,
-  oneTimeAfterTax:    42.25,
-  deepAfterTax:       44.85,
-  moveOutAfterTax:    44.85,
-  windowAfterTax:     44.85,
-  postRenoAfterTax:   48.75,
+  recurringAfterTax:  31.85,
+  oneTimeAfterTax:    38.35,
+  deepAfterTax:       51.35,
+  moveOutAfterTax:    38.35,
+  windowAfterTax:     31.85,
+  postRenoAfterTax:   51.35,
 
   // ── Steam cleaning fixed prices (€) ───────────────────────────────────
   steamSingleMattress:  89,
@@ -53,18 +53,73 @@ const PRICES = {
  * Booking widget helpers
  *
  * service values used by the widget:
- *   'home'   → recurring (57 €/h, min 2h)
- *   'deep'   → deep clean (69 €/h, min 3h)
- *   'office' → move-out (69 €/h, min 4h)
+ *   'home'   → Essential (49 €/h)
+ *   'deep'   → Deep clean (79 €/h)
+ *   'office' → move-out (59 €/h, min 4h)
  *   'event'  → specialty (windows/steam/post-reno) → custom quote
  */
 
-// Estimated hours per service x size combination
-const BOOKING_HOURS = {
-  home:   { studio: 2, small: 2, medium: 3, large: 4, xlarge: 5 },
-  deep:   { studio: 3, small: 3, medium: 4, large: 5, xlarge: 6 },
-  office: { studio: 4, small: 4, medium: 5, large: 6, xlarge: 8 },
-};
+// Competitive package pricing by typed home size. Homes above this table need
+// personal confirmation instead of an invented instant price.
+const HOME_SIZE_BRACKETS = [
+  {
+    key: 'studio',
+    min: 0,
+    max: 39,
+    labels: { en: 'Up to 39 m²', fi: 'Enintään 39 m²' },
+    hours: { home: 2, deep: 3, office: 4 }
+  },
+  {
+    key: 'small',
+    min: 40,
+    max: 59,
+    labels: { en: '40-59 m²', fi: '40-59 m²' },
+    hours: { home: 2.5, deep: 4, office: 5 }
+  },
+  {
+    key: 'medium',
+    min: 60,
+    max: 79,
+    labels: { en: '60-79 m²', fi: '60-79 m²' },
+    hours: { home: 3, deep: 5, office: 6 }
+  },
+  {
+    key: 'large',
+    min: 80,
+    max: 99,
+    labels: { en: '80-99 m²', fi: '80-99 m²' },
+    hours: { home: 3.5, deep: 6, office: 7 }
+  },
+  {
+    key: 'xlarge',
+    min: 100,
+    max: 119,
+    labels: { en: '100-119 m²', fi: '100-119 m²' },
+    hours: { home: 4, deep: 7, office: 8 }
+  },
+  {
+    key: 'xxlarge',
+    min: 120,
+    max: 149,
+    labels: { en: '120-149 m²', fi: '120-149 m²' },
+    hours: { home: 4.5, deep: 8, office: 9 }
+  },
+  {
+    key: 'xxxlarge',
+    min: 150,
+    max: 180,
+    labels: { en: '150-180 m²', fi: '150-180 m²' },
+    hours: { home: 6, deep: 10, office: 12 }
+  }
+];
+
+// Estimated hours per service x size combination, kept for older pages/scripts.
+const BOOKING_HOURS = HOME_SIZE_BRACKETS.reduce((hours, bracket) => {
+  hours.home[bracket.key] = bracket.hours.home;
+  hours.deep[bracket.key] = bracket.hours.deep;
+  hours.office[bracket.key] = bracket.hours.office;
+  return hours;
+}, { home: {}, deep: {}, office: {} });
 
 // Hourly rate per widget service key
 const BOOKING_RATE = {
@@ -85,13 +140,29 @@ function formatPrice(amount, suffix) {
   return str + ' €' + (suffix ? '/' + suffix : '');
 }
 
+function getHomeSizeBracket(squareMeters) {
+  const value = Number(squareMeters);
+  if (!Number.isFinite(value) || value <= 0) return null;
+  return HOME_SIZE_BRACKETS.find(bracket => value >= bracket.min && value <= bracket.max) || null;
+}
+
 /**
  * Calculate an estimated widget price.
  * Returns { price: string, hours: number } or null for custom-quote services.
  */
 function calcWidgetEstimate(service, size) {
   if (!BOOKING_HOURS[service]) return null;   // 'event' → custom quote
-  const hours = BOOKING_HOURS[service][size] ?? BOOKING_HOURS[service]['small'];
+  const bracket = getHomeSizeBracket(size) || HOME_SIZE_BRACKETS.find(item => item.key === size);
+  if (!bracket) return null;
+  const hours = bracket.hours[service];
+  if (!hours) return null;
   const rate  = BOOKING_RATE[service];
-  return { price: Math.round(rate * hours), hours };
+  const amount = rate * hours;
+  return {
+    amount,
+    price: formatPrice(amount),
+    hours,
+    rate,
+    bracket
+  };
 }

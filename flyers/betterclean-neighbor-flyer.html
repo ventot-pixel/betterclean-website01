@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BetterClean Naapurietu Flyer</title>
+  <style>
+    :root {
+      --green: #2f8f2f;
+      --green-dark: #1e5f23;
+      --green-light: #edf7ea;
+      --teal: #10a6b8;
+      --ink: #18311f;
+      --muted: #5d6f62;
+      --line: #d8e7d7;
+      --surface: #ffffff;
+      --shadow: 0 18px 40px rgba(24, 49, 31, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #eaf3e8;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      padding: 24px;
+    }
+
+    .flyer {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdfb 100%);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-rows: 72mm auto 1fr;
+      border: 1px solid rgba(47, 143, 47, 0.12);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      min-height: 72mm;
+      background: linear-gradient(135deg, rgba(24, 49, 31, 0.08), rgba(16, 166, 184, 0.08));
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      background: #dfe8df;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-copy {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10mm;
+      background:
+        linear-gradient(135deg, rgba(30,95,35,0.97), rgba(47,143,47,0.94));
+      color: #fff;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 16mm;
+    }
+
+    .brand img {
+      display: block;
+      width: 34mm;
+      height: auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 11mm;
+      padding: 0 4.5mm;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 72mm;
+      font-size: 26pt;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 8px 0 0;
+      max-width: 78mm;
+      font-size: 9.5pt;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.88);
+      font-weight: 600;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 8mm;
+      padding: 10mm;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8mm;
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8mm;
+      padding: 5mm 5.5mm;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(47,143,47,0.09), rgba(16,166,184,0.08));
+      border: 1px solid rgba(47,143,47,0.16);
+    }
+
+    .offer h2 {
+      margin: 0;
+      font-size: 18pt;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+    }
+
+    .offer strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 10pt;
+      color: var(--green-dark);
+    }
+
+    .price {
+      min-width: 40mm;
+      padding: 4mm 5mm;
+      border-radius: 10px;
+      background: var(--green-dark);
+      color: #fff;
+      text-align: center;
+    }
+
+    .price .from {
+      display: block;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      opacity: 0.82;
+      font-weight: 700;
+    }
+
+    .price .value {
+      display: block;
+      font-size: 22pt;
+      line-height: 1;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .price .unit {
+      display: block;
+      margin-top: 2px;
+      font-size: 8pt;
+      opacity: 0.85;
+    }
+
+    .details h3,
+    .qr h3 {
+      margin: 0 0 4mm;
+      font-size: 11.5pt;
+      letter-spacing: -0.01em;
+    }
+
+    .details ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 10pt;
+      line-height: 1.55;
+    }
+
+    .details li + li { margin-top: 2.5mm; }
+
+    .note {
+      margin-top: 6mm;
+      font-size: 9pt;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .qr {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 6mm;
+    }
+
+    .qr-box {
+      display: grid;
+      place-items: center;
+      padding: 5mm;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f8fcf7);
+    }
+
+    .qr-box img {
+      width: 58mm;
+      height: 58mm;
+      display: block;
+      background: #fff;
+    }
+
+    .cta {
+      padding: 4mm 0 0;
+      font-size: 10pt;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .cta strong {
+      display: block;
+      margin-bottom: 2mm;
+      font-size: 12pt;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8mm;
+      align-items: center;
+      padding: 0 10mm 9mm;
+    }
+
+    .footer .contact {
+      font-size: 9pt;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .footer .url {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4mm 6mm;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 9pt;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .flyer {
+        box-shadow: none;
+        border: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="flyer">
+    <section class="hero">
+      <div class="hero-image">
+        <img src="https://www.betterclean.fi/brand_assets/main-page-cleaner.jpg" alt="BetterClean cleaner wiping a kitchen surface" />
+      </div>
+      <div class="hero-copy">
+        <div class="brand-row">
+          <div class="brand">
+            <img src="https://www.betterclean.fi/brand_assets/betterclean-logo.png" alt="BetterClean" />
+          </div>
+          <div class="pill">Naapurietu</div>
+        </div>
+        <div>
+          <h1>Siivous naapureille alkaen 39 &euro;/h</h1>
+          <p>Kerro asunnon koko, ikkunat, sauna ja parveke. Saat henkilökohtaisen tarjouksen nopeasti.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="main">
+      <div class="panel">
+        <div class="offer">
+          <div>
+            <h2>Erikoishinta lähialueen asukkaille</h2>
+            <strong>Yksittäinen siivous tai säännöllinen sopimus</strong>
+          </div>
+          <div class="price" aria-label="Starting price 39 euros per hour">
+            <span class="from">alkaen</span>
+            <span class="value">39</span>
+            <span class="unit">&euro;/h</span>
+          </div>
+        </div>
+
+        <div class="details">
+          <h3>Mitä voit pyytää tarjoukseen</h3>
+          <ul>
+            <li>Asunnon siivous</li>
+            <li>Ikkunanpesu</li>
+            <li>Matto- ja sohvanpesu</li>
+            <li>Sauna ja parveke</li>
+          </ul>
+          <div class="note">
+            Tarjous lasketaan asunnon koon ja työn laajuuden mukaan. Jos valitset kuukausi- tai kahden kuukauden siivouksen, voimme tarjota vielä paremman hinnan.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel qr">
+        <div>
+          <h3>Skannaa tarjous</h3>
+          <div class="qr-box">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&data=https%3A%2F%2Fwww.betterclean.fi%2Fnaapurietu.html"
+              alt="QR code to BetterClean naapurietu page"
+            />
+          </div>
+          <div class="cta">
+            <strong>Avaa naapureiden tarjouspage</strong>
+            Sivu: <span style="font-weight:700;color:var(--green-dark);">betterclean.fi/naapurietu.html</span>
+          </div>
+        </div>
+        <div class="cta">
+          <strong>Helppo seuraava askel</strong>
+          Täytä lomake, niin saat henkilökohtaisen tarjouksen ja voimme ottaa sinuun yhteyttä sähköpostilla tai puhelimitse.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="contact">
+        BetterClean · Tampere<br />
+        info@betterclean.fi · +358 41 576 9236
+      </div>
+      <div class="url">betterclean.fi/naapurietu.html</div>
+    </footer>
+  </article>
+</body>
+</html>

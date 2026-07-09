@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { betterCleanLeadSchema } from "@/lib/lead-schema";
-import { scoreBetterCleanLead } from "@/lib/scoring";
 import { buildAutoReply } from "@/lib/email";
+import { createLead } from "@/lib/lead-repository";
 
 export async function POST(request: Request) {
   let payload: unknown;
@@ -24,20 +24,22 @@ export async function POST(request: Request) {
     );
   }
 
-  const score = scoreBetterCleanLead(parsed.data);
+  const result = await createLead(parsed.data);
   const autoReply = buildAutoReply(parsed.data);
 
   return NextResponse.json({
     ok: true,
-    message: "Lead accepted for processing",
+    message: result.mode === "database" ? "Lead stored successfully" : "Lead accepted in mock mode",
     lead: parsed.data,
-    score,
+    leadId: result.leadId,
+    persistenceMode: result.mode,
+    score: result.score,
     autoReplyPreview: autoReply,
     nextSteps: [
-      "Persist the lead to Postgres",
-      "Create a lead event log entry",
+      "Review lead in the CRM inbox",
+      "Assign owner and status",
       "Send BetterClean auto-reply email",
-      "Trigger internal team notification"
+      "Trigger internal team notification or channel assignment"
     ]
   });
 }

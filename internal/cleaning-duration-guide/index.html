@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BetterClean Cleaning Duration Guide</title>
+  <meta name="description" content="Internal BetterClean planning guide for recommended starting durations for house cleaning." />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <link rel="icon" href="/favicon-64.png" type="image/png" sizes="64x64" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --green: #247a24;
+      --green-dark: #185c1c;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --deeper: #0d180d;
+      --pearl: #f7faf6;
+      --stroke: #dce8da;
+      --orange-soft: #fff1e1;
+      --paper: #ffffff;
+      --muted: #5c715c;
+      --danger-soft: #fff6ed;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background:
+        radial-gradient(circle at top left, rgba(36,122,36,0.14), transparent 30%),
+        radial-gradient(circle at right 12%, rgba(15,184,201,0.1), transparent 24%),
+        linear-gradient(180deg, #f6fbf5 0%, #ffffff 42%);
+      line-height: 1.65;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Sora', sans-serif;
+      letter-spacing: 0;
+      color: var(--dark);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    button, input, select { font: inherit; }
+    .page-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .brand-copy strong {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    .btn-primary {
+      border: 0;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(36,122,36,0.24);
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .hero {
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      box-shadow: 0 22px 44px rgba(26,46,26,0.07);
+      padding: clamp(26px, 5vw, 48px);
+      margin-bottom: 24px;
+    }
+    .internal-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 7px 12px;
+      margin-bottom: 16px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border: 1px solid rgba(36,122,36,0.18);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+      gap: 24px;
+      align-items: start;
+    }
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 4.9rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+      max-width: 780px;
+      text-wrap: balance;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      max-width: 760px;
+      text-wrap: pretty;
+    }
+    .notice-card {
+      border: 1px solid #dcefd9;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%);
+      padding: 18px;
+      color: #425942;
+    }
+    .notice-card strong {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #dcefd9;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(36,122,36,0.07);
+    }
+    .panel-header {
+      padding: 24px;
+      border-bottom: 1px solid #e7f4e5;
+      background: linear-gradient(135deg, #ffffff 0%, var(--green-light) 100%);
+    }
+    .panel-header h2 {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.1;
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+    .panel-header p {
+      margin: 0;
+      max-width: 860px;
+      color: #526552;
+    }
+    .panel-body { padding: 0; }
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+    }
+    th {
+      background: var(--dark);
+      color: rgba(255,255,255,0.92);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 14px 20px;
+      text-align: left;
+      vertical-align: bottom;
+    }
+    th:not(:first-child), td:not(:first-child) { text-align: right; }
+    td {
+      padding: 14px 20px;
+      border-bottom: 1px solid #edf6eb;
+      color: var(--dark);
+      font-size: 0.94rem;
+      line-height: 1.45;
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) { background: #fbfdfb; }
+    tbody tr:hover { background: var(--green-light); }
+    tbody tr:last-child td { border-bottom: 0; }
+    tr.highlight-row td {
+      background: var(--danger-soft);
+      color: #6d3d0d;
+      font-weight: 800;
+    }
+    .table-note {
+      border-top: 1px solid #edf6eb;
+      padding: 16px 24px 20px;
+      color: #526552;
+      background: #fbfdfb;
+      font-size: 0.94rem;
+    }
+    .intro-section {
+      background: #fff;
+      border: 1px solid var(--stroke);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 32px rgba(36,122,36,0.06);
+    }
+    .intro-section h2 {
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      margin-bottom: 10px;
+    }
+    .intro-section p {
+      color: var(--muted);
+      margin-bottom: 0;
+      max-width: 900px;
+    }
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 18px;
+      padding: 24px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label, .field-title {
+      color: var(--dark);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+    select {
+      width: 100%;
+      border: 1.5px solid var(--stroke);
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: #fff;
+      color: var(--dark);
+      outline: none;
+    }
+    select:focus {
+      border-color: rgba(36,122,36,0.56);
+      box-shadow: 0 0 0 4px rgba(36,122,36,0.08);
+    }
+    .task-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .task-option {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 11px 12px;
+      background: #fbfdfb;
+      color: #425942;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .task-option input { margin-top: 4px; accent-color: var(--green); }
+    .result-card {
+      border: 1px solid rgba(36,122,36,0.2);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f8fcf7 0%, #ffffff 100%);
+      padding: 22px;
+      align-self: start;
+    }
+    .result-label {
+      font-family: 'Sora', sans-serif;
+      color: var(--green-dark);
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .result-value {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.35rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+    .result-lines {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .result-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid #e7f4e5;
+      padding-bottom: 10px;
+      color: #425942;
+    }
+    .result-line strong {
+      color: var(--dark);
+      font-family: 'Sora', sans-serif;
+      text-align: right;
+    }
+    .reminder-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .reminder-card {
+      border: 1px solid rgba(36,122,36,0.18);
+      border-radius: 20px;
+      background: var(--green-light);
+      padding: 22px;
+      color: #385238;
+      box-shadow: 0 10px 24px rgba(36,122,36,0.06);
+    }
+    .reminder-card strong {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      color: var(--green-dark);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    @media (max-width: 860px) {
+      .hero-grid, .calculator-grid, .reminder-grid { grid-template-columns: 1fr; }
+      .topbar { align-items: flex-start; }
+      .form-grid, .task-list { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+    @media (max-width: 560px) {
+      .page-shell { width: min(100% - 20px, 1180px); padding-top: 16px; }
+      .topbar { flex-direction: column; }
+      .btn-primary { width: 100%; }
+      .hero, .panel-header, .calculator-grid, .intro-section { padding: 20px; }
+      td, th { padding: 12px 14px; }
+      table { min-width: 600px; }
+    }
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+      }
+      .page-shell {
+        width: 100%;
+        padding: 0;
+      }
+      .no-print { display: none !important; }
+      .hero, .panel, .intro-section, .reminder-card, .result-card {
+        box-shadow: none;
+        border-color: #cfd8cf;
+      }
+      .hero, .panel, .intro-section, .reminder-grid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .table-scroll { overflow: visible; }
+      table { min-width: 0; font-size: 10pt; }
+      th, td { padding: 8px 9px; }
+      .calculator-panel { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar no-print" aria-label="Internal page header">
+      <div class="brand-mark">
+        <img src="/brand_assets/betterclean-logo.png" alt="BetterClean" />
+        <div class="brand-copy">
+          <strong>BetterClean</strong>
+          <span>Internal reference page</span>
+        </div>
+      </div>
+      <button type="button" class="btn-primary" onclick="window.print()">Print guide</button>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <span class="internal-label">Internal planning tool</span>
+      <div class="hero-grid">
+        <div>
+          <h1 id="page-title">BetterClean Cleaning Duration Guide</h1>
+          <p class="lead">These are recommended starting durations, not guaranteed completion times. Actual cleaning time depends on the condition of the home, the number of bathrooms, furniture, objects, pets and requested additional tasks.</p>
+        </div>
+        <aside class="notice-card" aria-labelledby="person-hours-title">
+          <strong id="person-hours-title">Person-hours vs. time on site</strong>
+          <p>Person-hours represent the total amount of labour. For example, two cleaners working for two hours equals four person-hours.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="intro-section" aria-labelledby="guide-intro">
+      <h2 id="guide-intro">Recommended BetterClean duration guide</h2>
+      <p>For BetterClean's positioning as a more careful, premium cleaning service, the fastest market estimate should not be used as the default. These recommendations allow enough time to provide good-quality cleaning without making the service unnecessarily expensive.</p>
+    </section>
+
+    <div class="content-grid" id="guideSections" aria-live="polite"></div>
+
+    <section class="panel calculator-panel" aria-labelledby="calculator-title">
+      <div class="panel-header">
+        <h2 id="calculator-title">Internal duration calculator</h2>
+        <p>Select the cleaning type, home size, cleaner count and relevant adjustments. The result is a recommended starting duration, not a promise.</p>
+      </div>
+      <div class="calculator-grid">
+        <form id="durationCalculator" class="form-grid">
+          <div class="field">
+            <label for="cleaningType">Cleaning type</label>
+            <select id="cleaningType" name="cleaningType"></select>
+          </div>
+          <div class="field">
+            <label for="homeSize">Home-size range</label>
+            <select id="homeSize" name="homeSize"></select>
+          </div>
+          <div class="field">
+            <label for="cleanerCount">Number of cleaners</label>
+            <select id="cleanerCount" name="cleanerCount">
+              <option value="1">One cleaner</option>
+              <option value="2">Two cleaners</option>
+            </select>
+          </div>
+          <fieldset class="field full" style="border:0;padding:0;margin:0;">
+            <legend class="field-title">Relevant additional tasks</legend>
+            <div class="task-list" id="adjustmentOptions"></div>
+          </fieldset>
+        </form>
+        <aside class="result-card" aria-live="polite" aria-labelledby="result-title">
+          <div class="result-label" id="result-title">Starting estimate</div>
+          <div class="result-value" id="personHoursResult">4 hours</div>
+          <div class="result-lines">
+            <div class="result-line">
+              <span>Recommended total person-hours</span>
+              <strong id="personHoursLine">4 hours</strong>
+            </div>
+            <div class="result-line">
+              <span>Estimated time on site</span>
+              <strong id="siteTimeLine">4 hours</strong>
+            </div>
+          </div>
+          <p id="calculatorNote">This is a starting estimate. Confirm the home details before booking.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="reminder-grid" aria-label="Estimation reminders">
+      <article class="reminder-card">
+        <strong>Estimation reminder</strong>
+        <p>Always confirm the home size, number of bathrooms, sauna, pets, last professional cleaning, level of clutter and requested additional tasks before confirming the booking duration.</p>
+      </article>
+      <article class="reminder-card">
+        <strong>Cleaner count reminder</strong>
+        <p>When two cleaners attend, the time spent inside the home is reduced, but the total billable person-hours remain the same.</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const regularMaintenanceRows = [
+      { size: 'Up to 39 m²', personHours: '2 hours', oneCleaner: '2 hours', twoCleaners: '1 hour', range: [2, 2] },
+      { size: '40-59 m²', personHours: '2.5 hours', oneCleaner: '2.5 hours', twoCleaners: '1 hour 15 minutes', range: [2.5, 2.5] },
+      { size: '60-79 m²', personHours: '3 hours', oneCleaner: '3 hours', twoCleaners: '1 hour 30 minutes', range: [3, 3] },
+      { size: '80-99 m²', personHours: '3.5 hours', oneCleaner: '3.5 hours', twoCleaners: '1 hour 45 minutes', range: [3.5, 3.5] },
+      { size: '100-119 m²', personHours: '4 hours', oneCleaner: '4 hours', twoCleaners: '2 hours', range: [4, 4] },
+      { size: '120-149 m²', personHours: '4.5-5 hours', oneCleaner: '4.5-5 hours', twoCleaners: '2 hours 15 minutes-2 hours 30 minutes', range: [4.5, 5] },
+      { size: '150-180 m²', personHours: '5.5-6 hours', oneCleaner: '5.5-6 hours', twoCleaners: '2 hours 45 minutes-3 hours', range: [5.5, 6] }
+    ];
+
+    const firstTimeRows = [
+      { size: 'Up to 39 m²', duration: '3-4 person-hours', range: [3, 4] },
+      { size: '40-59 m²', duration: '4-5 person-hours', range: [4, 5] },
+      { size: '60-79 m²', duration: '5-6 person-hours', range: [5, 6] },
+      { size: '80-99 m²', duration: '6-7 person-hours', range: [6, 7] },
+      { size: '100-119 m²', duration: '7-8 person-hours', range: [7, 8] },
+      { size: '120-149 m²', duration: '8-10 person-hours', range: [8, 10] },
+      { size: '150-180 m²', duration: '10-12 person-hours', range: [10, 12] }
+    ];
+
+    const deepSteamRows = [
+      { size: 'Up to 39 m²', duration: '4-5 person-hours', range: [4, 5] },
+      { size: '40-59 m²', duration: '5-6 person-hours', range: [5, 6] },
+      { size: '60-79 m²', duration: '6-8 person-hours', range: [6, 8] },
+      { size: '80-99 m²', duration: '8-10 person-hours', range: [8, 10] },
+      { size: '100-119 m²', duration: '9-12 person-hours', range: [9, 12] },
+      { size: '120-149 m²', duration: '11-14 person-hours', range: [11, 14] },
+      { size: '150-180 m²', duration: 'Inspection or customised quotation', customQuote: true }
+    ];
+
+    const adjustmentRows = [
+      { task: 'Second full bathroom', time: '+30-45 minutes', range: [0.5, 0.75] },
+      { task: 'Sauna wash', time: '+30-60 minutes', range: [0.5, 1] },
+      { task: 'Heavy pet hair', time: '+30-60 minutes', range: [0.5, 1] },
+      { task: 'Many objects or cluttered surfaces', time: '+30-90 minutes', range: [0.5, 1.5] },
+      { task: 'Heavy kitchen grease', time: '+30-90 minutes', range: [0.5, 1.5] },
+      { task: 'Heavy bathroom limescale', time: '+45-120 minutes', range: [0.75, 2] },
+      { task: 'Oven interior', time: '+60-90 minutes', range: [1, 1.5] },
+      { task: 'Refrigerator interior', time: '+30-60 minutes', range: [0.5, 1] },
+      { task: 'Inside kitchen cupboards', time: '+60-180 minutes', range: [1, 3] },
+      { task: 'Bed linen change', time: '+15-20 minutes per bed', range: [0.25, 0.333] },
+      { task: 'More than four weeks since cleaning', time: 'Add approximately 20-40%', percent: [0.2, 0.4] }
+    ];
+
+    const guideSections = [
+      {
+        id: 'regular-maintenance',
+        title: 'Regular maintenance cleaning',
+        intro: '',
+        columns: ['Home size', 'Recommended person-hours', 'One cleaner on site', 'Two cleaners on site'],
+        rows: regularMaintenanceRows.map(row => [row.size, row.personHours, row.oneCleaner, row.twoCleaners]),
+        note: 'For marketing and customer communication, these should always be described as recommended starting durations rather than guaranteed completion times.'
+      },
+      {
+        id: 'first-time-cleaning',
+        title: 'First-time cleaning',
+        intro: 'Reserve approximately 1.5-2 times the normal maintenance-cleaning duration. A first visit generally requires more time because accumulated dirt, limescale, edges, skirting boards and previously neglected surfaces must first be brought to a maintainable condition.',
+        columns: ['Home size', 'Recommended first-clean duration'],
+        rows: firstTimeRows.map(row => [row.size, row.duration])
+      },
+      {
+        id: 'deep-steam-cleaning',
+        title: 'Deep Steam cleaning',
+        intro: 'For BetterClean’s steam-focused service, reserve approximately twice the regular maintenance-cleaning duration. The final duration depends on the rooms, surfaces and items included in the steam treatment.',
+        columns: ['Home size', 'Recommended Deep Steam duration'],
+        rows: deepSteamRows.map(row => [row.size, row.duration]),
+        highlightLastRow: true
+      },
+      {
+        id: 'recommended-time-adjustments',
+        title: 'Recommended time adjustments',
+        intro: 'Add the following person-time to the relevant starting duration when these conditions or additional tasks are present.',
+        columns: ['Condition or additional task', 'Additional person-time'],
+        rows: adjustmentRows.map(row => [row.task, row.time])
+      }
+    ];
+
+    const cleaningTypes = [
+      { key: 'regular', label: 'Regular maintenance', rows: regularMaintenanceRows },
+      { key: 'firstTime', label: 'First-time cleaning', rows: firstTimeRows },
+      { key: 'deepSteam', label: 'Deep Steam cleaning', rows: deepSteamRows }
+    ];
+
+    function createCell(tag, text) {
+      const cell = document.createElement(tag);
+      cell.textContent = text;
+      return cell;
+    }
+
+    function renderGuideSections() {
+      const container = document.getElementById('guideSections');
+      guideSections.forEach(section => {
+        const article = document.createElement('section');
+        article.className = 'panel';
+        article.setAttribute('aria-labelledby', section.id + '-title');
+
+        const header = document.createElement('div');
+        header.className = 'panel-header';
+        const heading = document.createElement('h2');
+        heading.id = section.id + '-title';
+        heading.textContent = section.title;
+        header.appendChild(heading);
+        if (section.intro) {
+          const intro = document.createElement('p');
+          intro.textContent = section.intro;
+          header.appendChild(intro);
+        }
+        article.appendChild(header);
+
+        const tableWrap = document.createElement('div');
+        tableWrap.className = 'table-scroll';
+        const table = document.createElement('table');
+        table.setAttribute('aria-label', section.title);
+        const caption = document.createElement('caption');
+        caption.className = 'visually-hidden';
+        caption.textContent = section.title;
+        table.appendChild(caption);
+
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        section.columns.forEach(column => headerRow.appendChild(createCell('th', column)));
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        section.rows.forEach((row, index) => {
+          const tr = document.createElement('tr');
+          if (section.highlightLastRow && index === section.rows.length - 1) tr.className = 'highlight-row';
+          row.forEach(value => tr.appendChild(createCell('td', value)));
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        tableWrap.appendChild(table);
+        article.appendChild(tableWrap);
+
+        if (section.note) {
+          const note = document.createElement('p');
+          note.className = 'table-note';
+          note.textContent = section.note;
+          article.appendChild(note);
+        }
+        container.appendChild(article);
+      });
+    }
+
+    function formatDurationRange(range) {
+      if (!range) return '';
+      const [min, max] = range;
+      if (Math.abs(min - max) < 0.01) return formatDuration(min);
+      return formatDuration(min) + '-' + formatDuration(max);
+    }
+
+    function formatDuration(hours) {
+      const totalMinutes = Math.round(hours * 60);
+      const wholeHours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
+      if (wholeHours === 0) return minutes + ' minutes';
+      if (minutes === 0) return wholeHours + (wholeHours === 1 ? ' hour' : ' hours');
+      return wholeHours + (wholeHours === 1 ? ' hour ' : ' hours ') + minutes + ' minutes';
+    }
+
+    function populateCalculator() {
+      const typeSelect = document.getElementById('cleaningType');
+      const sizeSelect = document.getElementById('homeSize');
+      const adjustmentOptions = document.getElementById('adjustmentOptions');
+
+      cleaningTypes.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type.key;
+        option.textContent = type.label;
+        typeSelect.appendChild(option);
+      });
+
+      regularMaintenanceRows.forEach((row, index) => {
+        const option = document.createElement('option');
+        option.value = String(index);
+        option.textContent = row.size;
+        sizeSelect.appendChild(option);
+      });
+
+      adjustmentRows.forEach((row, index) => {
+        const label = document.createElement('label');
+        label.className = 'task-option';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = String(index);
+        checkbox.name = 'adjustment';
+        const span = document.createElement('span');
+        span.textContent = row.task;
+        label.appendChild(checkbox);
+        label.appendChild(span);
+        adjustmentOptions.appendChild(label);
+      });
+
+      document.getElementById('durationCalculator').addEventListener('change', updateCalculator);
+      updateCalculator();
+    }
+
+    function updateCalculator() {
+      const selectedType = cleaningTypes.find(type => type.key === document.getElementById('cleaningType').value) || cleaningTypes[0];
+      const selectedSizeIndex = Number(document.getElementById('homeSize').value || 0);
+      const cleanerCount = Number(document.getElementById('cleanerCount').value || 1);
+      const base = selectedType.rows[selectedSizeIndex];
+
+      if (base.customQuote) {
+        document.getElementById('personHoursResult').textContent = 'Inspection or customised quotation';
+        document.getElementById('personHoursLine').textContent = 'Inspection required';
+        document.getElementById('siteTimeLine').textContent = 'Confirm after inspection';
+        document.getElementById('calculatorNote').textContent = 'This home-size range requires inspection or a customised quote before confirming duration.';
+        return;
+      }
+
+      let min = base.range[0];
+      let max = base.range[1];
+      const selectedAdjustments = Array.from(document.querySelectorAll('input[name="adjustment"]:checked'))
+        .map(input => adjustmentRows[Number(input.value)]);
+
+      selectedAdjustments.forEach(adjustment => {
+        if (adjustment.range) {
+          min += adjustment.range[0];
+          max += adjustment.range[1];
+        }
+      });
+
+      selectedAdjustments.forEach(adjustment => {
+        if (adjustment.percent) {
+          min *= 1 + adjustment.percent[0];
+          max *= 1 + adjustment.percent[1];
+        }
+      });
+
+      const personHours = formatDurationRange([min, max]);
+      const siteTime = formatDurationRange([min / cleanerCount, max / cleanerCount]);
+      document.getElementById('personHoursResult').textContent = personHours;
+      document.getElementById('personHoursLine').textContent = personHours;
+      document.getElementById('siteTimeLine').textContent = siteTime;
+      document.getElementById('calculatorNote').textContent = 'This is a recommended starting duration, not a guaranteed completion time.';
+    }
+
+    renderGuideSections();
+    populateCalculator();
+  </script>
+</body>
+</html>

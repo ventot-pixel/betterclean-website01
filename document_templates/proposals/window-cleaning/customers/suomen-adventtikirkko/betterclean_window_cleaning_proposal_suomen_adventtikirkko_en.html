@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterClean - Window Cleaning Proposal - Suomen Adventtikirkko</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --ink: #121812;
+      --muted: #5f6b5f;
+      --line: #dfe9df;
+      --line-strong: #bfd5bf;
+      --paper: #ffffff;
+      --button-shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 9.45pt;
+      line-height: 1.48;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm 15mm;
+    }
+
+    .document {
+      max-width: 178mm;
+      margin: 0 auto;
+      padding: 2mm 4mm 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16mm;
+      padding-bottom: 5mm;
+      margin-bottom: 7mm;
+      border-bottom: 2px solid var(--green);
+      break-inside: avoid;
+    }
+
+    .logo {
+      width: 40mm;
+      height: auto;
+      display: block;
+      margin-bottom: 2mm;
+    }
+
+    .service-label,
+    .doc-type,
+    .label {
+      color: var(--muted);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 7.3pt;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .doc-type { text-align: right; }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: 23pt;
+      line-height: 1.08;
+      margin: 0 0 2mm;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 10.4pt;
+      font-weight: 600;
+      margin: 0 0 6mm;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.6mm 8mm;
+      padding: 4.5mm 0 5mm;
+      margin-bottom: 6.5mm;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+    }
+
+    .meta-item {
+      display: grid;
+      grid-template-columns: 35mm minmax(0, 1fr);
+      gap: 4mm;
+      align-items: baseline;
+    }
+
+    .value {
+      color: var(--ink);
+      font-weight: 650;
+      overflow-wrap: anywhere;
+    }
+
+    h2 {
+      color: var(--green-dark);
+      font-size: 13.4pt;
+      line-height: 1.24;
+      margin: 6.2mm 0 2.6mm;
+      padding-top: 2.6mm;
+      border-top: 1px solid var(--line-strong);
+      break-after: avoid;
+    }
+
+    h2:first-of-type { margin-top: 0; }
+
+    h3 {
+      color: var(--dark);
+      font-size: 10.6pt;
+      margin: 4.5mm 0 2mm;
+      break-after: avoid;
+    }
+
+    p { margin: 0 0 2.8mm; }
+
+    ul {
+      margin: 0 0 3.5mm;
+      padding-left: 5.2mm;
+    }
+
+    li {
+      margin-bottom: 1mm;
+      padding-left: 0.8mm;
+    }
+
+    .option-box {
+      padding: 3.4mm 4mm 2.4mm;
+      margin: 3mm 0 4mm;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      break-inside: avoid;
+    }
+
+    .option-title {
+      color: var(--green-dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 10.8pt;
+      font-weight: 800;
+      margin: 0 0 2mm;
+    }
+
+    .note {
+      padding: 3mm 4mm;
+      margin: 3.5mm 0 4.5mm;
+      background: var(--green-light);
+      border: 1px solid var(--line-strong);
+      border-left: 3px solid var(--green);
+      border-radius: 5px;
+      break-inside: avoid;
+    }
+
+    .table-wrap {
+      margin: 3mm 0 5mm;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      overflow: hidden;
+      break-inside: avoid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.25pt;
+    }
+
+    th {
+      background: #f7fbf6;
+      color: var(--dark);
+      font-weight: 800;
+      text-align: left;
+      padding: 2.3mm 2.6mm;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    td {
+      padding: 2.3mm 2.6mm;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th.amount,
+    td.amount { text-align: right; }
+
+    tbody tr.total-row td {
+      border-top: 1.5px solid var(--green);
+      font-weight: 800;
+    }
+
+    .terms-list {
+      columns: 2;
+      column-gap: 8mm;
+    }
+
+    .choice-line {
+      padding: 3mm 0;
+      margin: 2mm 0 4mm;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8mm;
+      margin-top: 5mm;
+      break-inside: avoid;
+    }
+
+    .signature-box {
+      padding-top: 4mm;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-note {
+      margin-top: 6mm;
+      padding-top: 3.5mm;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 8pt;
+    }
+
+    @media print {
+      html,
+      body { background: #fff; }
+      .document { max-width: none; padding: 0; }
+      a { color: inherit; text-decoration: none; }
+      .topbar,
+      .meta-grid,
+      .note,
+      .table-wrap,
+      .option-box,
+      .signature-grid { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="document">
+    <header class="topbar">
+      <div>
+        <img class="logo" src="../../assets/betterclean-logo-cropped.png" alt="BetterClean">
+        <div class="service-label">Window cleaning service</div>
+      </div>
+      <div class="doc-type">Proposal</div>
+    </header>
+
+    <section>
+      <h1>Window Cleaning Proposal</h1>
+      <p class="subtitle">Professional window cleaning for Satakunnankatu 23, Tampere</p>
+    </section>
+
+    <section class="meta-grid" aria-label="Proposal details">
+      <div class="meta-item"><div class="label">Client</div><div class="value">Suomen Adventtikirkko</div></div>
+      <div class="meta-item"><div class="label">Contact person</div><div class="value">Harri Saarinen</div></div>
+      <div class="meta-item"><div class="label">Client address</div><div class="value">PL 94, 33101 Tampere</div></div>
+      <div class="meta-item"><div class="label">Service site</div><div class="value">Satakunnankatu 23, Tampere</div></div>
+      <div class="meta-item"><div class="label">Proposal number</div><div class="value">_______________</div></div>
+      <div class="meta-item"><div class="label">Date</div><div class="value">_______________</div></div>
+      <div class="meta-item"><div class="label">Valid until</div><div class="value">_______________</div></div>
+      <div class="meta-item"><div class="label">Prepared by</div><div class="value">Joven Baclig, BetterClean</div></div>
+    </section>
+
+    <h2>1. Work Description</h2>
+    <p>BetterClean offers the client professional window cleaning services at Satakunnankatu 23, Tampere. The work will be carried out with professional tools, according to the agreed schedule, and to a clearly defined quality level.</p>
+    <p>This proposal includes two options. The client may choose the option that best fits the site's needs.</p>
+
+    <h2>2. Scope of Work</h2>
+    <div class="option-box">
+      <p class="option-title">Option A - Full Service (60 hours)</p>
+      <ul>
+        <li>washing window glass surfaces inside and outside</li>
+        <li>drying and finishing the glass to a streak-free result</li>
+        <li>wiping window frames and casings</li>
+        <li>wiping window sills</li>
+        <li>delivery of cleaning agents and work equipment to the site</li>
+        <li>documentation of working time, including start time, finish time and completed areas</li>
+        <li>final review with the contact person</li>
+      </ul>
+    </div>
+
+    <div class="option-box">
+      <p class="option-title">Option B - Exterior Glass Only (40 hours)</p>
+      <ul>
+        <li>washing only the exterior window glass surfaces, covering 2 glass surfaces</li>
+        <li>drying and finishing exterior glass surfaces to a streak-free result</li>
+        <li>wiping exterior window frames and casings</li>
+        <li>wiping window sills</li>
+        <li>delivery of cleaning agents and work equipment to the site</li>
+        <li>documentation of working time</li>
+        <li>final review with the contact person</li>
+      </ul>
+      <p><strong>Not included in Option B:</strong> washing interior window glass surfaces or washing Venetian blinds.</p>
+    </div>
+
+    <h2>3. Schedule</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Content</th>
+            <th>Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Initial site review and access arrangements</td><td>Completed</td></tr>
+          <tr><td>2</td><td>Window cleaning, phase 1</td><td>_______________</td></tr>
+          <tr><td>3</td><td>Window cleaning, phase 2</td><td>_______________</td></tr>
+          <tr><td>4</td><td>Final review and handover</td><td>_______________</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The detailed day-by-day schedule will be confirmed when the order is placed.</p>
+
+    <h2>4. Pricing</h2>
+    <h3>Option A - Full Service</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th class="amount">Quantity</th>
+            <th class="amount">Unit price (VAT 0%)</th>
+            <th class="amount">Total (VAT 0%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Window cleaning, professional work (inside + outside)</td><td class="amount">60 h</td><td class="amount">48,00 €/h</td><td class="amount">2 880,00 €</td></tr>
+          <tr><td>Volume discount</td><td class="amount">60 h</td><td class="amount">-10,00 €/h</td><td class="amount">-600,00 €</td></tr>
+          <tr><td><strong>Net hourly rate</strong></td><td></td><td class="amount"><strong>38,00 €/h</strong></td><td></td></tr>
+          <tr><td><strong>Subtotal</strong></td><td></td><td></td><td class="amount"><strong>2 280,00 €</strong></td></tr>
+          <tr><td><strong>VAT 25.5%</strong></td><td></td><td></td><td class="amount"><strong>581,40 €</strong></td></tr>
+          <tr class="total-row"><td>Total incl. VAT</td><td></td><td></td><td class="amount">2 861,40 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Option B - Exterior Glass Only</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th class="amount">Quantity</th>
+            <th class="amount">Unit price (VAT 0%)</th>
+            <th class="amount">Total (VAT 0%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Exterior window cleaning, excluding blinds and interior glass</td><td class="amount">40 h</td><td class="amount">48,00 €/h</td><td class="amount">1 920,00 €</td></tr>
+          <tr><td>Volume discount</td><td class="amount">40 h</td><td class="amount">-10,00 €/h</td><td class="amount">-400,00 €</td></tr>
+          <tr><td><strong>Net hourly rate</strong></td><td></td><td class="amount"><strong>38,00 €/h</strong></td><td></td></tr>
+          <tr><td><strong>Subtotal</strong></td><td></td><td></td><td class="amount"><strong>1 520,00 €</strong></td></tr>
+          <tr><td><strong>VAT 25.5%</strong></td><td></td><td></td><td class="amount"><strong>387,60 €</strong></td></tr>
+          <tr class="total-row"><td>Total incl. VAT</td><td></td><td></td><td class="amount">1 907,60 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Possible additional work will be charged at 38,00 €/h (VAT 0%). Additional work is always agreed in writing before execution.</p>
+
+    <h2>5. Contract Terms</h2>
+    <ul class="terms-list">
+      <li>Payment term: _______________</li>
+      <li>Late payment interest: in accordance with applicable law</li>
+      <li>Cancellation: free of charge when notified at least 48 hours before the agreed start time</li>
+      <li>Late cancellation fee: _______________ €</li>
+      <li>Client responsibilities: access to the site, water and electricity point, and availability of the contact person</li>
+      <li>Insurance: BetterClean has valid general liability insurance</li>
+    </ul>
+
+    <h2>6. Acceptance</h2>
+    <p>By signing this proposal, the client accepts the scope of work, schedule, pricing and contract terms set out in this document.</p>
+    <p class="choice-line">Selected option (circle one): Option A - Full Service / Option B - Exterior Glass Only</p>
+
+    <div class="signature-grid">
+      <div class="signature-box">
+        <p><strong>Client</strong></p>
+        <p>Company / name: Suomen Adventtikirkko</p>
+        <p>Signature: _______________________________________________</p>
+        <p>Name in print: Harri Saarinen</p>
+        <p>Date: _______________________________________________</p>
+      </div>
+      <div class="signature-box">
+        <p><strong>Service provider - BetterClean</strong></p>
+        <p>Signature: _______________________________________________</p>
+        <p>Name in print: Joven Baclig</p>
+        <p>Date: _______________________________________________</p>
+      </div>
+    </div>
+
+    <div class="note">
+      This proposal has been prepared in accordance with BetterClean's current service terms and pricing model.
+    </div>
+
+    <p class="footer-note">BetterClean | Tampere | betterclean.fi | +358 41 576 9236 | info@betterclean.fi | Business ID: 3563977-9</p>
+  </main>
+</body>
+</html>

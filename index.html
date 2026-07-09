@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kotisiivous Tampere | BetterClean</title>
   <meta name="description" content="Premium-kotisiivous Tampereella. Huolellinen siivous, höyrykäsittely soveltuvissa kohteissa ja luotettava palvelu kodeille, jotka haluavat enemmän." />
-  <meta name="dateModified" content="2026-06-05" />
+  <meta name="dateModified" content="2026-07-07" />
   <meta name="keywords" content="kotisiivous tampere, siivouspalvelu tampere, premium kotisiivous, syväsiivous tampere, ikkunanpesu tampere, höyrypesu tampere" />
   <meta property="og:title" content="Kotisiivous Tampere | BetterClean" />
   <meta property="og:description" content="Premium-kotisiivous Tampereella. Huolellinen siivous, höyrykäsittely soveltuvissa kohteissa ja luotettava palvelu." />
@@ -16,7 +16,7 @@
   <meta name="google-site-verification" content="zxyCzs72blaK_Xf4XHhVp0PNrPd6wGYukGEuThp6xfA" />
   <link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64" />
   <script src="/consent.js" defer></script>
-  <script src="/whatsapp-widget.js?v=20260615-auto" defer></script>
+  <script src="/whatsapp-widget.js?v=20260708-close" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -104,6 +104,44 @@
           {"@type": "HowToStep", "position": 2, "name": "Receive confirmation", "text": "BetterClean confirms the visit, assigned cleaner and practical details."},
           {"@type": "HowToStep", "position": 3, "name": "Cleaning visit", "text": "The cleaner arrives on time and completes the service carefully and thoroughly."},
           {"@type": "HowToStep", "position": 4, "name": "Enjoy the result", "text": "Return to a home that feels properly cleaned and carefully finished."}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.betterclean.fi/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Paljonko kotisiivous maksaa Tampereella?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 59 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mitä tavalliseen kotisiivoukseen kuuluu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tavalliseen käyntiin kuuluvat keittiö, kylpyhuoneet, lattiat, pölyjen poisto ja pintojen puhdistus kodin eri tiloissa. BetterClean vahvistaa tarkan tehtävälistan ja suositellut henkilötunnit ennen varauksen hyväksymistä."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Sisältyykö höyrykäsittely jokaiseen siivoukseen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ei. Höyrykäsittelyä käytetään silloin, kun se sopii pintaan, materiaaliin ja työn laajuuteen. Se voi tukea syvempää puhdistusta soveltuvilla kylpyhuone-, keittiö-, kovapinta- ja tekstiilipinnoilla, mutta sitä ei luvata jokaiseen pintaan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Missä BetterClean tarjoaa siivouspalvelua?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BetterClean palvelee Tamperetta ja lähialueita, kuten Kangasalaa, Ylöjärveä, Lempäälää, Pirkkalaa ja Nokiaa. Tampereen pääalueen ulkopuolelle voidaan tarvita matkalisä tai yksilöllinen tarjous."
+            }
+          }
         ]
       }
     ]
@@ -230,6 +268,7 @@
     .text-gray-400 { color: #6b7280 !important; }
     .text-gray-500 { color: #4b5563 !important; }
     .tier-price { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 28px; color: var(--dark); letter-spacing: -0.03em; margin-bottom: 16px; }
+    .price-nowrap { white-space: nowrap; display: inline-block; }
 
     /* ── Step ── */
     .step-num {
@@ -255,6 +294,7 @@
 
     /* ── Booking form ── */
     .service-opt input { display: none; }
+    .service-opt.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
     .time-btn.selected, .size-btn.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
     .pay-method-btn.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
     .cal-day { width: 100%; aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; }
@@ -270,6 +310,29 @@
     .price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 16px; border-radius: 20px; font-family: 'Sora', sans-serif; white-space: nowrap; }
     .price-card { background: #fff; border-radius: 16px; padding: 32px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(36,122,36,0.08); border: 1px solid #e8f5e8; }
     .price-card.featured { border: 2px solid var(--green); position: relative; }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .faq-card {
+      background: #fff;
+      border: 1px solid #e8f0e7;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(36,122,36,0.06);
+      overflow: hidden;
+    }
+    .faq-card summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 22px;
+      color: var(--dark);
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .faq-card summary::-webkit-details-marker { display: none; }
+    .faq-card summary::after { content: '+'; color: var(--green); font-size: 1.25rem; line-height: 1; }
+    .faq-card[open] summary::after { content: '-'; }
+    .faq-card p { color: #4b5563; line-height: 1.75; padding: 0 22px 22px; }
 
     /* ── Mobile nav ── */
     .nav-logo-wrap { height: 42px; overflow: hidden; display: flex; align-items: center; }
@@ -286,6 +349,9 @@
     .mobile-nav a:hover { color: var(--green); }
     .mobile-nav .mobile-cta { border-bottom: none; margin-top: 16px; text-align: center; }
     nav { position: sticky; top: 0; z-index: 100; }
+    @media (max-width: 700px) {
+      .faq-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -488,7 +554,7 @@
         </div>
         <div class="tier-body">
           <p class="tier-from" data-en="Starting from" data-fi="Alkaen">Alkaen</p>
-          <p class="tier-price">57 €<span class="text-base font-normal text-gray-400">/h</span></p>
+          <p class="tier-price"><span class="price-nowrap">49 €/h</span></p>
           <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Essential Home Care" data-fi="Peruskodin Hoito">Peruskodin Hoito</h3>
           <p class="text-sm text-gray-500 leading-relaxed mb-5"
             data-en="For regular upkeep of well-maintained homes. A thorough recurring clean with the same professional every visit."
@@ -512,7 +578,7 @@
             </div>
           </div>
           <p class="text-xs text-gray-400 italic mb-4" data-en="For: households wanting dependable regular maintenance." data-fi="Sopii: kotitalouksille, jotka haluavat luotettavan säännöllisen ylläpidon.">Sopii: kotitalouksille, jotka haluavat luotettavan säännöllisen ylläpidon.</p>
-          <a href="request-quote.html" class="btn-outline w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous">Pyydä Tarjous</a>
+          <a href="request-quote.html?service=home" class="btn-outline w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous">Pyydä Tarjous</a>
         </div>
       </div>
 
@@ -524,8 +590,8 @@
           <div class="tier-badge" data-en="Most Requested" data-fi="Eniten Pyydetty">Eniten Pyydetty</div>
         </div>
         <div class="tier-body">
-          <p class="tier-from" data-en="Custom quote" data-fi="Räätälöity tarjous">Räätälöity tarjous</p>
-          <p class="tier-price" data-en="69 €/h" data-fi="69 €/h">69 €/h</p>
+          <p class="tier-from" data-en="Starting from" data-fi="Alkaen">Alkaen</p>
+          <p class="tier-price"><span class="price-nowrap">79 €/h</span></p>
           <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Signature Deep Clean" data-fi="Syväsiivous  -  Meidän Tavallamme">Syväsiivous  -  Meidän Tavallamme</h3>
           <p class="text-sm text-gray-500 leading-relaxed mb-5"
             data-en="A more detailed service with extra time, ideal for homes that need a higher standard of finish. Every corner, every surface."
@@ -549,7 +615,7 @@
             </div>
           </div>
           <p class="text-xs text-gray-400 italic mb-4" data-en="For: homes needing a higher standard of finish." data-fi="Sopii: kodeille, jotka tarvitsevat korkeampaa viimeistelyä.">Sopii: kodeille, jotka tarvitsevat korkeampaa viimeistelyä.</p>
-          <a href="request-quote.html" class="btn-primary w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous">Pyydä Tarjous</a>
+          <a href="request-quote.html?service=deep" class="btn-primary w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous">Pyydä Tarjous</a>
         </div>
       </div>
 
@@ -561,7 +627,7 @@
         </div>
         <div class="tier-body">
           <p class="tier-from" data-en="Custom quote" data-fi="Räätälöity tarjous">Räätälöity tarjous</p>
-          <p class="tier-price" data-en="69 €/h" data-fi="69 €/h">69 €/h</p>
+          <p class="tier-price"><span class="price-nowrap">59 €/h</span></p>
           <h3 class="text-xl font-display font-bold mb-2" style="color: var(--dark);" data-en="Move / Reset Cleaning" data-fi="Muutto- ja Nollaussiivous">Muutto- ja Nollaussiivous</h3>
           <p class="text-sm text-gray-500 leading-relaxed mb-5"
             data-en="Thorough cleaning for transitions, handovers, and homes needing a full refresh. Oven, fridge, every surface  -  deposit-back ready."
@@ -585,7 +651,7 @@
             </div>
           </div>
           <p class="text-xs text-gray-400 italic mb-4" data-en="For: moving in, moving out, or a full home reset." data-fi="Sopii: muuttoon, poismuuttoon tai kodin täydelliseen nollaukseen.">Sopii: muuttoon, poismuuttoon tai kodin täydelliseen nollaukseen.</p>
-          <a href="request-quote.html" class="btn-outline w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous">Pyydä Tarjous</a>
+          <a href="request-quote.html?service=office" class="btn-outline w-full text-center block" data-en="Request a Quote" data-fi="Pyydä Tarjous">Pyydä Tarjous</a>
         </div>
       </div>
 
@@ -599,7 +665,7 @@
         </div>
         <div class="flex-1">
           <p class="font-display font-bold text-sm" style="color: var(--dark);" data-en="Window Cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</p>
-          <p class="text-xs text-gray-400 mt-0.5" data-en="from 49 €/h - streak-free, inside and outside" data-fi="alkaen 49 €/h - juovaton, sisä- ja ulkopuoli">alkaen 49 €/h - juovaton, sisä- ja ulkopuoli</p>
+          <p class="text-xs text-gray-400 mt-0.5" data-en="alkaen 119 €  -  juovaton, sisä- ja ulkopuoli" data-fi="alkaen 119 €  -  juovaton, sisä- ja ulkopuoli">alkaen 119 €  -  juovaton, sisä- ja ulkopuoli</p>
         </div>
         <svg class="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
@@ -619,7 +685,7 @@
         </div>
         <div class="flex-1">
           <p class="font-display font-bold text-sm" style="color: var(--dark);" data-en="Post-Renovation Cleaning" data-fi="Remontin Jälkisiivous">Remontin Jälkisiivous</p>
-          <p class="text-xs text-gray-400 mt-0.5" data-en="79 €/h - HEPA dust removal, min. 4 h" data-fi="79 €/h - HEPA-pölynerotus, min. 4 h">79 €/h - HEPA-pölynerotus, min. 4 h</p>
+          <p class="text-xs text-gray-400 mt-0.5" data-en="79 €/h  -  HEPA-pölynerotus, min. 4 h" data-fi="79 €/h  -  HEPA-pölynerotus, min. 4 h">79 €/h  -  HEPA-pölynerotus, min. 4 h</p>
         </div>
         <svg class="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
@@ -737,6 +803,38 @@
 </section>
 
 
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<section class="py-24 px-6 bg-white" aria-labelledby="homeFaqTitle">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--green); letter-spacing: 0.18em;"
+        data-en="COMMON QUESTIONS" data-fi="YLEISIMMÄT KYSYMYKSET">YLEISIMMÄT KYSYMYKSET</p>
+      <h2 id="homeFaqTitle" class="text-4xl md:text-5xl font-display font-extrabold" style="letter-spacing: -0.03em; color: var(--dark);"
+        data-en="Home cleaning answers for Tampere households"
+        data-fi="Kotisiivousvastaukset Tampereen kotitalouksille">Kotisiivousvastaukset Tampereen kotitalouksille</h2>
+    </div>
+    <div class="faq-grid">
+      <details class="faq-card">
+        <summary><span data-en="How much does home cleaning cost in Tampere?" data-fi="Paljonko kotisiivous maksaa Tampereella?">Paljonko kotisiivous maksaa Tampereella?</span></summary>
+        <p data-en="BetterClean home cleaning in Tampere starts at 49 €/h for recurring Essential cleaning. One-time home cleaning starts at 59 €/h. The final estimate depends on home size, frequency, condition and requested add-ons." data-fi="BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 59 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista.">BetterCleanin kotisiivous Tampereella alkaa 49 €/h hinnasta toistuvalle Essential-siivoukselle. Kertaluonteinen kotisiivous alkaa 59 €/h. Lopullinen arvio riippuu kodin koosta, siivoustiheydestä, kunnosta ja lisäpalveluista.</p>
+      </details>
+      <details class="faq-card">
+        <summary><span data-en="What is included in a regular home cleaning visit?" data-fi="Mitä tavalliseen kotisiivoukseen kuuluu?">Mitä tavalliseen kotisiivoukseen kuuluu?</span></summary>
+        <p data-en="A regular visit includes kitchen, bathrooms, floors, dusting and surface cleaning throughout the home. BetterClean confirms the exact checklist and recommended person-hours before the booking is accepted." data-fi="Tavalliseen käyntiin kuuluvat keittiö, kylpyhuoneet, lattiat, pölyjen poisto ja pintojen puhdistus kodin eri tiloissa. BetterClean vahvistaa tarkan tehtävälistan ja suositellut henkilötunnit ennen varauksen hyväksymistä.">Tavalliseen käyntiin kuuluvat keittiö, kylpyhuoneet, lattiat, pölyjen poisto ja pintojen puhdistus kodin eri tiloissa. BetterClean vahvistaa tarkan tehtävälistan ja suositellut henkilötunnit ennen varauksen hyväksymistä.</p>
+      </details>
+      <details class="faq-card">
+        <summary><span data-en="Is steam treatment included in every cleaning?" data-fi="Sisältyykö höyrykäsittely jokaiseen siivoukseen?">Sisältyykö höyrykäsittely jokaiseen siivoukseen?</span></summary>
+        <p data-en="No. Steam treatment is used where it suits the surface, material and cleaning scope. It can support deeper cleaning on suitable bathroom, kitchen, hard-floor and textile surfaces, but it is never promised for every surface." data-fi="Ei. Höyrykäsittelyä käytetään silloin, kun se sopii pintaan, materiaaliin ja työn laajuuteen. Se voi tukea syvempää puhdistusta soveltuvilla kylpyhuone-, keittiö-, kovapinta- ja tekstiilipinnoilla, mutta sitä ei luvata jokaiseen pintaan.">Ei. Höyrykäsittelyä käytetään silloin, kun se sopii pintaan, materiaaliin ja työn laajuuteen. Se voi tukea syvempää puhdistusta soveltuvilla kylpyhuone-, keittiö-, kovapinta- ja tekstiilipinnoilla, mutta sitä ei luvata jokaiseen pintaan.</p>
+      </details>
+      <details class="faq-card">
+        <summary><span data-en="Where does BetterClean provide cleaning services?" data-fi="Missä BetterClean tarjoaa siivouspalvelua?">Missä BetterClean tarjoaa siivouspalvelua?</span></summary>
+        <p data-en="BetterClean serves Tampere and nearby areas including Kangasala, Ylöjärvi, Lempäälä, Pirkkala and Nokia. Travel outside the main Tampere area may require a surcharge or custom quote." data-fi="BetterClean palvelee Tamperetta ja lähialueita, kuten Kangasalaa, Ylöjärveä, Lempäälää, Pirkkalaa ja Nokiaa. Tampereen pääalueen ulkopuolelle voidaan tarvita matkalisä tai yksilöllinen tarjous.">BetterClean palvelee Tamperetta ja lähialueita, kuten Kangasalaa, Ylöjärveä, Lempäälää, Pirkkalaa ja Nokiaa. Tampereen pääalueen ulkopuolelle voidaan tarvita matkalisä tai yksilöllinen tarjous.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
 <!-- ═══════════════════════ CTA BANNER ═══════════════════════ -->
 <section class="section-dark py-24 px-6">
   <div class="max-w-4xl mx-auto text-center">
@@ -790,52 +888,44 @@
           <div>
             <h3 class="font-display font-bold text-lg mb-4" data-en="1. Select Service" data-fi="1. Valitse Palvelu">1. Valitse Palvelu</h3>
             <div class="space-y-3 mb-6" id="service-options">
-              <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition" style="border-color: var(--green); background: var(--green-light);">
+              <label class="service-opt selected flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition hover:border-green-300">
                 <input type="radio" name="service" value="home" class="accent-green-600" checked />
                 <div class="flex-1">
                   <p class="font-semibold text-sm" data-en="Essential Home Care" data-fi="Peruskodin Hoito">Peruskodin Hoito</p>
-                  <p class="text-xs text-gray-500" data-en="Kotisiivous  -  alkaen 57 €/h" data-fi="Kotisiivous  -  alkaen 57 €/h">Kotisiivous  -  alkaen 57 €/h</p>
+                  <p class="text-xs text-gray-500" data-en="Essential cleaning - from <span class=&quot;price-nowrap&quot;>49 €/h</span>" data-fi="Kotisiivous - alkaen <span class=&quot;price-nowrap&quot;>49 €/h</span>">Kotisiivous - alkaen <span class="price-nowrap">49 €/h</span></p>
                 </div>
               </label>
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition hover:border-green-300">
                 <input type="radio" name="service" value="deep" class="accent-green-600" />
                 <div class="flex-1">
                   <p class="font-semibold text-sm" data-en="Signature Deep Clean" data-fi="Syväsiivous  -  Meidän Tavallamme">Syväsiivous  -  Meidän Tavallamme</p>
-                  <p class="text-xs text-gray-500" data-en="Detailed clean  -  custom quote" data-fi="Yksityiskohtainen siivous  -  tarjouspyyntö">Yksityiskohtainen siivous  -  tarjouspyyntö</p>
+                  <p class="text-xs text-gray-500" data-en="One-time deep cleaning with steam - from <span class=&quot;price-nowrap&quot;>79 €/h</span>" data-fi="Kertaluonteinen syväsiivous höyrypesulla - alkaen <span class=&quot;price-nowrap&quot;>79 €/h</span>">Kertaluonteinen syväsiivous höyrypesulla - alkaen <span class="price-nowrap">79 €/h</span></p>
                 </div>
               </label>
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition hover:border-green-300">
                 <input type="radio" name="service" value="office" class="accent-green-600" />
                 <div class="flex-1">
                   <p class="font-semibold text-sm" data-en="Move / Reset Cleaning" data-fi="Muutto- ja Nollaussiivous">Muutto- ja Nollaussiivous</p>
-                  <p class="text-xs text-gray-500" data-en="Full reset  -  custom quote" data-fi="Täydellinen nollaus  -  tarjouspyyntö">Täydellinen nollaus  -  tarjouspyyntö</p>
+                  <p class="text-xs text-gray-500" data-en="One-time move-out cleaning - from <span class=&quot;price-nowrap&quot;>59 €/h</span>" data-fi="Kertaluonteinen muuttosiivous - alkaen <span class=&quot;price-nowrap&quot;>59 €/h</span>">Kertaluonteinen muuttosiivous - alkaen <span class="price-nowrap">59 €/h</span></p>
                 </div>
               </label>
               <label class="service-opt flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 cursor-pointer transition hover:border-green-300">
                 <input type="radio" name="service" value="event" class="accent-green-600" />
                 <div class="flex-1">
                   <p class="font-semibold text-sm" data-en="Specialty Services" data-fi="Erikoispalvelut">Erikoispalvelut</p>
-                  <p class="text-xs text-gray-500" data-en="Windows, steam, post-renovation" data-fi="Ikkunat, höyry, remonttisiivous">Ikkunat, höyry, remonttisiivous</p>
+                  <p class="text-xs text-gray-500" data-en="Custom quote recommended" data-fi="Henkilökohtainen tarjous suositellaan">Henkilökohtainen tarjous suositellaan</p>
                 </div>
               </label>
             </div>
-            <h3 class="font-display font-bold text-lg mb-3" data-en="2. Home Size" data-fi="2. Kodin Koko">2. Kodin Koko</h3>
-            <div class="grid grid-cols-3 gap-2">
-              <button onclick="selectSize(this,'studio')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition">
-                <p data-en="Studio" data-fi="Studio">Studio</p><p class="text-xs text-gray-400 font-normal">~25 m²</p>
-              </button>
-              <button onclick="selectSize(this,'small')" class="size-btn px-3 py-3 rounded-xl border-2 text-sm font-semibold transition" style="border-color: var(--green); background: var(--green-light);">
-                <p data-en="Small" data-fi="Pieni">Pieni</p><p class="text-xs font-normal" style="color: var(--green);">~50 m²</p>
-              </button>
-              <button onclick="selectSize(this,'medium')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition">
-                <p data-en="Medium" data-fi="Keski">Keski</p><p class="text-xs text-gray-400 font-normal">~80 m²</p>
-              </button>
-              <button onclick="selectSize(this,'large')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition">
-                <p data-en="Large" data-fi="Suuri">Suuri</p><p class="text-xs text-gray-400 font-normal">~120 m²</p>
-              </button>
-              <button onclick="selectSize(this,'xlarge')" class="size-btn px-3 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold hover:border-green-400 transition col-span-2">
-                <p data-en="Extra Large" data-fi="Erittäin Suuri">Erittäin Suuri</p><p class="text-xs text-gray-400 font-normal">120+ m²</p>
-              </button>
+            <h3 class="font-display font-bold text-lg mb-3" data-en="2. Home Size" data-fi="2. Kodin koko">2. Kodin koko</h3>
+            <div>
+              <label for="home-size-m2" data-en="Enter your exact home size" data-fi="Kirjoita kodin tarkka koko">Kirjoita kodin tarkka koko</label>
+              <div class="flex items-center gap-3">
+                <input id="home-size-m2" type="number" min="1" max="300" inputmode="decimal" value="50" oninput="handleHomeSizeInput()" onchange="handleHomeSizeInput()" aria-describedby="widget-size-bracket" />
+                <span class="font-display font-bold" style="color: var(--dark);">m²</span>
+              </div>
+              <p id="widget-size-bracket" class="text-xs mt-2" style="color: #5a6b5a;">50 m² → 40-59 m²</p>
+              <p id="widget-service-path" class="text-xs mt-3 font-semibold" style="color: #315b31;" data-en="Recurring or one-time service" data-fi="Toistuva tai kertaluonteinen palvelu">Toistuva tai kertaluonteinen palvelu</p>
             </div>
           </div>
           <div>
@@ -882,6 +972,7 @@
         <h3 class="font-display font-bold text-lg mb-6" data-en="Your Details" data-fi="Tietosi">Tietosi</h3>
         <div class="rounded-xl p-4 mb-6 flex flex-wrap gap-4 text-sm" style="background: var(--green-light);">
           <div><span class="text-gray-500" data-en="Service: " data-fi="Palvelu: ">Palvelu: </span><span id="summary-service" class="font-semibold"></span></div>
+          <div><span class="text-gray-500" data-en="Home size: " data-fi="Kodin koko: ">Kodin koko: </span><span id="summary-size" class="font-semibold"></span></div>
           <div><span class="text-gray-500" data-en="Date: " data-fi="Päivä: ">Päivä: </span><span id="summary-date" class="font-semibold"></span></div>
           <div><span class="text-gray-500" data-en="Time: " data-fi="Aika: ">Aika: </span><span id="summary-time" class="font-semibold"></span></div>
         </div>
@@ -907,6 +998,7 @@
           <div class="flex justify-between items-start mb-3">
             <div>
               <p class="font-display font-bold" id="pay-service-name"></p>
+              <p class="text-sm text-gray-500" id="pay-size"></p>
               <p class="text-sm text-gray-500" id="pay-datetime"></p>
               <p class="text-sm text-gray-500" id="pay-address"></p>
             </div>
@@ -946,6 +1038,7 @@
 
 <style>
   .service-opt input { display: none; }
+  .service-opt.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
   .time-btn.selected, .size-btn.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
   .pay-method-btn.selected { border-color: var(--green) !important; background: var(--green-light) !important; color: var(--dark); }
   .cal-day { width: 100%; aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; }
@@ -960,7 +1053,7 @@
   const BOOKING_EMAIL = 'info@betterclean.fi';
   const LEAD_ENDPOINT = '/api/lead';
 
-  const booking = { service: 'home', size: 'small', date: null, time: null };
+  const booking = { service: 'home', homeSizeM2: 50, size: 'small', date: null, time: null };
   let calYear, calMonth;
   const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const MONTHS_FI = ['Tammikuu','Helmikuu','Maaliskuu','Huhtikuu','Toukokuu','Kesäkuu','Heinäkuu','Elokuu','Syyskuu','Lokakuu','Marraskuu','Joulukuu'];
@@ -1004,7 +1097,27 @@
     document.getElementById('summary-date').textContent = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
   }
   function selectTime(btn, time) { document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); booking.time = time; document.getElementById('summary-time').textContent = time; }
-  function selectSize(btn, size) { document.querySelectorAll('.size-btn').forEach(b => { b.classList.remove('selected'); b.style.borderColor = ''; b.style.background = ''; }); btn.classList.add('selected'); booking.size = size; updateWidgetPrice(); }
+  function getWidgetSizeSummary(lang) {
+    const bracket = getHomeSizeBracket(booking.homeSizeM2);
+    if (!booking.homeSizeM2) return lang === 'fi' ? 'Anna kodin koko' : 'Enter home size';
+    if (!bracket) {
+      return booking.homeSizeM2 + ' m² · ' + (lang === 'fi' ? 'henkilökohtainen tarjous' : 'custom quote recommended');
+    }
+    return booking.homeSizeM2 + ' m² · ' + bracket.labels[lang];
+  }
+  function handleHomeSizeInput() {
+    const input = document.getElementById('home-size-m2');
+    booking.homeSizeM2 = Number(input.value) || 0;
+    const bracket = getHomeSizeBracket(booking.homeSizeM2);
+    booking.size = bracket ? bracket.key : 'custom';
+    updateWidgetPrice();
+  }
+
+  function formatWidgetHourlyRate(rate) {
+    const value = Number(rate);
+    if (!Number.isFinite(value) || value <= 0) return '- €/h';
+    return (value % 1 === 0 ? String(value) : value.toFixed(2).replace('.', ',')) + ' €/h';
+  }
 
   function updateWidgetPrice() {
     const lang = window.currentLang || 'fi';
@@ -1012,28 +1125,62 @@
     const priceEl = document.getElementById('widget-price-display');
     const hoursEl = document.getElementById('widget-hours-label');
     const labelEl = document.getElementById('widget-price-label');
+    const bracketEl = document.getElementById('widget-size-bracket');
+    const pathEl = document.getElementById('widget-service-path');
+    const sizeSummary = getWidgetSizeSummary(lang);
+    const setPathCopy = (en, fi) => {
+      if (!pathEl) return;
+      pathEl.setAttribute('data-en', en);
+      pathEl.setAttribute('data-fi', fi);
+      pathEl.textContent = lang === 'fi' ? fi : en;
+    };
+    if (bracketEl) {
+      bracketEl.textContent = sizeSummary;
+    }
+    const summarySize = document.getElementById('summary-size');
+    if (summarySize) summarySize.textContent = sizeSummary;
     if (!est) {
       priceEl.textContent = lang === 'fi' ? 'Tarjouspyyntö' : 'Request a quote';
-      hoursEl.setAttribute('data-en', 'We\'ll send a personalised quote');
-      hoursEl.setAttribute('data-fi', 'Lähetämme henkilökohtaisen tarjouksen');
-      hoursEl.textContent = lang === 'fi' ? 'Lähetämme henkilökohtaisen tarjouksen' : 'We\'ll send a personalised quote';
-      labelEl.setAttribute('data-en', 'Pricing'); labelEl.setAttribute('data-fi', 'Hinta');
-      labelEl.textContent = lang === 'fi' ? 'Hinta' : 'Pricing';
+      const customHoursEn = booking.service === 'event'
+        ? 'Specialty services are quoted personally'
+        : 'Homes over 180 m² are quoted personally';
+      const customHoursFi = booking.service === 'event'
+        ? 'Erikoispalvelut hinnoitellaan henkilökohtaisesti'
+        : 'Yli 180 m² kodit arvioidaan henkilökohtaisesti';
+      hoursEl.setAttribute('data-en', customHoursEn);
+      hoursEl.setAttribute('data-fi', customHoursFi);
+      hoursEl.textContent = lang === 'fi' ? customHoursFi : customHoursEn;
+      labelEl.setAttribute('data-en', 'Custom quote recommended'); labelEl.setAttribute('data-fi', 'Henkilökohtainen tarjous suositellaan');
+      labelEl.textContent = lang === 'fi' ? 'Henkilökohtainen tarjous suositellaan' : 'Custom quote recommended';
+      setPathCopy('Custom quote recommended', 'Henkilökohtainen tarjous suositellaan');
     } else {
-      priceEl.textContent = est.price + ' €';
-      const hoursEn = est.hours + 'h · incl. VAT 25.5%';
-      const hoursFi = est.hours + 'h · sis. ALV 25,5%';
+      priceEl.textContent = formatWidgetHourlyRate(est.rate);
+      const isOneTimeService = booking.service === 'deep' || booking.service === 'office';
+      const hoursEn = est.hours + 'h' + (isOneTimeService ? ' one-time' : '') + ' · est. ' + est.price + ' · incl. VAT 25.5%';
+      const hoursFi = String(est.hours).replace('.', ',') + ' h' + (isOneTimeService ? ' kertatyö' : '') + ' · arvio ' + est.price + ' · sis. ALV 25,5%';
       hoursEl.setAttribute('data-en', hoursEn); hoursEl.setAttribute('data-fi', hoursFi);
       hoursEl.textContent = lang === 'fi' ? hoursFi : hoursEn;
-      labelEl.setAttribute('data-en', 'Estimated total'); labelEl.setAttribute('data-fi', 'Arvioitu hinta');
-      labelEl.textContent = lang === 'fi' ? 'Arvioitu hinta' : 'Estimated total';
+      labelEl.setAttribute('data-en', 'Hourly rate'); labelEl.setAttribute('data-fi', 'Tuntihinta');
+      labelEl.textContent = lang === 'fi' ? 'Tuntihinta' : 'Hourly rate';
+      if (isOneTimeService) {
+        setPathCopy('One-time service', 'Kertaluonteinen palvelu');
+      } else {
+        setPathCopy('Recurring or one-time service', 'Toistuva tai kertaluonteinen palvelu');
+      }
     }
   }
   document.querySelectorAll('input[name="service"]').forEach(radio => {
     radio.addEventListener('change', function() {
-      document.querySelectorAll('.service-opt').forEach(opt => { opt.style.borderColor = ''; opt.style.background = ''; });
-      this.closest('.service-opt').style.borderColor = 'var(--green)';
-      this.closest('.service-opt').style.background = 'var(--green-light)';
+      document.querySelectorAll('input[name="service"]').forEach(input => input.removeAttribute('checked'));
+      this.setAttribute('checked', 'checked');
+      document.querySelectorAll('.service-opt').forEach(opt => {
+        opt.classList.remove('selected');
+        opt.removeAttribute('style');
+      });
+      const selectedCard = this.closest('.service-opt');
+      selectedCard.classList.add('selected');
+      selectedCard.style.setProperty('border-color', 'var(--green)', 'important');
+      selectedCard.style.setProperty('background', 'var(--green-light)', 'important');
       booking.service = this.value;
       const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const lang = window.currentLang || 'fi';
@@ -1042,9 +1189,14 @@
     });
   });
 
+  function refreshUi() {
+    updateWidgetPrice();
+  }
+
   function goToStep(n) {
     const lang = window.currentLang || 'fi';
     if (n === 2) {
+      if (!booking.homeSizeM2) { showStepError(1, lang === 'fi' ? 'Kirjoita kodin koko ennen jatkamista.' : 'Enter the home size before continuing.'); return; }
       if (!booking.date) { showStepError(1, lang === 'fi' ? 'Valitse päivä ennen jatkamista.' : 'Please select a date before continuing.'); return; }
       if (!booking.time) { showStepError(1, lang === 'fi' ? 'Valitse aika ennen jatkamista.' : 'Please select a time before continuing.'); return; }
       hideStepError(1);
@@ -1070,6 +1222,7 @@
       const serviceNames = { home: ['Essential Home Care','Peruskodin Hoito'], deep: ['Signature Deep Clean','Syväsiivous'], office: ['Move / Reset Cleaning','Muutto- ja Nollaussiivous'], event: ['Specialty Services','Erikoispalvelut'] };
       const months = lang === 'fi' ? MONTHS_FI : MONTHS_EN;
       document.getElementById('pay-service-name').textContent = serviceNames[booking.service][lang === 'fi' ? 1 : 0];
+      document.getElementById('pay-size').textContent = getWidgetSizeSummary(lang);
       if (booking.date) document.getElementById('pay-datetime').textContent = `${booking.date.getDate()} ${months[booking.date.getMonth()]} · ${booking.time || ''}`;
       document.getElementById('pay-address').textContent = document.getElementById('inp-address').value;
     }
@@ -1130,10 +1283,13 @@
     const firstName = document.getElementById('inp-first').value.trim();
     const lastName = document.getElementById('inp-last').value.trim();
     const email = document.getElementById('inp-email').value.trim();
+    const currentEstimate = calcWidgetEstimate(booking.service, booking.size);
 
     const data = {
       service: serviceNames[booking.service] || booking.service,
-      size: booking.size,
+      size: getWidgetSizeSummary('en'),
+      homeSizeM2: booking.homeSizeM2,
+      pricingBracket: booking.size,
       date: dateStr,
       time: booking.time || '',
       firstName, lastName, email,
@@ -1141,7 +1297,8 @@
       address: document.getElementById('inp-address').value.trim(),
       notes: document.getElementById('inp-notes').value.trim(),
       paymentMethod: payMethod,
-      estimatedPrice: document.getElementById('widget-price-display').textContent,
+      hourlyRateLabel: currentEstimate ? formatWidgetHourlyRate(currentEstimate.rate) : '-',
+      estimatedPrice: currentEstimate ? currentEstimate.price : document.getElementById('widget-price-display').textContent,
       _subject: 'New BetterClean Booking - ' + firstName + ' ' + lastName,
       _replyto: email
     };
@@ -1160,6 +1317,7 @@
       'Notes: ' + (data.notes || '-'),
       '',
       'Payment Method: ' + data.paymentMethod,
+      'Hourly Rate: ' + data.hourlyRateLabel,
       'Estimated Price: ' + data.estimatedPrice
     ].join('\n');
     const leadPayload = {
@@ -1176,11 +1334,14 @@
       booking: {
         service: data.service,
         size: data.size,
+        homeSizeM2: data.homeSizeM2,
+        pricingBracket: data.pricingBracket,
         date: data.date,
         time: data.time,
         address: data.address,
         notes: data.notes,
         paymentMethod: data.paymentMethod,
+        hourlyRateLabel: data.hourlyRateLabel,
         estimatedPrice: data.estimatedPrice
       }
     };
@@ -1275,6 +1436,7 @@
 
   function setLang(lang) {
     currentLang = lang;
+    window.currentLang = lang;
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);

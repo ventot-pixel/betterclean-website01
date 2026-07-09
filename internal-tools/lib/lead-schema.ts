@@ -9,6 +9,7 @@ export const betterCleanLeadSchema = z.object({
   language: z.enum(["fi", "en"]).default("fi"),
   sourcePage: z.string().url().optional().or(z.literal("")),
   sourceChannel: z.string().min(2),
+  sourcePlatform: z.enum(["website", "whatsapp", "facebook", "instagram", "tiktok"]).default("website"),
   serviceType: z.enum([
     "recurring-home-cleaning",
     "one-time-home-cleaning",
@@ -23,7 +24,8 @@ export const betterCleanLeadSchema = z.object({
   preferredDate: z.string().optional().or(z.literal("")),
   preferredTime: z.string().optional().or(z.literal("")),
   notes: z.string().optional().or(z.literal("")),
-  estimatedPrice: z.string().optional().or(z.literal(""))
+  estimatedPrice: z.string().optional().or(z.literal("")),
+  contactPreference: z.enum(["phone", "email", "whatsapp"]).optional()
 });
 
 export type BetterCleanLeadInput = z.infer<typeof betterCleanLeadSchema>;

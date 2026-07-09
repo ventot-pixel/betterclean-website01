@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterClean - Proposal Generator</title>
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --ink: #121812;
+      --muted: #5f6b5f;
+      --line: #dfe9df;
+      --line-strong: #bfd5bf;
+      --paper: #ffffff;
+      --surface: #f7fbf7;
+      --button-shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--surface);
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(237, 247, 236, 0.8), rgba(255, 255, 255, 0) 360px),
+        var(--surface);
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app-shell {
+      width: min(1680px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 12px 0 22px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-lockup img {
+      width: 168px;
+      height: auto;
+      display: block;
+    }
+
+    .header-copy {
+      min-width: 0;
+    }
+
+    .eyebrow,
+    label,
+    .mini-label,
+    .doc-type {
+      color: var(--muted);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      margin: 4px 0 0;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(360px, 520px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .form-panel,
+    .preview-panel {
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      box-shadow: 0 18px 42px rgba(26, 46, 26, 0.08);
+    }
+
+    .form-panel {
+      position: sticky;
+      top: 14px;
+      max-height: calc(100vh - 28px);
+      overflow: auto;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-title {
+      color: var(--dark);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .form-section {
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .form-section:last-child {
+      border-bottom: 0;
+    }
+
+    .form-section h2 {
+      color: var(--green-dark);
+      font-size: 16px;
+      margin: 0 0 14px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      padding: 10px 11px;
+      outline: none;
+      min-height: 42px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 92px;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: var(--green);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(58, 170, 53, 0.15);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      padding: 9px 13px;
+      color: var(--dark);
+      background: #fff;
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .btn:hover {
+      border-color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid rgba(15, 184, 201, 0.35);
+      outline-offset: 2px;
+    }
+
+    .btn.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+      box-shadow: var(--button-shadow);
+    }
+
+    .btn.primary:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+    }
+
+    .btn.danger {
+      color: #7c1f1f;
+      border-color: #e7bcbc;
+      background: #fffafa;
+    }
+
+    .segmented {
+      display: inline-flex;
+      padding: 3px;
+      background: var(--green-light);
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      gap: 3px;
+    }
+
+    .segmented button {
+      border: 0;
+      border-radius: 5px;
+      padding: 8px 10px;
+      color: var(--muted);
+      background: transparent;
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .segmented button.active {
+      color: #fff;
+      background: var(--green);
+      box-shadow: 0 3px 10px rgba(58, 170, 53, 0.22);
+    }
+
+    .option-toggle {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .option-toggle label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 11px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .option-toggle input {
+      width: 16px;
+      min-height: auto;
+      accent-color: var(--green);
+    }
+
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .summary-item {
+      padding: 10px;
+      background: var(--green-light);
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+    }
+
+    .summary-value {
+      display: block;
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .preview-panel {
+      padding: 18px;
+    }
+
+    .proposal-page {
+      width: min(100%, 210mm);
+      margin: 0 auto;
+      padding: 14mm;
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(26, 46, 26, 0.12);
+    }
+
+    .proposal-topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 5mm;
+      margin-bottom: 7mm;
+      border-bottom: 2px solid var(--green);
+    }
+
+    .proposal-logo {
+      width: 40mm;
+      display: block;
+      margin-bottom: 2mm;
+    }
+
+    .proposal-page h2 {
+      color: var(--green-dark);
+      font-size: 20px;
+      line-height: 1.25;
+      margin: 24px 0 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .proposal-title {
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 34px;
+      line-height: 1.08;
+      margin: 0 0 8px;
+    }
+
+    .proposal-subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 24px;
+    }
+
+    .proposal-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 30px;
+      padding: 18px 0 20px;
+      margin-bottom: 20px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .proposal-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      overflow: hidden;
+      font-size: 13px;
+      margin: 12px 0 18px;
+    }
+
+    .proposal-table th,
+    .proposal-table td {
+      padding: 10px 11px;
+      border-top: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .proposal-table th {
+      background: #f7fbf6;
+      border-top: 0;
+      font-weight: 800;
+    }
+
+    .proposal-table .amount {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .proposal-table .total-row td {
+      border-top: 2px solid var(--green);
+      font-weight: 800;
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .scope-box {
+      padding: 14px 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      break-inside: avoid;
+    }
+
+    .scope-box h3 {
+      color: var(--green-dark);
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+
+    .scope-box ul,
+    .proposal-page ul {
+      margin: 0 0 10px;
+      padding-left: 18px;
+    }
+
+    .scope-box li,
+    .proposal-page li {
+      margin-bottom: 4px;
+    }
+
+    .terms-list {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .choice-line,
+    .proposal-note {
+      padding: 12px 14px;
+      border: 1px solid var(--line-strong);
+      border-left: 3px solid var(--green);
+      border-radius: 5px;
+      background: var(--green-light);
+    }
+
+    .choice-line {
+      background: #fff;
+      font-weight: 800;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      margin-top: 18px;
+    }
+
+    .signature-box {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1120px) {
+      .tool-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .form-panel {
+        position: static;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .app-shell {
+        width: min(100% - 18px, 1680px);
+        padding-top: 12px;
+      }
+
+      .app-header,
+      .brand-lockup {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .header-actions {
+        justify-content: flex-start;
+      }
+
+      .field-grid,
+      .summary-strip,
+      .proposal-meta,
+      .scope-grid,
+      .signature-grid,
+      .option-toggle {
+        grid-template-columns: 1fr;
+      }
+
+      .proposal-page {
+        padding: 18px;
+      }
+
+      .proposal-title {
+        font-size: 28px;
+      }
+
+      .proposal-topbar {
+        flex-direction: column;
+      }
+
+      .meta-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .terms-list {
+        columns: 1;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .app-header,
+      .form-panel,
+      .panel-header {
+        display: none !important;
+      }
+
+      .app-shell,
+      .preview-panel,
+      .proposal-page {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background: #fff;
+      }
+
+      .tool-layout {
+        display: block;
+      }
+
+      .proposal-page {
+        font-size: 9.4pt;
+      }
+
+      .proposal-title {
+        font-size: 23pt;
+      }
+
+      .proposal-page h2 {
+        font-size: 13.4pt;
+        margin: 6mm 0 2.6mm;
+        padding-top: 2.6mm;
+        break-after: avoid;
+      }
+
+      .proposal-topbar,
+      .proposal-meta,
+      .scope-box,
+      .proposal-table,
+      .choice-line,
+      .proposal-note,
+      .signature-grid {
+        break-inside: avoid;
+      }
+
+      @page {
+        size: A4;
+        margin: 12mm 14mm 15mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-lockup">
+        <img src="../proposals/window-cleaning/assets/betterclean-logo-cropped.png" alt="BetterClean">
+        <div class="header-copy">
+          <div class="eyebrow" data-en="Internal tool" data-fi="Sisäinen työkalu">Sisäinen työkalu</div>
+          <h1 data-en="Proposal Generator" data-fi="Tarjousgeneraattori">Tarjousgeneraattori</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="segmented">
+          <button type="button" data-ui-lang="fi" class="active">FI</button>
+          <button type="button" data-ui-lang="en">EN</button>
+        </div>
+        <button class="btn" type="button" id="copyData" data-en="Copy data" data-fi="Kopioi tiedot">Kopioi tiedot</button>
+        <button class="btn" type="button" id="downloadHtml" data-en="Download HTML" data-fi="Lataa HTML">Lataa HTML</button>
+        <button class="btn primary" type="button" id="printPdf" data-en="Print / Save PDF" data-fi="Tulosta / tallenna PDF">Tulosta / tallenna PDF</button>
+      </div>
+    </header>
+
+    <main class="tool-layout">
+      <aside class="form-panel">
+        <div class="panel-header">
+          <h2 class="panel-title" data-en="Proposal details" data-fi="Tarjouksen tiedot">Tarjouksen tiedot</h2>
+          <button class="btn danger" type="button" id="resetForm" data-en="Reset" data-fi="Tyhjennä">Tyhjennä</button>
+        </div>
+
+        <section class="form-section">
+          <h2 data-en="Output" data-fi="Lopputulos">Lopputulos</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="docLang" data-en="Document language" data-fi="Dokumentin kieli">Dokumentin kieli</label>
+              <select id="docLang" data-field="docLang">
+                <option value="en">English</option>
+                <option value="fi">Finnish</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="serviceType" data-en="Service" data-fi="Palvelu">Palvelu</label>
+              <select id="serviceType" data-field="serviceType">
+                <option value="window">Window cleaning</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2 data-en="Customer" data-fi="Asiakas">Asiakas</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="clientName" data-en="Customer / company" data-fi="Asiakas / yritys">Asiakas / yritys</label>
+              <input id="clientName" data-field="clientName" type="text">
+            </div>
+            <div class="field">
+              <label for="contactPerson" data-en="Contact person" data-fi="Yhteyshenkilö">Yhteyshenkilö</label>
+              <input id="contactPerson" data-field="contactPerson" type="text">
+            </div>
+            <div class="field full">
+              <label for="clientAddress" data-en="Billing address" data-fi="Laskutusosoite">Laskutusosoite</label>
+              <input id="clientAddress" data-field="clientAddress" type="text">
+            </div>
+            <div class="field full">
+              <label for="serviceSite" data-en="Service site" data-fi="Kohde">Kohde</label>
+              <input id="serviceSite" data-field="serviceSite" type="text">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2 data-en="Document" data-fi="Dokumentti">Dokumentti</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="proposalNumber" data-en="Proposal number" data-fi="Tarjousnumero">Tarjousnumero</label>
+              <input id="proposalNumber" data-field="proposalNumber" type="text">
+            </div>
+            <div class="field">
+              <label for="proposalDate" data-en="Date" data-fi="Päivämäärä">Päivämäärä</label>
+              <input id="proposalDate" data-field="proposalDate" type="text">
+            </div>
+            <div class="field">
+              <label for="validUntil" data-en="Valid until" data-fi="Voimassa asti">Voimassa asti</label>
+              <input id="validUntil" data-field="validUntil" type="text">
+            </div>
+            <div class="field">
+              <label for="preparedBy" data-en="Prepared by" data-fi="Laatija">Laatija</label>
+              <input id="preparedBy" data-field="preparedBy" type="text">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2 data-en="Scope options" data-fi="Työvaihtoehdot">Työvaihtoehdot</h2>
+          <div class="option-toggle">
+            <label><input type="radio" name="selectedOption" value="A" data-field="selectedOption"> <span data-en="Option A" data-fi="Vaihtoehto A">Vaihtoehto A</span></label>
+            <label><input type="radio" name="selectedOption" value="B" data-field="selectedOption"> <span data-en="Option B" data-fi="Vaihtoehto B">Vaihtoehto B</span></label>
+          </div>
+          <div class="field-grid" style="margin-top: 12px;">
+            <div class="field">
+              <label for="optionAHours" data-en="Option A hours" data-fi="Vaihtoehto A tunnit">Vaihtoehto A tunnit</label>
+              <input id="optionAHours" data-field="optionAHours" type="number" min="0" step="0.5">
+            </div>
+            <div class="field">
+              <label for="optionBHours" data-en="Option B hours" data-fi="Vaihtoehto B tunnit">Vaihtoehto B tunnit</label>
+              <input id="optionBHours" data-field="optionBHours" type="number" min="0" step="0.5">
+            </div>
+            <div class="field full">
+              <label for="optionAIncludes" data-en="Option A included work" data-fi="Vaihtoehto A sisältö">Vaihtoehto A sisältö</label>
+              <textarea id="optionAIncludes" data-field="optionAIncludes"></textarea>
+            </div>
+            <div class="field full">
+              <label for="optionBIncludes" data-en="Option B included work" data-fi="Vaihtoehto B sisältö">Vaihtoehto B sisältö</label>
+              <textarea id="optionBIncludes" data-field="optionBIncludes"></textarea>
+            </div>
+            <div class="field full">
+              <label for="optionBExcludes" data-en="Option B exclusions" data-fi="Vaihtoehto B ei sisällä">Vaihtoehto B ei sisällä</label>
+              <textarea id="optionBExcludes" data-field="optionBExcludes"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2 data-en="Schedule" data-fi="Aikataulu">Aikataulu</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="phase1" data-en="Phase 1" data-fi="Vaihe 1">Vaihe 1</label>
+              <input id="phase1" data-field="phase1" type="text">
+            </div>
+            <div class="field">
+              <label for="phase2" data-en="Phase 2" data-fi="Vaihe 2">Vaihe 2</label>
+              <input id="phase2" data-field="phase2" type="text">
+            </div>
+            <div class="field">
+              <label for="phase3" data-en="Phase 3" data-fi="Vaihe 3">Vaihe 3</label>
+              <input id="phase3" data-field="phase3" type="text">
+            </div>
+            <div class="field">
+              <label for="phase4" data-en="Phase 4" data-fi="Vaihe 4">Vaihe 4</label>
+              <input id="phase4" data-field="phase4" type="text">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2 data-en="Pricing" data-fi="Hinnoittelu">Hinnoittelu</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="baseRate" data-en="Base rate VAT 0%" data-fi="Perushinta ALV 0 %">Perushinta ALV 0 %</label>
+              <input id="baseRate" data-field="baseRate" type="number" min="0" step="0.01">
+            </div>
+            <div class="field">
+              <label for="discountRate" data-en="Discount per hour" data-fi="Alennus per tunti">Alennus per tunti</label>
+              <input id="discountRate" data-field="discountRate" type="number" step="0.01">
+            </div>
+            <div class="field">
+              <label for="vatRate" data-en="VAT %" data-fi="ALV %">ALV %</label>
+              <input id="vatRate" data-field="vatRate" type="number" min="0" step="0.1">
+            </div>
+            <div class="field">
+              <label for="additionalRate" data-en="Additional work rate" data-fi="Lisätyön tuntihinta">Lisätyön tuntihinta</label>
+              <input id="additionalRate" data-field="additionalRate" type="number" min="0" step="0.01">
+            </div>
+            <div class="field">
+              <label for="paymentTerm" data-en="Payment term" data-fi="Maksuehto">Maksuehto</label>
+              <input id="paymentTerm" data-field="paymentTerm" type="text">
+            </div>
+            <div class="field">
+              <label for="lateCancelFee" data-en="Late cancellation fee" data-fi="Myöhäinen peruutus">Myöhäinen peruutus</label>
+              <input id="lateCancelFee" data-field="lateCancelFee" type="text">
+            </div>
+          </div>
+          <div class="summary-strip">
+            <div class="summary-item"><span class="mini-label">A</span><span class="summary-value" id="summaryA">0,00 €</span></div>
+            <div class="summary-item"><span class="mini-label">B</span><span class="summary-value" id="summaryB">0,00 €</span></div>
+            <div class="summary-item"><span class="mini-label" data-en="Net rate" data-fi="Nettohinta">Nettohinta</span><span class="summary-value" id="summaryNet">0,00 €/h</span></div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="preview-panel">
+        <article class="proposal-page" id="proposalPreview"></article>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "betterclean.proposalGenerator.windowCleaning.v1";
+    const logoPath = "../proposals/window-cleaning/assets/betterclean-logo-cropped.png";
+
+    const defaults = {
+      uiLang: "fi",
+      docLang: "en",
+      serviceType: "window",
+      clientName: "Suomen Adventtikirkko",
+      contactPerson: "Harri Saarinen",
+      clientAddress: "PL 94, 33101 Tampere",
+      serviceSite: "Satakunnankatu 23, Tampere",
+      proposalNumber: "_______________",
+      proposalDate: "_______________",
+      validUntil: "_______________",
+      preparedBy: "Joven Baclig, BetterClean",
+      selectedOption: "",
+      optionAHours: "60",
+      optionBHours: "40",
+      optionAIncludes: [
+        "Washing window glass surfaces inside and outside",
+        "Drying and finishing the glass to a streak-free result",
+        "Wiping window frames and casings",
+        "Wiping window sills",
+        "Delivery of cleaning agents and work equipment to the site",
+        "Documentation of working time, including start time, finish time and completed areas",
+        "Final review with the contact person"
+      ].join("\n"),
+      optionBIncludes: [
+        "Washing only the exterior window glass surfaces, covering 2 glass surfaces",
+        "Drying and finishing exterior glass surfaces to a streak-free result",
+        "Wiping exterior window frames and casings",
+        "Wiping window sills",
+        "Delivery of cleaning agents and work equipment to the site",
+        "Documentation of working time",
+        "Final review with the contact person"
+      ].join("\n"),
+      optionBExcludes: "Washing interior window glass surfaces\nWashing Venetian blinds",
+      phase1: "Completed",
+      phase2: "_______________",
+      phase3: "_______________",
+      phase4: "_______________",
+      baseRate: "48",
+      discountRate: "10",
+      vatRate: "25.5",
+      additionalRate: "38",
+      paymentTerm: "_______________",
+      lateCancelFee: "_______________"
+    };
+
+    const translations = {
+      en: {
+        docType: "Proposal",
+        serviceLabel: "Window cleaning service",
+        title: "Window Cleaning Proposal",
+        subtitle: site => `Professional window cleaning for ${site}`,
+        client: "Client",
+        contact: "Contact person",
+        clientAddress: "Client address",
+        serviceSite: "Service site",
+        proposalNumber: "Proposal number",
+        date: "Date",
+        validUntil: "Valid until",
+        preparedBy: "Prepared by",
+        workDescription: "1. Work Description",
+        description1: site => `BetterClean offers the client professional window cleaning services at ${site}. The work will be carried out with professional tools, according to the agreed schedule, and to a clearly defined quality level.`,
+        description2: "This proposal includes two options. The client may choose the option that best fits the site's needs.",
+        scope: "2. Scope of Work",
+        optionA: hours => `Option A - Full Service (${hours} hours)`,
+        optionB: hours => `Option B - Exterior Glass Only (${hours} hours)`,
+        notIncluded: "Not included in Option B:",
+        schedule: "3. Schedule",
+        phase: "Phase",
+        content: "Content",
+        timing: "Timing",
+        phase1: "Initial site review and access arrangements",
+        phase2: "Window cleaning, phase 1",
+        phase3: "Window cleaning, phase 2",
+        phase4: "Final review and handover",
+        scheduleNote: "The detailed day-by-day schedule will be confirmed when the order is placed.",
+        pricing: "4. Pricing",
+        description: "Description",
+        quantity: "Quantity",
+        unitPrice: "Unit price (VAT 0%)",
+        totalVat0: "Total (VAT 0%)",
+        optionALabel: "Option A - Full Service",
+        optionBLabel: "Option B - Exterior Glass Only",
+        optionADesc: "Window cleaning, professional work (inside + outside)",
+        optionBDesc: "Exterior window cleaning, excluding blinds and interior glass",
+        volumeDiscount: "Volume discount",
+        netHourlyRate: "Net hourly rate",
+        subtotal: "Subtotal",
+        vat: "VAT",
+        totalInclVat: "Total incl. VAT",
+        additional: rate => `Possible additional work will be charged at ${rate} (VAT 0%). Additional work is always agreed in writing before execution.`,
+        terms: "5. Contract Terms",
+        paymentTerm: "Payment term",
+        lateInterest: "Late payment interest: in accordance with applicable law",
+        cancellation: "Cancellation: free of charge when notified at least 48 hours before the agreed start time",
+        lateCancel: "Late cancellation fee",
+        responsibilities: "Client responsibilities: access to the site, water and electricity point, and availability of the contact person",
+        insurance: "Insurance: BetterClean has valid general liability insurance",
+        acceptance: "6. Acceptance",
+        acceptanceText: "By signing this proposal, the client accepts the scope of work, schedule, pricing and contract terms set out in this document.",
+        selectedOption: "Selected option (circle one): Option A - Full Service / Option B - Exterior Glass Only",
+        clientSign: "Client",
+        companyName: "Company / name",
+        signature: "Signature",
+        namePrint: "Name in print",
+        serviceProvider: "Service provider - BetterClean",
+        finalNote: "This proposal has been prepared in accordance with BetterClean's current service terms and pricing model.",
+        footer: "BetterClean | Tampere | betterclean.fi | +358 41 576 9236 | info@betterclean.fi | Business ID: 3563977-9"
+      },
+      fi: {
+        docType: "Tarjous",
+        serviceLabel: "Ikkunanpesupalvelu",
+        title: "Tarjous ikkunanpesusta",
+        subtitle: site => `Ammattimainen ikkunanpesu kohteessa ${site}`,
+        client: "Tilaaja",
+        contact: "Yhteyshenkilö",
+        clientAddress: "Tilaajan osoite",
+        serviceSite: "Kohde",
+        proposalNumber: "Tarjousnumero",
+        date: "Päivämäärä",
+        validUntil: "Voimassa asti",
+        preparedBy: "Laatija",
+        workDescription: "1. Työn kuvaus",
+        description1: site => `BetterClean tarjoaa tilaajalle ammattitasoisen ikkunanpesun kohteessa ${site}. Työ toteutetaan ammattimaisilla välineillä, sovitun aikataulun mukaisesti ja selkeästi määriteltyyn laatutasoon.`,
+        description2: "Tarjous sisältää kaksi vaihtoehtoa. Tilaaja valitsee tarpeisiinsa parhaiten sopivan vaihtoehdon.",
+        scope: "2. Työn laajuus",
+        optionA: hours => `Vaihtoehto A - Täysi palvelu (${hours} tuntia)`,
+        optionB: hours => `Vaihtoehto B - Ulkopuolen lasi (${hours} tuntia)`,
+        notIncluded: "Ei sisälly vaihtoehtoon B:",
+        schedule: "3. Aikataulu",
+        phase: "Vaihe",
+        content: "Sisältö",
+        timing: "Ajankohta",
+        phase1: "Aloituskatselmus ja kulkujärjestelyt",
+        phase2: "Ikkunanpesu, vaihe 1",
+        phase3: "Ikkunanpesu, vaihe 2",
+        phase4: "Loppukatselmus ja luovutus",
+        scheduleNote: "Tarkka päiväkohtainen aikataulu vahvistetaan tilauksen yhteydessä.",
+        pricing: "4. Hinnoittelu",
+        description: "Erittely",
+        quantity: "Maara",
+        unitPrice: "Yksikköhinta (ALV 0 %)",
+        totalVat0: "Yhteensä (ALV 0 %)",
+        optionALabel: "Vaihtoehto A - Täysi palvelu",
+        optionBLabel: "Vaihtoehto B - Ulkopuolen lasi",
+        optionADesc: "Ikkunanpesu, ammattityö (sisä + ulko)",
+        optionBDesc: "Ulkopuolen ikkunanpesu, ei kaihtimia eikä sisäpuolen lasia",
+        volumeDiscount: "Volyymialennus",
+        netHourlyRate: "Nettotuntihinta",
+        subtotal: "Välisumma",
+        vat: "ALV",
+        totalInclVat: "Loppusumma sis. ALV",
+        additional: rate => `Mahdolliset lisätyöt veloitetaan tuntihinnalla ${rate} (ALV 0 %). Lisätöistä sovitaan aina kirjallisesti ennen toteutusta.`,
+        terms: "5. Sopimusehdot",
+        paymentTerm: "Maksuehto",
+        lateInterest: "Viivästyskorko: korkolain mukaisesti",
+        cancellation: "Peruutus: ilmoitettava viimeistaan 48 tuntia ennen sovittua aloitusta veloituksetta",
+        lateCancel: "Myöhäinen peruutus",
+        responsibilities: "Tilaajan vastuut: pääsy kohteeseen, vesi- ja sähköpiste sekä yhteyshenkilön tavoitettavuus",
+        insurance: "Vakuutus: BetterCleanilla on voimassa oleva toiminnan vastuuvakuutus",
+        acceptance: "6. Hyvaksynta",
+        acceptanceText: "Allekirjoittamalla tilaaja hyväksyy tarjouksessa esitetyn työn laajuuden, aikataulun, hinnoittelun ja sopimusehdot.",
+        selectedOption: "Valittu vaihtoehto (ympyröi): Vaihtoehto A - Täysi palvelu / Vaihtoehto B - Ulkopuolen lasi",
+        clientSign: "Tilaaja",
+        companyName: "Yritys / nimi",
+        signature: "Allekirjoitus",
+        namePrint: "Nimenselvennys",
+        serviceProvider: "Palveluntarjoaja - BetterClean",
+        finalNote: "Tämä tarjous on laadittu BetterCleanin voimassa olevien palveluehtojen ja hinnoittelumallin mukaisesti.",
+        footer: "BetterClean | Tampere | betterclean.fi | +358 41 576 9236 | info@betterclean.fi | Y-tunnus: 3563977-9"
+      }
+    };
+
+    let state = loadState();
+
+    function loadState() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        return { ...defaults, ...stored };
+      } catch {
+        return { ...defaults };
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function setUiLang(lang) {
+      state.uiLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-en][data-fi]").forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+      document.querySelectorAll("[data-ui-lang]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.uiLang === lang);
+      });
+      saveState();
+    }
+
+    function fillForm() {
+      document.querySelectorAll("[data-field]").forEach(el => {
+        const key = el.dataset.field;
+        if (el.type === "radio") {
+          el.checked = state[key] === el.value;
+        } else {
+          el.value = state[key] ?? "";
+        }
+      });
+    }
+
+    function readFormValue(el) {
+      const key = el.dataset.field;
+      if (el.type === "radio") {
+        if (el.checked) state[key] = el.value;
+      } else {
+        state[key] = el.value;
+      }
+      saveState();
+      render();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function linesToList(value) {
+      return String(value || "")
+        .split("\n")
+        .map(item => item.trim())
+        .filter(Boolean)
+        .map(item => `<li>${escapeHtml(item)}</li>`)
+        .join("");
+    }
+
+    function numberValue(key) {
+      const n = Number(String(state[key] || "0").replace(",", "."));
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function money(value) {
+      return new Intl.NumberFormat("fi-FI", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value) + " €";
+    }
+
+    function rate(value) {
+      return money(value).replace(" €", " €/h");
+    }
+
+    function percentText(value) {
+      const n = Number(String(value || "0").replace(",", "."));
+      const formatted = Number.isFinite(n)
+        ? new Intl.NumberFormat(state.docLang === "fi" ? "fi-FI" : "en-US", { maximumFractionDigits: 1 }).format(n)
+        : String(value || "0");
+      return state.docLang === "fi" ? `${formatted} %` : `${formatted}%`;
+    }
+
+    function displayTiming(value) {
+      if (state.docLang === "fi" && value === "Completed") return "Tehty";
+      return value;
+    }
+
+    function optionTotals(hours) {
+      const base = numberValue("baseRate");
+      const discount = numberValue("discountRate");
+      const vatRate = numberValue("vatRate") / 100;
+      const gross = hours * base;
+      const discountTotal = hours * discount;
+      const subtotal = gross - discountTotal;
+      const vat = subtotal * vatRate;
+      return {
+        gross,
+        discountTotal,
+        subtotal,
+        vat,
+        total: subtotal + vat,
+        netRate: base - discount
+      };
+    }
+
+    function renderPriceRows(label, description, hours, totals, t) {
+      return `
+        <h3>${escapeHtml(label)}</h3>
+        <table class="proposal-table">
+          <thead>
+            <tr>
+              <th>${escapeHtml(t.description)}</th>
+              <th class="amount">${escapeHtml(t.quantity)}</th>
+              <th class="amount">${escapeHtml(t.unitPrice)}</th>
+              <th class="amount">${escapeHtml(t.totalVat0)}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>${escapeHtml(description)}</td><td class="amount">${hours} h</td><td class="amount">${rate(numberValue("baseRate"))}</td><td class="amount">${money(totals.gross)}</td></tr>
+            <tr><td>${escapeHtml(t.volumeDiscount)}</td><td class="amount">${hours} h</td><td class="amount">-${rate(numberValue("discountRate"))}</td><td class="amount">-${money(totals.discountTotal)}</td></tr>
+            <tr><td><strong>${escapeHtml(t.netHourlyRate)}</strong></td><td></td><td class="amount"><strong>${rate(totals.netRate)}</strong></td><td></td></tr>
+            <tr><td><strong>${escapeHtml(t.subtotal)}</strong></td><td></td><td></td><td class="amount"><strong>${money(totals.subtotal)}</strong></td></tr>
+            <tr><td><strong>${escapeHtml(t.vat)} ${escapeHtml(percentText(state.vatRate))}</strong></td><td></td><td></td><td class="amount"><strong>${money(totals.vat)}</strong></td></tr>
+            <tr class="total-row"><td>${escapeHtml(t.totalInclVat)}</td><td></td><td></td><td class="amount">${money(totals.total)}</td></tr>
+          </tbody>
+        </table>
+      `;
+    }
+
+    function render() {
+      const lang = state.docLang;
+      const t = translations[lang];
+      const hoursA = numberValue("optionAHours");
+      const hoursB = numberValue("optionBHours");
+      const totalsA = optionTotals(hoursA);
+      const totalsB = optionTotals(hoursB);
+      const additionalRate = rate(numberValue("additionalRate"));
+
+      document.getElementById("summaryA").textContent = money(totalsA.total);
+      document.getElementById("summaryB").textContent = money(totalsB.total);
+      document.getElementById("summaryNet").textContent = rate(totalsA.netRate);
+
+      document.getElementById("proposalPreview").innerHTML = `
+        <header class="proposal-topbar">
+          <div>
+            <img class="proposal-logo" src="${logoPath}" alt="BetterClean">
+            <div class="service-label">${escapeHtml(t.serviceLabel)}</div>
+          </div>
+          <div class="doc-type">${escapeHtml(t.docType)}</div>
+        </header>
+
+        <section>
+          <div class="proposal-title">${escapeHtml(t.title)}</div>
+          <p class="proposal-subtitle">${escapeHtml(t.subtitle(state.serviceSite))}</p>
+        </section>
+
+        <section class="proposal-meta">
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.client)}</div><strong>${escapeHtml(state.clientName)}</strong></div>
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.contact)}</div><strong>${escapeHtml(state.contactPerson)}</strong></div>
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.clientAddress)}</div><strong>${escapeHtml(state.clientAddress)}</strong></div>
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.serviceSite)}</div><strong>${escapeHtml(state.serviceSite)}</strong></div>
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.proposalNumber)}</div><strong>${escapeHtml(state.proposalNumber)}</strong></div>
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.date)}</div><strong>${escapeHtml(state.proposalDate)}</strong></div>
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.validUntil)}</div><strong>${escapeHtml(state.validUntil)}</strong></div>
+          <div class="meta-row"><div class="mini-label">${escapeHtml(t.preparedBy)}</div><strong>${escapeHtml(state.preparedBy)}</strong></div>
+        </section>
+
+        <h2>${escapeHtml(t.workDescription)}</h2>
+        <p>${escapeHtml(t.description1(state.serviceSite))}</p>
+        <p>${escapeHtml(t.description2)}</p>
+
+        <h2>${escapeHtml(t.scope)}</h2>
+        <div class="scope-grid">
+          <section class="scope-box">
+            <h3>${escapeHtml(t.optionA(hoursA))}</h3>
+            <ul>${linesToList(state.optionAIncludes)}</ul>
+          </section>
+          <section class="scope-box">
+            <h3>${escapeHtml(t.optionB(hoursB))}</h3>
+            <ul>${linesToList(state.optionBIncludes)}</ul>
+            <p><strong>${escapeHtml(t.notIncluded)}</strong> ${escapeHtml(String(state.optionBExcludes || "").split("\n").filter(Boolean).join("; "))}</p>
+          </section>
+        </div>
+
+        <h2>${escapeHtml(t.schedule)}</h2>
+        <table class="proposal-table">
+          <thead><tr><th>${escapeHtml(t.phase)}</th><th>${escapeHtml(t.content)}</th><th>${escapeHtml(t.timing)}</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>${escapeHtml(t.phase1)}</td><td>${escapeHtml(displayTiming(state.phase1))}</td></tr>
+            <tr><td>2</td><td>${escapeHtml(t.phase2)}</td><td>${escapeHtml(displayTiming(state.phase2))}</td></tr>
+            <tr><td>3</td><td>${escapeHtml(t.phase3)}</td><td>${escapeHtml(displayTiming(state.phase3))}</td></tr>
+            <tr><td>4</td><td>${escapeHtml(t.phase4)}</td><td>${escapeHtml(displayTiming(state.phase4))}</td></tr>
+          </tbody>
+        </table>
+        <p>${escapeHtml(t.scheduleNote)}</p>
+
+        <h2>${escapeHtml(t.pricing)}</h2>
+        ${renderPriceRows(t.optionALabel, t.optionADesc, hoursA, totalsA, t)}
+        ${renderPriceRows(t.optionBLabel, t.optionBDesc, hoursB, totalsB, t)}
+        <p>${escapeHtml(t.additional(additionalRate))}</p>
+
+        <h2>${escapeHtml(t.terms)}</h2>
+        <ul class="terms-list">
+          <li>${escapeHtml(t.paymentTerm)}: ${escapeHtml(state.paymentTerm)}</li>
+          <li>${escapeHtml(t.lateInterest)}</li>
+          <li>${escapeHtml(t.cancellation)}</li>
+          <li>${escapeHtml(t.lateCancel)}: ${escapeHtml(state.lateCancelFee)} €</li>
+          <li>${escapeHtml(t.responsibilities)}</li>
+          <li>${escapeHtml(t.insurance)}</li>
+        </ul>
+
+        <h2>${escapeHtml(t.acceptance)}</h2>
+        <p>${escapeHtml(t.acceptanceText)}</p>
+        <p class="choice-line">${escapeHtml(t.selectedOption)}${state.selectedOption ? ` (${escapeHtml(state.selectedOption)})` : ""}</p>
+        <div class="signature-grid">
+          <section class="signature-box">
+            <p><strong>${escapeHtml(t.clientSign)}</strong></p>
+            <p>${escapeHtml(t.companyName)}: ${escapeHtml(state.clientName)}</p>
+            <p>${escapeHtml(t.signature)}: _______________________________________________</p>
+            <p>${escapeHtml(t.namePrint)}: ${escapeHtml(state.contactPerson)}</p>
+            <p>${escapeHtml(t.date)}: _______________________________________________</p>
+          </section>
+          <section class="signature-box">
+            <p><strong>${escapeHtml(t.serviceProvider)}</strong></p>
+            <p>${escapeHtml(t.signature)}: _______________________________________________</p>
+            <p>${escapeHtml(t.namePrint)}: ${escapeHtml(String(state.preparedBy).replace(", BetterClean", ""))}</p>
+            <p>${escapeHtml(t.date)}: _______________________________________________</p>
+          </section>
+        </div>
+
+        <p class="proposal-note">${escapeHtml(t.finalNote)}</p>
+        <p class="footer-note">${escapeHtml(t.footer)}</p>
+      `;
+    }
+
+    function downloadHtml() {
+      const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(state.clientName)} proposal</title><style>${document.querySelector("style").textContent}</style></head><body><main class="proposal-page">${document.getElementById("proposalPreview").innerHTML}</main></body></html>`;
+      const blob = new Blob([doc], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `betterclean-window-cleaning-proposal-${slugify(state.clientName)}-${state.docLang}.html`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function slugify(value) {
+      return String(value || "customer").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    }
+
+    async function copyData() {
+      const text = JSON.stringify(state, null, 2);
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+    }
+
+    function resetForm() {
+      state = { ...defaults, uiLang: state.uiLang };
+      saveState();
+      fillForm();
+      setUiLang(state.uiLang);
+      render();
+    }
+
+    document.querySelectorAll("[data-field]").forEach(el => {
+      el.addEventListener("input", () => readFormValue(el));
+      el.addEventListener("change", () => readFormValue(el));
+    });
+
+    document.querySelectorAll("[data-ui-lang]").forEach(btn => {
+      btn.addEventListener("click", () => setUiLang(btn.dataset.uiLang));
+    });
+
+    document.getElementById("printPdf").addEventListener("click", () => window.print());
+    document.getElementById("downloadHtml").addEventListener("click", downloadHtml);
+    document.getElementById("copyData").addEventListener("click", copyData);
+    document.getElementById("resetForm").addEventListener("click", resetForm);
+
+    fillForm();
+    setUiLang(state.uiLang);
+    render();
+  </script>
+</body>
+</html>

@@ -1,62 +1,62 @@
-const modules = [
-  "Website lead intake",
-  "Structured lead storage",
-  "Deterministic scoring",
-  "Auto-reply templates",
-  "Internal lead dashboard",
-  "Later: Facebook, Instagram, TikTok source ingestion"
+import { AdminShell } from "@/components/admin-shell";
+import { SectionCard } from "@/components/ui";
+
+const v1Modules = [
+  "Lead inbox across website and social channels",
+  "Structured customer records with multiple properties",
+  "Quote tracker with labour-share field",
+  "Job schedule with cleaner notes and checklists",
+  "Invoice status tracking",
+  "Simple dashboard for daily priorities"
 ];
 
-const deterministic = [
-  "Lead validation",
-  "Source tagging",
-  "Scoring thresholds",
-  "Priority labels",
-  "Status transitions",
-  "Internal notifications"
+const supabaseMapping = [
+  "Use `leads` for website form payloads and normalized social leads",
+  "Use `customers` after a lead is won or manually qualified",
+  "Use `properties` as a one-to-many child table under customers",
+  "Use `quotes`, `jobs`, and `invoices` as linked operational tables",
+  "Store inbound WhatsApp, Facebook, Instagram, and TikTok threads in a `channel_queue` table or view"
 ];
 
-const aiLater = [
-  "Summaries for vague social DMs",
-  "Suggested next actions",
-  "Quote narrative drafting",
-  "Conversation classification"
+const nextUp = [
+  "Replace mock data with Supabase queries and mutations",
+  "Connect your existing lead-gen tool directly to the shared `leads` table",
+  "Add status update forms and quick actions",
+  "Add staff auth and role-based access if the team grows"
 ];
 
 export default function BlueprintPage() {
   return (
-    <main>
-      <div className="shell">
-        <div className="card" style={{ padding: 32, marginBottom: 24 }}>
-          <div className="pill warm" style={{ marginBottom: 12 }}>Blueprint</div>
-          <h1 style={{ fontSize: 36, margin: "0 0 12px" }}>BetterClean MVP plan</h1>
-          <p style={{ margin: 0, color: "#567556", maxWidth: 760, lineHeight: 1.7 }}>
-            Build the deterministic backbone first. The website will be the first real source. Social channels will plug
-            into the same `Lead` model once the core workflow is stable.
-          </p>
-        </div>
+    <AdminShell
+      eyebrow="Blueprint"
+      title="CRM V1 implementation plan"
+      description="This page keeps the scope disciplined. We built a simple internal operations CRM first so BetterClean can validate the workflow before adding heavier automation."
+      actions={
+        <>
+          <a className="button-primary" href="/admin/dashboard">Open dashboard</a>
+          <a className="button-secondary" href="/admin/leads">Review lead model</a>
+        </>
+      }
+    >
+      <div className="three-col">
+        <SectionCard title="What V1 includes">
+          <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.9 }}>
+            {v1Modules.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </SectionCard>
 
-        <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
-          <section className="card" style={{ padding: 24 }}>
-            <h2 style={{ marginTop: 0 }}>V1 modules</h2>
-            <ul style={{ margin: 0, paddingLeft: 20, lineHeight: 1.9 }}>
-              {modules.map((item) => <li key={item}>{item}</li>)}
-            </ul>
-          </section>
-          <section className="card" style={{ padding: 24 }}>
-            <h2 style={{ marginTop: 0 }}>Deterministic core</h2>
-            <ul style={{ margin: 0, paddingLeft: 20, lineHeight: 1.9 }}>
-              {deterministic.map((item) => <li key={item}>{item}</li>)}
-            </ul>
-          </section>
-          <section className="card" style={{ padding: 24 }}>
-            <h2 style={{ marginTop: 0 }}>AI after the core</h2>
-            <ul style={{ margin: 0, paddingLeft: 20, lineHeight: 1.9 }}>
-              {aiLater.map((item) => <li key={item}>{item}</li>)}
-            </ul>
-          </section>
-        </div>
+        <SectionCard title="How Supabase should connect">
+          <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.9 }}>
+            {supabaseMapping.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </SectionCard>
+
+        <SectionCard title="What to build next">
+          <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.9 }}>
+            {nextUp.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </SectionCard>
       </div>
-    </main>
+    </AdminShell>
   );
 }

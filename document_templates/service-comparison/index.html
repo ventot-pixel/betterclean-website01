@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterClean Service Comparison Template</title>
+  <meta name="description" content="BetterClean bilingual service comparison, cleaning checklist, and add-on menu template.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --button-shadow: 0 4px 16px rgba(58,170,53,0.28);
+      --ink: #203020;
+      --muted: #617161;
+      --line: #dcebd9;
+      --line-strong: #bdd9ba;
+      --paper: #ffffff;
+      --surface: #f7fbf5;
+      --soft: #f2faf0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(15,184,201,0.14), transparent 30%),
+        radial-gradient(circle at 82% 18%, rgba(58,170,53,0.14), transparent 28%),
+        var(--green-light);
+      font-family: "Inter", Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    body {
+      padding: 24px;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-display {
+      font-family: "Sora", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(210mm, calc(100vw - 32px));
+      margin: 0 auto 18px;
+      padding: 10px;
+      border: 1px solid rgba(58,170,53,0.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 18px 44px rgba(26,46,26,0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .toolbar-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toolbar-title img {
+      width: 108px;
+      height: auto;
+      display: block;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .lang-btn,
+    .print-btn {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(58,170,53,0.24);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--green-dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 180ms ease;
+    }
+
+    .lang-btn:hover,
+    .print-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .lang-btn:focus-visible,
+    .print-btn:focus-visible {
+      outline: 3px solid rgba(15,184,201,0.32);
+      outline-offset: 2px;
+    }
+
+    .lang-btn:active,
+    .print-btn:active {
+      transform: translateY(0);
+      opacity: 0.82;
+    }
+
+    .lang-btn.active,
+    .print-btn {
+      background: var(--green);
+      color: #fff;
+      box-shadow: var(--button-shadow);
+    }
+
+    .sheet {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto 24px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 28px 80px rgba(26,46,26,0.18);
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      padding: 10mm 11mm 8mm;
+    }
+
+    .sheet:last-child {
+      margin-bottom: 0;
+    }
+
+    .sheet-header {
+      display: grid;
+      grid-template-columns: 42mm 1fr;
+      gap: 10mm;
+      align-items: center;
+      margin-bottom: 6mm;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 15mm;
+      padding: 3mm;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .logo-box img {
+      width: 34mm;
+      height: auto;
+      display: block;
+    }
+
+    .doc-meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2mm;
+    }
+
+    .meta-field {
+      min-height: 13mm;
+      padding: 2.2mm 2.5mm;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .meta-label,
+    .eyebrow,
+    th,
+    .mini-label,
+    .tag,
+    .step-number {
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 6.6pt;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .meta-label,
+    .mini-label {
+      display: block;
+      color: var(--muted);
+      line-height: 1.15;
+    }
+
+    .meta-line {
+      display: block;
+      height: 1px;
+      margin-top: 5mm;
+      background: var(--line-strong);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 53mm;
+      gap: 7mm;
+      align-items: stretch;
+      margin-bottom: 5mm;
+      padding: 8mm;
+      border-radius: 8px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 86% 8%, rgba(15,184,201,0.26), transparent 30%),
+        radial-gradient(circle at 8% 20%, rgba(58,170,53,0.22), transparent 34%),
+        linear-gradient(135deg, var(--dark), var(--green-dark));
+      box-shadow: var(--button-shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 5px;
+      color: rgba(255,255,255,0.74);
+      line-height: 1;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 25pt;
+      line-height: 1.02;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      max-width: 122mm;
+      margin: 7px 0 0;
+      color: rgba(255,255,255,0.84);
+      font-size: 9.1pt;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .quote-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.2mm;
+      padding: 5mm;
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .quote-card strong {
+      color: #fff;
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 13pt;
+      line-height: 1.08;
+      font-weight: 800;
+    }
+
+    .quote-card span {
+      color: rgba(255,255,255,0.78);
+      font-size: 7.8pt;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .quote-card .url-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 29px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--green-dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 8pt;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 8mm;
+      margin: 0 0 3mm;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--dark);
+      font-size: 13.5pt;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .section-title p {
+      max-width: 82mm;
+      margin: 0;
+      color: var(--muted);
+      font-size: 7.6pt;
+      line-height: 1.34;
+      font-weight: 650;
+      text-align: right;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .comparison th,
+    .comparison td {
+      border-right: 1px solid #e8f2e6;
+      border-bottom: 1px solid #e8f2e6;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .comparison th:last-child,
+    .comparison td:last-child {
+      border-right: 0;
+    }
+
+    .comparison tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .comparison th {
+      padding: 7px 8px;
+      color: var(--green-dark);
+      background: var(--soft);
+      line-height: 1.16;
+    }
+
+    .comparison th:first-child {
+      width: 25mm;
+      color: var(--muted);
+      background: #fbfdf9;
+    }
+
+    .comparison td {
+      padding: 7px 8px;
+      color: var(--ink);
+      font-size: 7.55pt;
+      line-height: 1.27;
+      font-weight: 700;
+    }
+
+    .comparison td:first-child {
+      color: var(--muted);
+      background: #fbfdf9;
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 6.7pt;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .price {
+      color: var(--green-dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .note-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      margin-top: 4mm;
+    }
+
+    .note {
+      min-height: 25mm;
+      padding: 3.2mm;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 2mm;
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 8.1pt;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .note span {
+      display: block;
+      color: var(--muted);
+      font-size: 7.3pt;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      min-height: 0;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      min-height: 0;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 3.2mm 3.5mm;
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .panel-head.light {
+      background: var(--soft);
+      color: var(--dark);
+      border-bottom: 1px solid var(--line);
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 10.5pt;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .tag {
+      flex: 0 0 auto;
+      padding: 5px 7px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255,255,255,0.16);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .light .tag {
+      color: var(--green-dark);
+      background: #fff;
+      border: 1px solid rgba(58,170,53,0.22);
+    }
+
+    .check-list {
+      display: grid;
+      gap: 1.8mm;
+      margin: 0;
+      padding: 3.5mm;
+      list-style: none;
+    }
+
+    .check-list li {
+      display: grid;
+      grid-template-columns: 4mm 1fr;
+      gap: 2mm;
+      align-items: start;
+      color: var(--ink);
+      font-size: 7.65pt;
+      line-height: 1.32;
+      font-weight: 700;
+    }
+
+    .check-list li::before {
+      content: "";
+      width: 3.4mm;
+      height: 3.4mm;
+      margin-top: 0.3mm;
+      border: 1.4px solid var(--green);
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(58,170,53,0.18), rgba(15,184,201,0.16));
+    }
+
+    .compact-list {
+      gap: 1.45mm;
+    }
+
+    .compact-list li {
+      font-size: 7.2pt;
+      line-height: 1.28;
+    }
+
+    .side-note {
+      padding: 3.5mm;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #fbfdf9;
+      font-size: 7.15pt;
+      line-height: 1.36;
+      font-weight: 650;
+    }
+
+    .package-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+      margin: 4mm 0;
+    }
+
+    .package {
+      min-height: 30mm;
+      padding: 3.2mm;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .package strong {
+      display: block;
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 8pt;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .package span {
+      display: block;
+      margin-top: 1.6mm;
+      color: var(--muted);
+      font-size: 6.95pt;
+      line-height: 1.28;
+      font-weight: 650;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e8f2e6;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .mini-table th {
+      color: var(--muted);
+      background: #fbfdf9;
+      line-height: 1.15;
+    }
+
+    .mini-table td {
+      color: var(--ink);
+      font-size: 7.4pt;
+      line-height: 1.22;
+      font-weight: 700;
+    }
+
+    .mini-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .service-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+      margin-top: 4mm;
+    }
+
+    .step {
+      min-height: 31mm;
+      padding: 3.2mm;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 7mm;
+      height: 7mm;
+      margin-bottom: 2mm;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      box-shadow: var(--button-shadow);
+    }
+
+    .step strong {
+      display: block;
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 7.9pt;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .step span {
+      display: block;
+      margin-top: 1.4mm;
+      color: var(--muted);
+      font-size: 6.9pt;
+      line-height: 1.28;
+      font-weight: 650;
+    }
+
+    .quote-notes {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3mm;
+      margin-top: 4mm;
+    }
+
+    .note-panel {
+      min-height: 42mm;
+      padding: 3.5mm;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .note-panel h3 {
+      color: var(--dark);
+      font-size: 9.2pt;
+      margin-bottom: 3mm;
+    }
+
+    .line-grid {
+      display: grid;
+      gap: 3.6mm;
+    }
+
+    .write-line {
+      display: grid;
+      grid-template-columns: 26mm 1fr;
+      gap: 3mm;
+      align-items: end;
+    }
+
+    .write-line span:first-child {
+      color: var(--muted);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 6.8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .write-line span:last-child {
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .tax-box {
+      margin-top: auto;
+      padding: 3.2mm 3.8mm;
+      border: 1px solid rgba(58,170,53,0.24);
+      border-radius: 8px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 7.25pt;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8mm;
+      align-items: end;
+      margin-top: 3.8mm;
+      color: var(--muted);
+      font-size: 6.9pt;
+      line-height: 1.3;
+      font-weight: 650;
+    }
+
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 4px 10px;
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 7.1pt;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .sheet[data-page="2"] .two-col,
+    .sheet[data-page="3"] .two-col,
+    .sheet[data-page="4"] .two-col {
+      flex: 1;
+    }
+
+    .sheet[data-page="5"] .two-col {
+      margin-top: 3mm;
+    }
+
+    .exporting body {
+      padding: 0;
+      background: #fff;
+    }
+
+    .exporting .toolbar {
+      display: none;
+    }
+
+    .exporting .sheet {
+      margin: 0 auto;
+      box-shadow: none;
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 14px;
+      }
+
+      .toolbar {
+        position: static;
+        width: 100%;
+      }
+
+      .toolbar-title span {
+        display: none;
+      }
+
+      .sheet {
+        width: 100%;
+        height: auto;
+        min-height: 297mm;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      html,
+      body {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 0;
+        background: #fff;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .sheet {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="toolbar-title">
+      <img src="/brand_assets/betterclean-logo.png" alt="BetterClean">
+      <span data-en="Service comparison bundle" data-fi="Palveluvertailun pohja"></span>
+    </div>
+    <div class="toolbar-actions">
+      <button type="button" class="lang-btn" onclick="setLang('en')">EN</button>
+      <button type="button" class="lang-btn active" onclick="setLang('fi')">FI</button>
+      <button type="button" class="print-btn" onclick="window.print()" data-en="Print" data-fi="Tulosta">Tulosta</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="sheet" data-page="1">
+      <header class="sheet-header">
+        <div class="logo-box">
+          <img src="/brand_assets/betterclean-logo.png" alt="BetterClean">
+        </div>
+        <div class="doc-meta">
+          <div class="meta-field">
+            <span class="meta-label" data-en="Client" data-fi="Asiakas"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Home size" data-fi="Kodin koko"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Preferred date" data-fi="Toivepäivä"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Quote" data-fi="Tarjous"></span>
+            <span class="meta-line"></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div>
+          <p class="eyebrow" data-en="BetterClean service guide" data-fi="BetterClean palveluopas"></p>
+          <h1 data-en="Choose the right cleaning service for your home." data-fi="Valitse kotiisi sopiva siivouspalvelu.">Valitse kotiisi sopiva siivouspalvelu.</h1>
+          <p class="subtitle" data-en="A clear comparison for home cleaning, deep cleaning, move-out cleaning, post-renovation cleaning, windows, and steam cleaning in Tampere." data-fi="Selkeä vertailu kotisiivoukseen, suursiivoukseen, muuttosiivoukseen, remonttisiivoukseen, ikkunoihin ja höyrypuhdistukseen Tampereella."></p>
+        </div>
+        <div class="quote-card">
+          <span data-en="Request a tailored quote" data-fi="Pyydä oma tarjous"></span>
+          <strong data-en="Premium cleaning, simple choices." data-fi="Premium-siivous, helpot valinnat."></strong>
+          <span data-en="We confirm scope, timing, and final price before the booking." data-fi="Vahvistamme sisällön, ajankohdan ja lopullisen hinnan ennen varausta."></span>
+          <span class="url-pill">betterclean.fi</span>
+        </div>
+      </div>
+
+      <div class="section-title">
+        <h2 data-en="Service comparison" data-fi="Palveluvertailu">Palveluvertailu</h2>
+        <p data-en="Use this page during estimates, onboarding, and client follow-up." data-fi="Käytä tätä sivua tarjouksissa, aloituksessa ja asiakasviestinnässä."></p>
+      </div>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th data-en="Need" data-fi="Tarve"></th>
+              <th data-en="Recurring home cleaning" data-fi="Toistuva kotisiivous"></th>
+              <th data-en="One-time home cleaning" data-fi="Kertasiivous"></th>
+              <th data-en="Deep cleaning" data-fi="Suursiivous"></th>
+              <th data-en="Move-out and renovation" data-fi="Muutto ja remontti"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-en="Best for" data-fi="Sopii"></td>
+              <td data-en="Weekly or biweekly upkeep for a consistently clean home." data-fi="Viikoittaiseen tai kahden viikon välein tehtävään ylläpitosiivoukseen."></td>
+              <td data-en="A single reset before guests, after travel, or when routines get busy." data-fi="Yksittäiseen siivoukseen ennen vieraita, matkan jälkeen tai kiireisessä arjessa."></td>
+              <td data-en="Built-up dust, limescale, kitchen grease, and a more detailed reset." data-fi="Kertyneeseen pölyyn, kalkkiin, keittiön rasvaan ja tarkempaan perussiivoukseen."></td>
+              <td data-en="Empty homes, handovers, construction dust, and post-work final cleaning." data-fi="Tyhjiin asuntoihin, luovutuksiin, rakennuspölyyn ja remontin jälkeiseen viimeistelyyn."></td>
+            </tr>
+            <tr>
+              <td data-en="Rate" data-fi="Hinta"></td>
+              <td><span class="price">57 €/h</span><br><span data-en="after tax deduction 37,05 €/h" data-fi="kotitalousvähennyksen jälkeen 37,05 €/h"></span></td>
+              <td><span class="price">65 €/h</span><br><span data-en="after tax deduction 42,25 €/h" data-fi="kotitalousvähennyksen jälkeen 42,25 €/h"></span></td>
+              <td><span class="price">69 €/h</span><br><span data-en="after tax deduction 44,85 €/h" data-fi="kotitalousvähennyksen jälkeen 44,85 €/h"></span></td>
+              <td><span class="price">69-75 €/h</span><br><span data-en="minimum 4 h for move-out or renovation" data-fi="minimi 4 h muutto- tai remonttisiivoukseen"></span></td>
+            </tr>
+            <tr>
+              <td data-en="Minimum" data-fi="Minimi"></td>
+              <td data-en="2 h" data-fi="2 h"></td>
+              <td data-en="2 h" data-fi="2 h"></td>
+              <td data-en="3 h" data-fi="3 h"></td>
+              <td data-en="4 h" data-fi="4 h"></td>
+            </tr>
+            <tr>
+              <td data-en="Includes" data-fi="Sisaltaa"></td>
+              <td data-en="Kitchen, bathrooms, dusting, floors, visible surfaces, and routine finishing." data-fi="Keittiön, kylpyhuoneet, pölyjen pyyhinnän, lattiat, näkyvät pinnat ja arkisen viimeistelyn."></td>
+              <td data-en="Same core home areas with a focused priority list for the visit." data-fi="Samat kodin perusalueet ja käynnille sovittu tarkennettu prioriteettilista."></td>
+              <td data-en="More time for edges, tiles, appliances, doors, switches, and detail work." data-fi="Enemman aikaa reunoihin, laattoihin, kodinkoneisiin, oviin, katkaisijoihin ja yksityiskohtiin."></td>
+              <td data-en="Room-by-room final clean, cabinet interiors, dust removal, and handover-ready finish." data-fi="Huonekohtainen loppusiivous, kaappien sisäpinnat, pölynpoisto ja luovutusvalmis lopputulos."></td>
+            </tr>
+            <tr>
+              <td data-en="Add-ons" data-fi="Lisapalvelut"></td>
+              <td data-en="Oven, fridge, windows, balcony glazing, steam cleaning." data-fi="Uuni, jääkaappi, ikkunat, parvekelasit, höyrypuhdistus."></td>
+              <td data-en="Oven, fridge, windows, textile steam, inside cabinets." data-fi="Uuni, jääkaappi, ikkunat, tekstiilien höyrypesu, kaappien sisäpinnat."></td>
+              <td data-en="Inside cabinets, balcony, stain focus, textile steam." data-fi="Kaappien sisäpinnat, parveke, tahrojen tarkempi käsittely, tekstiilihöyry."></td>
+              <td data-en="Windows, balcony glazing, construction dust detail, textile steam after move." data-fi="Ikkunat, parvekelasit, rakennuspölyn tarkennus, tekstiilihöyry muuton jälkeen."></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-grid">
+        <div class="note">
+          <strong data-en="Window cleaning" data-fi="Ikkunanpesu"></strong>
+          <span data-en="Apartment estimate 119-159 €. House estimate 179-229 €. Balcony glazing add-on +59 €." data-fi="Kerrostaloarvio 119-159 €. Omakotitaloarvio 179-229 €. Parvekelasien lisapalvelu +59 €."></span>
+        </div>
+        <div class="note">
+          <strong data-en="Steam cleaning" data-fi="Hoyrypuhdistus"></strong>
+          <span data-en="Fixed menu for mattresses, sofas, armchairs, bathrooms, and sauna areas. Exact after-tax amounts are not shown for fixed-price items." data-fi="Kiinteä hinnasto patjoille, sohville, nojatuoleille, kylpyhuoneille ja saunatiloille. Kiinteille hinnoille ei näytetä tarkkaa vähennyksen jälkeistä hintaa."></span>
+        </div>
+        <div class="note">
+          <strong data-en="Quote rule" data-fi="Tarjouksen saanto"></strong>
+          <span data-en="Final scope depends on home size, condition, access, materials, and selected add-ons." data-fi="Lopullinen sisältö riippuu kodin koosta, kunnosta, pääsyistä, materiaaleista ja valituista lisäpalveluista."></span>
+        </div>
+      </div>
+
+      <div class="tax-box" data-en="Household tax deduction: 35% of labour costs when purchased from a registered company. Personal deductible: €150/person/year. Materials and travel costs are not deductible." data-fi="Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä. Omavastuu 150 €/hlö/vuosi. Materiaalit ja matkakulut eivät kuulu vähennykseen."></div>
+
+      <footer class="footer">
+        <span data-en="BetterClean, premium home cleaning in Tampere. This guide is for scope planning and does not replace a confirmed quote." data-fi="BetterClean, premium-kotisiivous Tampereella. Tämä opas auttaa sisällön suunnittelussa eikä korvaa vahvistettua tarjousta."></span>
+        <div class="contact-line">
+          <span>betterclean.fi</span>
+          <span>info@betterclean.fi</span>
+        </div>
+      </footer>
+    </section>
+
+    <section class="sheet" data-page="2">
+      <header class="sheet-header">
+        <div class="logo-box">
+          <img src="/brand_assets/betterclean-logo.png" alt="BetterClean">
+        </div>
+        <div class="doc-meta">
+          <div class="meta-field">
+            <span class="meta-label" data-en="Service" data-fi="Palvelu"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Frequency" data-fi="Tiheys"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Cleaner notes" data-fi="Siivoojan huomiot"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Approved by" data-fi="Hyväksyjä"></span>
+            <span class="meta-line"></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="section-title">
+        <h2 data-en="Recurring and one-time home cleaning checklist" data-fi="Toistuvan ja kertasiivouksen tarkistuslista">Toistuvan ja kertasiivouksen tarkistuslista</h2>
+        <p data-en="For regular home upkeep, a one-time reset, and clear client expectations." data-fi="Säännölliseen ylläpitoon, yksittäiseen siivoukseen ja selkeisiin asiakasodotuksiin."></p>
+      </div>
+
+      <div class="package-strip">
+        <div class="package">
+          <strong data-en="Starting point" data-fi="Lähtötaso"></strong>
+          <span data-en="Rate 57 €/h recurring or 65 €/h one-time. Minimum 2 h." data-fi="Hinta 57 €/h toistuvana tai 65 €/h kertasiivouksena. Minimi 2 h."></span>
+        </div>
+        <div class="package">
+          <strong data-en="Client priority" data-fi="Asiakkaan prioriteetti"></strong>
+          <span data-en="Mark the rooms or tasks that matter most when time is limited." data-fi="Merkitse huoneet tai tehtävät, jotka ovat tärkeimpiä rajallisessa ajassa."></span>
+        </div>
+        <div class="package">
+          <strong data-en="Supplies" data-fi="Välineet"></strong>
+          <span data-en="Confirm whether BetterClean brings supplies or uses client-provided products." data-fi="Vahvista tuoko BetterClean välineet vai käytetäänkö asiakkaan tuotteita."></span>
+        </div>
+        <div class="package">
+          <strong data-en="Access" data-fi="Pääsy"></strong>
+          <span data-en="Keys, parking, pets, alarm codes, and building instructions are confirmed before arrival." data-fi="Avaimet, pysäköinti, lemmikit, hälytyskoodit ja talon ohjeet vahvistetaan ennen saapumista."></span>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Kitchen" data-fi="Keittiö">Keittiö</h3>
+            <span class="tag" data-en="Core" data-fi="Perus"></span>
+          </div>
+          <ul class="check-list">
+            <li data-en="Wipe counters, table surfaces, splashback, and visible cabinet fronts." data-fi="Pyyhi tasot, pöytäpinnat, välitila ja näkyvät kaappien ovet."></li>
+            <li data-en="Clean sink, taps, stovetop, exterior of appliances, and microwave exterior." data-fi="Puhdista allas, hanat, liesitaso, kodinkoneiden ulkopinnat ja mikron ulkopinta."></li>
+            <li data-en="Empty visible crumbs and wipe small appliance touchpoints." data-fi="Poista näkyvät murut ja pyyhi pienlaitteiden kosketuspinnat."></li>
+            <li data-en="Take out agreed waste and replace bin bags when available." data-fi="Vie sovitut roskat ja vaihda roskapussit, jos niitä on saatavilla."></li>
+            <li data-en="Vacuum and mop kitchen floor, including visible edges." data-fi="Imuroi ja pese keittiön lattia, myös näkyvät reunat."></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Bathrooms" data-fi="Kylpyhuoneet">Kylpyhuoneet</h3>
+            <span class="tag" data-en="Hygiene" data-fi="Hygienia"></span>
+          </div>
+          <ul class="check-list">
+            <li data-en="Clean toilets, sinks, taps, mirrors, and visible shelves." data-fi="Puhdista wc-istuimet, lavuaarit, hanat, peilit ja näkyvät hyllyt."></li>
+            <li data-en="Wipe shower glass, shower area, tiles, and high-touch points." data-fi="Pyyhi suihkulasi, suihkualue, laatat ja kosketuspinnat."></li>
+            <li data-en="Remove light limescale and soap marks within regular service time." data-fi="Poista kevyt kalkki ja saippuajalki normaalin palveluajan puitteissa."></li>
+            <li data-en="Empty bins and refresh visible surfaces." data-fi="Tyhjennä roskat ja viimeistele näkyvät pinnat."></li>
+            <li data-en="Vacuum and mop bathroom floors." data-fi="Imuroi ja pese kylpyhuoneiden lattiat."></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head light">
+            <h3 data-en="Living areas" data-fi="Oleskelutilat">Oleskelutilat</h3>
+            <span class="tag" data-en="Comfort" data-fi="Mukavuus"></span>
+          </div>
+          <ul class="check-list">
+            <li data-en="Dust accessible shelves, tables, lamps, picture frames, and window sills." data-fi="Pyyhi saavutettavat hyllyt, pöydät, valaisimet, kehykset ja ikkunalaudat."></li>
+            <li data-en="Wipe switches, door handles, railings, and frequent touchpoints." data-fi="Pyyhi katkaisijat, ovenkahvat, kaiteet ja yleiset kosketuspinnat."></li>
+            <li data-en="Vacuum sofas and soft seating when requested and accessible." data-fi="Imuroi sohvat ja pehmeät istuimet pyydettäessä ja kun ne ovat saavutettavissa."></li>
+            <li data-en="Straighten visible surfaces without reorganising personal items deeply." data-fi="Järjestä näkyvät pinnat kevyesti ilman henkilökohtaisten tavaroiden syvää uudelleenjärjestelyä."></li>
+            <li data-en="Vacuum and mop floors according to material." data-fi="Imuroi ja pese lattiat materiaalin mukaan."></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head light">
+            <h3 data-en="Bedrooms and entry" data-fi="Makuuhuoneet ja eteinen">Makuuhuoneet ja eteinen</h3>
+            <span class="tag" data-en="Finish" data-fi="Viimeistely"></span>
+          </div>
+          <ul class="check-list">
+            <li data-en="Dust bedside tables, wardrobes outside, dressers, and accessible decor." data-fi="Pyyhi yöpöydät, vaatekaappien ulkopinnat, lipastot ja saavutettavat koristeet."></li>
+            <li data-en="Make beds when fresh linen is placed ready." data-fi="Petaamme sängyt, kun puhtaat liinavaatteet on laitettu valmiiksi."></li>
+            <li data-en="Vacuum under beds where access is safe and clear." data-fi="Imuroi sänkyjen alta, kun pääsy on turvallinen ja esteetön."></li>
+            <li data-en="Clean entrance surfaces, mirrors, shoe area, and floor." data-fi="Puhdista eteisen pinnat, peilit, kenkatila ja lattia."></li>
+            <li data-en="Leave rooms reset, calm, and ready to use." data-fi="Jätä huoneet siisteiksi, rauhallisiksi ja käyttövalmiiksi."></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="tax-box" data-en="Not usually included unless agreed: inside ovens, inside fridges, inside cabinets, heavy limescale removal, high ladder work, mould treatment, exterior windows, balconies, and textile steam cleaning." data-fi="Ei yleensä sisälly ilman erillistä sopimusta: uunin sisäpinta, jääkaapin sisäpinta, kaappien sisäpinnat, raskas kalkinpoisto, korkea tikastyöskentely, homekäsittely, ulkoikkunat, parvekkeet ja tekstiilien höyrypuhdistus."></div>
+
+      <footer class="footer">
+        <span data-en="BetterClean home cleaning checklist. Confirm priorities before each visit when time or scope changes." data-fi="BetterClean kotisiivouksen tarkistuslista. Vahvista prioriteetit ennen käyntiä, jos aika tai sisältö muuttuu."></span>
+        <div class="contact-line">
+          <span>betterclean.fi</span>
+          <span>info@betterclean.fi</span>
+        </div>
+      </footer>
+    </section>
+
+    <section class="sheet" data-page="3">
+      <header class="sheet-header">
+        <div class="logo-box">
+          <img src="/brand_assets/betterclean-logo.png" alt="BetterClean">
+        </div>
+        <div class="doc-meta">
+          <div class="meta-field">
+            <span class="meta-label" data-en="Deep clean date" data-fi="Suursiivouspäivä"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Estimated hours" data-fi="Arvio tunnit"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Focus areas" data-fi="Painopisteet"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Follow-up" data-fi="Jatko"></span>
+            <span class="meta-line"></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div>
+          <p class="eyebrow" data-en="Deep cleaning checklist" data-fi="Suursiivouksen tarkistuslista"></p>
+          <h1 data-en="A detailed reset for built-up dust, grease, and limescale." data-fi="Tarkka perusteho kertyneelle pölylle, rasvalle ja kalkille.">Tarkka perusteho kertyneelle pölylle, rasvalle ja kalkille.</h1>
+          <p class="subtitle" data-en="Deep cleaning starts from 69 €/h, minimum 3 h. After household tax deduction, labour is 44,85 €/h." data-fi="Suursiivous alkaen 69 €/h, minimi 3 h. Kotitalousvähennyksen jälkeen työn osuus on 44,85 €/h."></p>
+        </div>
+        <div class="quote-card">
+          <span data-en="Use when" data-fi="Käytä kun"></span>
+          <strong data-en="The home needs more than routine upkeep." data-fi="Koti tarvitsee enemmän kuin ylläpitoa."></strong>
+          <span data-en="Ideal before regular cleaning starts or after a busy season." data-fi="Sopii ennen säännöllisen siivouksen aloitusta tai kiireisen kauden jälkeen."></span>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Kitchen detail" data-fi="Keittiön yksityiskohdat">Keittiön yksityiskohdat</h3>
+            <span class="tag" data-en="Grease" data-fi="Rasva"></span>
+          </div>
+          <ul class="check-list compact-list">
+            <li data-en="Degrease stovetop, backsplash, hood exterior, handles, and nearby surfaces." data-fi="Poista rasvaa liesitasolta, välitilasta, liesituulettimen ulkopinnalta, kahvoista ja lähipinnoilta."></li>
+            <li data-en="Wipe appliance fronts, sides where reachable, seals, and control panels." data-fi="Pyyhi kodinkoneiden etuosat, saavutettavat sivut, tiivisteet ja ohjauspaneelit."></li>
+            <li data-en="Clean microwave inside when empty and accessible." data-fi="Puhdista mikron sisäpinta, kun se on tyhjä ja saavutettavissa."></li>
+            <li data-en="Detail cabinet fronts, kickboards, chair legs, and dining surfaces." data-fi="Puhdista kaappien ovet, sokkelit, tuolien jalat ja ruokailupinnat."></li>
+            <li data-en="Oven interior and fridge interior can be added when booked." data-fi="Uunin ja jääkaapin sisäpinta voidaan lisätä varauksen yhteydessä."></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Bathroom detail" data-fi="Kylpyhuoneen yksityiskohdat">Kylpyhuoneen yksityiskohdat</h3>
+            <span class="tag" data-en="Limescale" data-fi="Kalkki"></span>
+          </div>
+          <ul class="check-list compact-list">
+            <li data-en="Treat taps, shower fittings, glass, sink edges, and tile splash zones." data-fi="Käsittele hanat, suihkuosat, lasit, altaiden reunat ja laattojen roiskealueet."></li>
+            <li data-en="Scrub visible grout lines and floor edges where normal products are safe." data-fi="Harjaa näkyvät saumat ja lattian reunat, kun aineet sopivat materiaalille."></li>
+            <li data-en="Clean toilet base, hinges, sides, and surrounding floor area." data-fi="Puhdista wc-istuimen jalka, saranat, sivut ja ympäröivä lattia."></li>
+            <li data-en="Wipe ventilation cover exterior and reachable high dust." data-fi="Pyyhi ilmanvaihtoventtiilin ulkopinta ja saavutettava yläpöly."></li>
+            <li data-en="Heavy limescale may require extra time or specialist treatment." data-fi="Raskas kalkki voi vaatia lisäaikaa tai erilliskäsittelyä."></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head light">
+            <h3 data-en="Whole-home detail" data-fi="Koko kodin tarkennus">Koko kodin tarkennus</h3>
+            <span class="tag" data-en="Dust" data-fi="Pöly"></span>
+          </div>
+          <ul class="check-list compact-list">
+            <li data-en="Dust baseboards, doors, frames, switches, sockets, and visible vents." data-fi="Pyyhi jalkalistat, ovet, karmit, katkaisijat, pistorasiat ja näkyvät venttiilit."></li>
+            <li data-en="Clean window sills, radiators outside, low ledges, and reachable corners." data-fi="Puhdista ikkunalaudat, patterien ulkopinnat, matalat tasot ja saavutettavat nurkat."></li>
+            <li data-en="Vacuum upholstered furniture and under furniture where clear." data-fi="Imuroi pehmustetut kalusteet ja huonekalujen alta, kun tila on vapaa."></li>
+            <li data-en="Mop hard floors with material-appropriate products." data-fi="Pese kovat lattiat materiaalille sopivilla tuotteilla."></li>
+            <li data-en="Reset surfaces without deep organising personal belongings." data-fi="Viimeistele pinnat ilman henkilökohtaisten tavaroiden syvää järjestelyä."></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head light">
+            <h3 data-en="Optional upgrades" data-fi="Valinnaiset lisät">Valinnaiset lisät</h3>
+            <span class="tag" data-en="Add-on" data-fi="Lisä"></span>
+          </div>
+          <ul class="check-list compact-list">
+            <li data-en="Inside oven, inside fridge, cabinet interiors, and pantry shelves." data-fi="Uunin sisäpinta, jääkaapin sisäpinta, kaappien sisäpinnat ja ruokakaapin hyllyt."></li>
+            <li data-en="Window cleaning, balcony glazing, balcony floor, and terrace surfaces." data-fi="Ikkunanpesu, parvekelasit, parvekkeen lattia ja terassipinnat."></li>
+            <li data-en="Steam cleaning for sofas, mattresses, armchairs, bathroom, or sauna." data-fi="Höyrypuhdistus sohville, patjoille, nojatuoleille, kylpyhuoneelle tai saunalle."></li>
+            <li data-en="Move-in unpacking support or after-party reset by separate quote." data-fi="Muuton jälkeinen kevyt purkuapu tai juhlien jälkeinen palautus erillisellä tarjouksella."></li>
+            <li data-en="We confirm all upgrades before work begins." data-fi="Vahvistamme kaikki lisät ennen työn aloitusta."></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="service-steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <strong data-en="Walkthrough" data-fi="Kartoitus"></strong>
+          <span data-en="Agree priorities, delicate materials, and any areas to skip." data-fi="Sovi prioriteetit, herkät materiaalit ja mahdolliset ohitettavat alueet."></span>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <strong data-en="Detail clean" data-fi="Tarkka siivous"></strong>
+          <span data-en="Work room by room with extra time for built-up dirt." data-fi="Etene huone kerrallaan ja varaa lisäaikaa pinttyneille kohdille."></span>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <strong data-en="Quality check" data-fi="Laatutarkistus"></strong>
+          <span data-en="Review high-touch points, floors, bathrooms, and kitchen finish." data-fi="Tarkista kosketuspinnat, lattiat, kylpyhuoneet ja keittiön viimeistely."></span>
+        </div>
+        <div class="step">
+          <span class="step-number">4</span>
+          <strong data-en="Maintenance plan" data-fi="Yllapitosuunnitelma"></strong>
+          <span data-en="Suggest regular cleaning frequency after the reset." data-fi="Ehdota sopivaa ylläpitosiivouksen tiheyttä perustehoituksen jälkeen."></span>
+        </div>
+      </div>
+
+      <div class="tax-box" data-en="Household tax deduction applies to eligible labour. We separate labour from non-deductible materials and travel when needed." data-fi="Kotitalousvähennys koskee vähennyskelpoista työn osuutta. Erotamme tarvittaessa työn osuuden materiaaleista ja matkakuluista."></div>
+
+      <footer class="footer">
+        <span data-en="BetterClean deep cleaning template. Scope may vary by condition, access, and selected add-ons." data-fi="BetterClean suursiivouksen pohja. Sisältö voi vaihdella kunnon, pääsyjen ja valittujen lisäpalvelujen mukaan."></span>
+        <div class="contact-line">
+          <span>betterclean.fi</span>
+          <span>info@betterclean.fi</span>
+        </div>
+      </footer>
+    </section>
+
+    <section class="sheet" data-page="4">
+      <header class="sheet-header">
+        <div class="logo-box">
+          <img src="/brand_assets/betterclean-logo.png" alt="BetterClean">
+        </div>
+        <div class="doc-meta">
+          <div class="meta-field">
+            <span class="meta-label" data-en="Property" data-fi="Kohde"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Keys" data-fi="Avaimet"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Handover time" data-fi="Luovutusaika"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Photos needed" data-fi="Kuvat tarvitaan"></span>
+            <span class="meta-line"></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="section-title">
+        <h2 data-en="Move-out and post-renovation checklist" data-fi="Muutto- ja remonttisiivouksen tarkistuslista">Muutto- ja remonttisiivouksen tarkistuslista</h2>
+        <p data-en="For empty apartments, handovers, and final cleaning after renovation work." data-fi="Tyhjiin asuntoihin, luovutuksiin ja remontin jälkeiseen loppusiivoukseen."></p>
+      </div>
+
+      <div class="two-col">
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Move-out cleaning" data-fi="Muuttosiivous">Muuttosiivous</h3>
+            <span class="tag">69 €/h</span>
+          </div>
+          <ul class="check-list compact-list">
+            <li data-en="Clean all rooms after furniture and personal items are removed." data-fi="Puhdista kaikki huoneet, kun kalusteet ja henkilökohtaiset tavarat on poistettu."></li>
+            <li data-en="Wipe cabinet interiors, shelves, drawers, doors, handles, and switches." data-fi="Pyyhi kaappien sisäpinnat, hyllyt, laatikot, ovet, kahvat ja katkaisijat."></li>
+            <li data-en="Clean kitchen surfaces, sink, taps, appliance exteriors, and splashback." data-fi="Puhdista keittiön pinnat, allas, hanat, kodinkoneiden ulkopinnat ja välitila."></li>
+            <li data-en="Clean bathroom fixtures, tiles, drains exterior, mirrors, and floor." data-fi="Puhdista kylpyhuonekalusteet, laatat, lattiakaivojen ulko-osat, peilit ja lattia."></li>
+            <li data-en="Vacuum and mop floors, including edges, closets, and storage areas." data-fi="Imuroi ja pese lattiat, myös reunat, komerot ja varastotilat."></li>
+            <li data-en="Remove visible dust from vents, radiators outside, ledges, and baseboards." data-fi="Poista näkyvä pöly venttiileistä, patterien ulkopinnoilta, tasoilta ja jalkalistoista."></li>
+            <li data-en="Final check for handover-ready presentation." data-fi="Lopputarkistus luovutusvalmista yleisilmettä varten."></li>
+          </ul>
+          <div class="side-note" data-en="Minimum booking 4 h. Window cleaning, balcony glazing, and oven or fridge interiors should be confirmed separately." data-fi="Minimivaraus 4 h. Ikkunanpesu, parvekelasit ja uunin tai jääkaapin sisäpinnat vahvistetaan erikseen."></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Post-renovation cleaning" data-fi="Remonttisiivous">Remonttisiivous</h3>
+            <span class="tag">75 €/h</span>
+          </div>
+          <ul class="check-list compact-list">
+            <li data-en="Remove fine construction dust from visible surfaces, ledges, switches, and frames." data-fi="Poista hieno rakennuspöly näkyviltä pinnoilta, tasoilta, katkaisijoista ja karmeista."></li>
+            <li data-en="Vacuum floors carefully before damp wiping or mopping." data-fi="Imuroi lattiat huolellisesti ennen kosteapyyhintaa tai pesua."></li>
+            <li data-en="Wipe doors, trims, baseboards, reachable fixtures, and installed cabinetry." data-fi="Pyyhi ovet, listat, jalkalistat, saavutettavat kalusteet ja asennetut kaapistot."></li>
+            <li data-en="Clean bathroom and kitchen areas after installation dust settles." data-fi="Puhdista kylpyhuone- ja keittiötilat, kun asennuspöly on laskeutunut."></li>
+            <li data-en="Polish visible glass, mirrors, and glossy surfaces where safe." data-fi="Viimeistele näkyvät lasit, peilit ja kiiltävät pinnat materiaalin salliessa."></li>
+            <li data-en="Check ventilation covers and high dust within safe reach." data-fi="Tarkista venttiilien ulkopinnat ja yläpöly turvalliselta korkeudelta."></li>
+            <li data-en="Prepare the space for move-in, staging, or final inspection." data-fi="Valmistele tila sisäänmuuttoa, stailausta tai lopputarkastusta varten."></li>
+          </ul>
+          <div class="side-note" data-en="Minimum booking 4 h. Heavy debris removal, hazardous dust, and contractor waste are outside normal cleaning scope." data-fi="Minimivaraus 4 h. Raskas rakennusjäte, vaarallinen pöly ja urakoitsijan jätteet eivät kuulu normaaliin siivoussisältöön."></div>
+        </article>
+      </div>
+
+      <div class="service-steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <strong data-en="Ready space" data-fi="Valmis tila"></strong>
+          <span data-en="Furniture, debris, tools, and personal items are removed before cleaning." data-fi="Kalusteet, jätteet, työkalut ja henkilökohtaiset tavarat poistetaan ennen siivousta."></span>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <strong data-en="Dry dust removal" data-fi="Kuivapölyn poisto"></strong>
+          <span data-en="Fine dust is vacuumed and lifted before wet cleaning starts." data-fi="Hieno pöly imuroidaan ja poistetaan ennen kosteaa siivousta."></span>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <strong data-en="Wet finish" data-fi="Kostea viimeistely"></strong>
+          <span data-en="Surfaces, fixtures, and floors are wiped with material-safe products." data-fi="Pinnat, kalusteet ja lattiat pyyhitään materiaaleille sopivilla tuotteilla."></span>
+        </div>
+        <div class="step">
+          <span class="step-number">4</span>
+          <strong data-en="Handover check" data-fi="Luovutustarkistus"></strong>
+          <span data-en="We review visible problem areas and document notes when requested." data-fi="Tarkistamme näkyvät ongelmakohdat ja kirjaamme huomiot pyydettäessä."></span>
+        </div>
+      </div>
+
+      <div class="tax-box" data-en="Move-out cleaning after tax deduction: labour rate 44,85 €/h. Post-renovation cleaning after tax deduction: labour rate 48,75 €/h. Deduction eligibility depends on Finnish tax rules and the client's personal tax situation." data-fi="Muuttosiivous kotitalousvähennyksen jälkeen: työn osuus 44,85 €/h. Remonttisiivous kotitalousvähennyksen jälkeen: työn osuus 48,75 €/h. Vähennyskelpoisuus riippuu verottajan säännöistä ja asiakkaan omasta verotilanteesta."></div>
+
+      <footer class="footer">
+        <span data-en="BetterClean move-out and post-renovation template. Confirm empty-space readiness before arrival." data-fi="BetterClean muutto- ja remonttisiivouksen pohja. Vahvista kohteen tyhjyys ja valmius ennen saapumista."></span>
+        <div class="contact-line">
+          <span>betterclean.fi</span>
+          <span>info@betterclean.fi</span>
+        </div>
+      </footer>
+    </section>
+
+    <section class="sheet" data-page="5">
+      <header class="sheet-header">
+        <div class="logo-box">
+          <img src="/brand_assets/betterclean-logo.png" alt="BetterClean">
+        </div>
+        <div class="doc-meta">
+          <div class="meta-field">
+            <span class="meta-label" data-en="Selected add-ons" data-fi="Valitut lisät"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Total estimate" data-fi="Kokonaisarvio"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Booking link sent" data-fi="Varauslinkki lähetetty"></span>
+            <span class="meta-line"></span>
+          </div>
+          <div class="meta-field">
+            <span class="meta-label" data-en="Invoice details" data-fi="Laskutustiedot"></span>
+            <span class="meta-line"></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="section-title">
+        <h2 data-en="Specialty services and add-on menu" data-fi="Erikoispalvelut ja lisäpalveluvalikko">Erikoispalvelut ja lisäpalveluvalikko</h2>
+        <p data-en="Use this page to build a quote around windows, steam cleaning, and extra detail work." data-fi="Käytä tätä sivua tarjouksen rakentamiseen ikkunoista, höyrypuhdistuksesta ja lisätöistä."></p>
+      </div>
+
+      <div class="three-col">
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Windows" data-fi="Ikkunat">Ikkunat</h3>
+            <span class="tag">69 €/h</span>
+          </div>
+          <table class="mini-table">
+            <tbody>
+              <tr>
+                <td data-en="Apartment estimate" data-fi="Kerrostaloarvio"></td>
+                <td><span class="price">119-159 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="House estimate" data-fi="Omakotitaloarvio"></td>
+                <td><span class="price">179-229 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="Balcony glazing add-on" data-fi="Parvekelasien lisä"></td>
+                <td><span class="price">+59 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="Minimum booking" data-fi="Minimivaraus"></td>
+                <td data-en="2 h" data-fi="2 h"></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Steam cleaning" data-fi="Höyrypuhdistus">Höyrypuhdistus</h3>
+            <span class="tag" data-en="Fixed" data-fi="Kiinteä"></span>
+          </div>
+          <table class="mini-table">
+            <tbody>
+              <tr>
+                <td data-en="Single mattress" data-fi="Yhden hengen patja"></td>
+                <td><span class="price">89 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="Double mattress" data-fi="Parisängyn patja"></td>
+                <td><span class="price">129 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="2-seat sofa" data-fi="2-istuttava sohva"></td>
+                <td><span class="price">129 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="Additional sofa seat" data-fi="Lisapaikka sohvaan"></td>
+                <td><span class="price">+35 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="Armchair" data-fi="Nojatuoli"></td>
+                <td><span class="price">89 €</span></td>
+              </tr>
+              <tr>
+                <td data-en="Bathroom or sauna" data-fi="Kylpyhuone tai sauna"></td>
+                <td><span class="price">alkaen 149 €</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3 data-en="Common add-ons" data-fi="Yleiset lisäpalvelut">Yleiset lisäpalvelut</h3>
+            <span class="tag" data-en="Quote" data-fi="Tarjous"></span>
+          </div>
+          <ul class="check-list compact-list">
+            <li data-en="Oven interior, fridge interior, and freezer refresh." data-fi="Uunin sisäpinta, jääkaapin sisäpinta ja pakastimen raikastus."></li>
+            <li data-en="Inside cabinets, wardrobes, pantry shelves, and storage areas." data-fi="Kaappien sisäpinnat, vaatekaapit, ruokakaapit ja varastotilat."></li>
+            <li data-en="Balcony floor, terrace surfaces, and entry areas." data-fi="Parvekkeen lattia, terassipinnat ja sisäänkäynnin alueet."></li>
+            <li data-en="Pet hair focus, stain focus, or extra bathroom limescale time." data-fi="Lemmikkikarvan tarkennus, tahrakohtien tarkennus tai lisäkalkkiaika kylpyhuoneeseen."></li>
+            <li data-en="Before and after photos for move-out, rental, or sale preparation." data-fi="Ennen ja jälkeen kuvat muuttoon, vuokraukseen tai myyntivalmisteluun."></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="two-col">
+        <article class="panel">
+          <div class="panel-head light">
+            <h3 data-en="Quote notes" data-fi="Tarjoushuomiot">Tarjoushuomiot</h3>
+            <span class="tag" data-en="Client" data-fi="Asiakas"></span>
+          </div>
+          <ul class="check-list">
+            <li data-en="Share photos of bathrooms, kitchen, windows, textiles, and any problem areas." data-fi="Lähetä kuvat kylpyhuoneista, keittiöstä, ikkunoista, tekstiileistä ja ongelmakohdista."></li>
+            <li data-en="Mention pets, parking limits, stairs, lift access, and preferred arrival window." data-fi="Kerro lemmikeistä, pysäköinnistä, portaista, hissistä ja toivotusta saapumisajasta."></li>
+            <li data-en="For windows, count panes, balcony glazing, and whether frames need detailed washing." data-fi="Ikkunoissa laske ruudut, parvekelasit ja tarvitsevatko karmit tarkemman pesun."></li>
+            <li data-en="For steam cleaning, note fabric type, stains, size, and drying expectations." data-fi="Höyrypuhdistuksessa kerro kangastyyppi, tahrat, koko ja kuivumistoiveet."></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head light">
+            <h3 data-en="Booking flow" data-fi="Varauspolku">Varauspolku</h3>
+            <span class="tag" data-en="Simple" data-fi="Helppo"></span>
+          </div>
+          <ul class="check-list">
+            <li data-en="Choose the core service and add-ons from this guide." data-fi="Valitse peruspalvelu ja lisät tämän oppaan avulla."></li>
+            <li data-en="BetterClean confirms scope, estimate, timing, and access details." data-fi="BetterClean vahvistaa sisällön, arvion, ajankohdan ja pääsyohjeet."></li>
+            <li data-en="The cleaner follows the agreed checklist and records important notes." data-fi="Siivooja noudattaa sovittua tarkistuslistaa ja kirjaa tärkeät huomiot."></li>
+            <li data-en="For recurring cleaning, we adjust the checklist after the first visits." data-fi="Toistuvassa siivouksessa tarkennamme listaa ensimmäisten käyntien jälkeen."></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="quote-notes">
+        <article class="note-panel">
+          <h3 data-en="Custom estimate" data-fi="Mukautettu arvio">Mukautettu arvio</h3>
+          <div class="line-grid">
+            <div class="write-line">
+              <span data-en="Core service" data-fi="Peruspalvelu"></span>
+              <span></span>
+            </div>
+            <div class="write-line">
+              <span data-en="Add-ons" data-fi="Lisäpalvelut"></span>
+              <span></span>
+            </div>
+            <div class="write-line">
+              <span data-en="Estimate" data-fi="Arvio"></span>
+              <span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="note-panel">
+          <h3 data-en="Internal follow-up" data-fi="Sisäinen jatko">Sisäinen jatko</h3>
+          <div class="line-grid">
+            <div class="write-line">
+              <span data-en="Owner" data-fi="Vastuuhenkilö"></span>
+              <span></span>
+            </div>
+            <div class="write-line">
+              <span data-en="Next step" data-fi="Seuraava askel"></span>
+              <span></span>
+            </div>
+            <div class="write-line">
+              <span data-en="Deadline" data-fi="Määräpäivä"></span>
+              <span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="tax-box" data-en="Fixed-price steam cleaning and bundled estimates do not show exact after-tax amounts. Household tax deduction can only apply to eligible labour under current Finnish tax rules." data-fi="Kiinteähintaisille höyrypuhdistuksille ja pakettiarvioille ei näytetä tarkkaa vähennyksen jälkeistä hintaa. Kotitalousvähennys voi koskea vain vähennyskelpoista työn osuutta voimassa olevien Suomen verosääntöjen mukaan."></div>
+
+      <footer class="footer">
+        <span data-en="BetterClean specialty services menu. Prices include VAT 25.5% and are confirmed before booking." data-fi="BetterClean erikoispalveluvalikko. Hinnat sisältävät ALV 25,5 % ja vahvistetaan ennen varausta."></span>
+        <div class="contact-line">
+          <span>betterclean.fi</span>
+          <span>info@betterclean.fi</span>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+  let currentLang = 'fi';
+
+  function setLang(lang) {
+    currentLang = lang;
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (!text) return;
+
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else if (el.tagName === 'OPTION') {
+        el.textContent = text;
+      } else if ([
+        'A', 'BUTTON', 'P', 'H1', 'H2', 'H3', 'H4', 'SPAN', 'LABEL',
+        'LI', 'STRONG', 'TD', 'TH', 'DIV', 'SUMMARY'
+      ].includes(el.tagName)) {
+        el.innerHTML = text;
+      } else {
+        el.textContent = text;
+      }
+    });
+
+    document.documentElement.lang = lang;
+
+    if (typeof refreshUi === 'function') {
+      refreshUi();
+    }
+  }
+
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  setLang('fi');
+  </script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterClean - Tarjous ikkunanpesusta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --ink: #121812;
+      --muted: #5f6b5f;
+      --line: #dfe9df;
+      --line-strong: #bfd5bf;
+      --paper: #ffffff;
+      --button-shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 9.6pt;
+      line-height: 1.5;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm 15mm;
+    }
+
+    .document {
+      max-width: 176mm;
+      margin: 0 auto;
+      padding: 3mm 4mm 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16mm;
+      padding-bottom: 5mm;
+      margin-bottom: 8mm;
+      border-bottom: 2px solid var(--green);
+      break-inside: avoid;
+    }
+
+    .logo {
+      width: 40mm;
+      height: auto;
+      display: block;
+      margin-bottom: 2mm;
+    }
+
+    .service-label,
+    .doc-type,
+    .label {
+      color: var(--muted);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 7.6pt;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .doc-type { text-align: right; }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: 23.5pt;
+      line-height: 1.08;
+      margin: 0 0 2mm;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 10.8pt;
+      font-weight: 600;
+      margin: 0 0 7mm;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3mm 9mm;
+      padding: 5mm 0 6mm;
+      margin-bottom: 7mm;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+    }
+
+    .meta-item {
+      display: grid;
+      grid-template-columns: 38mm minmax(0, 1fr);
+      gap: 4mm;
+      align-items: baseline;
+    }
+
+    .value {
+      color: var(--ink);
+      font-weight: 650;
+      overflow-wrap: anywhere;
+    }
+
+    h2 {
+      color: var(--green-dark);
+      font-size: 14.2pt;
+      line-height: 1.25;
+      margin: 6.5mm 0 2.6mm;
+      padding-top: 2.7mm;
+      border-top: 1px solid var(--line-strong);
+      break-after: avoid;
+    }
+
+    h2:first-of-type { margin-top: 0; }
+
+    h3 {
+      color: var(--dark);
+      font-size: 10.6pt;
+      margin: 5mm 0 2mm;
+      break-after: avoid;
+    }
+
+    p { margin: 0 0 3mm; }
+
+    ul {
+      margin: 0 0 3.8mm;
+      padding-left: 5.2mm;
+    }
+
+    li {
+      margin-bottom: 1.1mm;
+      padding-left: 0.8mm;
+    }
+
+    .note {
+      padding: 3.4mm 4mm;
+      margin: 4mm 0 5mm;
+      background: var(--green-light);
+      border: 1px solid var(--line-strong);
+      border-left: 3px solid var(--green);
+      border-radius: 5px;
+      break-inside: avoid;
+    }
+
+    .table-wrap {
+      margin: 3.5mm 0 5.5mm;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      overflow: hidden;
+      break-inside: avoid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.6pt;
+    }
+
+    th {
+      background: #f7fbf6;
+      color: var(--dark);
+      font-weight: 800;
+      text-align: left;
+      padding: 2.7mm 2.9mm;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    td {
+      padding: 2.6mm 2.9mm;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th.amount,
+    td.amount { text-align: right; }
+
+    tbody tr.total-row td {
+      border-top: 1.5px solid var(--green);
+      font-weight: 800;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8mm;
+      margin-top: 5mm;
+      break-inside: avoid;
+    }
+
+    .signature-box {
+      padding-top: 4mm;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-note {
+      margin-top: 7mm;
+      padding-top: 4mm;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 8.2pt;
+    }
+
+    .field {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    @media print {
+      html,
+      body { background: #fff; }
+      .document { max-width: none; padding: 0; }
+      a { color: inherit; text-decoration: none; }
+      .topbar,
+      .meta-grid,
+      .note,
+      .table-wrap,
+      .signature-grid { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="document">
+    <header class="topbar">
+      <div>
+        <img class="logo" src="assets/betterclean-logo-cropped.png" alt="BetterClean">
+        <div class="service-label">Ikkunanpesupalvelu</div>
+      </div>
+      <div class="doc-type">Tarjous</div>
+    </header>
+
+    <section>
+      <h1>Tarjous ikkunanpesusta</h1>
+      <p class="subtitle">Ammattimainen ikkunanpesu Tampereella ja lähialueilla</p>
+    </section>
+
+    <section class="meta-grid" aria-label="Tarjouksen tiedot">
+      <div class="meta-item"><div class="label">Asiakas</div><div class="value">{{asiakas}}</div></div>
+      <div class="meta-item"><div class="label">Yhteyshenkilö</div><div class="value">{{yhteyshenkilo}}</div></div>
+      <div class="meta-item"><div class="label">Kohde</div><div class="value">{{kohde}}</div></div>
+      <div class="meta-item"><div class="label">Osoite</div><div class="value">{{osoite}}</div></div>
+      <div class="meta-item"><div class="label">Päivämäärä</div><div class="value">{{pvm}}</div></div>
+      <div class="meta-item"><div class="label">Voimassaolo</div><div class="value">14 päivää</div></div>
+      <div class="meta-item"><div class="label">Tarjousnumero</div><div class="value">{{tarjousnumero}}</div></div>
+      <div class="meta-item"><div class="label">Laatija</div><div class="value">BetterClean</div></div>
+    </section>
+
+    <h2>1. Yhteenveto</h2>
+    <p>BetterClean tarjoaa asiakkaalle ikkunanpesun kohteessa {{kohde}}. Työn arvioitu laajuus on {{arvioitu_tyoaika}}.</p>
+    <p>Tarjous kattaa sovitut ikkunanpesuun liittyvät työvaiheet kokonaisuutena. Työ toteutetaan ammattikäyttöön tarkoitetuilla välineillä, ikkunanpesuun soveltuvilla pesuaineilla ja sovitun aikataulun mukaisesti.</p>
+
+    <h2>2. Työn sisältö</h2>
+    <p>Tarjoukseen sisältyy:</p>
+    <ul>
+      <li>ikkunoiden pesu sisä- ja ulkopuolelta, kun se on turvallisesti toteutettavissa</li>
+      <li>ikkunalasien pesu, kuivaus ja viimeistely</li>
+      <li>ikkunapuitteiden ja karmien pyyhintä pesun yhteydessä</li>
+      <li>ikkunalautojen pyyhintä pesun yhteydessä</li>
+      <li>sälekaihtimien kevyt puhdistus, mikäli se on sovittu</li>
+      <li>tarvittavat työvälineet, pesuaineet ja perustarvikkeet</li>
+      <li>työn etenemisen ja toteutuneiden työtuntien dokumentointi</li>
+      <li>loppukatselmus yhteyshenkilön kanssa, mikäli aikataulu sen mahdollistaa</li>
+    </ul>
+    <p>Työ pyritään toteuttamaan niin, että kohteen normaalia käyttöä häiritään mahdollisimman vähän.</p>
+
+    <h2>3. Erikseen sovittavat työt</h2>
+    <p>Mikäli työn aikana ilmenee tarvetta työlle, joka poikkeaa tässä tarjouksessa määritellystä laajuudesta, asiasta sovitaan tilaajan kanssa kirjallisesti ennen kyseisen työn aloittamista.</p>
+    <p>Erikseen sovittavia töitä voivat olla esimerkiksi:</p>
+    <ul>
+      <li>ikkunat, joihin ei ole turvallista tai kohtuullista pääsyä tavanomaisilla työvälineillä</li>
+      <li>korkean paikan työt, jotka edellyttävät erillistä nostinratkaisua</li>
+      <li>maalin, tarrojen, liimajäämien tai kovettuneen lian poisto erityismenetelmillä</li>
+      <li>poikkeuksellisen raskas remontin jälkeinen lika</li>
+    </ul>
+
+    <h2>4. Aikataulu ja toteutus</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Vaihe</th>
+            <th>Sisältö</th>
+            <th>Ajankohta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Aloituskatselmus ja kulkujärjestelyt</td><td>{{vaihe_1_aika}}</td></tr>
+          <tr><td>2</td><td>Ikkunanpesun toteutus</td><td>{{vaihe_2_aika}}</td></tr>
+          <tr><td>3</td><td>Loppukatselmus ja työn luovutus</td><td>{{vaihe_3_aika}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Tarkka päiväkohtainen aikataulu vahvistetaan tilauksen yhteydessä kohteen aukioloaikojen, kulkujärjestelyjen ja saavutettavuuden perusteella.</p>
+
+    <h2>5. Hinnoittelu</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Erittely</th>
+            <th class="amount">Määrä</th>
+            <th class="amount">Yksikköhinta</th>
+            <th class="amount">Yhteensä</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Ikkunanpesu, ammattityö</td><td class="amount">{{maara}}</td><td class="amount">69 €/h</td><td class="amount">{{tyon_hinta}}</td></tr>
+          <tr><td>Mahdolliset lisäpalvelut</td><td class="amount">{{lisamaara}}</td><td class="amount">{{lisahinta}}</td><td class="amount">{{lisayht}}</td></tr>
+          <tr class="total-row"><td>Kokonaishinta-arvio</td><td></td><td></td><td class="amount">{{kokonaishinta}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Hinta sisältää kohdassa 2 kuvatun työn sekä työn toteuttamiseen tarvittavat välineet, pesuaineet ja perustarvikkeet. Vähimmäisveloitus ikkunanpesulle on 2 tuntia.</p>
+    <div class="note">
+      Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä. Omavastuu 150 €/hlö/vuosi. Materiaalit ja matkakulut eivät kuulu vähennykseen.
+    </div>
+
+    <h2>6. Tilaajan vastuut</h2>
+    <p>Tilaaja vastaa seuraavista asioista:</p>
+    <ul>
+      <li>pääsy kohteeseen sovittuna ajankohtana</li>
+      <li>tarvittavat kulkuohjeet, avaimet, hälytyskoodit ja työaikaikkunat</li>
+      <li>veden ja sähkön käyttömahdollisuus työn aikana</li>
+      <li>tieto kohteen erityishuomioista, kuten herkistä pinnoista, kulkurajoituksista tai turvallisuusohjeista</li>
+      <li>yhteyshenkilön tavoitettavuus työpäivän aikana</li>
+    </ul>
+
+    <h2>7. Maksuehdot ja voimassaolo</h2>
+    <p>Lasku toimitetaan työn valmistumisen jälkeen, ellei toisin sovita. Maksuehto on 14 päivää netto. Viivästyskorko määräytyy korkolain mukaisesti.</p>
+    <p>Tarjous on voimassa 14 päivää tarjouksen päivämäärästä. Voimassaolon päätyttyä hinta, aikataulu ja saatavuus vahvistetaan tarvittaessa uudelleen.</p>
+    <p>BetterCleanilla on voimassa oleva toiminnan vastuuvakuutus. Mahdolliset vahinkotapaukset käsitellään kirjallisesti ja vakuutusehtojen mukaisesti.</p>
+
+    <h2>8. Hyväksyntä</h2>
+    <p>Allekirjoittamalla tämän tarjouksen tilaaja hyväksyy tarjouksessa esitetyn työn sisällön, aikataulun, hinnoittelun ja ehdot.</p>
+    <div class="signature-grid">
+      <div class="signature-box">
+        <p><strong>Tilaaja</strong></p>
+        <p>Yritys / nimi: <span class="field">{{asiakas}}</span></p>
+        <p>Allekirjoitus: ____________________________</p>
+        <p>Nimenselvennys: <span class="field">{{yhteyshenkilo}}</span></p>
+        <p>Päivämäärä: ____________________________</p>
+      </div>
+      <div class="signature-box">
+        <p><strong>Palveluntarjoaja - BetterClean</strong></p>
+        <p>Allekirjoitus: ____________________________</p>
+        <p>Nimenselvennys: BetterClean</p>
+        <p>Päivämäärä: ____________________________</p>
+      </div>
+    </div>
+
+    <p class="footer-note">BetterClean | betterclean.fi | info@betterclean.fi | {{puhelin}} | Y-tunnus: {{y_tunnus}}</p>
+  </main>
+</body>
+</html>

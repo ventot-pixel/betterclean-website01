@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BetterClean Proposal Email - Suomen Adventtikirkko</title>
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --dark: #1a2e1a;
+      --border: #dfe8dc;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--dark);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 0 0 24px;
+      color: #496149;
+    }
+
+    section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 20px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      background: var(--green-light);
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--green);
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 10px 14px;
+      box-shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+
+    button:hover,
+    button:focus-visible {
+      background: var(--green-dark);
+      outline: 2px solid rgba(58,170,53,0.35);
+      outline-offset: 2px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 520px;
+      box-sizing: border-box;
+      border: 0;
+      resize: vertical;
+      padding: 18px;
+      background: #ffffff;
+      color: #111111;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+
+    textarea:focus {
+      outline: 2px solid rgba(58,170,53,0.35);
+      outline-offset: -2px;
+    }
+
+    .status {
+      min-height: 20px;
+      margin-top: 10px;
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>BetterClean Proposal Email</h1>
+    <p>Copy from the buttons below. The copied email is plain text, so it should not bring a black background into Gmail or Google Docs.</p>
+
+    <section>
+      <div class="section-header">
+        <h2>Finnish Email</h2>
+        <button type="button" data-copy="fi-email">Copy Finnish</button>
+      </div>
+      <textarea id="fi-email" spellcheck="true">AIHE: Tarjous ikkunanpesusta - Satakunnankatu 23
+
+Hei Harri,
+
+Kiitos mahdollisuudesta tehdä tarjous ikkunanpesusta kohteeseen Satakunnankatu 23, Tampere.
+
+Liitteenä on BetterCleanin tarjous Suomen Adventtikirkolle. Tarjous sisältää kaksi vaihtoehtoa: täyden palvelun ikkunanpesun sekä ulkopuolen lasien pesun.
+
+Lisäksi sisällytämme kohteen kaikki lasiovet veloituksetta tarjouksen yhteyteen.
+
+Tilaajan tiedot:
+Suomen Adventtikirkko
+PL 94, 33101 Tampere
+Kohde: Satakunnankatu 23, Tampere
+Yhteyshenkilö: Harri Saarinen
+
+Käyttehän tarjouksen rauhassa läpi. Vastaan mielelläni, jos haluatte tarkentaa aikataulua, työn laajuutta tai valittavaa vaihtoehtoa.
+
+Ystävällisin terveisin,
+Joven Baclig
+BetterClean
++358 41 576 9236
+info@betterclean.fi
+betterclean.fi</textarea>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <h2>English Email</h2>
+        <button type="button" data-copy="en-email">Copy English</button>
+      </div>
+      <textarea id="en-email" spellcheck="true">SUBJECT: Window Cleaning Proposal - Satakunnankatu 23
+
+Hi Harri,
+
+Thank you for the opportunity to provide a proposal for window cleaning at Satakunnankatu 23, Tampere.
+
+Please find attached BetterClean's proposal for Suomen Adventtikirkko. The proposal includes two options: full-service window cleaning and exterior glass cleaning.
+
+We will also include all glass doors at the site free of charge as part of the proposal.
+
+Customer details:
+Suomen Adventtikirkko
+PL 94, 33101 Tampere
+Site: Satakunnankatu 23, Tampere
+Contact person: Harri Saarinen
+
+Please feel free to review the proposal at your convenience. I am happy to answer any questions or clarify the schedule, scope of work, or selected option.
+
+Kind regards,
+Joven Baclig
+BetterClean
++358 41 576 9236
+info@betterclean.fi
+betterclean.fi</textarea>
+    </section>
+
+    <div class="status" id="copy-status" aria-live="polite"></div>
+  </main>
+
+  <script>
+    const status = document.getElementById('copy-status');
+
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const target = document.getElementById(button.dataset.copy);
+        target.select();
+        target.setSelectionRange(0, target.value.length);
+
+        try {
+          await navigator.clipboard.writeText(target.value);
+          status.textContent = button.textContent.replace('Copy', '').trim() + ' email copied as plain text.';
+        } catch (error) {
+          document.execCommand('copy');
+          status.textContent = button.textContent.replace('Copy', '').trim() + ' email selected and copied.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

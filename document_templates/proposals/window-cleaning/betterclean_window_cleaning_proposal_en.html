@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterClean - Window Cleaning Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --ink: #121812;
+      --muted: #5f6b5f;
+      --line: #dfe9df;
+      --line-strong: #bfd5bf;
+      --paper: #ffffff;
+      --button-shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 9.6pt;
+      line-height: 1.5;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm 15mm;
+    }
+
+    .document {
+      max-width: 176mm;
+      margin: 0 auto;
+      padding: 3mm 4mm 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16mm;
+      padding-bottom: 5mm;
+      margin-bottom: 8mm;
+      border-bottom: 2px solid var(--green);
+      break-inside: avoid;
+    }
+
+    .logo {
+      width: 40mm;
+      height: auto;
+      display: block;
+      margin-bottom: 2mm;
+    }
+
+    .service-label,
+    .doc-type,
+    .label {
+      color: var(--muted);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 7.6pt;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .doc-type { text-align: right; }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: 23.5pt;
+      line-height: 1.08;
+      margin: 0 0 2mm;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 10.8pt;
+      font-weight: 600;
+      margin: 0 0 7mm;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3mm 9mm;
+      padding: 5mm 0 6mm;
+      margin-bottom: 7mm;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+    }
+
+    .meta-item {
+      display: grid;
+      grid-template-columns: 38mm minmax(0, 1fr);
+      gap: 4mm;
+      align-items: baseline;
+    }
+
+    .value {
+      color: var(--ink);
+      font-weight: 650;
+      overflow-wrap: anywhere;
+    }
+
+    h2 {
+      color: var(--green-dark);
+      font-size: 14.2pt;
+      line-height: 1.25;
+      margin: 6.5mm 0 2.6mm;
+      padding-top: 2.7mm;
+      border-top: 1px solid var(--line-strong);
+      break-after: avoid;
+    }
+
+    h2:first-of-type { margin-top: 0; }
+
+    h3 {
+      color: var(--dark);
+      font-size: 10.6pt;
+      margin: 5mm 0 2mm;
+      break-after: avoid;
+    }
+
+    p { margin: 0 0 3mm; }
+
+    ul {
+      margin: 0 0 3.8mm;
+      padding-left: 5.2mm;
+    }
+
+    li {
+      margin-bottom: 1.1mm;
+      padding-left: 0.8mm;
+    }
+
+    .note {
+      padding: 3.4mm 4mm;
+      margin: 4mm 0 5mm;
+      background: var(--green-light);
+      border: 1px solid var(--line-strong);
+      border-left: 3px solid var(--green);
+      border-radius: 5px;
+      break-inside: avoid;
+    }
+
+    .table-wrap {
+      margin: 3.5mm 0 5.5mm;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      overflow: hidden;
+      break-inside: avoid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.6pt;
+    }
+
+    th {
+      background: #f7fbf6;
+      color: var(--dark);
+      font-weight: 800;
+      text-align: left;
+      padding: 2.7mm 2.9mm;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    td {
+      padding: 2.6mm 2.9mm;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th.amount,
+    td.amount { text-align: right; }
+
+    tbody tr.total-row td {
+      border-top: 1.5px solid var(--green);
+      font-weight: 800;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8mm;
+      margin-top: 5mm;
+      break-inside: avoid;
+    }
+
+    .signature-box {
+      padding-top: 4mm;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-note {
+      margin-top: 7mm;
+      padding-top: 4mm;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 8.2pt;
+    }
+
+    .field {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    @media print {
+      html,
+      body { background: #fff; }
+      .document { max-width: none; padding: 0; }
+      a { color: inherit; text-decoration: none; }
+      .topbar,
+      .meta-grid,
+      .note,
+      .table-wrap,
+      .signature-grid { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="document">
+    <header class="topbar">
+      <div>
+        <img class="logo" src="assets/betterclean-logo-cropped.png" alt="BetterClean">
+        <div class="service-label">Window cleaning service</div>
+      </div>
+      <div class="doc-type">Proposal</div>
+    </header>
+
+    <section>
+      <h1>Window Cleaning Proposal</h1>
+      <p class="subtitle">Professional window cleaning in Tampere and nearby areas</p>
+    </section>
+
+    <section class="meta-grid" aria-label="Proposal details">
+      <div class="meta-item"><div class="label">Client</div><div class="value">{{customer_name}}</div></div>
+      <div class="meta-item"><div class="label">Contact person</div><div class="value">{{contact_person}}</div></div>
+      <div class="meta-item"><div class="label">Site</div><div class="value">{{site}}</div></div>
+      <div class="meta-item"><div class="label">Address</div><div class="value">{{address}}</div></div>
+      <div class="meta-item"><div class="label">Proposal date</div><div class="value">{{proposal_date}}</div></div>
+      <div class="meta-item"><div class="label">Validity</div><div class="value">14 days</div></div>
+      <div class="meta-item"><div class="label">Proposal number</div><div class="value">{{proposal_number}}</div></div>
+      <div class="meta-item"><div class="label">Prepared by</div><div class="value">BetterClean</div></div>
+    </section>
+
+    <h2>1. Summary</h2>
+    <p>BetterClean offers window cleaning services for the client at {{site}}. The estimated scope of work is {{estimated_work_time}}.</p>
+    <p>This proposal covers the agreed window cleaning tasks as a complete service. The work will be carried out with professional tools, window cleaning agents suitable for the surfaces, and according to the agreed schedule.</p>
+
+    <h2>2. Scope of Work</h2>
+    <p>The proposal includes:</p>
+    <ul>
+      <li>washing windows inside and outside when it can be done safely</li>
+      <li>washing, drying and finishing glass surfaces</li>
+      <li>wiping window frames and casings in connection with the window cleaning</li>
+      <li>wiping window sills in connection with the window cleaning</li>
+      <li>light cleaning of Venetian blinds, if agreed</li>
+      <li>required work tools, cleaning agents and basic supplies</li>
+      <li>documentation of work progress and completed working hours</li>
+      <li>final review with the contact person, if the schedule allows</li>
+    </ul>
+    <p>The work will be planned to minimise disruption to normal use of the site.</p>
+
+    <h2>3. Work to Be Agreed Separately</h2>
+    <p>If work is identified during the project that falls outside the scope defined in this proposal, BetterClean will agree it with the client in writing before starting that part of the work.</p>
+    <p>Work to be agreed separately may include, for example:</p>
+    <ul>
+      <li>windows that cannot be accessed safely or reasonably with standard work equipment</li>
+      <li>work at height requiring a separate lift solution</li>
+      <li>removal of paint, stickers, adhesive residue or hardened dirt requiring special methods</li>
+      <li>unusually heavy post-renovation soiling</li>
+    </ul>
+
+    <h2>4. Schedule and Execution</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Content</th>
+            <th>Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Initial site review and access arrangements</td><td>{{phase_1_timing}}</td></tr>
+          <tr><td>2</td><td>Window cleaning execution</td><td>{{phase_2_timing}}</td></tr>
+          <tr><td>3</td><td>Final review and handover</td><td>{{phase_3_timing}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The detailed day-by-day schedule will be confirmed when the order is placed, based on the site's opening hours, access arrangements and availability.</p>
+
+    <h2>5. Pricing</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th class="amount">Quantity</th>
+            <th class="amount">Unit price</th>
+            <th class="amount">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Window cleaning, professional work</td><td class="amount">{{qty}}</td><td class="amount">69 €/h</td><td class="amount">{{work_total}}</td></tr>
+          <tr><td>Possible additional services</td><td class="amount">{{add_qty}}</td><td class="amount">{{add_unit}}</td><td class="amount">{{add_total}}</td></tr>
+          <tr class="total-row"><td>Total estimated price</td><td></td><td></td><td class="amount">{{total}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The price includes the work described in section 2 and the tools, cleaning agents and basic supplies required to carry out the work. The minimum charge for window cleaning is 2 hours.</p>
+    <div class="note">
+      Household tax deduction: 35% of labour costs when purchased from a registered company. Personal deductible: €150/person/year. Materials and travel costs are not deductible.
+    </div>
+
+    <h2>6. Client Responsibilities</h2>
+    <p>The client is responsible for:</p>
+    <ul>
+      <li>access to the site at the agreed time</li>
+      <li>required access instructions, keys, alarm codes and working time windows</li>
+      <li>availability of water and electricity during the work</li>
+      <li>information about site-specific considerations, such as sensitive surfaces, access restrictions or safety instructions</li>
+      <li>availability of the contact person during the working day</li>
+    </ul>
+
+    <h2>7. Payment Terms and Validity</h2>
+    <p>The invoice will be issued after completion of the work, unless otherwise agreed. Payment term is 14 days net. Late payment interest will be charged in accordance with applicable law.</p>
+    <p>This proposal is valid for 14 days from the proposal date. After the validity period expires, price, schedule and availability may need to be reconfirmed.</p>
+    <p>BetterClean has valid general liability insurance. Any damage cases will be handled in writing and in accordance with the applicable insurance terms.</p>
+
+    <h2>8. Acceptance</h2>
+    <p>By signing this proposal, the client accepts the scope of work, schedule, pricing and terms set out in this document.</p>
+    <div class="signature-grid">
+      <div class="signature-box">
+        <p><strong>Client</strong></p>
+        <p>Company / name: <span class="field">{{customer_name}}</span></p>
+        <p>Signature: ____________________________</p>
+        <p>Name in print: <span class="field">{{contact_person}}</span></p>
+        <p>Date: ____________________________</p>
+      </div>
+      <div class="signature-box">
+        <p><strong>Service provider - BetterClean</strong></p>
+        <p>Signature: ____________________________</p>
+        <p>Name in print: BetterClean</p>
+        <p>Date: ____________________________</p>
+      </div>
+    </div>
+
+    <p class="footer-note">BetterClean | betterclean.fi | info@betterclean.fi | {{phone}} | Business ID: {{business_id}}</p>
+  </main>
+</body>
+</html>

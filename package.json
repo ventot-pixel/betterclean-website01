@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "check": "node --check api/lead.js && node --check consent.js && node --check whatsapp-widget.js",
-    "test": "npm run check"
+    "test": "node tests/lead-recipients.test.js && node tests/customer-reply-details.test.js && node tests/lead-delivery-fanout.test.js && node tests/homepage-exact-size-pricing.test.js && node tests/quote-pricing-flow.test.js && node tests/quote-duration-recommendation.test.js && node tests/quote-frequency-duration-flow.test.js && node tests/internal-duration-guide.test.js && npm run check"
   },
   "keywords": [],
   "author": "",

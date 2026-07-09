@@ -1,5 +1,5 @@
 User-agent: *
-Content-Signal: search=yes,ai-input=yes,ai-train=no
+Content-Signal: search=yes,ai-input=yes,ai-train=yes
 Allow: /
 
 User-agent: Googlebot
@@ -9,6 +9,9 @@ User-agent: Bingbot
 Allow: /
 
 User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User

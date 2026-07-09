@@ -50,6 +50,7 @@ model Lead {
   preferredTime    String?
   notes            String?
   estimatedPrice   String?
+  contactPreference String?
   score            Int          @default(0)
   priority         LeadPriority @default(COLD)
   status           LeadStatus   @default(NEW)

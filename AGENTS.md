@@ -64,7 +64,7 @@
 ## SEO
 - Every page must have: `<title>`, `<meta name="description">`, `<meta name="keywords">`, `<link rel="canonical">`, `og:title`, `og:description`, `og:type`.
 - Include Finnish keywords in `<meta name="keywords">` alongside English terms.
-- Canonical URLs use the format `https://betterclean.fi/page-name.html` (no trailing slash except on index: `https://betterclean.fi/`).
+- Canonical URLs use the format `https://www.betterclean.fi/page-name.html` (no trailing slash except on index: `https://www.betterclean.fi/`).
 - Never remove or simplify existing meta tags when editing a page.
 
 ## AEO — AI Search Optimisation (Answer Engine Optimisation)
@@ -129,7 +129,7 @@
 **Goal:** Keep the website running, improve SEO + AEO (AI search optimisation), and convert visitors to quote requests.
 **Local path:** `/Users/venm3/Desktop/FINLAND BUSINESS/Better Clean/Better Clean Website/`
 **GitHub:** `https://github.com/ventot-pixel/betterclean-website01` (branch: main)
-**Live domain:** `https://betterclean.fi`
+**Live domain:** `https://www.betterclean.fi`
 **Stack:** Static HTML5, Tailwind CSS via CDN, vanilla JS, no build tools.
 **Dev server:** `node serve.mjs` → `http://localhost:3000`
 
@@ -141,16 +141,21 @@ All prices include VAT 25.5%. Kotitalousvähennys = 35% off labour, omavastuu 15
 
 | Service | Rate | After kotitalousvähennys | Minimum |
 |---|---|---|---|
-| Recurring home cleaning | 57 €/h | 37,05 €/h | 2 h |
-| One-time home cleaning | 65 €/h | 42,25 €/h | 2 h |
-| Deep cleaning / suursiivous | 69 €/h | 44,85 €/h | 3 h |
-| Move-out / muuttosiivous | 69 €/h | 44,85 €/h | 4 h |
-| Window cleaning / ikkunanpesu | 69 €/h | 44,85 €/h | 2 h |
-| Post-renovation / remonttisiivous | 75 €/h | 48,75 €/h | 4 h |
+| Recurring home cleaning | 49 €/h | 31,85 €/h | 2 h |
+| One-time home cleaning | 59 €/h | 38,35 €/h | 2 h |
+| Deep cleaning / suursiivous (signature, incl. steam) | 79 €/h | 51,35 €/h | 3 h |
+| Move-out / muuttosiivous | 59 €/h | 38,35 €/h | 4 h |
+| Window cleaning / ikkunanpesu | 49 €/h | 31,85 €/h | 2 h |
+| Post-renovation / remonttisiivous | 79 €/h | 51,35 €/h | 4 h |
+
+**Reset-at-contract-rate offer (valid until 30.9.2026 — remove after):**
+- New weekly and every-second-week contracts get the initial reset clean at the contract rate 49 €/h (norm. 59 €/h) — customer saves 10 €/h from the first visit.
+- Max 4 new contract customers per month (honest capacity claim — keep true).
+- Monthly and one-time customers pay the normal reset rate 59 €/h (min. 3 h).
 
 **Window cleaning estimates:**
-- Apartment: 119-159 €
-- House: 179-229 €
+- Apartment: 99-129 €
+- House: 149-199 €
 - Balcony glazing add-on: +59 €
 
 **Steam cleaning (fixed-price menu — no per-hour rate shown):**
@@ -165,8 +170,8 @@ FI: "Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä
 EN: "Household tax deduction: 35% of labour costs when purchased from a registered company. Personal deductible: €150/person/year. Materials and travel costs are not deductible."
 
 **Price format rules:**
-- Finnish format always: `57 €/h`, `37,05 €/h`, `119 €`, `+59 €`
-- Never: `€57/hr`, `€57/h`, `45.50`, `+€60/session`
+- Finnish format always: `49 €/h`, `31,85 €/h`, `119 €`, `+59 €`
+- Never: `€49/hr`, `€49/h`, `45.50`, `+€60/session`
 - Show kotitalousvähennys exact amounts ONLY for labor-only hourly rates
 - Do NOT show exact after-tax amounts for fixed-price or bundled items
 

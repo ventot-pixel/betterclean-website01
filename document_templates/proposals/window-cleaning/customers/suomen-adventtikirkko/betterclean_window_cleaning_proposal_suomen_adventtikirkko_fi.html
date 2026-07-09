@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterClean - Tarjous ikkunanpesusta - Suomen Adventtikirkko</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --ink: #121812;
+      --muted: #5f6b5f;
+      --line: #dfe9df;
+      --line-strong: #bfd5bf;
+      --paper: #ffffff;
+      --surface: #f7fbf7;
+      --button-shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--surface);
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(237, 247, 236, 0.8), rgba(255, 255, 255, 0) 360px),
+        var(--surface);
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app-shell {
+      width: min(1680px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 12px 0 22px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-lockup img {
+      width: 168px;
+      height: auto;
+      display: block;
+    }
+
+    .header-copy {
+      min-width: 0;
+    }
+
+    .eyebrow,
+    label,
+    .mini-label,
+    .doc-type {
+      color: var(--muted);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      margin: 4px 0 0;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(360px, 520px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .form-panel,
+    .preview-panel {
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      box-shadow: 0 18px 42px rgba(26, 46, 26, 0.08);
+    }
+
+    .form-panel {
+      position: sticky;
+      top: 14px;
+      max-height: calc(100vh - 28px);
+      overflow: auto;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-title {
+      color: var(--dark);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .form-section {
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .form-section:last-child {
+      border-bottom: 0;
+    }
+
+    .form-section h2 {
+      color: var(--green-dark);
+      font-size: 16px;
+      margin: 0 0 14px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      padding: 10px 11px;
+      outline: none;
+      min-height: 42px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 92px;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: var(--green);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(58, 170, 53, 0.15);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      padding: 9px 13px;
+      color: var(--dark);
+      background: #fff;
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .btn:hover {
+      border-color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid rgba(15, 184, 201, 0.35);
+      outline-offset: 2px;
+    }
+
+    .btn.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+      box-shadow: var(--button-shadow);
+    }
+
+    .btn.primary:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+    }
+
+    .btn.danger {
+      color: #7c1f1f;
+      border-color: #e7bcbc;
+      background: #fffafa;
+    }
+
+    .segmented {
+      display: inline-flex;
+      padding: 3px;
+      background: var(--green-light);
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      gap: 3px;
+    }
+
+    .segmented button {
+      border: 0;
+      border-radius: 5px;
+      padding: 8px 10px;
+      color: var(--muted);
+      background: transparent;
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .segmented button.active {
+      color: #fff;
+      background: var(--green);
+      box-shadow: 0 3px 10px rgba(58, 170, 53, 0.22);
+    }
+
+    .option-toggle {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .option-toggle label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 11px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .option-toggle input {
+      width: 16px;
+      min-height: auto;
+      accent-color: var(--green);
+    }
+
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .summary-item {
+      padding: 10px;
+      background: var(--green-light);
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+    }
+
+    .summary-value {
+      display: block;
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .preview-panel {
+      padding: 18px;
+    }
+
+    .proposal-page {
+      width: min(100%, 210mm);
+      margin: 0 auto;
+      padding: 14mm;
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(26, 46, 26, 0.12);
+    }
+
+    .proposal-topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 5mm;
+      margin-bottom: 7mm;
+      border-bottom: 2px solid var(--green);
+    }
+
+    .proposal-logo {
+      width: 40mm;
+      display: block;
+      margin-bottom: 2mm;
+    }
+
+    .proposal-page h2 {
+      color: var(--green-dark);
+      font-size: 20px;
+      line-height: 1.25;
+      margin: 24px 0 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .proposal-title {
+      color: var(--dark);
+      font-family: "Sora", Arial, sans-serif;
+      font-size: 34px;
+      line-height: 1.08;
+      margin: 0 0 8px;
+    }
+
+    .proposal-subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 24px;
+    }
+
+    .proposal-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 30px;
+      padding: 18px 0 20px;
+      margin-bottom: 20px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .proposal-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      overflow: hidden;
+      font-size: 13px;
+      margin: 12px 0 18px;
+    }
+
+    .proposal-table th,
+    .proposal-table td {
+      padding: 10px 11px;
+      border-top: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .proposal-table th {
+      background: #f7fbf6;
+      border-top: 0;
+      font-weight: 800;
+    }
+
+    .proposal-table .amount {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .proposal-table .total-row td {
+      border-top: 2px solid var(--green);
+      font-weight: 800;
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .scope-box {
+      padding: 14px 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      break-inside: avoid;
+    }
+
+    .scope-box h3 {
+      color: var(--green-dark);
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+
+    .scope-box ul,
+    .proposal-page ul {
+      margin: 0 0 10px;
+      padding-left: 18px;
+    }
+
+    .scope-box li,
+    .proposal-page li {
+      margin-bottom: 4px;
+    }
+
+    .terms-list {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .choice-line,
+    .proposal-note {
+      padding: 12px 14px;
+      border: 1px solid var(--line-strong);
+      border-left: 3px solid var(--green);
+      border-radius: 5px;
+      background: var(--green-light);
+    }
+
+    .choice-line {
+      background: #fff;
+      font-weight: 800;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      margin-top: 18px;
+    }
+
+    .signature-box {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1120px) {
+      .tool-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .form-panel {
+        position: static;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .app-shell {
+        width: min(100% - 18px, 1680px);
+        padding-top: 12px;
+      }
+
+      .app-header,
+      .brand-lockup {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .header-actions {
+        justify-content: flex-start;
+      }
+
+      .field-grid,
+      .summary-strip,
+      .proposal-meta,
+      .scope-grid,
+      .signature-grid,
+      .option-toggle {
+        grid-template-columns: 1fr;
+      }
+
+      .proposal-page {
+        padding: 18px;
+      }
+
+      .proposal-title {
+        font-size: 28px;
+      }
+
+      .proposal-topbar {
+        flex-direction: column;
+      }
+
+      .meta-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .terms-list {
+        columns: 1;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .app-header,
+      .form-panel,
+      .panel-header {
+        display: none !important;
+      }
+
+      .app-shell,
+      .preview-panel,
+      .proposal-page {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background: #fff;
+      }
+
+      .tool-layout {
+        display: block;
+      }
+
+      .proposal-page {
+        font-size: 9.4pt;
+      }
+
+      .proposal-title {
+        font-size: 23pt;
+      }
+
+      .proposal-page h2 {
+        font-size: 13.4pt;
+        margin: 6mm 0 2.6mm;
+        padding-top: 2.6mm;
+        break-after: avoid;
+      }
+
+      .proposal-topbar,
+      .proposal-meta,
+      .scope-box,
+      .proposal-table,
+      .choice-line,
+      .proposal-note,
+      .signature-grid {
+        break-inside: avoid;
+      }
+
+      @page {
+        size: A4;
+        margin: 12mm 14mm 15mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="proposal-page" id="proposalPreview">
+        <header class="proposal-topbar">
+          <div>
+            <img class="proposal-logo" src="../../assets/betterclean-logo-cropped.png" alt="BetterClean">
+            <div class="service-label">Ikkunanpesupalvelu</div>
+          </div>
+          <div class="doc-type">Tarjous</div>
+        </header>
+
+        <section>
+          <div class="proposal-title">Tarjous ikkunanpesusta</div>
+          <p class="proposal-subtitle">Ammattimainen ikkunanpesu kohteessa Ketarantie 4, Tampere</p>
+        </section>
+
+        <section class="proposal-meta">
+          <div class="meta-row"><div class="mini-label">Tilaaja</div><strong>Suomen Adventtikirkko</strong></div>
+          <div class="meta-row"><div class="mini-label">Yhteyshenkilö</div><strong>Harri Saarinen</strong></div>
+          <div class="meta-row"><div class="mini-label">Tilaajan osoite</div><strong>PL 94, 33101 Tampere</strong></div>
+          <div class="meta-row"><div class="mini-label">Kohde</div><strong>Ketarantie 4, Tampere</strong></div>
+          <div class="meta-row"><div class="mini-label">Tarjousnumero</div><strong>_______________</strong></div>
+          <div class="meta-row"><div class="mini-label">Päivämäärä</div><strong>_______________</strong></div>
+          <div class="meta-row"><div class="mini-label">Voimassa asti</div><strong>_______________</strong></div>
+          <div class="meta-row"><div class="mini-label">Laatija</div><strong>Joven Baclig, BetterClean</strong></div>
+        </section>
+
+        <h2>1. Työn kuvaus</h2>
+        <p>BetterClean tarjoaa tilaajalle ammattitasoisen ikkunanpesun kohteessa Ketarantie 4, Tampere. Työ toteutetaan ammattimaisilla välineillä, sovitun aikataulun mukaisesti ja selkeästi määriteltyyn laatutasoon.</p>
+        <p>Tarjous sisältää kaksi vaihtoehtoa. Tilaaja valitsee tarpeisiinsa parhaiten sopivan vaihtoehdon.</p>
+
+        <h2>2. Työn laajuus</h2>
+        <div class="scope-grid">
+          <section class="scope-box">
+            <h3>Vaihtoehto A - Täysi palvelu (60 tuntia)</h3>
+            <ul><li>Ikkunalasien pesu sisä- ja ulkopuolelta</li><li>Lasien kuivaus ja viimeistely raidattomaksi</li><li>Ikkunapuitteiden ja karmien pyyhintä</li><li>Ikkunalautojen pyyhintä</li><li>Pesu- ja työvälineiden toimitus kohteeseen</li><li>Työajan dokumentointi, mukaan lukien aloitus, lopetus ja suoritetut alueet</li><li>Loppukatselmus yhteyshenkilön kanssa</li></ul>
+          </section>
+          <section class="scope-box">
+            <h3>Vaihtoehto B - Ulkopuolen lasi (40 tuntia)</h3>
+            <ul><li>Ainoastaan ulkopuolen ikkunalasien pesu, lasin 2 pintaa</li><li>Ulkopuolen lasien kuivaus ja viimeistely raidattomaksi</li><li>Ulkopuolen ikkunapuitteiden ja karmien pyyhintä</li><li>Ikkunalautojen pyyhintä</li><li>Pesu- ja työvälineiden toimitus kohteeseen</li><li>Työajan dokumentointi</li><li>Loppukatselmus yhteyshenkilön kanssa</li></ul>
+            <p><strong>Ei sisälly vaihtoehtoon B:</strong> Sisäpuolen ikkunalasien pesu; Sälekaihtimien pesu</p>
+          </section>
+        </div>
+
+        <h2>3. Aikataulu</h2>
+        <table class="proposal-table">
+          <thead><tr><th>Vaihe</th><th>Sisältö</th><th>Ajankohta</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Aloituskatselmus ja kulkujärjestelyt</td><td>Tehty</td></tr>
+            <tr><td>2</td><td>Ikkunanpesu, vaihe 1</td><td>_______________</td></tr>
+            <tr><td>3</td><td>Ikkunanpesu, vaihe 2</td><td>_______________</td></tr>
+            <tr><td>4</td><td>Loppukatselmus ja luovutus</td><td>_______________</td></tr>
+          </tbody>
+        </table>
+        <p>Tarkka päiväkohtainen aikataulu vahvistetaan tilauksen yhteydessä.</p>
+
+        <h2>4. Hinnoittelu</h2>
+
+        <h3>Vaihtoehto A - Täysi palvelu</h3>
+        <table class="proposal-table">
+          <thead>
+            <tr>
+              <th>Erittely</th>
+              <th class="amount">Maara</th>
+              <th class="amount">Yksikköhinta (ALV 0 %)</th>
+              <th class="amount">Yhteensä (ALV 0 %)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ikkunanpesu, ammattityö (sisä + ulko)</td><td class="amount">60 h</td><td class="amount">48,00 €/h</td><td class="amount">2&nbsp;880,00 €</td></tr>
+            <tr><td>Volyymialennus</td><td class="amount">60 h</td><td class="amount">-10,00 €/h</td><td class="amount">-600,00 €</td></tr>
+            <tr><td><strong>Nettotuntihinta</strong></td><td></td><td class="amount"><strong>38,00 €/h</strong></td><td></td></tr>
+            <tr><td><strong>Välisumma</strong></td><td></td><td></td><td class="amount"><strong>2&nbsp;280,00 €</strong></td></tr>
+            <tr><td><strong>ALV 25,5 %</strong></td><td></td><td></td><td class="amount"><strong>581,40 €</strong></td></tr>
+            <tr class="total-row"><td>Loppusumma sis. ALV</td><td></td><td></td><td class="amount">2&nbsp;861,40 €</td></tr>
+          </tbody>
+        </table>
+
+
+        <h3>Vaihtoehto B - Ulkopuolen lasi</h3>
+        <table class="proposal-table">
+          <thead>
+            <tr>
+              <th>Erittely</th>
+              <th class="amount">Maara</th>
+              <th class="amount">Yksikköhinta (ALV 0 %)</th>
+              <th class="amount">Yhteensä (ALV 0 %)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ulkopuolen ikkunanpesu, ei kaihtimia eikä sisäpuolen lasia</td><td class="amount">40 h</td><td class="amount">48,00 €/h</td><td class="amount">1&nbsp;920,00 €</td></tr>
+            <tr><td>Volyymialennus</td><td class="amount">40 h</td><td class="amount">-10,00 €/h</td><td class="amount">-400,00 €</td></tr>
+            <tr><td><strong>Nettotuntihinta</strong></td><td></td><td class="amount"><strong>38,00 €/h</strong></td><td></td></tr>
+            <tr><td><strong>Välisumma</strong></td><td></td><td></td><td class="amount"><strong>1&nbsp;520,00 €</strong></td></tr>
+            <tr><td><strong>ALV 25,5 %</strong></td><td></td><td></td><td class="amount"><strong>387,60 €</strong></td></tr>
+            <tr class="total-row"><td>Loppusumma sis. ALV</td><td></td><td></td><td class="amount">1&nbsp;907,60 €</td></tr>
+          </tbody>
+        </table>
+
+        <p>Mahdolliset lisätyöt veloitetaan tuntihinnalla 38,00 €/h (ALV 0 %). Lisätöistä sovitaan aina kirjallisesti ennen toteutusta.</p>
+
+        <h2>5. Sopimusehdot</h2>
+        <ul class="terms-list">
+          <li>Maksuehto: _______________</li>
+          <li>Viivästyskorko: korkolain mukaisesti</li>
+          <li>Peruutus: ilmoitettava viimeistaan 48 tuntia ennen sovittua aloitusta veloituksetta</li>
+          <li>Myöhäinen peruutus: _______________ €</li>
+          <li>Tilaajan vastuut: pääsy kohteeseen, vesi- ja sähköpiste sekä yhteyshenkilön tavoitettavuus</li>
+          <li>Vakuutus: BetterCleanilla on voimassa oleva toiminnan vastuuvakuutus</li>
+        </ul>
+
+        <h2>6. Hyvaksynta</h2>
+        <p>Allekirjoittamalla tilaaja hyväksyy tarjouksessa esitetyn työn laajuuden, aikataulun, hinnoittelun ja sopimusehdot.</p>
+        <p class="choice-line">Valittu vaihtoehto (ympyröi): Vaihtoehto A - Täysi palvelu / Vaihtoehto B - Ulkopuolen lasi</p>
+        <div class="signature-grid">
+          <section class="signature-box">
+            <p><strong>Tilaaja</strong></p>
+            <p>Yritys / nimi: Suomen Adventtikirkko</p>
+            <p>Allekirjoitus: _______________________________________________</p>
+            <p>Nimenselvennys: Harri Saarinen</p>
+            <p>Päivämäärä: _______________________________________________</p>
+          </section>
+          <section class="signature-box">
+            <p><strong>Palveluntarjoaja - BetterClean</strong></p>
+            <p>Allekirjoitus: _______________________________________________</p>
+            <p>Nimenselvennys: Joven Baclig</p>
+            <p>Päivämäärä: _______________________________________________</p>
+          </section>
+        </div>
+
+        <p class="proposal-note">Tämä tarjous on laadittu BetterCleanin voimassa olevien palveluehtojen ja hinnoittelumallin mukaisesti.</p>
+        <p class="footer-note">BetterClean | Tampere | betterclean.fi | +358 41 576 9236 | info@betterclean.fi | Y-tunnus: 3563977-9</p>
+      </article>
+</body>
+</html>

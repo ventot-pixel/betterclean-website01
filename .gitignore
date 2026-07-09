@@ -10,3 +10,4 @@ tmp/
 
 # Build output (generated; do not version)
 .next/
+.env*

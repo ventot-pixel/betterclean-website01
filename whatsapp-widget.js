@@ -52,6 +52,7 @@
       }
 
       .bc-whatsapp-panel {
+        position: relative;
         width: min(320px, calc(100vw - 32px));
         margin-bottom: 12px;
         padding: 18px;
@@ -104,11 +105,33 @@
 
       .bc-whatsapp-primary,
       .bc-whatsapp-secondary,
-      .bc-whatsapp-toggle {
+      .bc-whatsapp-toggle,
+      .bc-whatsapp-close {
         appearance: none;
         border: 0;
         cursor: pointer;
         font: inherit;
+      }
+
+      .bc-whatsapp-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        display: flex;
+        width: 34px;
+        height: 34px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #eef6ee;
+        color: #247a24;
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .bc-whatsapp-close:hover {
+        background: #dcecdc;
+        color: #14530f;
       }
 
       .bc-whatsapp-primary,
@@ -133,7 +156,8 @@
 
       .bc-whatsapp-primary:focus-visible,
       .bc-whatsapp-secondary:focus-visible,
-      .bc-whatsapp-toggle:focus-visible {
+      .bc-whatsapp-toggle:focus-visible,
+      .bc-whatsapp-close:focus-visible {
         outline: 3px solid rgba(31, 143, 69, 0.35);
         outline-offset: 3px;
       }
@@ -227,8 +251,13 @@
     toggle.setAttribute('aria-expanded', 'false');
     toggle.textContent = 'WA';
 
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'bc-whatsapp-close';
+    close.textContent = '×';
+
     actions.append(primary, secondary);
-    panel.append(eyebrow, title, body, actions);
+    panel.append(close, eyebrow, title, body, actions);
     root.append(panel, toggle);
     document.body.appendChild(root);
 
@@ -248,10 +277,15 @@
       primary.textContent = copy.primary;
       primary.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(copy.message);
       secondary.textContent = copy.secondary;
+      close.setAttribute('aria-label', copy.closeLabel);
       toggle.setAttribute('aria-label', root.classList.contains('is-open') ? copy.closeLabel : copy.openLabel);
     }
 
     toggle.addEventListener('click', () => setOpen(!root.classList.contains('is-open')));
+    close.addEventListener('click', () => {
+      setOpen(false);
+      toggle.focus();
+    });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') setOpen(false);
     });

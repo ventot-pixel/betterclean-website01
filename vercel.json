@@ -8,6 +8,10 @@
   ],
   "rewrites": [
     {
+      "source": "/internal/cleaning-duration-guide",
+      "destination": "/internal/cleaning-duration-guide/index.html"
+    },
+    {
       "source": "/naapurietu",
       "destination": "/naapurietu.html"
     }

@@ -1,53 +1,48 @@
 # BetterClean Internal Tools
 
-This app is the first MVP for BetterClean's internal lead system.
+This app is now a simple CRM V1 for BetterClean.
 
-## MVP goal
+## What V1 includes
 
-Capture leads from `www.betterclean.fi`, store them in a structured database, score them deterministically, and show them in an internal admin dashboard.
+- Dashboard for daily operations
+- Lead inbox for website and social channels
+- Customer and property records
+- Quote tracker
+- Job schedule
+- Invoice tracker
+- Validation and scoring endpoint at `POST /api/leads`
 
-## Scope for version 1
+## Why this version is simple
 
-- Website lead intake via `POST /api/leads`
-- Deterministic validation and scoring
-- Database schema for contacts, leads, and lead events
-- Starter admin dashboard for viewing new leads
-- Placeholder email flow for automatic replies and internal notifications
+The goal is to prove the workflow first:
 
-## Planned sources
+1. Capture a lead
+2. Qualify it
+3. Send a quote
+4. Schedule the job
+5. Track invoice follow-up
 
-- BetterClean website
-- Facebook page and DMs
-- Instagram profile and DMs
-- TikTok attribution and inbound traffic
+The current app uses mock CRM data in the UI so the team can validate the screens quickly. The next step is swapping the mock layer for your existing Supabase lead-gen tables and adding write actions.
 
-The first implemented source is the website only.
+## Recommended live data path
 
-## Initial rules
-
-- Deterministic scoring owns priority and workflow state
-- AI can later assist with summaries, extraction, and suggested next steps
-- Social channel ingestion can be added after website intake is stable
-
-## MVP build order
-
-1. Database schema
-2. Website lead endpoint
-3. Lead scoring
-4. Auto-reply and internal alert service
-5. Admin dashboard
-6. Social channel integrations
+- Website forms -> Supabase `leads`
+- WhatsApp, Facebook, Instagram, TikTok -> normalized into the same `leads` shape
+- Won leads -> `customers`
+- Customer addresses -> `properties`
+- Quotes -> `quotes`
+- Scheduled work -> `jobs`
+- Billing status -> `invoices`
 
 ## Run locally
 
-1. Copy `.env.example` to `.env.local`
-2. Install packages with `npm install`
-3. Create the database and run `npx prisma db push`
-4. Start with `npm run dev`
+1. Install packages with `npm install`
+2. Start with `npm run dev`
+3. Open `http://localhost:3000`
 
-## Website payload
+## Lead payload
 
-Expected lead payload from `betterclean.fi`:
+Expected payload for `POST /api/leads`:
 
 ```json
 {
@@ -57,12 +52,14 @@ Expected lead payload from `betterclean.fi`:
   "address": "Tampere",
   "language": "fi",
   "sourcePage": "https://www.betterclean.fi/",
+  "sourcePlatform": "website",
   "serviceType": "window-cleaning",
   "propertySize": "small",
   "preferredDate": "2026-04-18",
   "preferredTime": "10:00",
   "notes": "Need balcony glazing too",
   "estimatedPrice": "159 €",
-  "sourceChannel": "website_home"
+  "sourceChannel": "website_home",
+  "contactPreference": "phone"
 }
 ```

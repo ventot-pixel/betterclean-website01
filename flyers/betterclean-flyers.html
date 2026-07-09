@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BetterClean Price Flyers</title>
+  <script>
+    const selectedFlyer = new URLSearchParams(window.location.search).get('flyer');
+    if (selectedFlyer) document.documentElement.dataset.flyer = selectedFlyer;
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #3aaa35;
+      --green-dark: #2a8226;
+      --green-light: #edf7ec;
+      --teal: #0fb8c9;
+      --dark: #1a2e1a;
+      --ink: #223422;
+      --muted: #617161;
+      --cream: #f7fbf5;
+      --line: #dcebd9;
+      --shadow: 0 4px 16px rgba(58,170,53,0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--ink);
+      background: var(--green-light);
+    }
+
+    body { padding: 24px; }
+
+    h1,
+    h2,
+    h3,
+    .font-display {
+      font-family: 'Sora', Arial, sans-serif;
+    }
+
+    .flyer {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto 24px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 28px 80px rgba(26,46,26,0.18);
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      padding: 11mm 12mm 9mm;
+    }
+
+    html[data-flyer] body {
+      padding: 0;
+      background: #fff;
+    }
+
+    html[data-flyer] .flyer {
+      display: none;
+      margin: 0;
+      box-shadow: none;
+    }
+
+    html[data-flyer="textile-fi"] #textile-fi,
+    html[data-flyer="textile-en"] #textile-en,
+    html[data-flyer="window-fi"] #window-fi,
+    html[data-flyer="window-en"] #window-en {
+      display: flex;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8mm;
+    }
+
+    .logo-card {
+      width: 41mm;
+      height: 15mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(26,46,26,0.08);
+    }
+
+    .logo-card img {
+      width: 34mm;
+      height: auto;
+      display: block;
+    }
+
+    .top-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border: 1px solid rgba(58,170,53,0.24);
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 7.5pt;
+      line-height: 1;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 53mm;
+      gap: 7mm;
+      align-items: stretch;
+      padding: 9mm;
+      border-radius: 8px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% 0%, rgba(15,184,201,0.24), transparent 35%),
+        linear-gradient(135deg, var(--dark), var(--green-dark));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: rgba(255,255,255,0.76);
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 8pt;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24pt;
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      max-width: 118mm;
+      color: rgba(255,255,255,0.82);
+      font-size: 9.2pt;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+    .cta-label {
+      margin: 0;
+      color: rgba(255,255,255,0.76);
+      font-size: 7.5pt;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-main {
+      margin: 0;
+      color: #fff;
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 14pt;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-url {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 29px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--green-dark);
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 8pt;
+      line-height: 1;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .note-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+      margin-top: 5mm;
+    }
+
+    .note {
+      padding: 8px 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--cream);
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--dark);
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 7.6pt;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .note span {
+      display: block;
+      color: var(--muted);
+      font-size: 7.3pt;
+      line-height: 1.24;
+      font-weight: 650;
+    }
+
+    .content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 4mm;
+      margin-top: 6mm;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 5mm;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .panel-header.light {
+      background: var(--green-light);
+      color: var(--dark);
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 11pt;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .tag {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 6.5pt;
+      line-height: 1;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .light .tag {
+      background: #fff;
+      color: var(--green-dark);
+      border: 1px solid rgba(58,170,53,0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #edf4eb;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #6d7d6d;
+      background: #fbfdf9;
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 6.7pt;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    td {
+      color: var(--ink);
+      font-size: 7.9pt;
+      line-height: 1.16;
+      font-weight: 700;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .price {
+      color: var(--green-dark);
+      font-family: 'Sora', Arial, sans-serif;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .muted { color: var(--muted); }
+
+    .small-table td { padding-top: 5px; padding-bottom: 5px; }
+
+    .full-width { grid-column: 1 / -1; }
+
+    .fineprint {
+      padding: 8px 10px;
+      color: var(--muted);
+      background: #fbfdf9;
+      border-top: 1px solid var(--line);
+      font-size: 7.3pt;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    .rules {
+      display: grid;
+      gap: 6px;
+      padding: 9px 10px;
+      margin: 0;
+      list-style: none;
+    }
+
+    .rules li {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 7px;
+      align-items: start;
+      color: var(--ink);
+      font-size: 7.9pt;
+      line-height: 1.28;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 7pt;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .bottom-cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8mm;
+      align-items: center;
+      margin-top: auto;
+      padding: 9px 11px;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .bottom-cta h3 {
+      margin: 0;
+      font-size: 13pt;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .bottom-cta p {
+      margin: 3px 0 0;
+      color: rgba(255,255,255,0.86);
+      font-size: 7.8pt;
+      line-height: 1.32;
+      font-weight: 650;
+    }
+
+    .button {
+      min-width: 35mm;
+      padding: 9px 12px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--green-dark);
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 8.8pt;
+      line-height: 1;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8mm;
+      align-items: end;
+      margin-top: 4mm;
+      color: var(--muted);
+      font-size: 7.2pt;
+      line-height: 1.3;
+      font-weight: 650;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 5px 10px;
+      color: var(--dark);
+      font-family: 'Sora', Arial, sans-serif;
+      font-size: 7.4pt;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .compact {
+      padding: 9mm 11mm 7mm;
+    }
+
+    .compact .topbar {
+      margin-bottom: 5mm;
+    }
+
+    .compact .logo-card {
+      width: 37mm;
+      height: 13mm;
+    }
+
+    .compact .logo-card img {
+      width: 31mm;
+    }
+
+    .compact .hero {
+      grid-template-columns: 1fr 48mm;
+      gap: 5mm;
+      padding: 6mm;
+    }
+
+    .compact h1 {
+      font-size: 20pt;
+      line-height: 1.02;
+    }
+
+    .compact .subtitle {
+      margin-top: 5px;
+      font-size: 8.1pt;
+      line-height: 1.32;
+    }
+
+    .compact .hero-cta {
+      padding: 8px;
+      gap: 6px;
+    }
+
+    .compact .cta-main {
+      font-size: 12pt;
+    }
+
+    .compact .note-strip {
+      gap: 2mm;
+      margin-top: 3mm;
+    }
+
+    .compact .note {
+      padding: 6px 7px;
+    }
+
+    .compact .note strong {
+      font-size: 7pt;
+    }
+
+    .compact .note span {
+      font-size: 6.7pt;
+      line-height: 1.18;
+    }
+
+    .compact .content {
+      gap: 2.7mm;
+      margin-top: 3.5mm;
+    }
+
+    .compact .section-grid {
+      gap: 3mm;
+    }
+
+    .compact .panel-header {
+      padding: 6px 8px;
+    }
+
+    .compact h2 {
+      font-size: 9.6pt;
+    }
+
+    .compact .tag {
+      padding: 4px 7px;
+      font-size: 6pt;
+    }
+
+    .compact th,
+    .compact td {
+      padding: 4px 6px;
+    }
+
+    .compact th {
+      font-size: 6.1pt;
+    }
+
+    .compact td {
+      font-size: 7.1pt;
+      line-height: 1.1;
+    }
+
+    .compact .small-table td {
+      padding-top: 3.5px;
+      padding-bottom: 3.5px;
+    }
+
+    .compact .fineprint {
+      padding: 6px 8px;
+      font-size: 6.7pt;
+      line-height: 1.24;
+    }
+
+    .compact .rules {
+      gap: 4px;
+      padding: 7px 8px;
+    }
+
+    .compact .rules li {
+      grid-template-columns: 14px 1fr;
+      gap: 6px;
+      font-size: 6.9pt;
+      line-height: 1.18;
+    }
+
+    .compact .dot {
+      width: 14px;
+      height: 14px;
+      font-size: 6pt;
+    }
+
+    .compact .bottom-cta {
+      padding: 7px 9px;
+    }
+
+    .compact .bottom-cta h3 {
+      font-size: 11pt;
+    }
+
+    .compact .bottom-cta p {
+      font-size: 7pt;
+      line-height: 1.22;
+    }
+
+    .compact .button {
+      min-width: 31mm;
+      padding: 8px 10px;
+      font-size: 8pt;
+    }
+
+    .compact .footer {
+      margin-top: 2.5mm;
+      font-size: 6.5pt;
+    }
+
+    .compact .contact {
+      font-size: 6.8pt;
+      gap: 4px 8px;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        width: 210mm;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+      }
+
+      .flyer {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="flyer compact" id="textile-fi">
+    <header class="topbar">
+      <div class="logo-card"><img src="../brand_assets/betterclean-logo.png" alt="BetterClean" /></div>
+      <div class="top-meta">
+        <span class="pill">Tampere</span>
+        <span class="pill">ALV 25,5 % mukana</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Tekstiilipesun hinnasto</p>
+        <h1>Sohvat, patjat, sängyt ja matot kotona</h1>
+        <p class="subtitle">Selkeät hinnat painehuuhtelulle ja höyryavusteiselle premium-pesulle. Yhdistä pienempiä kohteita samaan käyntiin.</p>
+      </div>
+      <div class="hero-cta">
+        <p class="cta-label">Varaa nopeammin</p>
+        <p class="cta-main">Valitse kohteet ja lähetä kuva</p>
+        <span class="cta-url">betterclean.fi/request-quote.html</span>
+      </div>
+    </section>
+
+    <section class="note-strip">
+      <div class="note"><strong>Minimitilaus</strong><span>69 € kotiin tehtävälle palvelulle</span></div>
+      <div class="note"><strong>Tampere</strong><span>Matkat sisältyvät Tampereen alueella</span></div>
+      <div class="note"><strong>Painehuuhtelu</strong><span>Peruspesu ja kosteuden poisto</span></div>
+      <div class="note"><strong>Höyrylisä</strong><span>Käytetään vain sopiville materiaaleille</span></div>
+    </section>
+
+    <section class="content">
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header"><h2>Sohvanpesun hinnat</h2><span class="tag">Suosituin: 2-istuttava 69 €</span></div>
+          <table>
+            <thead><tr><th>Palvelu</th><th>Tarjous</th><th>Höyryavusteinen</th></tr></thead>
+            <tbody>
+              <tr><td>Nojatuoli</td><td class="price">49 €</td><td class="price">59 €</td></tr>
+              <tr><td>2-istuttava sohva</td><td class="price">69 €</td><td class="price">89 €</td></tr>
+              <tr><td>3-istuttava sohva</td><td class="price">79 €</td><td class="price">99 €</td></tr>
+              <tr><td>4-istuttava sohva</td><td class="price">109 €</td><td class="price">129 €</td></tr>
+              <tr><td>Divaani tai pieni kulmasohva</td><td class="price">Alkaen 139 €</td><td class="price">Alkaen 159 €</td></tr>
+              <tr><td>Suuri kulmasohva, 5-6 istuinta</td><td class="price">Alkaen 169 €</td><td class="price">Alkaen 199 €</td></tr>
+              <tr><td>Erittäin suuri tai moduulisohva</td><td class="price">Alkaen 199 €</td><td class="price">Alkaen 239 €</td></tr>
+              <tr><td>Vuodesohvan makuuosa</td><td class="price">+20 €</td><td class="price">+30 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header light"><h2>Tuolit ja rahit</h2><span class="tag">Yhdistä minimiin</span></div>
+          <table class="small-table">
+            <thead><tr><th>Kohde</th><th>Tarjous</th><th>Premium</th></tr></thead>
+            <tbody>
+              <tr><td>Pieni rahi</td><td class="price">29 €</td><td class="price">39 €</td></tr>
+              <tr><td>Suuri rahi</td><td class="price">39 €</td><td class="price">49 €</td></tr>
+              <tr><td>Ruokatuoli, istuin</td><td class="price">15 €/kpl</td><td class="price">19 €/kpl</td></tr>
+              <tr><td>Ruokatuoli, istuin ja selkä</td><td class="price">22 €/kpl</td><td class="price">27 €/kpl</td></tr>
+              <tr><td>Työtuoli</td><td class="price">29 €/kpl</td><td class="price">39 €/kpl</td></tr>
+            </tbody>
+          </table>
+          <div class="fineprint">Pienet kohteet voidaan yhdistää samaan käyntiin, kun kokonaisuus täyttää 69 € minimitilauksen.</div>
+        </section>
+      </div>
+
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header"><h2>Patjat ja sängyt</h2><span class="tag">Päällinen pinta</span></div>
+          <table class="small-table">
+            <thead><tr><th>Palvelu</th><th>Tarjous</th><th>Höyryavusteinen</th></tr></thead>
+            <tbody>
+              <tr><td>Yhden hengen patja, 80-90 cm</td><td class="price">69 €</td><td class="price">89 €</td></tr>
+              <tr><td>Keskikokoinen patja, 120-140 cm</td><td class="price">79 €</td><td class="price">99 €</td></tr>
+              <tr><td>Paripatja, 160 cm</td><td class="price">89 €</td><td class="price">109 €</td></tr>
+              <tr><td>King-size patja, 180 cm</td><td class="price">99 €</td><td class="price">119 €</td></tr>
+              <tr><td>Patjan alapuoli, single / double</td><td class="price">+20 € / +30 €</td><td class="price">+30 € / +45 €</td></tr>
+              <tr><td>Verhoiltu sängyn runko</td><td class="price">Alkaen 89 €</td><td class="price">Alkaen 109 €</td></tr>
+              <tr><td>Kokonainen jenkkisänky</td><td class="price">Alkaen 149 €</td><td class="price">Alkaen 179 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header light"><h2>Matot kotona</h2><span class="tag">€/m²</span></div>
+          <table class="small-table">
+            <thead><tr><th>Matto</th><th>Tarjous</th><th>Premium</th></tr></thead>
+            <tbody>
+              <tr><td>Sileä tai matalanukkainen</td><td class="price">9,90 €/m²</td><td class="price">12,90 €/m²</td></tr>
+              <tr><td>Paksunukkainen tai shaggy</td><td class="price">14,90 €/m²</td><td class="price">18,90 €/m²</td></tr>
+              <tr><td>Voimakkaasti likaantunut</td><td class="price">Alk. 17,90 €/m²</td><td class="price">Alk. 21,90 €/m²</td></tr>
+              <tr><td>Kokolattiamatto</td><td class="price">Alk. 8,90 €/m²</td><td class="price">Alk. 11,90 €/m²</td></tr>
+              <tr><td>Tahrankäsittely</td><td class="price">+10-25 €</td><td class="price">+15-35 €</td></tr>
+              <tr><td>Lemmikkihaju tai vahinko</td><td class="price">Alk. 20 €</td><td class="price">Alk. 30 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header light"><h2>Esimerkit ja lisämaksut</h2><span class="tag">Tarkempi arvio</span></div>
+          <table class="small-table">
+            <tbody>
+              <tr><td>160 x 230 cm vakiomatto</td><td class="price">Noin 69 € minimi</td></tr>
+              <tr><td>200 x 300 cm vakiomatto</td><td class="price">69 €</td></tr>
+              <tr><td>200 x 300 cm paksu matto</td><td class="price">Noin 89 €</td></tr>
+              <tr><td>Runsas lemmikkikarva</td><td class="price">20-50 €</td></tr>
+              <tr><td>Poikkeuksellinen tahra</td><td class="price">15-40 €</td></tr>
+              <tr><td>Tekstiilisuoja</td><td class="price">29-59 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><h2>Kun hinta muuttuu</h2><span class="tag">Vahvistetaan ensin</span></div>
+          <ul class="rules">
+            <li><span class="dot">1</span><span>Herkät materiaalit, väriherkät tekstiilit ja memory foam tarkistetaan ennen pesua.</span></li>
+            <li><span class="dot">2</span><span>Lisähinta voi tulla runsaasta lemmikkikarvasta, hajusta tai erittäin raskaasta liasta.</span></li>
+            <li><span class="dot">3</span><span>Pirkkala, Kangasala, Nokia, Ylöjärvi ja Lempäälä: matkat alkaen 15 €.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="bottom-cta">
+        <div>
+          <h3>Valmis varaamaan?</h3>
+          <p>Lähetä kuva kohteesta ja valitse taulukosta sopiva palvelu. Vahvistamme lopullisen hinnan ennen aloitusta.</p>
+        </div>
+        <div class="button">Pyydä tarjous</div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <div>Kaikki hinnat sisältävät ALV 25,5 %. Lopullinen hinta vahvistetaan ennen työn aloitusta.</div>
+      <div class="contact"><span>betterclean.fi/textile-cleaning.html</span><span>+358 41 576 9236</span><span>info@betterclean.fi</span></div>
+    </footer>
+  </article>
+
+  <article class="flyer compact" id="textile-en">
+    <header class="topbar">
+      <div class="logo-card"><img src="../brand_assets/betterclean-logo.png" alt="BetterClean" /></div>
+      <div class="top-meta">
+        <span class="pill">Tampere</span>
+        <span class="pill">25.5% VAT included</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Textile cleaning price list</p>
+        <h1>Sofas, mattresses, beds and carpets at home</h1>
+        <p class="subtitle">Clear prices for spray extraction and steam-assisted premium cleaning. Combine smaller items in one visit.</p>
+      </div>
+      <div class="hero-cta">
+        <p class="cta-label">Book faster</p>
+        <p class="cta-main">Choose items and send a photo</p>
+        <span class="cta-url">betterclean.fi/request-quote.html</span>
+      </div>
+    </section>
+
+    <section class="note-strip">
+      <div class="note"><strong>Minimum</strong><span>69 € for home-service bookings</span></div>
+      <div class="note"><strong>Tampere</strong><span>Travel included inside Tampere</span></div>
+      <div class="note"><strong>Extraction</strong><span>Base clean and moisture extraction</span></div>
+      <div class="note"><strong>Steam upgrade</strong><span>Only used for suitable materials</span></div>
+    </section>
+
+    <section class="content">
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header"><h2>Sofa cleaning prices</h2><span class="tag">Popular: 2-seat sofa 69 €</span></div>
+          <table>
+            <thead><tr><th>Service</th><th>Offer</th><th>Steam-assisted</th></tr></thead>
+            <tbody>
+              <tr><td>Armchair</td><td class="price">49 €</td><td class="price">59 €</td></tr>
+              <tr><td>2-seat sofa</td><td class="price">69 €</td><td class="price">89 €</td></tr>
+              <tr><td>3-seat sofa</td><td class="price">79 €</td><td class="price">99 €</td></tr>
+              <tr><td>4-seat sofa</td><td class="price">109 €</td><td class="price">129 €</td></tr>
+              <tr><td>Divan or small corner sofa</td><td class="price">From 139 €</td><td class="price">From 159 €</td></tr>
+              <tr><td>Large corner sofa, 5-6 seats</td><td class="price">From 169 €</td><td class="price">From 199 €</td></tr>
+              <tr><td>Extra-large or modular sofa</td><td class="price">From 199 €</td><td class="price">From 239 €</td></tr>
+              <tr><td>Sofa-bed sleeping section</td><td class="price">+20 €</td><td class="price">+30 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header light"><h2>Chairs and ottomans</h2><span class="tag">Combine to minimum</span></div>
+          <table class="small-table">
+            <thead><tr><th>Item</th><th>Offer</th><th>Premium</th></tr></thead>
+            <tbody>
+              <tr><td>Small ottoman</td><td class="price">29 €</td><td class="price">39 €</td></tr>
+              <tr><td>Large ottoman</td><td class="price">39 €</td><td class="price">49 €</td></tr>
+              <tr><td>Dining chair, seat only</td><td class="price">15 € each</td><td class="price">19 € each</td></tr>
+              <tr><td>Dining chair, seat and back</td><td class="price">22 € each</td><td class="price">27 € each</td></tr>
+              <tr><td>Office chair</td><td class="price">29 € each</td><td class="price">39 € each</td></tr>
+            </tbody>
+          </table>
+          <div class="fineprint">Small items can be combined in one visit when the total reaches the 69 € minimum booking.</div>
+        </section>
+      </div>
+
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header"><h2>Mattresses and beds</h2><span class="tag">Main surface</span></div>
+          <table class="small-table">
+            <thead><tr><th>Service</th><th>Offer</th><th>Steam-assisted</th></tr></thead>
+            <tbody>
+              <tr><td>Single mattress, 80-90 cm</td><td class="price">69 €</td><td class="price">89 €</td></tr>
+              <tr><td>Medium mattress, 120-140 cm</td><td class="price">79 €</td><td class="price">99 €</td></tr>
+              <tr><td>Double mattress, 160 cm</td><td class="price">89 €</td><td class="price">109 €</td></tr>
+              <tr><td>King-size mattress, 180 cm</td><td class="price">99 €</td><td class="price">119 €</td></tr>
+              <tr><td>Mattress underside, single / double</td><td class="price">+20 € / +30 €</td><td class="price">+30 € / +45 €</td></tr>
+              <tr><td>Upholstered bed base</td><td class="price">From 89 €</td><td class="price">From 109 €</td></tr>
+              <tr><td>Complete continental bed</td><td class="price">From 149 €</td><td class="price">From 179 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header light"><h2>Carpets at home</h2><span class="tag">€/m²</span></div>
+          <table class="small-table">
+            <thead><tr><th>Carpet</th><th>Offer</th><th>Premium</th></tr></thead>
+            <tbody>
+              <tr><td>Flat or low-pile carpet</td><td class="price">9,90 €/m²</td><td class="price">12,90 €/m²</td></tr>
+              <tr><td>Thick-pile or shaggy carpet</td><td class="price">14,90 €/m²</td><td class="price">18,90 €/m²</td></tr>
+              <tr><td>Heavily soiled carpet</td><td class="price">From 17,90 €/m²</td><td class="price">From 21,90 €/m²</td></tr>
+              <tr><td>Wall-to-wall carpet</td><td class="price">From 8,90 €/m²</td><td class="price">From 11,90 €/m²</td></tr>
+              <tr><td>Special stain treatment</td><td class="price">+10-25 €</td><td class="price">+15-35 €</td></tr>
+              <tr><td>Pet odour or accident</td><td class="price">From 20 €</td><td class="price">From 30 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header light"><h2>Examples and add-ons</h2><span class="tag">Better estimate</span></div>
+          <table class="small-table">
+            <tbody>
+              <tr><td>160 x 230 cm standard carpet</td><td class="price">Approx. 69 € minimum</td></tr>
+              <tr><td>200 x 300 cm standard carpet</td><td class="price">69 €</td></tr>
+              <tr><td>200 x 300 cm thick carpet</td><td class="price">Approx. 89 €</td></tr>
+              <tr><td>Extensive pet-hair removal</td><td class="price">20-50 €</td></tr>
+              <tr><td>Exceptional stain treatment</td><td class="price">15-40 €</td></tr>
+              <tr><td>Fabric protection</td><td class="price">29-59 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><h2>When price changes</h2><span class="tag">Confirmed first</span></div>
+          <ul class="rules">
+            <li><span class="dot">1</span><span>Delicate materials, colour-sensitive textiles and memory foam are inspected before cleaning.</span></li>
+            <li><span class="dot">2</span><span>Extra charge may apply for heavy pet hair, odour or exceptionally heavy soil.</span></li>
+            <li><span class="dot">3</span><span>Pirkkala, Kangasala, Nokia, Ylöjärvi and Lempäälä: travel from 15 €.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="bottom-cta">
+        <div>
+          <h3>Ready to book?</h3>
+          <p>Send a photo of the item and choose the service from the table. We confirm the final price before cleaning starts.</p>
+        </div>
+        <div class="button">Get a quote</div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <div>All prices include 25.5% VAT. Final price is confirmed before cleaning begins.</div>
+      <div class="contact"><span>betterclean.fi/textile-cleaning.html</span><span>+358 41 576 9236</span><span>info@betterclean.fi</span></div>
+    </footer>
+  </article>
+
+  <article class="flyer" id="window-fi">
+    <header class="topbar">
+      <div class="logo-card"><img src="../brand_assets/betterclean-logo.png" alt="BetterClean" /></div>
+      <div class="top-meta">
+        <span class="pill">Tampere</span>
+        <span class="pill">ALV 25,5 % mukana</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Ikkunanpesun hinnasto</p>
+        <h1>Selkeät hinnat kotiin, asuntoon ja parvekkeelle</h1>
+        <p class="subtitle">Valitse lähin hintaryhmä ikkunoiden määrän mukaan. Tuntihinta on paras silloin, kun ikkunoita on paljon tai kohde vaihtelee.</p>
+      </div>
+      <div class="hero-cta">
+        <p class="cta-label">Pyydä arvio</p>
+        <p class="cta-main">Kerro ikkunoiden määrä ja asunnon koko</p>
+        <span class="cta-url">betterclean.fi/request-quote.html</span>
+      </div>
+    </section>
+
+    <section class="note-strip">
+      <div class="note"><strong>Tuntihinta</strong><span>69 €/h, minimitilaus 2 h</span></div>
+      <div class="note"><strong>Vähennyksen jälkeen</strong><span>44,85 €/h työn osuudesta</span></div>
+      <div class="note"><strong>Sisältää</strong><span>Lasit, karmit, laudat ja kiskot</span></div>
+      <div class="note"><strong>Lisäpalvelu</strong><span>Parvekelasit alkaen +59 €</span></div>
+    </section>
+
+    <section class="content">
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header"><h2>Ikkunanpesun hinnat</h2><span class="tag">Kotitalousvähennys mahdollinen</span></div>
+          <table>
+            <thead><tr><th>Kohde</th><th>Sopii kun</th><th>Hinta</th></tr></thead>
+            <tbody>
+              <tr><td>Tuntihinta</td><td>Kun ikkunoiden määrä vaihtelee</td><td class="price">69 €/h</td></tr>
+              <tr><td>Kotitalousvähennyksen jälkeen</td><td>Työn osuus, omavastuu huomioiden</td><td class="price">44,85 €/h</td></tr>
+              <tr><td>Pieni asunto</td><td>Enintään 8 ikkunaa</td><td class="price">119-159 €</td></tr>
+              <tr><td>Keskikokoinen koti</td><td>9-16 ikkunaa</td><td class="price">179-229 €</td></tr>
+              <tr><td>Suuri koti</td><td>Yli 16 ikkunaa</td><td class="price">Tarjous</td></tr>
+              <tr><td>Minimitilaus</td><td>Normaali kotikäynti</td><td class="price">2 tuntia</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header light"><h2>Lisät ja tarkennukset</h2><span class="tag">Vältä yllätykset</span></div>
+          <table class="small-table">
+            <thead><tr><th>Lisäpalvelu</th><th>Hinta</th></tr></thead>
+            <tbody>
+              <tr><td>Parvekelasit</td><td class="price">+59 €</td></tr>
+              <tr><td>Parvekeovi tai lisälasit</td><td class="price">Sisältyy arvioon</td></tr>
+              <tr><td>Korkeat tai vaikeapääsyiset ikkunat</td><td class="price">+50 €</td></tr>
+              <tr><td>Tarrat, maalijäljet tai rakennuspöly</td><td class="price">Arvio</td></tr>
+              <tr><td>Työ Tampereen ulkopuolella</td><td class="price">Alkaen 15 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header light"><h2>Mitä pesu sisältää</h2><span class="tag">Normaali käynti</span></div>
+          <ul class="rules">
+            <li><span class="dot">1</span><span>Sisä- ja ulkolasit, kun ne ovat turvallisesti saavutettavissa.</span></li>
+            <li><span class="dot">2</span><span>Karmit, ikkunalaudat, kiskot ja parvekeoven lasit.</span></li>
+            <li><span class="dot">3</span><span>Ammattilaisen välineet ja pesuaineet sisältyvät palveluun.</span></li>
+            <li><span class="dot">4</span><span>Työ tehdään siististi ilman, että asiakkaan tarvitsee hankkia tarvikkeita.</span></li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><h2>Kun valitset hintaa</h2><span class="tag">Nopea ohje</span></div>
+          <ul class="rules">
+            <li><span class="dot">1</span><span>Asunnon hinta 119-159 € toimii parhaiten pieniin kerrostaloasuntoihin.</span></li>
+            <li><span class="dot">2</span><span>Keskikokoisen kodin arvio 179-229 € sopii useimpiin omakotitaloihin.</span></li>
+            <li><span class="dot">3</span><span>Jos ikkunoita on paljon, valitse tuntihinta ja lähetä kuvat tai määrä.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="panel full-width">
+        <div class="panel-header light"><h2>Kotitalousvähennys</h2><span class="tag">Työn osuudesta</span></div>
+        <div class="fineprint">Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä. Omavastuu 150 €/hlö/vuosi. Materiaalit ja matkakulut eivät kuulu vähennykseen.</div>
+      </section>
+
+      <section class="bottom-cta">
+        <div>
+          <h3>Varaa ikkunanpesu nopeasti</h3>
+          <p>Lähetä osoite, ikkunoiden määrä, parvekelasien määrä ja mahdolliset kuvat. Vahvistamme hinnan ennen käyntiä.</p>
+        </div>
+        <div class="button">Pyydä tarjous</div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <div>Hinnat sisältävät ALV 25,5 %. Lopullinen hinta riippuu ikkunoiden määrästä, avautumistavasta ja lisäalueista.</div>
+      <div class="contact"><span>betterclean.fi/window-cleaning.html</span><span>+358 41 576 9236</span><span>info@betterclean.fi</span></div>
+    </footer>
+  </article>
+
+  <article class="flyer" id="window-en">
+    <header class="topbar">
+      <div class="logo-card"><img src="../brand_assets/betterclean-logo.png" alt="BetterClean" /></div>
+      <div class="top-meta">
+        <span class="pill">Tampere</span>
+        <span class="pill">25.5% VAT included</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Window cleaning price list</p>
+        <h1>Clear prices for apartments, homes and balconies</h1>
+        <p class="subtitle">Choose the closest price group by window count. Hourly pricing works best when there are many windows or the scope varies.</p>
+      </div>
+      <div class="hero-cta">
+        <p class="cta-label">Request estimate</p>
+        <p class="cta-main">Send window count and home size</p>
+        <span class="cta-url">betterclean.fi/request-quote.html</span>
+      </div>
+    </section>
+
+    <section class="note-strip">
+      <div class="note"><strong>Hourly rate</strong><span>69 €/h, minimum 2 h</span></div>
+      <div class="note"><strong>After deduction</strong><span>44,85 €/h on labour cost</span></div>
+      <div class="note"><strong>Includes</strong><span>Glass, frames, sills and tracks</span></div>
+      <div class="note"><strong>Add-on</strong><span>Balcony glazing from +59 €</span></div>
+    </section>
+
+    <section class="content">
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header"><h2>Window cleaning prices</h2><span class="tag">Tax deduction eligible</span></div>
+          <table>
+            <thead><tr><th>Service</th><th>Best for</th><th>Price</th></tr></thead>
+            <tbody>
+              <tr><td>Hourly rate</td><td>When window count varies</td><td class="price">69 €/h</td></tr>
+              <tr><td>After household tax deduction</td><td>Labour share, deductible considered</td><td class="price">44,85 €/h</td></tr>
+              <tr><td>Small apartment</td><td>Up to 8 windows</td><td class="price">119-159 €</td></tr>
+              <tr><td>Medium home</td><td>9-16 windows</td><td class="price">179-229 €</td></tr>
+              <tr><td>Large home</td><td>More than 16 windows</td><td class="price">Quote</td></tr>
+              <tr><td>Minimum booking</td><td>Normal home visit</td><td class="price">2 hours</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header light"><h2>Add-ons and details</h2><span class="tag">Avoid surprises</span></div>
+          <table class="small-table">
+            <thead><tr><th>Add-on</th><th>Price</th></tr></thead>
+            <tbody>
+              <tr><td>Balcony glazing</td><td class="price">+59 €</td></tr>
+              <tr><td>Balcony door or extra glass</td><td class="price">Included in estimate</td></tr>
+              <tr><td>High or hard-to-reach windows</td><td class="price">+50 €</td></tr>
+              <tr><td>Stickers, paint marks or renovation dust</td><td class="price">Estimate</td></tr>
+              <tr><td>Work outside Tampere</td><td class="price">From 15 €</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="section-grid">
+        <section class="panel">
+          <div class="panel-header light"><h2>What is included</h2><span class="tag">Normal visit</span></div>
+          <ul class="rules">
+            <li><span class="dot">1</span><span>Interior and exterior glass where safely accessible.</span></li>
+            <li><span class="dot">2</span><span>Frames, sills, tracks and balcony door glass.</span></li>
+            <li><span class="dot">3</span><span>Professional tools and cleaning products are included.</span></li>
+            <li><span class="dot">4</span><span>Clean, tidy work without requiring the customer to provide supplies.</span></li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><h2>How to choose</h2><span class="tag">Quick guide</span></div>
+          <ul class="rules">
+            <li><span class="dot">1</span><span>Apartment price 119-159 € fits most small apartment homes.</span></li>
+            <li><span class="dot">2</span><span>Medium home estimate 179-229 € fits many detached houses.</span></li>
+            <li><span class="dot">3</span><span>If there are many windows, use the hourly rate and send photos or count.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="panel full-width">
+        <div class="panel-header light"><h2>Household tax deduction</h2><span class="tag">Labour cost</span></div>
+        <div class="fineprint">Household tax deduction: 35% of labour costs when purchased from a registered company. Personal deductible: 150 €/person/year. Materials and travel costs are not deductible.</div>
+      </section>
+
+      <section class="bottom-cta">
+        <div>
+          <h3>Book window cleaning quickly</h3>
+          <p>Send your address, window count, balcony glazing count and possible photos. We confirm the price before the visit.</p>
+        </div>
+        <div class="button">Get a quote</div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <div>Prices include 25.5% VAT. Final price depends on window count, opening style and added areas.</div>
+      <div class="contact"><span>betterclean.fi/window-cleaning.html</span><span>+358 41 576 9236</span><span>info@betterclean.fi</span></div>
+    </footer>
+  </article>
+</body>
+</html>
