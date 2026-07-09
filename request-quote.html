@@ -391,6 +391,19 @@
       top: 12px;
       right: 12px;
     }
+    /* Headline rate, top-left. Offset past the selection dot so the two never
+       overlap once a card is active. */
+    .frequency-rate {
+      position: absolute;
+      top: 11px;
+      left: 40px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--green);
+      white-space: nowrap;
+    }
     .frequency-check {
       position: absolute;
       top: 14px;
@@ -833,43 +846,47 @@
                 <div class="choice-grid frequency-grid" id="frequencyOptions" role="radiogroup" aria-labelledby="frequencyLegend" aria-describedby="frequencyHelp">
                 <button type="button" class="choice-card" id="freq-weekly" role="radio" aria-checked="false" aria-describedby="freq-weekly-desc" onclick="selectFrequency('weekly')" onkeydown="handleFrequencyKeydown(event, 'weekly')">
                   <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">49 €/h</span>
                   <span class="mini-tag" data-en="Best hourly rate" data-fi="Paras tuntihinta">Paras tuntihinta</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every week" data-fi="Joka viikko">Joka viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-weekly-desc" data-en="Best for busy households that want continuous calm" data-fi="Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta">Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta</p>
-                      <p class="offer-line" data-en="49 €/h, every visit" data-fi="49 €/h, joka käynti">49 €/h, joka käynti</p>
+                      <p class="offer-line" data-en="→ 31,85 €/h after deduction" data-fi="→ 31,85 €/h vähennyksen jälkeen">→ 31,85 €/h vähennyksen jälkeen</p>
                     </div>
                   </div>
                 </button>
                 <button type="button" class="choice-card" id="freq-biweekly" role="radio" aria-checked="false" aria-describedby="freq-biweekly-desc" onclick="selectFrequency('biweekly')" onkeydown="handleFrequencyKeydown(event, 'biweekly')">
                   <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">55 €/h</span>
                   <span class="mini-tag" data-en="Most popular" data-fi="Suosituin">Suosituin</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every second week" data-fi="Joka toinen viikko">Joka toinen viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-biweekly-desc" data-en="A balanced rhythm for most premium home cleaning clients" data-fi="Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille">Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille</p>
-                      <p class="offer-line" data-en="55 €/h, every visit" data-fi="55 €/h, joka käynti">55 €/h, joka käynti</p>
+                      <p class="offer-line" data-en="→ 35,75 €/h after deduction" data-fi="→ 35,75 €/h vähennyksen jälkeen">→ 35,75 €/h vähennyksen jälkeen</p>
                     </div>
                   </div>
                 </button>
                 <button type="button" class="choice-card" id="freq-monthly" role="radio" aria-checked="false" aria-describedby="freq-monthly-desc" onclick="selectFrequency('monthly')" onkeydown="handleFrequencyKeydown(event, 'monthly')">
                   <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">59 €/h</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every four weeks" data-fi="Joka neljäs viikko">Joka neljäs viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-monthly-desc" data-en="Best when you mainly want a thorough monthly clean" data-fi="Paras silloin, kun haluat pääasiassa perusteellisen kuukausittaisen siivouksen">Paras silloin, kun haluat pääasiassa perusteellisen kuukausittaisen siivouksen</p>
-                      <p class="offer-line" data-en="59 €/h, every visit" data-fi="59 €/h, joka käynti">59 €/h, joka käynti</p>
+                      <p class="offer-line" data-en="→ 38,35 €/h after deduction" data-fi="→ 38,35 €/h vähennyksen jälkeen">→ 38,35 €/h vähennyksen jälkeen</p>
                     </div>
                   </div>
                 </button>
                 <button type="button" class="choice-card" id="freq-once" role="radio" aria-checked="false" aria-describedby="freq-once-desc" onclick="selectFrequency('once')" onkeydown="handleFrequencyKeydown(event, 'once')">
                   <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">69 €/h</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="One time only" data-fi="Vain kerran">Vain kerran</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-once-desc" data-en="Ideal if you want to try BetterClean first or need a single support visit" data-fi="Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin">Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin</p>
-                      <p class="offer-line" data-en="69 €/h, no commitment" data-fi="69 €/h, ei sitoutumista">69 €/h, ei sitoutumista</p>
+                      <p class="offer-line" data-en="→ 44,85 €/h after deduction" data-fi="→ 44,85 €/h vähennyksen jälkeen">→ 44,85 €/h vähennyksen jälkeen</p>
                     </div>
                   </div>
                 </button>
