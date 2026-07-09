@@ -52,25 +52,15 @@ const PRICES = {
 /**
  * Essential Home Care rate ladder (€/h, incl VAT).
  *
- * Commitment buys a lower rate. Weekly is the cheapest hour we sell on a
- * contract; a walk-in one-time clean pays the most.
+ * Commitment buys a cheaper hour, and that is the entire incentive. Every
+ * visit bills at this rate, including the first one. A new customer's first
+ * visit is longer, because the home has not been maintained yet, but it is
+ * not dearer. There is deliberately no second rate table here.
  */
 const HOME_RATE_BY_FREQUENCY = {
   weekly:   49,
   biweekly: 55,
   monthly:  59,   // every four weeks
-  once:     PRICES.oneTime,
-};
-
-/**
- * The first visit is a longer reset clean. Weekly and bi-weekly customers are
- * billed for it at their own contract rate. Four-weekly customers pay the
- * one-time rate for that first visit, then drop to their contract rate.
- */
-const RESET_VISIT_RATE_BY_FREQUENCY = {
-  weekly:   HOME_RATE_BY_FREQUENCY.weekly,
-  biweekly: HOME_RATE_BY_FREQUENCY.biweekly,
-  monthly:  PRICES.oneTime,
   once:     PRICES.oneTime,
 };
 

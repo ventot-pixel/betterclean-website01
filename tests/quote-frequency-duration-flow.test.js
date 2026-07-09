@@ -12,7 +12,7 @@ const REAL_PRICING = (() => {
   vm.createContext(ctx);
   vm.runInContext(
     fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
-      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY, RESET_VISIT_RATE_BY_FREQUENCY };',
+      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY };',
     ctx
   );
   return ctx.__p;
@@ -227,7 +227,6 @@ function loadQuoteFormApi() {
     // the price table is exactly how 49/59/79/59 outlived the real ladder.
     PRICES: REAL_PRICING.PRICES,
     HOME_RATE_BY_FREQUENCY: REAL_PRICING.HOME_RATE_BY_FREQUENCY,
-    RESET_VISIT_RATE_BY_FREQUENCY: REAL_PRICING.RESET_VISIT_RATE_BY_FREQUENCY,
     URLSearchParams,
     console
   };
@@ -380,7 +379,7 @@ assert.match(
 );
 assert.match(
   requestQuoteHtml,
-  /billed for it at their own contract rate, not the one time rate/,
+  /It is billed at your normal contract rate, like every visit/,
   'the reset explanation states that weekly and bi-weekly pay their contract rate for the first visit'
 );
 assert.match(

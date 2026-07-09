@@ -3,9 +3,10 @@
  *
  *   weekly 49 · bi-weekly 55 · every four weeks 59 · one-time 69
  *
- * The first visit is a longer reset clean. Weekly and bi-weekly are billed for
- * it at their own contract rate; four-weekly pays the one-time rate for the
- * first visit only.
+ * Commitment buys a cheaper hour. That is the whole incentive -- there is no
+ * separate reset-visit rate and no promotion. A new customer's first visit is
+ * simply longer, and is billed at their normal contract rate like every other
+ * visit.
  *
  * Move-out stays 59 €/h and must NOT move when the one-time home rate does --
  * both were 59 before this change, which is why they are asserted apart.
@@ -20,10 +21,10 @@ const context = {};
 vm.createContext(context);
 vm.runInContext(
   fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
-    '\nthis.__api = { PRICES, HOME_RATE_BY_FREQUENCY, RESET_VISIT_RATE_BY_FREQUENCY };',
+    '\nthis.__api = { PRICES, HOME_RATE_BY_FREQUENCY, hasResetTable: typeof RESET_VISIT_RATE_BY_FREQUENCY !== "undefined" };',
   context
 );
-const { PRICES, HOME_RATE_BY_FREQUENCY, RESET_VISIT_RATE_BY_FREQUENCY } = context.__api;
+const { PRICES, HOME_RATE_BY_FREQUENCY, hasResetTable } = context.__api;
 
 // ── The ladder ─────────────────────────────────────────────────────────────
 assert.strictEqual(HOME_RATE_BY_FREQUENCY.weekly, 49, 'weekly is 49 €/h');
@@ -40,22 +41,12 @@ for (let i = 1; i < ladder.length; i++) {
   );
 }
 
-// ── The reset visit ────────────────────────────────────────────────────────
-assert.strictEqual(RESET_VISIT_RATE_BY_FREQUENCY.weekly, 49, 'weekly reset billed at its contract rate');
-assert.strictEqual(RESET_VISIT_RATE_BY_FREQUENCY.biweekly, 55, 'bi-weekly reset billed at its contract rate');
-assert.strictEqual(RESET_VISIT_RATE_BY_FREQUENCY.monthly, 69, 'four-weekly reset billed at the one-time rate');
-assert.strictEqual(RESET_VISIT_RATE_BY_FREQUENCY.once, 69, 'a one-time clean is simply the one-time rate');
-
-// Weekly and bi-weekly get no markup on the reset; four-weekly does.
-for (const f of ['weekly', 'biweekly']) {
-  assert.strictEqual(
-    RESET_VISIT_RATE_BY_FREQUENCY[f], HOME_RATE_BY_FREQUENCY[f],
-    `${f} pays no reset markup`
-  );
-}
-assert.ok(
-  RESET_VISIT_RATE_BY_FREQUENCY.monthly > HOME_RATE_BY_FREQUENCY.monthly,
-  'four-weekly pays a reset markup, which is what makes weekly/bi-weekly worth choosing'
+// ── No reset-visit pricing ─────────────────────────────────────────────────
+// The first visit is longer, not dearer. If a second rate table reappears,
+// so does the "is my first visit a different price?" confusion.
+assert.strictEqual(
+  hasResetTable, false,
+  'there must be no separate reset-visit rate table; a visit costs the contract rate'
 );
 
 // ── Rates that must NOT have moved ─────────────────────────────────────────
@@ -66,6 +57,12 @@ assert.strictEqual(PRICES.postReno, 79, 'post-renovation stays 79 €/h');
 assert.notStrictEqual(
   PRICES.oneTime, PRICES.moveOut,
   'one-time home and move-out were both 59; they must no longer be equal'
+);
+
+// Committing to any schedule must beat paying one-time.
+assert.ok(
+  HOME_RATE_BY_FREQUENCY.monthly < HOME_RATE_BY_FREQUENCY.once,
+  'four-weekly must be strictly cheaper than one-time, with no first-visit catch'
 );
 
 // The advertised "alkaen" rate must be the cheapest rung.
@@ -80,4 +77,4 @@ assert.strictEqual(PRICES.oneTimeAfterTax, after(69), 'one-time after deduction 
 assert.strictEqual(PRICES.recurringAfterTax, after(49), 'weekly after deduction is 31,85');
 assert.strictEqual(PRICES.moveOutAfterTax, after(59), 'move-out after deduction is 38,35');
 
-console.log('home-rate-ladder: OK (49 / 55 / 59 / 69; reset weekly 49, biweekly 55, 4-weekly 69)');
+console.log('home-rate-ladder: OK (49 / 55 / 59 / 69, no reset-visit pricing)');
