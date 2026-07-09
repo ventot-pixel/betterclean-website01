@@ -153,7 +153,8 @@
       transition: background 0.2s, transform 0.15s; letter-spacing: -0.01em;
       box-shadow: 0 4px 16px rgba(36,122,36,0.28); text-decoration: none; border: none; cursor: pointer;
     }
-    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary:not(:disabled):hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
     .btn-outline {
       border: 2px solid var(--green); color: var(--green); font-family: 'Sora', sans-serif;
       font-weight: 700; padding: 12px 26px; border-radius: 10px; display: inline-block;
