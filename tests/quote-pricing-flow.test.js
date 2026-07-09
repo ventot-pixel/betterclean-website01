@@ -31,11 +31,19 @@ assert.match(
   'review-pricing links use the draft-saving handler'
 );
 
+// The reset visit is no longer a promotion, so there is no offer box, no
+// expiry date and no customer cap. It states the first-visit rate instead.
 assert.match(
   requestQuoteHtml,
-  /id="freeResetOfferNote"/,
-  'request quote page has a first-visit reset offer note'
+  /id="firstVisitRateNote"/,
+  'request quote page states the first-visit hourly rate'
 );
+for (const dead of ['freeResetOfferNote', 'firstVisitFreeNote', '30.9.2026', 'norm. 59']) {
+  assert.ok(
+    !requestQuoteHtml.includes(dead),
+    `expiring promo remnant "${dead}" must be gone`
+  );
+}
 
 assert.match(
   pricingHtml,

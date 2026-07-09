@@ -375,8 +375,13 @@ assert.match(
 );
 assert.match(
   requestQuoteHtml,
-  /New recurring customers begin with an initial reset visit\. Once the home reaches a consistent maintenance level, future visits can usually be shorter\./,
+  /id="recurringExplanation"/,
   'recurring reset explanation is present'
+);
+assert.match(
+  requestQuoteHtml,
+  /billed for it at their own contract rate, not the one time rate/,
+  'the reset explanation states that weekly and bi-weekly pay their contract rate for the first visit'
 );
 assert.match(
   requestQuoteHtml,

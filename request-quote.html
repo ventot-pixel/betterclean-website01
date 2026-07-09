@@ -833,23 +833,23 @@
                 <div class="choice-grid frequency-grid" id="frequencyOptions" role="radiogroup" aria-labelledby="frequencyLegend" aria-describedby="frequencyHelp">
                 <button type="button" class="choice-card" id="freq-weekly" role="radio" aria-checked="false" aria-describedby="freq-weekly-desc" onclick="selectFrequency('weekly')" onkeydown="handleFrequencyKeydown(event, 'weekly')">
                   <span class="frequency-check" aria-hidden="true"></span>
-                  <span class="mini-tag" aria-hidden="true" data-en="Best value" data-fi="Paras arvo">Paras arvo</span>
+                  <span class="mini-tag" data-en="Best hourly rate" data-fi="Paras tuntihinta">Paras tuntihinta</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every week" data-fi="Joka viikko">Joka viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-weekly-desc" data-en="Best for busy households that want continuous calm" data-fi="Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta">Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta</p>
-                      <p class="offer-line" data-en="Reset clean at contract rate 49 €/h (norm. 59 €/h)" data-fi="Aloitussiivous sopimushintaan 49 €/h (norm. 59 €/h)">Aloitussiivous sopimushintaan 49 €/h (norm. 59 €/h)</p>
+                      <p class="offer-line" data-en="49 €/h, including the first reset clean" data-fi="49 €/h, myös ensimmäinen nollaussiivous">49 €/h, myös ensimmäinen nollaussiivous</p>
                     </div>
                   </div>
                 </button>
                 <button type="button" class="choice-card" id="freq-biweekly" role="radio" aria-checked="false" aria-describedby="freq-biweekly-desc" onclick="selectFrequency('biweekly')" onkeydown="handleFrequencyKeydown(event, 'biweekly')">
                   <span class="frequency-check" aria-hidden="true"></span>
-                  <span class="mini-tag" aria-hidden="true" data-en="Most popular" data-fi="Suosituin">Suosituin</span>
+                  <span class="mini-tag" data-en="Most popular" data-fi="Suosituin">Suosituin</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every second week" data-fi="Joka toinen viikko">Joka toinen viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-biweekly-desc" data-en="A balanced rhythm for most premium home cleaning clients" data-fi="Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille">Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille</p>
-                      <p class="offer-line" data-en="Reset clean at contract rate 49 €/h (norm. 59 €/h)" data-fi="Aloitussiivous sopimushintaan 49 €/h (norm. 59 €/h)">Aloitussiivous sopimushintaan 49 €/h (norm. 59 €/h)</p>
+                      <p class="offer-line" data-en="55 €/h, including the first reset clean" data-fi="55 €/h, myös ensimmäinen nollaussiivous">55 €/h, myös ensimmäinen nollaussiivous</p>
                     </div>
                   </div>
                 </button>
@@ -859,6 +859,7 @@
                     <div>
                       <strong data-en="Every four weeks" data-fi="Joka neljäs viikko">Joka neljäs viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-monthly-desc" data-en="Best when you mainly want a professional reset visit" data-fi="Paras silloin, kun haluat pääasiassa ammattilaisen tekemän nollauskäynnin">Paras silloin, kun haluat pääasiassa ammattilaisen tekemän nollauskäynnin</p>
+                      <p class="offer-line" data-en="59 €/h. The first reset clean is billed at 69 €/h" data-fi="59 €/h. Ensimmäinen nollaussiivous laskutetaan hintaan 69 €/h">59 €/h. Ensimmäinen nollaussiivous laskutetaan hintaan 69 €/h</p>
                     </div>
                   </div>
                 </button>
@@ -868,6 +869,7 @@
                     <div>
                       <strong data-en="One time only" data-fi="Vain kerran">Vain kerran</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-once-desc" data-en="Ideal if you want to try BetterClean first or need a single support visit" data-fi="Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin">Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin</p>
+                      <p class="offer-line" data-en="69 €/h, no commitment" data-fi="69 €/h, ei sitoutumista">69 €/h, ei sitoutumista</p>
                     </div>
                   </div>
                 </button>
@@ -886,11 +888,7 @@
                 <select id="cleanDuration" onchange="handleDurationChange()" aria-describedby="durationPersonHoursHelp durationWarning" disabled></select>
               </div>
               <p id="durationPersonHoursHelp" class="field-help duration-helper duration-grid-span" hidden data-en="Duration is shown in person-hours. For example, four person-hours may mean one cleaner for four hours or two cleaners for two hours." data-fi="Kesto näytetään henkilötunteina. Esimerkiksi neljä henkilötuntia voi tarkoittaa yhtä siivoojaa neljäksi tunniksi tai kahta siivoojaa kahdeksi tunniksi.">Kesto näytetään henkilötunteina. Esimerkiksi neljä henkilötuntia voi tarkoittaa yhtä siivoojaa neljäksi tunniksi tai kahta siivoojaa kahdeksi tunniksi.</p>
-              <p id="recurringExplanation" class="duration-recommendation recurring-explanation-callout duration-grid-span" hidden data-en="New recurring customers begin with an initial reset visit. Once the home reaches a consistent maintenance level, future visits can usually be shorter." data-fi="Uudet toistuvat asiakkaat aloittavat nollauskäynnillä. Kun koti on saatu tasaiselle ylläpitotasolle, tulevat käynnit voivat yleensä olla lyhyempiä.">Uudet toistuvat asiakkaat aloittavat nollauskäynnillä. Kun koti on saatu tasaiselle ylläpitotasolle, tulevat käynnit voivat yleensä olla lyhyempiä.</p>
-              <div class="free-reset-offer duration-grid-span" id="freeResetOfferNote" hidden>
-                <strong data-en="Book now: your reset clean at the contract rate 49 €/h (norm. 59 €/h)" data-fi="Varaa nyt: aloitussiivous sopimushintaan 49 €/h (norm. 59 €/h)">Varaa nyt: aloitussiivous sopimushintaan 49 €/h (norm. 59 €/h)</strong>
-                <span data-en="You save from the very first visit. Only 4 new contract customers per month — valid until 30.9.2026." data-fi="Säästät heti ensimmäisestä käynnistä alkaen. Vain 4 uutta sopimusasiakasta kuukaudessa — voimassa 30.9.2026 asti.">Säästät heti ensimmäisestä käynnistä alkaen. Vain 4 uutta sopimusasiakasta kuukaudessa — voimassa 30.9.2026 asti.</span>
-              </div>
+              <p id="recurringExplanation" class="duration-recommendation recurring-explanation-callout duration-grid-span" hidden data-en="Your first visit is a longer reset clean. Weekly and every-second-week customers are billed for it at their own contract rate, not the one time rate. Once the home reaches a consistent maintenance level, ongoing visits are shorter." data-fi="Ensimmäinen käynti on pidempi nollaussiivous. Viikoittain ja joka toinen viikko siivoavilta se laskutetaan heidän omaan sopimushintaansa, ei kertahintaan. Kun koti on saatu tasaiselle ylläpitotasolle, jatkokäynnit ovat lyhyempiä.">Ensimmäinen käynti on pidempi nollaussiivous. Viikoittain ja joka toinen viikko siivoavilta se laskutetaan heidän omaan sopimushintaansa, ei kertahintaan. Kun koti on saatu tasaiselle ylläpitotasolle, jatkokäynnit ovat lyhyempiä.</p>
               <div class="recommendation-grid duration-grid-span" id="recommendationGrid" aria-live="polite" hidden>
                 <div id="oneTimeRecommendation" class="recommendation-item">
                   <span data-en="Recommended visit duration" data-fi="Suositeltu käynnin kesto">Suositeltu käynnin kesto</span>
@@ -900,7 +898,7 @@
                   <span data-en="Recommended first visit" data-fi="Suositeltu ensimmäinen käynti">Suositeltu ensimmäinen käynti</span>
                   <strong id="firstVisitDurationValue">-</strong>
                   <p data-en="Initial reset cleaning" data-fi="Alkutilanteen nollauskäynti">Alkutilanteen nollauskäynti</p>
-                  <p class="offer-line" id="firstVisitFreeNote" hidden data-en="49 €/h — norm. 59 €/h" data-fi="49 €/h — norm. 59 €/h">49 €/h — norm. 59 €/h</p>
+                  <p class="offer-line" id="firstVisitRateNote" hidden></p>
                 </div>
                 <div id="ongoingVisitRecommendation" class="recommendation-item">
                   <span data-en="Recommended ongoing visits" data-fi="Suositellut jatkokäynnit">Suositellut jatkokäynnit</span>
@@ -1913,7 +1911,8 @@
       extrasLabels: getExtrasLabels(lang),
       estimatedTotal: formatPriceFi(calculateEstimate()),
       estimatedAfterHouseholdDeduction: formatPriceFi(calculateEstimateAfterHouseholdDeduction()),
-      freeResetOffer: bookingState.selectedServiceType === 'home' && ['weekly', 'biweekly'].includes(bookingState.selectedFrequency)
+      firstVisitRate: getFirstVisitRate(bookingState.selectedFrequency),
+      contractRate: getContractRate(bookingState.selectedFrequency)
     };
   }
 
@@ -2263,11 +2262,23 @@
       document.querySelectorAll('.optional-static').forEach(el => { el.hidden = true; });
     }
 
-    const offerActive = service === 'home' && ['weekly', 'biweekly'].includes(bookingState.selectedFrequency);
-    const offerNote = document.getElementById('freeResetOfferNote');
-    if (offerNote) offerNote.hidden = !offerActive;
-    const firstVisitFree = document.getElementById('firstVisitFreeNote');
-    if (firstVisitFree) firstVisitFree.hidden = !offerActive;
+    // Say plainly what the first visit costs. For weekly and bi-weekly that is
+    // their contract rate; for four-weekly it is the one-time rate.
+    const firstVisitRateNote = document.getElementById('firstVisitRateNote');
+    if (firstVisitRateNote) {
+      const freq = bookingState.selectedFrequency;
+      const show = service === 'home' && isRecurringFrequency(freq);
+      firstVisitRateNote.hidden = !show;
+      if (show) {
+        const rate = getFirstVisitRate(freq);
+        const contract = getContractRate(freq);
+        firstVisitRateNote.textContent = rate === contract
+          ? rate + ' €/h'
+          : (lang === 'fi'
+              ? rate + ' €/h, sen jälkeen ' + contract + ' €/h'
+              : rate + ' €/h, then ' + contract + ' €/h');
+      }
+    }
   }
 
   function refreshUi() {
@@ -2324,7 +2335,10 @@
       (lang === 'fi' ? 'Lisäpalvelut: ' : 'Additional services: ') + extrasText,
       (lang === 'fi' ? 'Arvioitu yhteensä: ' : 'Estimated total: ') + bookingPayload.estimatedTotal,
       (lang === 'fi' ? 'Arvio 35 % kotitalousvähennyksen jälkeen: ' : 'Estimate after 35% household deduction: ') + bookingPayload.estimatedAfterHouseholdDeduction,
-      bookingPayload.freeResetOffer ? (lang === 'fi' ? 'Etu: Aloitussiivous sopimushintaan 49 €/h (norm. 59 €/h) — viikko/2 vk -tarjous, voimassa 30.9.2026' : 'Offer: Reset clean at contract rate 49 €/h (norm. 59 €/h) — weekly/bi-weekly offer valid until 30.9.2026') : null,
+      (lang === 'fi' ? 'Tuntihinta: ' : 'Hourly rate: ') +
+        (bookingPayload.firstVisitRate === bookingPayload.contractRate
+          ? bookingPayload.firstVisitRate + ' €/h'
+          : bookingPayload.firstVisitRate + ' €/h ' + (lang === 'fi' ? '(1. käynti), sen jälkeen ' : '(first visit), then ') + bookingPayload.contractRate + ' €/h'),
       (lang === 'fi' ? 'Osoite: ' : 'Address: ') + (bookingPayload.address || '-'),
       (lang === 'fi' ? 'Postinumero: ' : 'Postcode: ') + (bookingPayload.postcode || '-'),
       (lang === 'fi' ? 'Toivottu aika: ' : 'Preferred time: ') + (bookingPayload.slot || '-'),
