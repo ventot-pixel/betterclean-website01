@@ -161,7 +161,6 @@ function createDocumentStub() {
     'durationWarning',
     'durationRecommendedLabel',
     'bookingStep1Continue',
-    'pricingReviewLink',
     'bookingPanel',
     'inquiryPanel',
     'bookingModeBtn',

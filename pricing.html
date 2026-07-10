@@ -515,46 +515,6 @@
     /* ── Section divider ── */
     .section-divider { border: none; border-top: 1px solid rgba(36,122,36,0.12); margin: 8px 0 0; }
 
-    /* ── Quote resume bar ── */
-    .quote-resume-bar {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      width: min(920px, calc(100% - 28px));
-      z-index: 80;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      background: #ffffff;
-      border: 1px solid rgba(36,122,36,0.22);
-      border-radius: 10px;
-      box-shadow: 0 20px 52px rgba(13,24,13,0.18);
-      padding: 14px 16px;
-    }
-    .quote-resume-bar[hidden] { display: none; }
-    .quote-resume-copy { min-width: 0; }
-    .quote-resume-title {
-      display: block;
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      color: var(--dark);
-      letter-spacing: 0;
-      margin-bottom: 3px;
-    }
-    .quote-resume-summary {
-      color: #486048;
-      font-size: 0.92rem;
-      line-height: 1.45;
-    }
-    .quote-resume-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
     /* ── Animations ── */
     [data-lang] { transition: opacity 0.2s; }
 
@@ -564,9 +524,6 @@
       .card-price { padding: 14px 20px 20px; }
       .notes-box { padding: 20px; }
       .faq-grid { grid-template-columns: 1fr; }
-      .quote-resume-bar { align-items: stretch; flex-direction: column; bottom: 10px; }
-      .quote-resume-actions { width: 100%; }
-      .quote-resume-actions a { flex: 1; text-align: center; padding-left: 12px; padding-right: 12px; }
     }
 
     /* ── Mobile nav ── */
@@ -616,17 +573,6 @@
     <a href="request-quote.html" class="btn-primary mobile-cta" onclick="closeMobileNav()" data-en="Request a Quote" data-fi="Pyydä Tarjous">Pyydä Tarjous</a>
   </div>
 </nav>
-
-<div class="quote-resume-bar" id="quoteResumeBar" hidden>
-  <div class="quote-resume-copy">
-    <strong class="quote-resume-title" id="quoteResumeTitle" data-en="Continue your cleaning request" data-fi="Jatka siivouspyyntöä">Jatka siivouspyyntöä</strong>
-    <p class="quote-resume-summary" id="quoteResumeSummary"></p>
-  </div>
-  <div class="quote-resume-actions">
-    <a href="request-quote.html?resume=booking&step=1" class="btn-outline" id="quoteResumeEdit" data-en="Edit details" data-fi="Muokkaa tietoja">Muokkaa tietoja</a>
-    <a href="request-quote.html?resume=booking&step=2" class="btn-primary" id="quoteResumeContinue" data-en="Continue to date &amp; area" data-fi="Jatka ajankohtaan &amp; alueeseen">Jatka ajankohtaan &amp; alueeseen</a>
-  </div>
-</div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero-section-page">
@@ -1387,7 +1333,6 @@
 <!-- ═══════════════════════ LANGUAGE SCRIPT ═══════════════════════ -->
 <script>
   let currentLang = 'fi';
-  const QUOTE_DRAFT_KEY = 'bettercleanQuoteDraftV1';
 
   function setLang(lang) {
     currentLang = lang;
@@ -1431,46 +1376,7 @@
     document.getElementById('hamburger').classList.remove('open');
   }
 
-  function readQuoteDraftFromSession() {
-    try {
-      return JSON.parse(sessionStorage.getItem(QUOTE_DRAFT_KEY) || 'null');
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function getSavedQuoteLanguage() {
-    const draft = readQuoteDraftFromSession();
-    return draft && draft.language ? draft.language : '';
-  }
-
-  function hydrateQuoteResumeBar() {
-    const draft = readQuoteDraftFromSession();
-    const bar = document.getElementById('quoteResumeBar');
-    if (!bar || !draft) return;
-
-    const booking = draft.booking || {};
-    const mode = draft.mode || 'booking';
-    const summaryItems = [
-      booking.sizeLabel,
-      booking.duration ? booking.duration + 'h' : '',
-      booking.frequencyLabel,
-      Array.isArray(booking.extrasLabels) && booking.extrasLabels.length ? booking.extrasLabels.join(', ') : '',
-      booking.estimatedTotal
-    ].filter(Boolean);
-
-    document.getElementById('quoteResumeSummary').textContent = summaryItems.join(' · ');
-    document.getElementById('quoteResumeEdit').href = mode === 'inquiry'
-      ? 'request-quote.html?resume=inquiry'
-      : 'request-quote.html?resume=booking&step=1';
-    document.getElementById('quoteResumeContinue').href = mode === 'inquiry'
-      ? 'request-quote.html?resume=inquiry'
-      : 'request-quote.html?resume=booking&step=2';
-    bar.hidden = false;
-  }
-
-  setLang(getSavedQuoteLanguage() || 'fi');
-  hydrateQuoteResumeBar();
+  setLang('fi');
 </script>
 
 

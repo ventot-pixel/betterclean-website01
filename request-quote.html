@@ -715,6 +715,7 @@
 
     .hidden-panel { display: none; }
     .step-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .step-actions.end { justify-content: flex-end; }
     .success-box {
       display: none;
       margin-top: 18px;
@@ -1011,14 +1012,9 @@
             <button class="intent-card quote-route" id="inquiryModeBtn" type="button" onclick="switchToInquiry()">
               <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?">Tarvitsetko apua?</span>
               <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin">Pyydä tarjous ensin</h2>
-              <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or not ready to choose a date and time yet." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.</p>
+              <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or who need steam or post-renovation cleaning. Not ready to choose a date and time yet? We'll guide you to the right service personally." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</p>
               <span class="btn-primary quote-route-cta" data-en="Request a quote" data-fi="Pyydä tarjous">Pyydä tarjous</span>
             </button>
-
-            <div class="tiny-note mb-6" id="steamRenoNote">
-              <strong data-en="Need steam cleaning or post-renovation cleaning?" data-fi="Tarvitsetko höyrypesua tai remonttisiivousta?">Tarvitsetko höyrypesua tai remonttisiivousta?</strong>
-              <span data-en="Use the quote route on this page instead of forcing the request into a home-cleaning booking flow. We will guide you to the right service personally." data-fi="Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</span>
-            </div>
 
             <!-- The price, before we ask for an address. -->
             <div class="step1-estimate" id="step1Estimate" hidden aria-live="polite">
@@ -1033,8 +1029,7 @@
               <p class="step1-estimate-note" data-en="No obligation. You can still change the details on the next step." data-fi="Ei sitoumusta. Voit muuttaa tietoja vielä seuraavassa vaiheessa.">Ei sitoumusta. Voit muuttaa tietoja vielä seuraavassa vaiheessa.</p>
             </div>
 
-            <div class="step-actions">
-              <a href="pricing.html?from=request-quote" class="btn-soft" id="pricingReviewLink" onclick="return saveQuoteDraftAndReviewPricing()" data-en="Review pricing first" data-fi="Katso hinnat ensin">Katso hinnat ensin</a>
+            <div class="step-actions end">
               <button type="button" class="btn-primary" id="bookingStep1Continue" onclick="continueBookingStep1()" disabled data-en="Continue to date &amp; area" data-fi="Jatka ajankohtaan &amp; alueeseen">Jatka ajankohtaan &amp; alueeseen</button>
             </div>
           </div>
@@ -1197,8 +1192,7 @@
               <span data-en="No date, no payment details, and no commitment to a booking yet. Just enough for BetterClean to understand your needs and reply usefully." data-fi="Ei päivämäärää, ei maksutietoja eikä vielä sitoutumista varaukseen. Juuri sen verran tietoa, että BetterClean ymmärtää tarpeesi ja pystyy vastaamaan hyödyllisesti.">Ei päivämäärää, ei maksutietoja eikä vielä sitoutumista varaukseen. Juuri sen verran tietoa, että BetterClean ymmärtää tarpeesi ja pystyy vastaamaan hyödyllisesti.</span>
             </div>
 
-            <div class="step-actions">
-              <a href="pricing.html?from=request-quote" class="btn-soft" onclick="return saveQuoteDraftAndReviewPricing()" data-en="Review pricing first" data-fi="Katso hinnat ensin">Katso hinnat ensin</a>
+            <div class="step-actions end">
               <button type="button" class="btn-primary" onclick="submitInquiryRequest()" data-en="Send inquiry" data-fi="Lähetä kysely">Lähetä kysely</button>
             </div>
             <div class="success-box" id="inquirySuccess">
@@ -1417,7 +1411,6 @@
 <script>
   let currentLang = 'fi';
   const LEAD_ENDPOINT = '/api/lead';
-  const QUOTE_DRAFT_KEY = 'bettercleanQuoteDraftV1';
   const HOUSEHOLD_DEDUCTION_RATE = 0.35;
 
   function setLang(lang) {
@@ -1975,129 +1968,6 @@
     };
   }
 
-  function getInquiryPayload(lang) {
-    return {
-      service: getSelectedText('inqService'),
-      area: document.getElementById('inqArea') ? document.getElementById('inqArea').value.trim() : '',
-      size: getSelectedText('inqSize'),
-      method: getSelectedText('inqContactMethod'),
-      need: document.getElementById('inqNeed') ? document.getElementById('inqNeed').value.trim() : '',
-      language: lang
-    };
-  }
-
-  function readQuoteDraftFromSession() {
-    try {
-      return JSON.parse(sessionStorage.getItem(QUOTE_DRAFT_KEY) || 'null');
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function saveQuoteDraftAndReviewPricing() {
-    const lang = currentLang || 'fi';
-    updateBookingSummary();
-    if (bookingState.mode === 'booking' && !isBookingSetupValid()) {
-      refreshUi();
-      return false;
-    }
-    const draft = {
-      version: 1,
-      savedAt: new Date().toISOString(),
-      language: lang,
-      mode: bookingState.mode,
-      booking: getBookingPayload(lang),
-      inquiry: getInquiryPayload(lang)
-    };
-
-    try {
-      sessionStorage.setItem(QUOTE_DRAFT_KEY, JSON.stringify(draft));
-    } catch (error) {
-      // Continue to pricing even if browser storage is unavailable.
-    }
-
-    window.location.href = 'pricing.html?from=request-quote';
-    return false;
-  }
-
-  function applyBookingDraft(booking) {
-    if (!booking || typeof booking !== 'object') return;
-    const extras = Array.isArray(booking.extras)
-      ? booking.extras.filter(item => EXTRA_LABELS[item])
-      : [];
-    const restoredServiceType = normalizeBookingServiceType(booking.selectedServiceType || booking.serviceType || booking.service) || 'home';
-    const restoredServiceConfig = getBookingServiceConfig(restoredServiceType);
-    const restoredFrequencyCandidate = restoredServiceConfig.forcedFrequency || booking.selectedFrequency || booking.frequency;
-    const restoredFrequency = FREQUENCY_LABELS[restoredFrequencyCandidate]
-      ? restoredFrequencyCandidate
-      : '';
-    const restoredHomeSizeM2 = Number(booking.homeSizeM2) || null;
-    const restoredBracket = restoredHomeSizeM2 ? getQuoteHomeSizeBracket(restoredHomeSizeM2) : null;
-    const restoredSizeKey = booking.selectedPropertySize || booking.size;
-    const restoredSize = restoredBracket
-      ? restoredBracket.key
-      : (SIZE_LABELS[restoredSizeKey] ? restoredSizeKey : '');
-    const restoredDuration = Number(booking.selectedDuration || booking.duration) || null;
-    Object.assign(bookingState, {
-      step: Number(booking.step) || 1,
-      mode: 'booking',
-      selectedServiceType: restoredServiceType,
-      selectedFrequency: restoredFrequency,
-      selectedPropertySize: restoredSize,
-      homeSizeM2: restoredHomeSizeM2,
-      selectedDuration: restoredDuration,
-      durationWasManuallyChanged: Boolean(booking.durationWasManuallyChanged),
-      extras,
-      preferredDay: booking.preferredDay || '',
-      slot: booking.slot || '',
-      address: booking.address || '',
-      postcode: booking.postcode || '',
-      pets: Boolean(booking.pets)
-    });
-
-    updateDurationRecommendationState(!bookingState.durationWasManuallyChanged || !bookingState.selectedDuration);
-    document.getElementById('homeSize').value = bookingState.homeSizeM2 || '';
-    document.getElementById('cleanDuration').value = String(bookingState.duration);
-    if (document.getElementById('streetAddress')) document.getElementById('streetAddress').value = bookingState.address;
-    if (document.getElementById('postcode')) document.getElementById('postcode').value = bookingState.postcode;
-    if (document.getElementById('petsHome')) document.getElementById('petsHome').checked = bookingState.pets;
-    if (document.getElementById('preferredDay')) document.getElementById('preferredDay').value = bookingState.preferredDay;
-    Object.keys(EXTRA_APPLICABILITY).forEach(name => {
-      const card = document.getElementById('extra-' + name);
-      if (card) card.classList.toggle('active', bookingState.extras.includes(name));
-    });
-    refreshBookingSetupControls();
-    if (bookingState.slot) selectSlot(bookingState.slot);
-    updateBookingSummary();
-  }
-
-  function applyInquiryDraft(inquiry) {
-    if (!inquiry || typeof inquiry !== 'object') return;
-    if (document.getElementById('inqArea')) document.getElementById('inqArea').value = inquiry.area || '';
-    if (document.getElementById('inqNeed')) document.getElementById('inqNeed').value = inquiry.need || '';
-    updateInquirySummary();
-  }
-
-  function restoreQuoteDraftFromSession() {
-    const params = new URLSearchParams(window.location.search);
-    if (!params.has('resume')) return false;
-    const draft = readQuoteDraftFromSession();
-    if (!draft) return false;
-
-    if (draft.language) setLang(draft.language);
-    if (params.get('resume') === 'inquiry' || draft.mode === 'inquiry') {
-      setMode('inquiry');
-      applyInquiryDraft(draft.inquiry);
-      return true;
-    }
-
-    applyBookingDraft(draft.booking);
-    setMode('booking');
-    const step = Number(params.get('step')) || 1;
-    goBookingStep([1, 2, 3].includes(step) ? step : 1);
-    return true;
-  }
-
   function applyBookingServiceFromQuery() {
     const params = new URLSearchParams(window.location.search);
     const serviceType = normalizeBookingServiceType(params.get('service'));
@@ -2326,8 +2196,6 @@
     });
     const note = document.getElementById('includedExtrasNote');
     if (note) note.hidden = service !== 'office';
-    const steamRenoNote = document.getElementById('steamRenoNote');
-    if (steamRenoNote) steamRenoNote.hidden = service === 'deep';
 
     const added = bookingState.extras;
     const headDefault = document.getElementById('optionalHeadDefault');
@@ -2537,7 +2405,7 @@
   goBookingStep(1);
   setMode('booking');
   document.getElementById('preferredDay').min = new Date().toISOString().slice(0, 10);
-  if (!applyInquiryFromQuery() && !restoreQuoteDraftFromSession()) {
+  if (!applyInquiryFromQuery()) {
     applyBookingServiceFromQuery();
   }
 </script>
