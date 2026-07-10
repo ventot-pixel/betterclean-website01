@@ -716,6 +716,7 @@
     .hidden-panel { display: none; }
     .step-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
     .step-actions.end { justify-content: flex-end; }
+    .step-actions.center { justify-content: center; }
     .success-box {
       display: none;
       margin-top: 18px;
@@ -838,8 +839,7 @@
             <div class="mb-6">
               <fieldset class="frequency-fieldset">
                 <legend class="field-label" id="bookingServiceLegend" data-en="Choose the cleaning service" data-fi="Valitse siivouspalvelu">Valitse siivouspalvelu</legend>
-                <p class="field-help" id="bookingServiceHelp" data-en="Deep Clean and Move-out Cleaning are one-time services. Move-out Cleaning is for empty homes. Essential Home Care can be booked as recurring or one-time home cleaning." data-fi="Syväsiivous ja Muuttosiivous ovat kertaluonteisia palveluita. Muuttosiivous on tarkoitettu tyhjälle asunnolle. Peruskodin Hoito voidaan varata toistuvana tai kertasiivouksena.">Syväsiivous ja Muuttosiivous ovat kertaluonteisia palveluita. Muuttosiivous on tarkoitettu tyhjälle asunnolle. Peruskodin Hoito voidaan varata toistuvana tai kertasiivouksena.</p>
-                <div class="choice-grid service-choice-grid" id="bookingServiceOptions" role="radiogroup" aria-labelledby="bookingServiceLegend" aria-describedby="bookingServiceHelp">
+                <div class="choice-grid service-choice-grid" id="bookingServiceOptions" role="radiogroup" aria-labelledby="bookingServiceLegend">
                   <button type="button" class="choice-card active" id="service-home" role="radio" aria-checked="true" aria-describedby="service-home-desc" onclick="selectBookingService('home')" onkeydown="handleServiceKeydown(event, 'home')">
                     <strong data-en="Essential Home Care" data-fi="Peruskodin Hoito">Peruskodin Hoito</strong>
                     <p id="service-home-desc" data-en="Recurring or one-time home cleaning from <span class=&quot;price-nowrap&quot;>49 €/h</span>" data-fi="Toistuva tai kertaluonteinen kotisiivous alkaen <span class=&quot;price-nowrap&quot;>49 €/h</span>">Toistuva tai kertaluonteinen kotisiivous alkaen <span class="price-nowrap">49 €/h</span></p>
@@ -1009,13 +1009,6 @@
               <span data-en="Oven, fridge, range hood and microwave are already included in Move-out Cleaning, so they are not shown as add-ons." data-fi="Uuni, jääkaappi, liesituuletin ja mikroaaltouuni sisältyvät jo muuttosiivoukseen, joten niitä ei näytetä lisäpalveluina.">Uuni, jääkaappi, liesituuletin ja mikroaaltouuni sisältyvät jo muuttosiivoukseen, joten niitä ei näytetä lisäpalveluina.</span>
             </div>
 
-            <button class="intent-card quote-route" id="inquiryModeBtn" type="button" onclick="switchToInquiry()">
-              <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?">Tarvitsetko apua?</span>
-              <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin">Pyydä tarjous ensin</h2>
-              <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or who need steam or post-renovation cleaning. Not ready to choose a date and time yet? We'll guide you to the right service personally." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</p>
-              <span class="btn-primary quote-route-cta" data-en="Request a quote" data-fi="Pyydä tarjous">Pyydä tarjous</span>
-            </button>
-
             <!-- The price, before we ask for an address. -->
             <div class="step1-estimate" id="step1Estimate" hidden aria-live="polite">
               <div class="step1-estimate-row">
@@ -1029,9 +1022,16 @@
               <p class="step1-estimate-note" data-en="No obligation. You can still change the details on the next step." data-fi="Ei sitoumusta. Voit muuttaa tietoja vielä seuraavassa vaiheessa.">Ei sitoumusta. Voit muuttaa tietoja vielä seuraavassa vaiheessa.</p>
             </div>
 
-            <div class="step-actions end">
+            <div class="step-actions center">
               <button type="button" class="btn-primary" id="bookingStep1Continue" onclick="continueBookingStep1()" disabled data-en="Continue to date &amp; area" data-fi="Jatka ajankohtaan &amp; alueeseen">Jatka ajankohtaan &amp; alueeseen</button>
             </div>
+
+            <button class="intent-card quote-route" id="inquiryModeBtn" type="button" onclick="switchToInquiry()">
+              <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?">Tarvitsetko apua?</span>
+              <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin">Pyydä tarjous ensin</h2>
+              <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or who need steam or post-renovation cleaning. Not ready to choose a date and time yet? We'll guide you to the right service personally." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</p>
+              <span class="btn-primary quote-route-cta" data-en="Request a quote" data-fi="Pyydä tarjous">Pyydä tarjous</span>
+            </button>
           </div>
 
           <div class="step-card hidden-panel" id="bookingStep2">
