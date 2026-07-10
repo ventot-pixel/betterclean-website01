@@ -241,19 +241,14 @@
     }
 
     .intent-toggle {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
       margin-bottom: 18px;
-    }
-    @media (max-width: 640px) {
-      .intent-toggle { grid-template-columns: 1fr; }
     }
     .intent-card {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      width: 100%;
       height: 100%;
       text-align: center;
       padding: 18px;
@@ -268,7 +263,6 @@
     .intent-card.active { border-color: rgba(36,122,36,0.48); background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%); box-shadow: 0 18px 40px rgba(36,122,36,0.11); }
     .intent-card h2 {
       width: 100%;
-      min-height: 5.5rem;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -277,6 +271,9 @@
       width: 100%;
       margin: 0;
     }
+    .quote-route { margin: 0 0 24px; }
+    .quote-route .muted { max-width: 60ch; margin: 0 auto; }
+    .quote-route-cta { margin-top: 16px; }
     .intent-badge {
       display: inline-flex;
       align-items: center;
@@ -827,14 +824,8 @@
         </div>
         <div class="intent-toggle">
           <button class="intent-card active" id="bookingModeBtn" type="button" onclick="setMode('booking')">
-            <span class="intent-badge" data-en="Ready to book" data-fi="Valmis varaamaan">Valmis varaamaan</span>
-            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Build your home cleaning request" data-fi="Rakenna kotisiivouspyyntösi">Rakenna kotisiivouspyyntösi</h2>
-            <p class="muted" data-en="For customers who already know they want regular home cleaning and want to choose the service setup before we confirm the booking." data-fi="Asiakkaille, jotka tietävät haluavansa kotisiivousta ja haluavat valita palvelun rakenteen ennen kuin vahvistamme varauksen.">Asiakkaille, jotka tietävät haluavansa kotisiivousta ja haluavat valita palvelun rakenteen ennen kuin vahvistamme varauksen.</p>
-          </button>
-          <button class="intent-card" id="inquiryModeBtn" type="button" onclick="setMode('inquiry')">
-            <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?">Tarvitsetko apua?</span>
-            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin">Pyydä tarjous ensin</h2>
-            <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or not ready to choose a date and time yet." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.</p>
+            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Build your cleaning request" data-fi="Kokoa varauspyyntösi">Kokoa varauspyyntösi</h2>
+            <p class="muted" data-en="Know exactly what you need? Choose your service, select your preferred day and time, and complete your booking online. We'll confirm your appointment within 24 hours." data-fi="Tiedätkö jo, mitä tarvitset? Valitse palvelu sekä sinulle sopiva päivä ja kellonaika. Viimeistele pyyntö verkossa, niin vahvistamme varauksesi 24 tunnin kuluessa.">Tiedätkö jo, mitä tarvitset? Valitse palvelu sekä sinulle sopiva päivä ja kellonaika. Viimeistele pyyntö verkossa, niin vahvistamme varauksesi 24 tunnin kuluessa.</p>
           </button>
         </div>
 
@@ -1017,6 +1008,13 @@
               <span data-en="Oven, fridge, range hood and microwave are already included in Move-out Cleaning, so they are not shown as add-ons." data-fi="Uuni, jääkaappi, liesituuletin ja mikroaaltouuni sisältyvät jo muuttosiivoukseen, joten niitä ei näytetä lisäpalveluina.">Uuni, jääkaappi, liesituuletin ja mikroaaltouuni sisältyvät jo muuttosiivoukseen, joten niitä ei näytetä lisäpalveluina.</span>
             </div>
 
+            <button class="intent-card quote-route" id="inquiryModeBtn" type="button" onclick="switchToInquiry()">
+              <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?">Tarvitsetko apua?</span>
+              <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin">Pyydä tarjous ensin</h2>
+              <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or not ready to choose a date and time yet." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.</p>
+              <span class="btn-primary quote-route-cta" data-en="Request a quote" data-fi="Pyydä tarjous">Pyydä tarjous</span>
+            </button>
+
             <div class="tiny-note mb-6" id="steamRenoNote">
               <strong data-en="Need steam cleaning or post-renovation cleaning?" data-fi="Tarvitsetko höyrypesua tai remonttisiivousta?">Tarvitsetko höyrypesua tai remonttisiivousta?</strong>
               <span data-en="Use the quote route on this page instead of forcing the request into a home-cleaning booking flow. We will guide you to the right service personally." data-fi="Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</span>
@@ -1054,6 +1052,12 @@
                 <label class="field-label" for="postcode" data-en="Postcode" data-fi="Postinumero">Postinumero</label>
                 <input id="postcode" type="text" onchange="updateBookingSummary()" />
               </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="field-label" for="preferredDay" data-en="Preferred day" data-fi="Toivottu päivä">Toivottu päivä</label>
+              <p class="field-help" data-en="A wish, not a locked slot. We confirm the final day and time with you within 24 hours." data-fi="Toive, ei lukittu aika. Vahvistamme lopullisen päivän ja kellonajan kanssasi 24 tunnin kuluessa.">Toive, ei lukittu aika. Vahvistamme lopullisen päivän ja kellonajan kanssasi 24 tunnin kuluessa.</p>
+              <input id="preferredDay" type="date" onchange="handlePreferredDayChange()" style="max-width: 260px;" />
             </div>
 
             <div class="mb-6">
@@ -1248,7 +1252,7 @@
             <strong id="summaryInquiryArea" data-en="To be confirmed" data-fi="Vahvistetaan">Vahvistetaan</strong>
           </div>
 
-          <div class="summary-callout" id="summaryCallout" data-en="Choose the structured booking request if you already know you want home cleaning. If you are still comparing, switch to the inquiry route and BetterClean will guide you personally." data-fi="Valitse jäsennelty varauspyyntö, jos tiedät jo haluavasi kotisiivousta. Jos vertailet vielä, vaihda kyselyreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.">Valitse jäsennelty varauspyyntö, jos tiedät jo haluavasi kotisiivousta. Jos vertailet vielä, vaihda kyselyreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.</div>
+          <div class="summary-callout" id="summaryCallout" data-en="Choose the structured request if you already know which service you need: home cleaning, deep clean or move-out. If you are still comparing, switch to the quote route and BetterClean will guide you personally." data-fi="Valitse jäsennelty pyyntö, jos tiedät jo minkä palvelun tarvitset: kotisiivous, syväsiivous tai muuttosiivous. Jos vertailet vielä, vaihda tarjousreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.">Valitse jäsennelty pyyntö, jos tiedät jo minkä palvelun tarvitset: kotisiivous, syväsiivous tai muuttosiivous. Jos vertailet vielä, vaihda tarjousreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.</div>
 
           <div class="booking-only">
             <h4 class="font-display font-bold text-lg mb-2">
@@ -1354,6 +1358,7 @@
                 </ul>
               </div>
             </div>
+            <p class="field-help" style="margin-top: 12px;" data-en="Products and supplies are included in the hourly price — no equipment or visit fees. For home cleaning we use your own vacuum for hygiene, or bring ours at no charge." data-fi="Aineet ja tarvikkeet sisältyvät tuntihintaan — ei väline- tai käyntimaksuja. Kotisiivouksessa käytämme kotisi imuria hygieniasyistä, tai tuomme oman veloituksetta.">Aineet ja tarvikkeet sisältyvät tuntihintaan — ei väline- tai käyntimaksuja. Kotisiivouksessa käytämme kotisi imuria hygieniasyistä, tai tuomme oman veloituksetta.</p>
           </div>
 
           <div class="inquiry-only hidden-panel">
@@ -1473,6 +1478,7 @@
     duration: 0,
     frequency: '',
     extras: [],
+    preferredDay: '',
     slot: '',
     address: '',
     postcode: '',
@@ -2042,6 +2048,7 @@
       selectedDuration: restoredDuration,
       durationWasManuallyChanged: Boolean(booking.durationWasManuallyChanged),
       extras,
+      preferredDay: booking.preferredDay || '',
       slot: booking.slot || '',
       address: booking.address || '',
       postcode: booking.postcode || '',
@@ -2054,6 +2061,7 @@
     if (document.getElementById('streetAddress')) document.getElementById('streetAddress').value = bookingState.address;
     if (document.getElementById('postcode')) document.getElementById('postcode').value = bookingState.postcode;
     if (document.getElementById('petsHome')) document.getElementById('petsHome').checked = bookingState.pets;
+    if (document.getElementById('preferredDay')) document.getElementById('preferredDay').value = bookingState.preferredDay;
     Object.keys(EXTRA_APPLICABILITY).forEach(name => {
       const card = document.getElementById('extra-' + name);
       if (card) card.classList.toggle('active', bookingState.extras.includes(name));
@@ -2150,6 +2158,13 @@
     refreshUi();
   }
 
+  // Switching modes only toggles visibility, so anything already typed into the
+  // booking flow survives and is still there if the customer switches back.
+  function switchToInquiry() {
+    setMode('inquiry');
+    document.getElementById('inquiryPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   function goBookingStep(step) {
     if (bookingState.mode === 'booking' && step > 1 && !isBookingSetupValid()) {
       refreshUi();
@@ -2242,6 +2257,11 @@
       bookingState.extras.push(name);
     }
     document.getElementById('extra-' + name).classList.toggle('active', bookingState.extras.includes(name));
+    refreshUi();
+  }
+
+  function handlePreferredDayChange() {
+    bookingState.preferredDay = document.getElementById('preferredDay').value;
     refreshUi();
   }
 
@@ -2411,6 +2431,7 @@
       (lang === 'fi' ? 'Tuntihinta: ' : 'Hourly rate: ') + bookingPayload.contractRate + ' €/h',
       (lang === 'fi' ? 'Osoite: ' : 'Address: ') + (bookingPayload.address || '-'),
       (lang === 'fi' ? 'Postinumero: ' : 'Postcode: ') + (bookingPayload.postcode || '-'),
+      (lang === 'fi' ? 'Toivottu päivä: ' : 'Preferred day: ') + (bookingPayload.preferredDay || '-'),
       (lang === 'fi' ? 'Toivottu aika: ' : 'Preferred time: ') + (bookingPayload.slot || '-'),
       (lang === 'fi' ? 'Lemmikit kotona: ' : 'Pets at home: ') + (bookingPayload.pets ? (lang === 'fi' ? 'Kyllä' : 'Yes') : (lang === 'fi' ? 'Ei' : 'No')),
       '',
@@ -2515,6 +2536,7 @@
   setLang('fi');
   goBookingStep(1);
   setMode('booking');
+  document.getElementById('preferredDay').min = new Date().toISOString().slice(0, 10);
   if (!applyInquiryFromQuery() && !restoreQuoteDraftFromSession()) {
     applyBookingServiceFromQuery();
   }

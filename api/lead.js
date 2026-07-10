@@ -167,6 +167,7 @@ function formatCustomerDetailLines(payload, lang) {
     add(lang === 'fi' ? 'Arvioitu yhteensä' : 'Estimated total', booking.estimatedTotal || booking.estimatedPrice);
     add(lang === 'fi' ? 'Osoite' : 'Address', booking.address);
     add(lang === 'fi' ? 'Postinumero' : 'Postcode', booking.postcode);
+    add(lang === 'fi' ? 'Toivottu päivä' : 'Preferred day', booking.preferredDay);
     add(lang === 'fi' ? 'Toivottu aika' : 'Preferred time', booking.slot || booking.time || booking.date);
     if (hasSaunaOffer(booking, extras)) {
       lines.push(lang === 'fi'
@@ -206,6 +207,19 @@ function formatCustomerReply(payload) {
       ]
     : [];
 
+  const factsEn = [
+    'Good to know:',
+    '- You pay only after the cleaning is done - never in advance.',
+    '- No equipment, supply or visit fees. The hourly price is the whole price, and travel is free within 20 km of Tampere centre.',
+    '- Invoice by email with no invoicing fee - it qualifies for the household deduction (35% of the labour cost).'
+  ];
+  const factsFi = [
+    'Hyvä tietää:',
+    '- Maksat vasta, kun siivous on tehty - emme koskaan veloita etukäteen.',
+    '- Ei väline-, tarvike- tai käyntimaksuja. Tuntihinta on koko hinta, ja matkat ovat maksuttomia 20 km säteellä Tampereen keskustasta.',
+    '- Lasku sähköpostiin ilman laskutuslisää - oikeuttaa kotitalousvähennykseen (35 % työn osuudesta).'
+  ];
+
   if (lang === 'en') {
     return {
       subject: 'We received your request - BetterClean',
@@ -214,6 +228,8 @@ function formatCustomerReply(payload) {
         '',
         'Thanks for contacting BetterClean. We received your request and will review the details as soon as possible.',
         ...detailBlock,
+        '',
+        ...factsEn,
         '',
         'If anything is urgent, you can also contact us directly at info@betterclean.fi.',
         '',
@@ -230,6 +246,8 @@ function formatCustomerReply(payload) {
       '',
       'Kiitos yhteydenotosta. Saimme pyyntösi ja tarkistamme tiedot mahdollisimman pian.',
       ...detailBlock,
+      '',
+      ...factsFi,
       '',
       'Jos asialla on kiire, voit olla meihin suoraan yhteydessä osoitteessa info@betterclean.fi.',
       '',

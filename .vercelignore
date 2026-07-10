@@ -14,3 +14,8 @@ package.json
 package-lock.json
 tests
 output
+docs
+flyers
+internal
+tmp
+BetterClean PDFs
