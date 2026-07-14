@@ -135,43 +135,30 @@
 
 ---
 
-## Canonical Pricing (source of truth — update here first, then update pricing.js)
+## Canonical Pricing
 
-All prices include VAT 25.5%. Kotitalousvähennys = 35% off labour, omavastuu 150 €/hlö/vuosi.
+`pricing.js` is the single source of truth for every current numeric price,
+frequency tier, minimum duration, fixed-price item, and add-on. Do not restate
+prices in `AGENTS.md`, `CLAUDE.md`, plans, or handoffs; duplicated tables drift.
 
-| Service | Rate | After kotitalousvähennys | Minimum |
-|---|---|---|---|
-| Recurring home cleaning | 49 €/h | 31,85 €/h | 2 h |
-| One-time home cleaning | 59 €/h | 38,35 €/h | 2 h |
-| Deep cleaning / suursiivous (signature, incl. steam) | 79 €/h | 51,35 €/h | 3 h |
-| Move-out / muuttosiivous | 59 €/h | 38,35 €/h | 4 h |
-| Window cleaning / ikkunanpesu | 49 €/h | 31,85 €/h | 2 h |
-| Post-renovation / remonttisiivous | 79 €/h | 51,35 €/h | 4 h |
+When pricing changes:
+1. Update `pricing.js` first.
+2. Update visible HTML, metadata, JSON-LD, and `llms.txt` from those constants.
+3. Bump the `pricing.js?v=...` cache key on every page that loads it.
+4. Run `npm test`; `tests/pricing-source-of-truth.test.js` rejects unknown live rates
+   and duplicated rates in the agent instruction files.
 
-**Reset-at-contract-rate offer (valid until 30.9.2026 — remove after):**
-- New weekly and every-second-week contracts get the initial reset clean at the contract rate 49 €/h (norm. 59 €/h) — customer saves 10 €/h from the first visit.
-- Max 4 new contract customers per month (honest capacity claim — keep true).
-- Monthly and one-time customers pay the normal reset rate 59 €/h (min. 3 h).
-
-**Window cleaning estimates:**
-- Apartment: 99-129 €
-- House: 149-199 €
-- Balcony glazing add-on: +59 €
-
-**Steam cleaning (fixed-price menu — no per-hour rate shown):**
-- Single mattress: 89 €
-- Double mattress: 129 €
-- 2-seat sofa: 129 €, additional seat +35 €
-- Armchair: 89 €
-- Bathroom / sauna: alkaen 149 €
+Window cleaning is quoted using its hourly rate and minimum from `pricing.js`.
+Do not add apartment/house estimate tables back; they drifted from real duration
+twice. Balcony glazing remains an add-on sourced from `pricing.js`.
 
 **Kotitalousvähennys disclaimer (use verbatim):**
 FI: "Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä. Omavastuu 150 €/hlö/vuosi. Materiaalit ja matkakulut eivät kuulu vähennykseen."
 EN: "Household tax deduction: 35% of labour costs when purchased from a registered company. Personal deductible: €150/person/year. Materials and travel costs are not deductible."
 
 **Price format rules:**
-- Finnish format always: `49 €/h`, `31,85 €/h`, `119 €`, `+59 €`
-- Never: `€49/hr`, `€49/h`, `45.50`, `+€60/session`
+- Finnish format always: `NN €/h`, `NN,NN €/h`, `NN €`, `+NN €`
+- Never: `€NN/hr`, `€NN/h`, decimal points, or `+€NN/session`
 - Show kotitalousvähennys exact amounts ONLY for labor-only hourly rates
 - Do NOT show exact after-tax amounts for fixed-price or bundled items
 
@@ -237,10 +224,10 @@ The goal is for AI assistants (ChatGPT, Codex, Perplexity, Google AI) to recomme
 6. Add HowTo schema to booking process section
 
 **Pricing change workflow (when prices change):**
-1. Update the table in this AGENTS.md first
-2. Update `pricing.js` constants
-3. Run `node update-prices.mjs` if it exists, or manually grep + update all 5 HTML files
-4. Update JSON-LD price values in each page's structured data
-5. Run `npx html-validate *.html`
+1. Update `pricing.js` constants first
+2. Run `node update-prices.mjs` if it exists, or manually grep + update all HTML files
+3. Update JSON-LD price values in each page's structured data and `llms.txt`
+4. Bump the `pricing.js?v=...` cache key everywhere it is loaded
+5. Run `npm test` and `npx html-validate *.html`
 6. Screenshot all 5 pages
 7. Commit with message "Update pricing: [what changed]"
