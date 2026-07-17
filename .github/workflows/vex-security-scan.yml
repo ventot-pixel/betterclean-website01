@@ -111,15 +111,16 @@ jobs:
             STATUS="🟢 CLEAN"
           fi
 
-          MESSAGE="Vex Security Report — $DATE
-Status: $STATUS
-
-1. Supabase Auth: ${{ env.SUPABASE_STATUS }}
-2. VirusTotal (betterclean.fi): ${{ env.VT_STATUS }}
-3. Error Logs: ${{ env.ERRORS_STATUS }}
-4. Local ClamAV: runs on Mac via launchd
-
-Next scan: Mon/Thu/Sat/Sun 12:00 Helsinki"
+          MESSAGE=$(printf '%s\n' \
+            "Vex Security Report — $DATE" \
+            "Status: $STATUS" \
+            "" \
+            "1. Supabase Auth: ${{ env.SUPABASE_STATUS }}" \
+            "2. VirusTotal (betterclean.fi): ${{ env.VT_STATUS }}" \
+            "3. Error Logs: ${{ env.ERRORS_STATUS }}" \
+            "4. Local ClamAV: runs on Mac via launchd" \
+            "" \
+            "Next scan: Mon/Thu/Sat/Sun 12:00 Helsinki")
 
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
