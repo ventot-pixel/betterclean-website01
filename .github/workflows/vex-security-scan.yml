@@ -4,7 +4,16 @@ on:
   schedule:
     # Mon, Thu, Sat, Sun at 12:00 Helsinki (09:00 UTC, UTC+3 summer)
     - cron: '0 9 * * 0,1,4,6'
-  workflow_dispatch: # allow manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      verification_only:
+        description: Verify the dedicated Supabase monitor key without alerts or other provider checks
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
 
 jobs:
   vex-scan:
@@ -14,18 +23,22 @@ jobs:
     steps:
       - name: Check 1 — Supabase Auth
         id: supabase
+        env:
+          VERIFICATION_ONLY: ${{ inputs.verification_only || false }}
         run: |
           echo "--- Supabase Auth Check ---"
           RESPONSE=$(curl -s -w "\n%{http_code}" \
             "${{ secrets.SUPABASE_URL }}/auth/v1/admin/users?page=1&per_page=50" \
-            -H "apikey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
-            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}")
+            -H "apikey: ${{ secrets.SUPABASE_BETTERCLEAN_MONITOR_SECRET_KEY }}")
 
           HTTP_CODE=$(echo "$RESPONSE" | tail -1)
           BODY=$(echo "$RESPONSE" | head -n -1)
 
           if [ "$HTTP_CODE" != "200" ]; then
             echo "SUPABASE_STATUS=ERROR (HTTP $HTTP_CODE)" >> $GITHUB_ENV
+            if [ "$VERIFICATION_ONLY" = "true" ]; then
+              exit 1
+            fi
           else
             USER_COUNT=$(echo "$BODY" | grep -o '"id"' | wc -l | tr -d ' ')
             # Flag if any user created in last 24h
@@ -37,6 +50,7 @@ jobs:
 
       - name: Check 2 — VirusTotal Domain Scan
         id: virustotal
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.verification_only != true }}
         run: |
           echo "--- VirusTotal Check ---"
           DOMAIN="betterclean.fi"
@@ -61,6 +75,7 @@ jobs:
 
       - name: Check 3 — Error Log Review (Vercel deployments)
         id: errorlogs
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.verification_only != true }}
         run: |
           echo "--- Error Log Review ---"
           RESPONSE=$(curl -s -w "\n%{http_code}" \
@@ -80,7 +95,7 @@ jobs:
           fi
 
       - name: Build and Send Telegram Report
-        if: always()
+        if: ${{ always() && (github.event_name != 'workflow_dispatch' || inputs.verification_only != true) }}
         run: |
           DATE=$(date '+%Y-%m-%d %H:%M UTC')
 
