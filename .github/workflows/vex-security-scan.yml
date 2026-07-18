@@ -48,32 +48,7 @@ jobs:
             echo "Users: $USER_COUNT | Recent activity: $RECENT"
           fi
 
-      - name: Check 2 — VirusTotal Domain Scan
-        id: virustotal
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.verification_only != true }}
-        run: |
-          echo "--- VirusTotal Check ---"
-          DOMAIN="betterclean.fi"
-          ENCODED=$(python3 -c "import base64; print(base64.urlsafe_b64encode('$DOMAIN'.encode()).decode().rstrip('='))")
-
-          RESPONSE=$(curl -s -w "\n%{http_code}" \
-            "https://www.virustotal.com/api/v3/domains/$DOMAIN" \
-            -H "x-apikey: ${{ secrets.VIRUSTOTAL_API_KEY }}")
-
-          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
-          BODY=$(echo "$RESPONSE" | head -n -1)
-
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "VT_STATUS=ERROR (HTTP $HTTP_CODE)" >> $GITHUB_ENV
-          else
-            MALICIOUS=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['attributes']['last_analysis_stats']['malicious'])" 2>/dev/null || echo "0")
-            SUSPICIOUS=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['attributes']['last_analysis_stats']['suspicious'])" 2>/dev/null || echo "0")
-            echo "VT_STATUS=OK — malicious: $MALICIOUS, suspicious: $SUSPICIOUS" >> $GITHUB_ENV
-            echo "VT_MALICIOUS=$MALICIOUS" >> $GITHUB_ENV
-            echo "Malicious: $MALICIOUS | Suspicious: $SUSPICIOUS"
-          fi
-
-      - name: Check 3 — Error Log Review (Vercel deployments)
+      - name: Check 2 — Error Log Review (Vercel deployments)
         id: errorlogs
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.verification_only != true }}
         run: |
@@ -100,12 +75,9 @@ jobs:
           DATE=$(date '+%Y-%m-%d %H:%M UTC')
 
           # Determine severity
-          VT_MAL="${{ env.VT_MALICIOUS }}"
           FAILED="${{ env.ERRORS_FAILED }}"
 
-          if [ "$VT_MAL" -gt "3" ] 2>/dev/null; then
-            STATUS="🔴 CRITICAL"
-          elif [ "$VT_MAL" -gt "0" ] 2>/dev/null || [ "$FAILED" -gt "0" ] 2>/dev/null; then
+          if [ "$FAILED" -gt "0" ] 2>/dev/null; then
             STATUS="🟡 MEDIUM"
           else
             STATUS="🟢 CLEAN"
@@ -116,9 +88,9 @@ jobs:
             "Status: $STATUS" \
             "" \
             "1. Supabase Auth: ${{ env.SUPABASE_STATUS }}" \
-            "2. VirusTotal (betterclean.fi): ${{ env.VT_STATUS }}" \
-            "3. Error Logs: ${{ env.ERRORS_STATUS }}" \
-            "4. Local ClamAV: runs on Mac via launchd" \
+            "2. Error Logs: ${{ env.ERRORS_STATUS }}" \
+            "3. External reputation: retired — no compliant provider configured" \
+            "4. Local ClamAV: retired 2026-06-23" \
             "" \
             "Next scan: Mon/Thu/Sat/Sun 12:00 Helsinki")
 
