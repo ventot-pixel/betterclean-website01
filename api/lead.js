@@ -1,3 +1,5 @@
+const { randomUUID } = require('node:crypto');
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = '';
@@ -7,7 +9,7 @@ function readBody(req) {
   });
 }
 
-function formatPayload(payload) {
+function formatPayload(payload, context) {
   const details = payload.body || formatFallbackBody(payload);
   const lines = [
     payload.subject || 'BetterClean lead',
@@ -15,9 +17,110 @@ function formatPayload(payload) {
     details,
     '',
     'Source: ' + (payload.source || 'website'),
-    'Received: ' + new Date().toISOString()
+    'Reference: ' + context.intakeId,
+    'Received: ' + context.receivedAt,
+    formatCrmStatus(context.crm)
   ];
   return lines.join('\n');
+}
+
+function getCrmConfig() {
+  return {
+    url: process.env.CRM_WEBHOOK_URL || process.env.CRM_INGEST_URL || '',
+    secret: process.env.CRM_WEBHOOK_SECRET || process.env.CRM_INGEST_SECRET || '',
+    boardUrl: process.env.BETTERCLEAN_CRM_BOARD_URL ||
+      'https://cc.betterclean.fi/workspaces/betterclean/crm'
+  };
+}
+
+function crmIsConfigured(config) {
+  return Boolean(config.url && config.secret);
+}
+
+function inferSourcePage(payload) {
+  if (payload.sourcePage || payload.page || payload.url) {
+    return payload.sourcePage || payload.page || payload.url;
+  }
+  if (payload.source === 'homepage-booking') return '/';
+  if (String(payload.source || '').startsWith('request-quote-')) {
+    return '/request-quote.html';
+  }
+  return undefined;
+}
+
+function helsinkiDate(date) {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Helsinki',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(date);
+}
+
+function buildCrmPayload(payload, context) {
+  return {
+    ...payload,
+    business: 'BetterClean',
+    source: payload.source || 'BetterClean website',
+    sourceChannel: payload.source || 'BetterClean website',
+    sourcePlatform: 'website',
+    sourcePage: inferSourcePage(payload),
+    assignedTo: process.env.BETTERCLEAN_LEAD_OWNER || 'Ven',
+    nextFollowUpDate: helsinkiDate(new Date(context.receivedAt)),
+    intakeId: context.intakeId,
+    receivedAt: context.receivedAt
+  };
+}
+
+function crmTimeoutMs() {
+  const configured = Number(process.env.CRM_WEBHOOK_TIMEOUT_MS || 5000);
+  if (!Number.isFinite(configured)) return 5000;
+  return Math.min(Math.max(configured, 1000), 15000);
+}
+
+async function sendCrm(payload, context) {
+  const config = getCrmConfig();
+  if (!crmIsConfigured(config)) {
+    return { ok: false, configured: false, boardUrl: config.boardUrl };
+  }
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), crmTimeoutMs());
+
+  try {
+    const response = await fetch(config.url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-crm-webhook-secret': config.secret
+      },
+      body: JSON.stringify(buildCrmPayload(payload, context)),
+      signal: controller.signal
+    });
+    const parsed = await response.json().catch(() => ({}));
+    const result = parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+
+    return {
+      ok: response.ok && result.ok !== false,
+      configured: true,
+      status: response.status,
+      leadId: typeof result.leadId === 'string' ? result.leadId : '',
+      boardUrl: config.boardUrl
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function formatCrmStatus(crm) {
+  if (crm.ok) {
+    const id = crm.leadId ? ' (' + crm.leadId + ')' : '';
+    return 'CRM: saved' + id + '\nOpen: ' + crm.boardUrl;
+  }
+  if (!crm.configured) {
+    return 'CRM: NOT CONFIGURED — add this lead manually.\nOpen: ' + crm.boardUrl;
+  }
+  return 'CRM: SAVE FAILED — add this lead manually.\nOpen: ' + crm.boardUrl;
 }
 
 function getCustomer(payload) {
@@ -157,14 +260,15 @@ async function sendWhatsApp(text) {
   return response.ok;
 }
 
-async function sendSheet(payload) {
+async function sendSheet(payload, context) {
   if (!process.env.SHEETS_WEBHOOK_URL) return false;
   const response = await fetch(process.env.SHEETS_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       secret: process.env.SHEETS_WEBHOOK_SECRET || '',
-      receivedAt: new Date().toISOString(),
+      receivedAt: context.receivedAt,
+      intakeId: context.intakeId,
       source: payload.source || 'website',
       subject: payload.subject || '',
       customer: payload.customer || {},
@@ -211,27 +315,56 @@ module.exports = async function handler(req, res) {
   } catch {
     return res.status(400).json({ ok: false, error: 'Invalid JSON' });
   }
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+    return res.status(400).json({ ok: false, error: 'Invalid lead payload' });
+  }
 
-  const text = formatPayload(payload);
-  let delivered = false;
+  const context = {
+    intakeId: randomUUID(),
+    receivedAt: new Date().toISOString()
+  };
+  let crm = {
+    ok: false,
+    configured: crmIsConfigured(getCrmConfig()),
+    boardUrl: getCrmConfig().boardUrl
+  };
 
   try {
-    delivered = (await attemptDelivery(() => sendResend(payload, text))) || delivered;
-    delivered = (await attemptDelivery(() => sendTelegram(payload, text))) || delivered;
-    delivered = (await attemptDelivery(() => sendWhatsApp(text))) || delivered;
-    await sendCustomerAutoReply(payload).catch(() => false);
-    // Sheet logging is storage, not delivery — a sheet failure must not block the lead.
-    await sendSheet(payload).catch(() => false);
+    crm = await sendCrm(payload, context).catch(() => ({
+      ok: false,
+      configured: crmIsConfigured(getCrmConfig()),
+      boardUrl: getCrmConfig().boardUrl
+    }));
+    const text = formatPayload(payload, { ...context, crm });
+    const [emailDelivered, telegramDelivered, whatsappDelivered] = await Promise.all([
+      attemptDelivery(() => sendResend(payload, text)),
+      attemptDelivery(() => sendTelegram(payload, text)),
+      attemptDelivery(() => sendWhatsApp(text))
+    ]);
+    const delivered = crm.ok || emailDelivered || telegramDelivered || whatsappDelivered;
+    const followOnTasks = [
+      // Sheet logging is storage, not delivery — a sheet failure must not block the lead.
+      sendSheet(payload, context).catch(() => false)
+    ];
+    // Confirm receipt only after the CRM or an owner-alert path accepted the inquiry.
+    if (delivered) followOnTasks.push(sendCustomerAutoReply(payload).catch(() => false));
+    await Promise.all(followOnTasks);
+
+    if (!delivered) {
+      return res.status(503).json({
+        ok: false,
+        reference: context.intakeId,
+        crm: crm.configured ? 'failed' : 'not_configured',
+        error: 'Lead endpoint is not configured or all primary delivery paths failed.'
+      });
+    }
   } catch (error) {
     return res.status(502).json({ ok: false, error: 'Lead delivery failed' });
   }
 
-  if (!delivered) {
-    return res.status(503).json({
-      ok: false,
-      error: 'Lead endpoint is not configured. Set RESEND_API_KEY or TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID.'
-    });
-  }
-
-  return res.status(200).json({ ok: true });
+  return res.status(200).json({
+    ok: true,
+    reference: context.intakeId,
+    crm: crm.ok ? 'saved' : crm.configured ? 'failed' : 'not_configured'
+  });
 };
