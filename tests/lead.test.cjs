@@ -156,7 +156,7 @@ describe('BetterClean lead handoff', () => {
     };
 
     const result = await invoke('POST', {
-      customer: { name: 'Test Customer' },
+      customer: { name: 'Test Customer', email: 'test@example.com' },
       inquiry: { service: 'Home cleaning' }
     });
 
@@ -184,5 +184,70 @@ describe('BetterClean lead handoff', () => {
     const result = await invoke('POST', []);
     assert.equal(result.status, 400);
     assert.equal(result.body.ok, false);
+  });
+
+  test('rejects missing or malformed contact details before delivery', async () => {
+    global.fetch = async () => {
+      throw new Error('No network call should be attempted');
+    };
+
+    const missing = await invoke('POST', {
+      customer: { name: 'No Contact' },
+      inquiry: { service: 'Home cleaning' }
+    });
+    assert.equal(missing.status, 400);
+    assert.deepEqual(missing.body.fields, ['contact']);
+
+    const malformed = await invoke('POST', {
+      customer: { email: 'not-an-email', phone: '12x' },
+      inquiry: { service: 'Home cleaning' }
+    });
+    assert.equal(malformed.status, 400);
+    assert.ok(malformed.body.fields.includes('email'));
+    assert.ok(malformed.body.fields.includes('phone'));
+  });
+
+  test('rejects honeypot submissions and oversized payloads', async () => {
+    global.fetch = async () => {
+      throw new Error('No network call should be attempted');
+    };
+
+    const bot = await invoke('POST', {
+      website: 'https://spam.example',
+      customer: { email: 'bot@example.com' },
+      inquiry: { service: 'Home cleaning' }
+    });
+    assert.equal(bot.status, 400);
+    assert.ok(bot.body.fields.includes('website'));
+
+    const oversized = await invoke('POST', {
+      customer: { email: 'real@example.com' },
+      inquiry: { service: 'Home cleaning', need: 'x'.repeat(70 * 1024) }
+    });
+    assert.equal(oversized.status, 413);
+  });
+
+  test('rate-limits repeated submissions from one forwarded IP', async () => {
+    process.env.CRM_WEBHOOK_URL = 'https://crm.example.test/api/crm/leads/ingest';
+    process.env.CRM_WEBHOOK_SECRET = 'private-test-secret';
+    global.fetch = async () => response(true, 200, { ok: true });
+    const body = {
+      customer: { email: 'rate@example.com' },
+      inquiry: { service: 'Home cleaning' }
+    };
+    let last;
+    for (let index = 0; index < 6; index += 1) {
+      const state = { status: null, body: null, headers: {} };
+      const res = {
+        setHeader(name, value) { state.headers[name] = value; },
+        status(value) { state.status = value; return this; },
+        json(value) { state.body = value; return this; }
+      };
+      await handler({ method: 'POST', headers: { 'x-forwarded-for': '203.0.113.88' }, body }, res);
+      last = state;
+    }
+
+    assert.equal(last.status, 429);
+    assert.ok(Number(last.headers['Retry-After']) > 0);
   });
 });

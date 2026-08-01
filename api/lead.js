@@ -1,12 +1,105 @@
 const { randomUUID } = require('node:crypto');
 
+const MAX_BODY_BYTES = 64 * 1024;
+const MAX_FIELD_LENGTH = 5000;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const rateLimitBuckets = new Map();
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = '';
-    req.on('data', (chunk) => { body += chunk; });
-    req.on('end', () => resolve(body));
+    let bytes = 0;
+    let settled = false;
+    req.on('data', (chunk) => {
+      if (settled) return;
+      bytes += Buffer.byteLength(chunk);
+      if (bytes > MAX_BODY_BYTES) {
+        settled = true;
+        const error = new Error('Payload too large');
+        error.code = 'PAYLOAD_TOO_LARGE';
+        reject(error);
+        return;
+      }
+      body += chunk;
+    });
+    req.on('end', () => {
+      if (!settled) resolve(body);
+    });
     req.on('error', reject);
   });
+}
+
+function getRequestIp(req) {
+  const headers = req.headers || {};
+  const forwarded = headers['x-forwarded-for'];
+  const candidate = Array.isArray(forwarded) ? forwarded[0] : String(forwarded || '').split(',')[0];
+  return candidate.trim() || (req.socket && req.socket.remoteAddress) || '';
+}
+
+function checkRateLimit(req, now = Date.now()) {
+  const ip = getRequestIp(req);
+  if (!ip) return { allowed: true };
+
+  for (const [key, bucket] of rateLimitBuckets) {
+    if (bucket.resetAt <= now) rateLimitBuckets.delete(key);
+  }
+  if (rateLimitBuckets.size >= 5000) {
+    rateLimitBuckets.delete(rateLimitBuckets.keys().next().value);
+  }
+
+  const existing = rateLimitBuckets.get(ip);
+  const bucket = existing && existing.resetAt > now
+    ? existing
+    : { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
+  bucket.count += 1;
+  rateLimitBuckets.set(ip, bucket);
+
+  return {
+    allowed: bucket.count <= RATE_LIMIT_MAX_REQUESTS,
+    retryAfter: Math.max(1, Math.ceil((bucket.resetAt - now) / 1000))
+  };
+}
+
+function isValidEmail(value) {
+  return !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function isValidPhone(value) {
+  if (!value) return true;
+  return /^[+()\d\s.-]+$/.test(value) && value.replace(/\D/g, '').length >= 6;
+}
+
+function findOversizedField(value, seen = new Set()) {
+  if (typeof value === 'string') return value.length > MAX_FIELD_LENGTH;
+  if (!value || typeof value !== 'object' || seen.has(value)) return false;
+  seen.add(value);
+  return Object.values(value).some((entry) => findOversizedField(entry, seen));
+}
+
+function validateLeadPayload(payload) {
+  const fields = [];
+  const customer = getCustomer(payload);
+  const booking = payload.booking && typeof payload.booking === 'object' ? payload.booking : null;
+  const inquiry = payload.inquiry && typeof payload.inquiry === 'object' ? payload.inquiry : null;
+
+  if (String(payload.website || '').trim()) fields.push('website');
+  if (!customer.email && !customer.phone) fields.push('contact');
+  if (!isValidEmail(customer.email)) fields.push('email');
+  if (!isValidPhone(customer.phone)) fields.push('phone');
+  if (findOversizedField(payload)) fields.push('payload');
+
+  if (booking) {
+    if (!String(booking.service || booking.serviceLabel || '').trim()) fields.push('service');
+    if (!String(booking.address || '').trim()) fields.push('address');
+  }
+  if (inquiry && !String(inquiry.service || '').trim()) fields.push('service');
+
+  return [...new Set(fields)];
+}
+
+function safeSubject(value, fallback) {
+  return String(value || fallback).replace(/[\r\n]+/g, ' ').trim().slice(0, 160);
 }
 
 function formatPayload(payload, context) {
@@ -60,6 +153,7 @@ function helsinkiDate(date) {
 function buildCrmPayload(payload, context) {
   return {
     ...payload,
+    customer: getCrmCustomer(payload),
     business: 'BetterClean',
     source: payload.source || 'BetterClean website',
     sourceChannel: payload.source || 'BetterClean website',
@@ -138,6 +232,19 @@ function getCustomer(payload) {
   };
 }
 
+function getCrmCustomer(payload) {
+  const original = payload.customer && typeof payload.customer === 'object' ? payload.customer : {};
+  const customer = getCustomer(payload);
+  return {
+    ...original,
+    firstName: customer.firstName,
+    lastName: customer.lastName,
+    name: customer.name || customer.email || customer.phone || 'Website inquiry',
+    email: customer.email,
+    phone: customer.phone
+  };
+}
+
 function formatFallbackBody(payload) {
   const customer = getCustomer(payload);
   const booking = payload.booking || payload;
@@ -169,7 +276,7 @@ function formatFallbackBody(payload) {
 
 async function sendResend(payload, text) {
   if (!process.env.RESEND_API_KEY) return false;
-  const to = process.env.BETTERCLEAN_LEAD_EMAIL || 'info@betterclean.fi';
+  const to = getLeadRecipients();
   const from = process.env.BETTERCLEAN_LEAD_FROM || 'BetterClean Website <onboarding@resend.dev>';
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -180,11 +287,64 @@ async function sendResend(payload, text) {
     body: JSON.stringify({
       from,
       to,
-      subject: payload.subject || 'BetterClean website lead',
+      subject: safeSubject(payload.subject, 'BetterClean website lead'),
       text
     })
   });
   return response.ok;
+}
+
+function getLeadRecipients() {
+  const recipients = (process.env.BETTERCLEAN_LEAD_EMAIL || 'info@betterclean.fi')
+    .split(/[;,]/)
+    .map((email) => email.trim())
+    .filter(Boolean);
+  return recipients.length ? recipients : ['info@betterclean.fi'];
+}
+
+function hasText(value) {
+  return value !== undefined && value !== null && String(value).trim() !== '';
+}
+
+function getBookingExtras(booking) {
+  if (Array.isArray(booking.extrasLabels) && booking.extrasLabels.length) {
+    return booking.extrasLabels.filter(hasText);
+  }
+  return Array.isArray(booking.extras) ? booking.extras.filter(hasText) : [];
+}
+
+function formatCustomerDetailLines(payload, lang) {
+  const booking = payload.booking && typeof payload.booking === 'object' ? payload.booking : null;
+  const inquiry = payload.inquiry && typeof payload.inquiry === 'object' ? payload.inquiry : null;
+  const lines = [];
+
+  function add(label, value) {
+    if (hasText(value)) lines.push(label + ': ' + value);
+  }
+
+  if (booking) {
+    const extras = getBookingExtras(booking);
+    add(lang === 'fi' ? 'Kodin koko' : 'Apartment size', booking.sizeLabel || booking.size);
+    add(lang === 'fi' ? 'Siivouksen kesto' : 'Cleaning duration', booking.durationLabel || (hasText(booking.duration) ? booking.duration + 'h' : ''));
+    add(lang === 'fi' ? 'Toistuvuus' : 'Frequency', booking.frequencyLabel || booking.frequency);
+    add(lang === 'fi' ? 'Lisäpalvelut' : 'Additional services', extras.join(', '));
+    add(lang === 'fi' ? 'Arvioitu yhteensä' : 'Estimated total', booking.estimatedTotal || booking.estimatedPrice);
+    add(lang === 'fi' ? 'Osoite' : 'Address', booking.address);
+    add(lang === 'fi' ? 'Postinumero' : 'Postcode', booking.postcode);
+    add(lang === 'fi' ? 'Toivottu päivä' : 'Preferred day', booking.preferredDay);
+    add(lang === 'fi' ? 'Toivottu aika' : 'Preferred time', booking.slot || booking.time || booking.date);
+    return lines;
+  }
+
+  if (inquiry) {
+    add(lang === 'fi' ? 'Kiinnostuksen kohde' : 'Interested service', inquiry.service);
+    add(lang === 'fi' ? 'Alue tai postinumero' : 'Area or postcode', inquiry.area);
+    add(lang === 'fi' ? 'Kodin koko' : 'Home size', inquiry.size);
+    add(lang === 'fi' ? 'Toivottu yhteydenotto' : 'Preferred contact method', inquiry.method);
+    add(lang === 'fi' ? 'Tarve / viesti' : 'Need / message', inquiry.need || inquiry.message);
+  }
+
+  return lines;
 }
 
 function formatCustomerReply(payload) {
@@ -193,6 +353,18 @@ function formatCustomerReply(payload) {
   const firstName = customer.firstName || (customer.name || '').split(' ')[0] || '';
   const helloFi = firstName ? 'Hei ' + firstName + ',' : 'Hei,';
   const helloEn = firstName ? 'Hi ' + firstName + ',' : 'Hi,';
+  const detailLines = formatCustomerDetailLines(payload, lang);
+  const detailBlock = detailLines.length
+    ? [
+        '',
+        lang === 'fi' ? 'Saimme nämä tiedot:' : 'We received these details:',
+        ...detailLines.map((line) => '- ' + line),
+        '',
+        lang === 'fi'
+          ? 'Jos jokin tieto on väärin, vastaa tähän sähköpostiin, niin korjaamme sen.'
+          : 'If anything looks incorrect, reply to this email and we will correct it.'
+      ]
+    : [];
 
   if (lang === 'en') {
     return {
@@ -201,6 +373,10 @@ function formatCustomerReply(payload) {
         helloEn,
         '',
         'Thanks for contacting BetterClean. We received your request and will review the details as soon as possible.',
+        ...detailBlock,
+        '',
+        'You pay after the cleaning is complete. There are no separate equipment, supply or visit fees, and travel is free within 20 km of Tampere centre.',
+        'Cleaning work may qualify for the household deduction. Eligibility and deductible conditions apply; check the current rules at vero.fi.',
         '',
         'If anything is urgent, you can also contact us directly at info@betterclean.fi.',
         '',
@@ -216,6 +392,10 @@ function formatCustomerReply(payload) {
       helloFi,
       '',
       'Kiitos yhteydenotosta. Saimme pyyntösi ja tarkistamme tiedot mahdollisimman pian.',
+      ...detailBlock,
+      '',
+      'Maksat siivouksen jälkeen. Emme veloita erillisiä väline-, tarvike- tai käyntimaksuja, ja matkat ovat maksuttomia 20 km säteellä Tampereen keskustasta.',
+      'Siivoustyö voi oikeuttaa kotitalousvähennykseen. Vähennysoikeuteen ja omavastuuseen liittyy ehtoja; tarkista ajantasaiset tiedot osoitteesta vero.fi.',
       '',
       'Jos asialla on kiire, voit olla meihin suoraan yhteydessä osoitteessa info@betterclean.fi.',
       '',
@@ -303,20 +483,39 @@ async function attemptDelivery(fn) {
   }
 }
 
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
+  const rateLimit = checkRateLimit(req);
+  if (!rateLimit.allowed) {
+    res.setHeader('Retry-After', String(rateLimit.retryAfter));
+    return res.status(429).json({ ok: false, error: 'Too many requests. Please try again later.' });
+  }
+
   let payload;
   try {
     payload = req.body && typeof req.body === 'object' ? req.body : JSON.parse(await readBody(req));
-  } catch {
-    return res.status(400).json({ ok: false, error: 'Invalid JSON' });
+    if (Buffer.byteLength(JSON.stringify(payload)) > MAX_BODY_BYTES) {
+      return res.status(413).json({ ok: false, error: 'Payload too large' });
+    }
+  } catch (error) {
+    const status = error && error.code === 'PAYLOAD_TOO_LARGE' ? 413 : 400;
+    return res.status(status).json({ ok: false, error: status === 413 ? 'Payload too large' : 'Invalid JSON' });
   }
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
     return res.status(400).json({ ok: false, error: 'Invalid lead payload' });
+  }
+
+  const invalidFields = validateLeadPayload(payload);
+  if (invalidFields.length) {
+    return res.status(400).json({
+      ok: false,
+      error: 'Please check the required contact and service details.',
+      fields: invalidFields
+    });
   }
 
   const context = {
@@ -367,4 +566,10 @@ module.exports = async function handler(req, res) {
     reference: context.intakeId,
     crm: crm.ok ? 'saved' : crm.configured ? 'failed' : 'not_configured'
   });
-};
+}
+
+module.exports = handler;
+module.exports.formatCustomerReply = formatCustomerReply;
+module.exports.getLeadRecipients = getLeadRecipients;
+module.exports.validateLeadPayload = validateLeadPayload;
+module.exports.checkRateLimit = checkRateLimit;

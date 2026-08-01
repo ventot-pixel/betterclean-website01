@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pyydä Tarjous | BetterClean Tampere</title>
   <meta name="description" content="Pyydä tarjous tai lähetä varauspyyntö BetterCleanille Tampereella. Kotisiivous, toistuva siivous ja nopea henkilökohtainen yhteydenotto." />
-  <meta name="dateModified" content="2026-06-05" />
+  <meta name="dateModified" content="2026-08-01" />
   <meta name="keywords" content="pyydä tarjous siivous tampere, kotisiivous tarjous tampere, siivous tarjouspyyntö tampere, varauspyyntö siivous tampere, recurring cleaning tampere" />
   <link rel="canonical" href="https://www.betterclean.fi/request-quote.html" />
   <meta property="og:title" content="Pyydä Tarjous | BetterClean Tampere" />
@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://www.betterclean.fi/brand_assets/betterclean-logo.png" />
   <link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64" />
   <script src="/consent.js" defer></script>
-  <script src="/whatsapp-widget.js?v=20260615-auto" defer></script>
+  <script src="/whatsapp-widget.js?v=20260709-nodot" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -128,7 +128,7 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BetterClean","item":"https://www.betterclean.fi/"},{"@type":"ListItem","position":2,"name":"Pyydä tarjous","item":"https://www.betterclean.fi/request-quote.html"}]}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="pricing.js"></script>
+  <script src="pricing.js?v=20260801-quoteRecovery"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -153,7 +153,8 @@
       transition: background 0.2s, transform 0.15s; letter-spacing: -0.01em;
       box-shadow: 0 4px 16px rgba(36,122,36,0.28); text-decoration: none; border: none; cursor: pointer;
     }
-    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary:not(:disabled):hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
     .btn-outline {
       border: 2px solid var(--green); color: var(--green); font-family: 'Sora', sans-serif;
       font-weight: 700; padding: 12px 26px; border-radius: 10px; display: inline-block;
@@ -177,7 +178,7 @@
     .nav-logo-wrap { height: 42px; overflow: hidden; display: flex; align-items: center; }
     @media (min-width: 768px) { .nav-logo-wrap { height: 72px; } }
     .nav-slogan { display: block; color: var(--green); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; width: 100%; margin-top: 3px; }
-    .hamburger-btn { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: #f1f5f0; border-radius: 6px; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
+    .hamburger-btn { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: #f1f5f0; border-radius: 8px; border: none; cursor: pointer; padding: 11px; flex-shrink: 0; }
     .hamburger-btn span { display: block; width: 100%; height: 2px; background: var(--dark); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
     .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger-btn.open span:nth-child(2) { opacity: 0; }
@@ -210,8 +211,8 @@
     .surface {
       background: rgba(255,255,255,0.9);
       border: 1px solid var(--stroke);
-      border-radius: 24px;
-      box-shadow: 0 22px 44px rgba(26,46,26,0.07);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(26,46,26,0.06);
     }
     .progress-bar {
       display: flex;
@@ -240,19 +241,14 @@
     }
 
     .intent-toggle {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
       margin-bottom: 18px;
-    }
-    @media (max-width: 640px) {
-      .intent-toggle { grid-template-columns: 1fr; }
     }
     .intent-card {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      width: 100%;
       height: 100%;
       text-align: center;
       padding: 18px;
@@ -261,13 +257,12 @@
       background: #fff;
       cursor: pointer;
       transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
-      box-shadow: 0 10px 26px rgba(26,46,26,0.04);
+      box-shadow: 0 2px 8px rgba(26,46,26,0.04);
     }
     .intent-card:hover { transform: translateY(-1px); border-color: rgba(36,122,36,0.32); }
-    .intent-card.active { border-color: rgba(36,122,36,0.48); background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%); box-shadow: 0 18px 40px rgba(36,122,36,0.11); }
+    .intent-card.active { border-color: rgba(36,122,36,0.48); background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%); box-shadow: 0 4px 14px rgba(36,122,36,0.09); }
     .intent-card h2 {
       width: 100%;
-      min-height: 5.5rem;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -276,6 +271,9 @@
       width: 100%;
       margin: 0;
     }
+    .quote-route { margin: 24px 0; }
+    .quote-route .muted { max-width: 60ch; margin: 0 auto; }
+    .quote-route-cta { margin-top: 16px; }
     .intent-badge {
       display: inline-flex;
       align-items: center;
@@ -305,6 +303,7 @@
     .panel h2 { letter-spacing: -0.03em; }
     .muted { color: #5c715c; line-height: 1.7; }
     .step-card { padding: 24px; border-radius: 20px; border: 1px solid var(--stroke); background: linear-gradient(180deg, #fcfefd 0%, #ffffff 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
+    .price-nowrap { white-space: nowrap; display: inline-block; }
     .field-label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; color: var(--dark); font-family: 'Sora', sans-serif; }
     .field-help { margin-top: -2px; margin-bottom: 12px; color: #687d68; font-size: 13px; line-height: 1.5; }
     input, select, textarea {
@@ -327,11 +326,138 @@
       background: #fff;
       cursor: pointer;
       transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 10px 24px rgba(26,46,26,0.04);
+      box-shadow: 0 2px 8px rgba(26,46,26,0.04);
     }
     .choice-card:hover { transform: translateY(-1px); border-color: rgba(36,122,36,0.35); }
-    .choice-card.active { border-color: rgba(36,122,36,0.55); background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%); box-shadow: 0 18px 38px rgba(36,122,36,0.12); }
+    .choice-card.active { border-color: rgba(36,122,36,0.55); background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%); box-shadow: 0 4px 14px rgba(36,122,36,0.09); }
+    .choice-card:focus-visible, .extra-card:focus-visible, .slot-btn:focus-visible {
+      border-color: rgba(36,122,36,0.72);
+      box-shadow: 0 0 0 4px rgba(36,122,36,0.12);
+      outline: none;
+    }
     .choice-row { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .frequency-fieldset { border: 0; padding: 0; margin: 0; }
+    .service-choice-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .service-choice-grid .choice-card {
+      position: relative;
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 22px 18px 20px;
+    }
+    .service-choice-grid .choice-card strong {
+      display: block;
+      width: 100%;
+      color: var(--dark);
+      font-family: 'Sora', sans-serif;
+      line-height: 1.3;
+    }
+    .service-choice-grid .choice-card p {
+      max-width: 220px;
+      margin: 8px auto 0;
+      color: #637963;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .frequency-grid .choice-card {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      min-height: 118px;
+      padding: 42px 54px 20px;
+    }
+    .frequency-grid .choice-row {
+      width: 100%;
+      justify-content: center;
+    }
+    .frequency-grid .choice-row > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .frequency-grid .mini-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+    }
+    /* Headline rate, top-left. Offset past the selection dot so the two never
+       overlap once a card is active. */
+    .step1-estimate {
+      margin: 0 0 20px;
+      padding: 16px 18px;
+      border: 1.5px solid rgba(36,122,36,0.35);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f4fbf3 100%);
+    }
+    .step1-estimate-row {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    }
+    .step1-estimate-row strong {
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.45rem;
+      letter-spacing: -0.03em; color: var(--dark);
+    }
+    .step1-estimate-row.after { margin-top: 4px; }
+    .step1-estimate-row.after span,
+    .step1-estimate-row.after strong { color: var(--green); font-size: 0.9rem; }
+    .step1-estimate-row.after strong { font-size: 1rem; }
+    .step1-estimate-note { margin-top: 8px; font-size: 0.8rem; color: #6b776c; }
+    .inline-link {
+      background: none; border: 0; padding: 4px 0 0; cursor: pointer;
+      font: inherit; font-weight: 700; color: var(--green);
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    .inline-link:hover { color: var(--green-dark); }
+    .frequency-rate {
+      position: absolute;
+      top: 11px;
+      left: 40px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .frequency-check {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 2px solid rgba(36,122,36,0.24);
+      background: #fff;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .frequency-grid .choice-card.active .frequency-check {
+      opacity: 1;
+      background: var(--green);
+      border-color: var(--green);
+      box-shadow: inset 0 0 0 4px #fff;
+    }
+    .form-reveal {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: max-height 0.28s ease, opacity 0.22s ease, transform 0.22s ease;
+    }
+    .form-reveal.is-visible {
+      max-height: 880px;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
     .mini-tag {
       display: inline-flex;
       align-items: center;
@@ -356,6 +482,107 @@
       line-height: 1.6;
     }
     .tiny-note strong { color: #5f4114; }
+    .duration-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .duration-label-row .field-label { margin-bottom: 0; }
+    .duration-setup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 24px;
+      align-items: start;
+      max-width: 820px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .duration-grid-span { grid-column: 1 / -1; }
+    .duration-field {
+      align-self: stretch;
+      width: 100%;
+    }
+    .duration-field input,
+    .duration-field select {
+      min-height: 51px;
+      text-align: center;
+    }
+    .duration-field select {
+      text-align-last: center;
+    }
+    .duration-field select option {
+      text-align: center;
+    }
+    .duration-helper {
+      max-width: 680px;
+      margin: 4px auto 2px;
+      text-align: center;
+    }
+    .duration-recommendation {
+      padding: 16px;
+      border: 1px solid #e0ecdf;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f8fbf7 0%, #ffffff 100%);
+    }
+    .recurring-explanation-callout {
+      max-width: 100%;
+      margin: 0;
+      padding: 14px 18px;
+      text-align: center;
+      line-height: 1.55;
+    }
+    .recommendation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+    .recommendation-grid.is-one-time {
+      grid-template-columns: 1fr;
+    }
+    .recommendation-item {
+      padding: 14px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid #e4eee2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .recommendation-item span {
+      display: block;
+      color: #687d68;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .recommendation-item strong {
+      display: block;
+      color: var(--dark);
+      font-family: 'Sora', sans-serif;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    .recommendation-item p {
+      margin-top: 6px;
+      color: #637963;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .manual-warning {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid rgba(186,109,17,0.18);
+      color: #7f5c24;
+      font-size: 13px;
+      line-height: 1.6;
+    }
 
     .extras-grid {
       display: grid;
@@ -371,6 +598,34 @@
       transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
     }
     .extra-card.active { border-color: rgba(36,122,36,0.52); background: var(--green-light); box-shadow: 0 16px 34px rgba(36,122,36,0.12); }
+    .extra-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-right: 12px;
+      border: 2px solid #c2d4c2;
+      border-radius: 6px;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      font-size: 14px;
+      font-weight: 800;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .extra-check::after { content: '✓'; }
+    .extra-card.active .extra-check { background: #247a24; border-color: #247a24; color: #fff; }
+    .offer-line { color: #14530f; font-weight: 700; font-size: 0.85rem; margin-top: 6px; }
+    .free-reset-offer {
+      background: #eaf7e6;
+      border: 1px solid rgba(36,122,36,0.35);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #14530f;
+      line-height: 1.6;
+    }
+    .free-reset-offer strong { display: block; margin-bottom: 4px; font-family: 'Sora', sans-serif; }
 
     .slot-grid {
       display: grid;
@@ -403,7 +658,27 @@
     }
     .summary-body { padding: 22px; }
     .summary-line { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #edf3ec; font-size: 14px; }
+    .summary-line strong { text-align: right; }
     .summary-line:last-child { border-bottom: none; }
+    .summary-line-discount {
+      align-items: center;
+      margin: 10px 0 2px;
+      padding: 12px 14px;
+      border: 1px solid #d7ead6;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f4fbf3 0%, #ffffff 100%);
+      color: var(--green-dark);
+    }
+    .summary-line-discount span {
+      color: #345f34;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .summary-line-discount strong {
+      color: var(--green-dark);
+      font-size: 16px;
+      font-family: 'Sora', sans-serif;
+    }
     .summary-callout {
       background: linear-gradient(180deg, #f8fbf7 0%, #eef7ed 100%);
       border: 1px solid #e0ecdf;
@@ -440,6 +715,8 @@
 
     .hidden-panel { display: none; }
     .step-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .step-actions.end { justify-content: flex-end; }
+    .step-actions.center { justify-content: center; }
     .success-box {
       display: none;
       margin-top: 18px;
@@ -449,6 +726,91 @@
       border: 1px solid rgba(36,122,36,0.25);
       color: #496149;
       line-height: 1.7;
+    }
+    .success-box.error {
+      background: #fff8f7;
+      border-color: #e8b7af;
+      color: #7b2d24;
+    }
+    .success-box a { color: inherit; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+    .form-error-summary {
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      border: 1px solid #dca49b;
+      border-radius: 12px;
+      background: #fff8f7;
+      color: #7b2d24;
+      line-height: 1.55;
+    }
+    .field-error { margin-top: 7px; color: #9f2f24; font-size: 13px; font-weight: 650; }
+    input.is-invalid, select.is-invalid, textarea.is-invalid {
+      border-color: #b94437;
+      box-shadow: 0 0 0 3px rgba(185,68,55,0.1);
+    }
+    .contact-help { margin-top: -10px; margin-bottom: 18px; }
+    .honeypot-field {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      clip: rect(0 0 0 0) !important;
+      clip-path: inset(50%) !important;
+      white-space: nowrap !important;
+    }
+    @media (max-width: 640px) {
+      .frequency-grid .choice-card {
+        min-height: 132px;
+        padding: 46px 20px 20px;
+      }
+      .frequency-grid .mini-tag {
+        top: 10px;
+        right: 10px;
+        max-width: 48%;
+        white-space: normal;
+        line-height: 1.12;
+      }
+      .frequency-check {
+        top: 12px;
+        left: 12px;
+      }
+      .duration-label-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .summary-line {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .summary-line strong {
+        text-align: left;
+      }
+    }
+    @media (max-width: 767px) {
+      .service-choice-grid,
+      .duration-setup-grid,
+      .recommendation-grid {
+        grid-template-columns: 1fr;
+      }
+      #homeSizePanel,
+      #durationPanel {
+        grid-column: 1;
+      }
+      .duration-grid-span {
+        grid-column: 1;
+      }
+      .duration-helper {
+        max-width: 100%;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .form-reveal,
+      .frequency-check,
+      .choice-card,
+      input,
+      select,
+      textarea {
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -467,12 +829,12 @@
         <button type="button" class="lang-btn" onclick="setLang('en')">EN</button>
         <button type="button" class="lang-btn active" onclick="setLang('fi')">FI</button>
       </div>
-      <button type="button" class="hamburger-btn" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+      <button type="button" class="hamburger-btn" id="hamburger" onclick="toggleMobileNav()" aria-label="Avaa navigaatio" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
-  <div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="/" onclick="closeMobileNav()" data-en="Home" data-fi="Etusivu">Etusivu</a>
     <a href="window-cleaning.html" onclick="closeMobileNav()" data-en="Window Cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</a>
     <a href="steam-cleaning.html" onclick="closeMobileNav()" data-en="Steam Cleaning" data-fi="Höyrypesu">Höyrypesu</a>
@@ -488,162 +850,251 @@
     <div class="hero-grid">
       <div class="surface panel">
         <div class="progress-bar" id="progressBar">
-          <span class="progress-pill active" data-step="1" data-en="Service" data-fi="Palvelu">Palvelu</span>
+          <span class="progress-pill active" data-step="1" aria-current="step" data-en="Service" data-fi="Palvelu">Palvelu</span>
           <span class="progress-pill" data-step="2" data-en="Date &amp; Area" data-fi="Ajankohta &amp; Alue">Ajankohta &amp; Alue</span>
           <span class="progress-pill" data-step="3" data-en="Confirm" data-fi="Vahvista">Vahvista</span>
         </div>
         <div class="intent-toggle">
-          <button class="intent-card active" id="bookingModeBtn" type="button" onclick="setMode('booking')">
-            <span class="intent-badge" data-en="Ready to book" data-fi="Valmis varaamaan">Valmis varaamaan</span>
-            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Build your home cleaning request" data-fi="Rakenna kotisiivouspyyntösi">Rakenna kotisiivouspyyntösi</h2>
-            <p class="muted" data-en="For customers who already know they want regular home cleaning and want to choose the service setup before we confirm the booking." data-fi="Asiakkaille, jotka tietävät haluavansa kotisiivousta ja haluavat valita palvelun rakenteen ennen kuin vahvistamme varauksen.">Asiakkaille, jotka tietävät haluavansa kotisiivousta ja haluavat valita palvelun rakenteen ennen kuin vahvistamme varauksen.</p>
-          </button>
-          <button class="intent-card" id="inquiryModeBtn" type="button" onclick="setMode('inquiry')">
-            <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?">Tarvitsetko apua?</span>
-            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin">Pyydä tarjous ensin</h2>
-            <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or not ready to choose a date and time yet." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai eivät ole valmiita valitsemaan päivää ja kellonaikaa vielä.</p>
+          <button class="intent-card active" id="bookingModeBtn" type="button" onclick="setMode('booking')" aria-pressed="true" aria-controls="bookingPanel">
+            <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Build your cleaning request" data-fi="Kokoa varauspyyntösi">Kokoa varauspyyntösi</h2>
+            <p class="muted" data-en="Know exactly what you need? Choose your service, select your preferred day and time, and complete your booking online. We'll confirm your appointment within 24 hours." data-fi="Tiedätkö jo, mitä tarvitset? Valitse palvelu sekä sinulle sopiva päivä ja kellonaika. Viimeistele pyyntö verkossa, niin vahvistamme varauksesi 24 tunnin kuluessa.">Tiedätkö jo, mitä tarvitset? Valitse palvelu sekä sinulle sopiva päivä ja kellonaika. Viimeistele pyyntö verkossa, niin vahvistamme varauksesi 24 tunnin kuluessa.</p>
           </button>
         </div>
 
-        <div id="bookingPanel">
+        <form id="bookingPanel" novalidate onsubmit="submitBookingRequest(event)">
           <div class="step-card" id="bookingStep1">
             <h1 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Tell us about the home you need cleaned" data-fi="Kerro kodista, johon tarvitset siivousta">Kerro kodista, johon tarvitset siivousta</h1>
             <p class="muted mb-8" data-en="This structured request helps us recommend the right visit length, organise the right cleaner, and reply faster with a confident next step." data-fi="Tämä jäsennelty pyyntö auttaa meitä suosittelemaan oikean käyntikeston, järjestämään sopivan siivoojan ja vastaamaan nopeammin varmemmalla seuraavalla askeleella.">Tämä jäsennelty pyyntö auttaa meitä suosittelemaan oikean käyntikeston, järjestämään sopivan siivoojan ja vastaamaan nopeammin varmemmalla seuraavalla askeleella.</p>
 
-            <div class="grid md:grid-cols-2 gap-5 mb-6">
-              <div>
-                <label class="field-label" for="homeSize" data-en="Apartment size" data-fi="Asunnon koko">Asunnon koko</label>
-                <select id="homeSize" onchange="handleHomeSizeChange()">
-                  <option value="studio" data-en="Under 50m²" data-fi="Alle 50m²">Alle 50m²</option>
-                  <option value="small" selected data-en="50 - 89m²" data-fi="50 - 89m²">50 - 89m²</option>
-                  <option value="medium" data-en="90 - 119m²" data-fi="90 - 119m²">90 - 119m²</option>
-                  <option value="large" data-en="120 - 154m²" data-fi="120 - 154m²">120 - 154m²</option>
-                  <option value="xlarge" data-en="155m² or larger" data-fi="155m² tai suurempi">155m² tai suurempi</option>
-                </select>
-              </div>
-              <div>
-                <label class="field-label" for="cleanDuration" data-en="Cleaning duration" data-fi="Siivouksen kesto">Siivouksen kesto</label>
-                <select id="cleanDuration" onchange="handleDurationChange()">
-                  <option value="2">2h</option>
-                  <option value="3" selected>3h</option>
-                  <option value="4">4h</option>
-                  <option value="5">5h</option>
-                  <option value="6">6h</option>
-                  <option value="7">7h</option>
-                  <option value="8">8h</option>
-                </select>
-              </div>
+            <div class="mb-6">
+              <fieldset class="frequency-fieldset">
+                <legend class="field-label" id="bookingServiceLegend" data-en="Choose the cleaning service" data-fi="Valitse siivouspalvelu">Valitse siivouspalvelu</legend>
+                <div class="choice-grid service-choice-grid" id="bookingServiceOptions" role="radiogroup" aria-labelledby="bookingServiceLegend">
+                  <button type="button" class="choice-card active" id="service-home" role="radio" aria-checked="true" aria-describedby="service-home-desc" onclick="selectBookingService('home')" onkeydown="handleServiceKeydown(event, 'home')">
+                    <strong data-en="Essential Home Care" data-fi="Peruskodin Hoito">Peruskodin Hoito</strong>
+                    <p id="service-home-desc" data-en="Recurring or one-time home cleaning from <span class=&quot;price-nowrap&quot;>49 €/h</span>" data-fi="Toistuva tai kertaluonteinen kotisiivous alkaen <span class=&quot;price-nowrap&quot;>49 €/h</span>">Toistuva tai kertaluonteinen kotisiivous alkaen <span class="price-nowrap">49 €/h</span></p>
+                  </button>
+                  <button type="button" class="choice-card" id="service-deep" role="radio" aria-checked="false" aria-describedby="service-deep-desc" onclick="selectBookingService('deep')" onkeydown="handleServiceKeydown(event, 'deep')">
+                    <strong data-en="Signature Deep Clean" data-fi="Syväsiivous - Meidän Tavallamme">Syväsiivous - Meidän Tavallamme</strong>
+                    <p id="service-deep-desc" data-en="One-time deep cleaning with steam from <span class=&quot;price-nowrap&quot;>79 €/h</span>" data-fi="Kertaluonteinen syväsiivous höyrypesulla alkaen <span class=&quot;price-nowrap&quot;>79 €/h</span>">Kertaluonteinen syväsiivous höyrypesulla alkaen <span class="price-nowrap">79 €/h</span></p>
+                  </button>
+                  <button type="button" class="choice-card" id="service-office" role="radio" aria-checked="false" aria-describedby="service-office-desc" onclick="selectBookingService('office')" onkeydown="handleServiceKeydown(event, 'office')">
+                    <strong data-en="Move-out Cleaning" data-fi="Muuttosiivous">Muuttosiivous</strong>
+                    <p id="service-office-desc" data-en="For an empty home, min. 4 h, from <span class=&quot;price-nowrap&quot;>59 €/h</span>" data-fi="Tyhjälle asunnolle, väh. 4 h, alkaen <span class=&quot;price-nowrap&quot;>59 €/h</span>">Tyhjälle asunnolle, väh. 4 h, alkaen <span class="price-nowrap">59 €/h</span></p>
+                  </button>
+                </div>
+              </fieldset>
             </div>
 
-            <div class="mb-6">
-              <label class="field-label" data-en="How often do you want your home cleaned?" data-fi="Kuinka usein haluat kotisiivouksen?">Kuinka usein haluat kotisiivouksen?</label>
-              <p class="field-help" data-en="Recurring cleaning usually gives the best long-term value and the most consistent result." data-fi="Toistuva siivous antaa yleensä parhaan pitkäaikaisen arvon ja tasaisimman lopputuloksen.">Toistuva siivous antaa yleensä parhaan pitkäaikaisen arvon ja tasaisimman lopputuloksen.</p>
-              <div class="choice-grid">
-                <button type="button" class="choice-card" id="freq-weekly" onclick="selectFrequency('weekly')">
+            <div class="mb-6" id="frequencySection">
+              <fieldset class="frequency-fieldset">
+                <legend class="field-label" id="frequencyLegend" data-en="How often do you want your home cleaned?" data-fi="Kuinka usein haluat kotisiivouksen?">Kuinka usein haluat kotisiivouksen?</legend>
+                <p class="field-help" id="frequencyHelp" data-en="Recurring cleaning usually gives the best long-term value. *35% figures are illustrations before the €150 annual personal threshold; eligibility conditions apply." data-fi="Toistuva siivous antaa yleensä parhaan pitkäaikaisen arvon. *35 % luvut ovat esimerkkilaskelmia ennen 150 € vuotuista henkilökohtaista omavastuuta; vähennyksen ehdot koskevat arviota.">Toistuva siivous antaa yleensä parhaan pitkäaikaisen arvon. *35 % luvut ovat esimerkkilaskelmia ennen 150 € vuotuista henkilökohtaista omavastuuta; vähennyksen ehdot koskevat arviota.</p>
+                <div class="choice-grid frequency-grid" id="frequencyOptions" role="radiogroup" aria-labelledby="frequencyLegend" aria-describedby="frequencyHelp">
+                <button type="button" class="choice-card" id="freq-weekly" role="radio" aria-checked="false" aria-describedby="freq-weekly-desc" onclick="selectFrequency('weekly')" onkeydown="handleFrequencyKeydown(event, 'weekly')">
+                  <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">49 €/h</span>
+                  <span class="mini-tag" data-en="Best hourly rate" data-fi="Paras tuntihinta">Paras tuntihinta</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every week" data-fi="Joka viikko">Joka viikko</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="Best for busy households that want continuous calm" data-fi="Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta">Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta</p>
+                      <p class="text-sm text-gray-500 mt-1" id="freq-weekly-desc" data-en="Best for busy households that want continuous calm" data-fi="Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta">Paras kiireisille kodeille, jotka haluavat jatkuvaa arjen helpotusta</p>
+                      <p class="offer-line" data-en="→ 31,85 €/h 35% illustration*" data-fi="→ 31,85 €/h 35 % esimerkkilaskelma*">→ 31,85 €/h 35 % esimerkkilaskelma*</p>
                     </div>
                   </div>
                 </button>
-                <button type="button" class="choice-card active" id="freq-biweekly" onclick="selectFrequency('biweekly')">
+                <button type="button" class="choice-card" id="freq-biweekly" role="radio" aria-checked="false" aria-describedby="freq-biweekly-desc" onclick="selectFrequency('biweekly')" onkeydown="handleFrequencyKeydown(event, 'biweekly')">
+                  <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">55 €/h</span>
+                  <span class="mini-tag" data-en="Most popular" data-fi="Suosituin">Suosituin</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every second week" data-fi="Joka toinen viikko">Joka toinen viikko</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="A balanced rhythm for most premium home cleaning clients" data-fi="Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille">Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille</p>
+                      <p class="text-sm text-gray-500 mt-1" id="freq-biweekly-desc" data-en="A balanced rhythm for most premium home cleaning clients" data-fi="Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille">Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille</p>
+                      <p class="offer-line" data-en="→ 35,75 €/h 35% illustration*" data-fi="→ 35,75 €/h 35 % esimerkkilaskelma*">→ 35,75 €/h 35 % esimerkkilaskelma*</p>
                     </div>
-                    <span class="mini-tag" data-en="Most popular" data-fi="Suosituin">Suosituin</span>
                   </div>
                 </button>
-                <button type="button" class="choice-card" id="freq-monthly" onclick="selectFrequency('monthly')">
+                <button type="button" class="choice-card" id="freq-monthly" role="radio" aria-checked="false" aria-describedby="freq-monthly-desc" onclick="selectFrequency('monthly')" onkeydown="handleFrequencyKeydown(event, 'monthly')">
+                  <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">59 €/h</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every four weeks" data-fi="Joka neljäs viikko">Joka neljäs viikko</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="Best when you mainly want a professional reset visit" data-fi="Paras silloin, kun haluat pääasiassa ammattilaisen tekemän nollauskäynnin">Paras silloin, kun haluat pääasiassa ammattilaisen tekemän nollauskäynnin</p>
+                      <p class="text-sm text-gray-500 mt-1" id="freq-monthly-desc" data-en="Best when you mainly want a thorough monthly clean" data-fi="Paras silloin, kun haluat pääasiassa perusteellisen kuukausittaisen siivouksen">Paras silloin, kun haluat pääasiassa perusteellisen kuukausittaisen siivouksen</p>
+                      <p class="offer-line" data-en="→ 38,35 €/h 35% illustration*" data-fi="→ 38,35 €/h 35 % esimerkkilaskelma*">→ 38,35 €/h 35 % esimerkkilaskelma*</p>
                     </div>
                   </div>
                 </button>
-                <button type="button" class="choice-card" id="freq-once" onclick="selectFrequency('once')">
+                <button type="button" class="choice-card" id="freq-once" role="radio" aria-checked="false" aria-describedby="freq-once-desc" onclick="selectFrequency('once')" onkeydown="handleFrequencyKeydown(event, 'once')">
+                  <span class="frequency-check" aria-hidden="true"></span>
+                  <span class="frequency-rate" aria-hidden="true">69 €/h</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="One time only" data-fi="Vain kerran">Vain kerran</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="Ideal if you want to try BetterClean first or need a single support visit" data-fi="Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin">Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin</p>
+                      <p class="text-sm text-gray-500 mt-1" id="freq-once-desc" data-en="Ideal if you want to try BetterClean first or need a single support visit" data-fi="Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin">Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin</p>
+                      <p class="offer-line" data-en="→ 44,85 €/h 35% illustration*" data-fi="→ 44,85 €/h 35 % esimerkkilaskelma*">→ 44,85 €/h 35 % esimerkkilaskelma*</p>
                     </div>
                   </div>
                 </button>
-              </div>
+                </div>
+              </fieldset>
             </div>
 
-            <div class="mb-6">
+            <div class="duration-setup-grid mb-6">
+              <div class="form-reveal duration-field" id="homeSizePanel" data-reveal="frequency">
+                <label class="field-label" for="homeSize" data-en="Apartment or house size" data-fi="Asunnon tai talon koko">Asunnon tai talon koko</label>
+                <input id="homeSize" type="number" min="1" max="300" inputmode="decimal" onchange="handleHomeSizeChange()" oninput="handleHomeSizeChange()" aria-describedby="homeSizeBracketHelp" disabled />
+                <p id="homeSizeBracketHelp" class="field-help" data-en="Enter your home size in square meters." data-fi="Kirjoita kodin koko neliömetreinä.">Kirjoita kodin koko neliömetreinä.</p>
+                <button type="button" id="customEstimateLink" class="inline-link" hidden onclick="setMode('inquiry')" data-en="Request a personal quote" data-fi="Pyydä henkilökohtainen tarjous">Pyydä henkilökohtainen tarjous</button>
+              </div>
+              <div class="form-reveal duration-field" id="durationPanel" data-reveal="size">
+                <label class="field-label" for="cleanDuration" data-en="Recommended Duration" data-fi="Suositeltu kesto">Suositeltu kesto</label>
+                <select id="cleanDuration" onchange="handleDurationChange()" aria-describedby="durationPersonHoursHelp durationWarning" disabled></select>
+              </div>
+              <p id="durationPersonHoursHelp" class="field-help duration-helper duration-grid-span" hidden data-en="Duration is shown in person-hours. For example, four person-hours may mean one cleaner for four hours or two cleaners for two hours." data-fi="Kesto näytetään henkilötunteina. Esimerkiksi neljä henkilötuntia voi tarkoittaa yhtä siivoojaa neljäksi tunniksi tai kahta siivoojaa kahdeksi tunniksi.">Kesto näytetään henkilötunteina. Esimerkiksi neljä henkilötuntia voi tarkoittaa yhtä siivoojaa neljäksi tunniksi tai kahta siivoojaa kahdeksi tunniksi.</p>
+              <p id="recurringExplanation" class="duration-recommendation recurring-explanation-callout duration-grid-span" hidden data-en="Your first visit is longer, because the home has not been maintained by us yet. It is billed at your normal contract rate, like every visit. Once the home reaches a consistent level, ongoing visits are shorter." data-fi="Ensimmäinen käynti on pidempi, koska emme ole vielä ylläpitäneet kotia. Se laskutetaan normaaliin sopimushintaasi, kuten jokainen käynti. Kun koti on saatu tasaiselle tasolle, jatkokäynnit ovat lyhyempiä.">Ensimmäinen käynti on pidempi, koska emme ole vielä ylläpitäneet kotia. Se laskutetaan normaaliin sopimushintaasi, kuten jokainen käynti. Kun koti on saatu tasaiselle tasolle, jatkokäynnit ovat lyhyempiä.</p>
+              <div class="recommendation-grid duration-grid-span" id="recommendationGrid" aria-live="polite" hidden>
+                <div id="oneTimeRecommendation" class="recommendation-item">
+                  <span data-en="Recommended visit duration" data-fi="Suositeltu käynnin kesto">Suositeltu käynnin kesto</span>
+                  <strong id="oneTimeDurationValue">-</strong>
+                </div>
+                <div id="firstVisitRecommendation" class="recommendation-item">
+                  <span data-en="Recommended first visit" data-fi="Suositeltu ensimmäinen käynti">Suositeltu ensimmäinen käynti</span>
+                  <strong id="firstVisitDurationValue">-</strong>
+                  <p data-en="Longer, same hourly rate" data-fi="Pidempi, sama tuntihinta">Pidempi, sama tuntihinta</p>
+                  <p class="offer-line" id="firstVisitRateNote" hidden></p>
+                </div>
+                <div id="ongoingVisitRecommendation" class="recommendation-item">
+                  <span data-en="Recommended ongoing visits" data-fi="Suositellut jatkokäynnit">Suositellut jatkokäynnit</span>
+                  <strong id="ongoingVisitDurationValue">-</strong>
+                  <p id="ongoingVisitCadence">-</p>
+                </div>
+              </div>
+              <p class="manual-warning duration-grid-span" id="durationWarning" hidden data-en="This is shorter than our recommendation. We will follow the same cleaning checklist, but some lower-priority tasks may need to be left for a future visit." data-fi="Tämä on suositustamme lyhyempi aika. Noudatamme samaa siivouslistaa, mutta osa matalamman prioriteetin tehtävistä voi jäädä tulevalle käynnille.">Tämä on suositustamme lyhyempi aika. Noudatamme samaa siivouslistaa, mutta osa matalamman prioriteetin tehtävistä voi jäädä tulevalle käynnille.</p>
+            </div>
+
+            <div class="mb-6" id="extrasSection">
               <label class="field-label" data-en="Additional services" data-fi="Lisäpalvelut">Lisäpalvelut</label>
-              <p class="field-help" data-en="Choose only what you already know you need. If you are unsure, switch to the inquiry route and we will recommend the right setup." data-fi="Valitse vain ne, joiden jo tiedät olevan tarpeen. Jos olet epävarma, siirry tarjousreittiin ja suosittelemme oikeaa kokonaisuutta.">Valitse vain ne, joiden jo tiedät olevan tarpeen. Jos olet epävarma, siirry tarjousreittiin ja suosittelemme oikeaa kokonaisuutta.</p>
+              <p class="field-help" data-en="Tick the add-ons you want included in the same visit. The time is added to your estimate." data-fi="Valitse lisäpalvelut, jotka haluat samaan käyntiin. Aika lisätään arvioosi.">Valitse lisäpalvelut, jotka haluat samaan käyntiin. Aika lisätään arvioosi.</p>
               <div class="extras-grid">
-                <button type="button" class="extra-card" id="extra-fridge" onclick="toggleExtra('fridge')">
+                <button type="button" class="extra-card" id="extra-oven" role="checkbox" aria-checked="false" onclick="toggleExtra('oven')">
                   <div class="choice-row">
-                    <div>
-                      <strong data-en="Fridge" data-fi="Jääkaappi">Jääkaappi</strong>
-                      <p class="text-sm text-gray-500 mt-1">+60 min</p>
-                    </div>
-                    <span style="font-size: 1.5rem;">🧊</span>
-                  </div>
-                </button>
-                <button type="button" class="extra-card" id="extra-oven" onclick="toggleExtra('oven')">
-                  <div class="choice-row">
-                    <div>
+                    <span class="extra-check" aria-hidden="true"></span>
+                    <div style="flex: 1;">
                       <strong data-en="Oven" data-fi="Uuni">Uuni</strong>
-                      <p class="text-sm text-gray-500 mt-1">+60 min</p>
+                      <p class="text-sm text-gray-500 mt-1" data-en="+1 h" data-fi="+1 h">+1 h</p>
                     </div>
-                    <span style="font-size: 1.5rem;">🔥</span>
                   </div>
                 </button>
-                <button type="button" class="extra-card" id="extra-sauna" onclick="toggleExtra('sauna')">
+                <button type="button" class="extra-card" id="extra-fridge" role="checkbox" aria-checked="false" onclick="toggleExtra('fridge')">
                   <div class="choice-row">
-                    <div>
-                      <strong data-en="Sauna" data-fi="Sauna">Sauna</strong>
-                      <p class="text-sm text-gray-500 mt-1">+60 min</p>
+                    <span class="extra-check" aria-hidden="true"></span>
+                    <div style="flex: 1;">
+                      <strong data-en="Fridge" data-fi="Jääkaappi">Jääkaappi</strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="+0.75 h" data-fi="+0,75 h">+0,75 h</p>
                     </div>
-                    <span style="font-size: 1.5rem;">🧖</span>
+                  </div>
+                </button>
+                <button type="button" class="extra-card" id="extra-hood" role="checkbox" aria-checked="false" onclick="toggleExtra('hood')">
+                  <div class="choice-row">
+                    <span class="extra-check" aria-hidden="true"></span>
+                    <div style="flex: 1;">
+                      <strong data-en="Range hood" data-fi="Liesituuletin">Liesituuletin</strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="+1 h" data-fi="+1 h">+1 h</p>
+                    </div>
+                  </div>
+                </button>
+                <button type="button" class="extra-card" id="extra-microwave" role="checkbox" aria-checked="false" onclick="toggleExtra('microwave')">
+                  <div class="choice-row">
+                    <span class="extra-check" aria-hidden="true"></span>
+                    <div style="flex: 1;">
+                      <strong data-en="Microwave" data-fi="Mikroaaltouuni">Mikroaaltouuni</strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="+0.5 h" data-fi="+0,5 h">+0,5 h</p>
+                    </div>
+                  </div>
+                </button>
+                <button type="button" class="extra-card" id="extra-sauna" role="checkbox" aria-checked="false" onclick="toggleExtra('sauna')">
+                  <div class="choice-row">
+                    <span class="extra-check" aria-hidden="true"></span>
+                    <div style="flex: 1;">
+                      <strong data-en="Sauna" data-fi="Sauna">Sauna</strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="We confirm the price in our reply" data-fi="Vahvistamme hinnan vastauksessa">Vahvistamme hinnan vastauksessa</p>
+                    </div>
+                  </div>
+                </button>
+                <button type="button" class="extra-card" id="extra-windows" role="checkbox" aria-checked="false" onclick="toggleExtra('windows')">
+                  <div class="choice-row">
+                    <span class="extra-check" aria-hidden="true"></span>
+                    <div style="flex: 1;">
+                      <strong data-en="Window cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</strong>
+                      <p class="text-sm text-gray-500 mt-1" data-en="We confirm the price in our reply" data-fi="Vahvistamme hinnan vastauksessa">Vahvistamme hinnan vastauksessa</p>
+                    </div>
                   </div>
                 </button>
               </div>
             </div>
 
-            <div class="tiny-note mb-6">
-              <strong data-en="Need window cleaning, steam cleaning, or post-renovation cleaning?" data-fi="Tarvitsetko ikkunanpesua, höyrypesua tai remonttisiivousta?">Tarvitsetko ikkunanpesua, höyrypesua tai remonttisiivousta?</strong>
-              <span data-en="Use the quote route on this page instead of forcing the request into a home-cleaning booking flow. We will guide you to the right service personally." data-fi="Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Käytä tämän sivun tarjousreittiä sen sijaan, että pakottaisit pyynnön kotisiivousvarauksen muottiin. Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</span>
+            <div class="tiny-note mb-6" id="includedExtrasNote" hidden>
+              <span data-en="Oven, fridge, range hood and microwave are already included in Move-out Cleaning, so they are not shown as add-ons." data-fi="Uuni, jääkaappi, liesituuletin ja mikroaaltouuni sisältyvät jo muuttosiivoukseen, joten niitä ei näytetä lisäpalveluina.">Uuni, jääkaappi, liesituuletin ja mikroaaltouuni sisältyvät jo muuttosiivoukseen, joten niitä ei näytetä lisäpalveluina.</span>
             </div>
 
-            <div class="step-actions">
-              <a href="pricing.html" class="btn-soft" data-en="Review pricing first" data-fi="Katso hinnat ensin">Katso hinnat ensin</a>
-              <button type="button" class="btn-primary" onclick="goBookingStep(2)" data-en="Continue to date &amp; area" data-fi="Jatka ajankohtaan &amp; alueeseen">Jatka ajankohtaan &amp; alueeseen</button>
+            <!-- The price, before we ask for an address. -->
+            <div class="step1-estimate" id="step1Estimate" hidden aria-live="polite">
+              <div class="step1-estimate-row">
+                <span data-en="Estimated total" data-fi="Arvioitu yhteensä">Arvioitu yhteensä</span>
+                <strong id="step1EstimateValue">-</strong>
+              </div>
+              <div class="step1-estimate-row after">
+                <span data-en="Indicative after a possible 35% household deduction" data-fi="Suuntaa-antava arvio mahdollisen 35 % kotitalousvähennyksen jälkeen">Suuntaa-antava arvio mahdollisen 35 % kotitalousvähennyksen jälkeen</span>
+                <strong id="step1EstimateAfter">-</strong>
+              </div>
+              <p class="step1-estimate-note" id="step1EstimateQualification" data-en="*Illustration applies 35% to the estimated total before the €150 annual personal threshold. Final credit depends on the eligible labour share and your circumstances. Sauna and windows are confirmed separately." data-fi="*Esimerkkilaskelma soveltaa 35 % arviolaskuun ennen 150 € vuotuista henkilökohtaista omavastuuta. Lopullinen vähennys riippuu työn vähennyskelpoisesta osuudesta ja tilanteestasi. Sauna ja ikkunat vahvistetaan erikseen.">*Esimerkkilaskelma soveltaa 35 % arviolaskuun ennen 150 € vuotuista henkilökohtaista omavastuuta. Lopullinen vähennys riippuu työn vähennyskelpoisesta osuudesta ja tilanteestasi. Sauna ja ikkunat vahvistetaan erikseen.</p>
             </div>
+
+            <div class="step-actions center">
+              <button type="button" class="btn-primary" id="bookingStep1Continue" onclick="continueBookingStep1()" disabled data-en="Continue to date &amp; area" data-fi="Jatka ajankohtaan &amp; alueeseen">Jatka ajankohtaan &amp; alueeseen</button>
+            </div>
+
+            <button class="intent-card quote-route" id="inquiryModeBtn" type="button" onclick="switchToInquiry()" aria-pressed="false" aria-controls="inquiryPanel">
+              <span class="intent-badge" style="background:#eff9ff;color:#0d7480;" data-en="Need guidance" data-fi="Tarvitsetko apua?">Tarvitsetko apua?</span>
+              <h2 class="text-2xl font-display font-bold mb-2" style="letter-spacing: -0.03em;" data-en="Ask for a quote first" data-fi="Pyydä tarjous ensin">Pyydä tarjous ensin</h2>
+              <p class="muted" data-en="For customers who are still comparing, unsure about the right service, or who need steam or post-renovation cleaning. Not ready to choose a date and time yet? We'll guide you to the right service personally." data-fi="Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.">Asiakkaille, jotka vertailevat vielä, miettivät oikeaa palvelua tai tarvitsevat höyrypesua tai remonttisiivousta. Etkö ole valmis valitsemaan päivää ja kellonaikaa vielä? Ohjaamme sinut henkilökohtaisesti oikeaan palveluun.</p>
+              <span class="btn-primary quote-route-cta" data-en="Request a quote" data-fi="Pyydä tarjous">Pyydä tarjous</span>
+            </button>
           </div>
 
           <div class="step-card hidden-panel" id="bookingStep2">
             <h2 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Where and when should we plan the cleaning?" data-fi="Missä ja milloin siivous kannattaa suunnitella?">Missä ja milloin siivous kannattaa suunnitella?</h2>
             <p class="muted mb-8" data-en="Choose a preferred area and time window. This is still a request, not a paid order. We will confirm the final slot with you after review." data-fi="Valitse toivottu alue ja aikaikkuna. Tämä on edelleen pyyntö, ei maksettu tilaus. Vahvistamme lopullisen ajan kanssasi tarkistuksen jälkeen.">Valitse toivottu alue ja aikaikkuna. Tämä on edelleen pyyntö, ei maksettu tilaus. Vahvistamme lopullisen ajan kanssasi tarkistuksen jälkeen.</p>
 
+            <div class="form-error-summary" id="bookingLocationError" role="alert" tabindex="-1" hidden></div>
             <div class="grid md:grid-cols-2 gap-5 mb-6">
               <div>
-                <label class="field-label" for="streetAddress" data-en="Street address" data-fi="Katuosoite">Katuosoite</label>
-                <input id="streetAddress" type="text" onchange="updateBookingSummary()" />
+                <label class="field-label" for="streetAddress" data-en="Street address *" data-fi="Katuosoite *">Katuosoite *</label>
+                <input id="streetAddress" name="streetAddress" type="text" autocomplete="street-address" maxlength="160" required onchange="updateBookingSummary()" />
               </div>
               <div>
-                <label class="field-label" for="postcode" data-en="Postcode" data-fi="Postinumero">Postinumero</label>
-                <input id="postcode" type="text" onchange="updateBookingSummary()" />
+                <label class="field-label" for="postcode" data-en="Postcode *" data-fi="Postinumero *">Postinumero *</label>
+                <input id="postcode" name="postcode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="12" required onchange="updateBookingSummary()" />
               </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="field-label" for="preferredDay" data-en="Preferred day" data-fi="Toivottu päivä">Toivottu päivä</label>
+              <p class="field-help" data-en="A wish, not a locked slot. We confirm the final day and time with you within 24 hours." data-fi="Toive, ei lukittu aika. Vahvistamme lopullisen päivän ja kellonajan kanssasi 24 tunnin kuluessa.">Toive, ei lukittu aika. Vahvistamme lopullisen päivän ja kellonajan kanssasi 24 tunnin kuluessa.</p>
+              <input id="preferredDay" type="date" onchange="handlePreferredDayChange()" style="max-width: 260px;" />
             </div>
 
             <div class="mb-6">
               <label class="field-label" data-en="Preferred arrival window" data-fi="Toivottu saapumisikkuna">Toivottu saapumisikkuna</label>
               <div class="slot-grid">
-                <button type="button" class="slot-btn" onclick="selectSlot('Seuraava vapaa aika / Next available')">Seuraava vapaa</button>
-                <button type="button" class="slot-btn" onclick="selectSlot('Aamupäivä 08:00 - 12:00 / Morning 08:00 - 12:00')">08:00 - 12:00</button>
-                <button type="button" class="slot-btn" onclick="selectSlot('Iltapäivä 12:00 - 16:00 / Afternoon 12:00 - 16:00')">12:00 - 16:00</button>
-                <button type="button" class="slot-btn" onclick="selectSlot('Ilta 16:00 - 18:00 / Evening 16:00 - 18:00')">16:00 - 18:00</button>
-                <button type="button" class="slot-btn" onclick="selectSlot('Mikä tahansa arkipäivä / Any weekday')">Arkipäivä</button>
-                <button type="button" class="slot-btn" onclick="selectSlot('Sovitaan erikseen / To be agreed')">Sovitaan</button>
+                <button type="button" class="slot-btn" aria-pressed="false" onclick="selectSlot('Seuraava vapaa aika / Next available', this)">Seuraava vapaa</button>
+                <button type="button" class="slot-btn" aria-pressed="false" onclick="selectSlot('Aamupäivä 08:00 - 12:00 / Morning 08:00 - 12:00', this)">08:00 - 12:00</button>
+                <button type="button" class="slot-btn" aria-pressed="false" onclick="selectSlot('Iltapäivä 12:00 - 16:00 / Afternoon 12:00 - 16:00', this)">12:00 - 16:00</button>
+                <button type="button" class="slot-btn" aria-pressed="false" onclick="selectSlot('Ilta 16:00 - 18:00 / Evening 16:00 - 18:00', this)">16:00 - 18:00</button>
+                <button type="button" class="slot-btn" aria-pressed="false" onclick="selectSlot('Mikä tahansa arkipäivä / Any weekday', this)">Arkipäivä</button>
+                <button type="button" class="slot-btn" aria-pressed="false" onclick="selectSlot('Sovitaan erikseen / To be agreed', this)">Sovitaan</button>
               </div>
             </div>
 
@@ -654,7 +1105,7 @@
 
             <div class="step-actions">
               <button type="button" class="btn-outline" onclick="goBookingStep(1)" data-en="Back" data-fi="Takaisin">Takaisin</button>
-              <button type="button" class="btn-primary" onclick="goBookingStep(3)" data-en="Continue to confirmation" data-fi="Jatka vahvistukseen">Jatka vahvistukseen</button>
+              <button type="button" class="btn-primary" onclick="continueBookingStep2()" data-en="Continue to confirmation" data-fi="Jatka vahvistukseen">Jatka vahvistukseen</button>
             </div>
           </div>
 
@@ -662,28 +1113,35 @@
             <h2 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Confirm your booking request" data-fi="Vahvista varauspyyntösi">Vahvista varauspyyntösi</h2>
             <p class="muted mb-8" data-en="You are not paying online at this stage. We will review your request, confirm the best cleaner and timing, and then get back to you personally." data-fi="Et maksa verkossa tässä vaiheessa. Käymme pyyntösi läpi, vahvistamme parhaan siivoojan ja ajankohdan ja palaamme sinulle henkilökohtaisesti.">Et maksa verkossa tässä vaiheessa. Käymme pyyntösi läpi, vahvistamme parhaan siivoojan ja ajankohdan ja palaamme sinulle henkilökohtaisesti.</p>
 
+            <div class="form-error-summary" id="bookingError" role="alert" tabindex="-1" hidden></div>
             <div class="grid md:grid-cols-2 gap-5 mb-6">
               <div>
-                <label class="field-label" for="bookFirstName" data-en="First name" data-fi="Etunimi">Etunimi</label>
-                <input id="bookFirstName" type="text" />
+                <label class="field-label" for="bookFirstName" data-en="First name *" data-fi="Etunimi *">Etunimi *</label>
+                <input id="bookFirstName" name="firstName" type="text" autocomplete="given-name" maxlength="80" required />
               </div>
               <div>
                 <label class="field-label" for="bookLastName" data-en="Last name" data-fi="Sukunimi">Sukunimi</label>
-                <input id="bookLastName" type="text" />
+                <input id="bookLastName" name="lastName" type="text" autocomplete="family-name" maxlength="80" />
               </div>
               <div>
                 <label class="field-label" for="bookEmail" data-en="Email" data-fi="Sähköposti">Sähköposti</label>
-                <input id="bookEmail" type="email" />
+                <input id="bookEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" />
               </div>
               <div>
                 <label class="field-label" for="bookPhone" data-en="Phone" data-fi="Puhelin">Puhelin</label>
-                <input id="bookPhone" type="tel" />
+                <input id="bookPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" />
               </div>
             </div>
+            <p class="field-help contact-help" data-en="* Required. Add at least one contact method: email or phone." data-fi="* Pakollinen. Lisää vähintään yksi yhteystapa: sähköposti tai puhelin.">* Pakollinen. Lisää vähintään yksi yhteystapa: sähköposti tai puhelin.</p>
 
             <div class="mb-6">
               <label class="field-label" for="bookNotes" data-en="Anything else we should know?" data-fi="Onko jotain muuta, mitä meidän olisi hyvä tietää?">Onko jotain muuta, mitä meidän olisi hyvä tietää?</label>
-              <textarea id="bookNotes" rows="4"></textarea>
+              <textarea id="bookNotes" name="notes" rows="4" maxlength="2000"></textarea>
+            </div>
+
+            <div class="honeypot-field" aria-hidden="true">
+              <label for="bookingWebsite">Website</label>
+              <input id="bookingWebsite" name="website" type="text" autocomplete="off" tabindex="-1" />
             </div>
 
             <div class="tiny-note mb-6">
@@ -693,24 +1151,26 @@
 
             <div class="step-actions">
               <button type="button" class="btn-outline" onclick="goBookingStep(2)" data-en="Back" data-fi="Takaisin">Takaisin</button>
-              <button type="button" class="btn-primary" onclick="submitBookingRequest()" data-en="Send booking request" data-fi="Lähetä varauspyyntö">Lähetä varauspyyntö</button>
+              <button type="submit" class="btn-primary" id="bookingSubmit" data-en="Send booking request" data-fi="Lähetä varauspyyntö">Lähetä varauspyyntö</button>
             </div>
-            <div class="success-box" id="bookingSuccess">
+            <div class="success-box" id="bookingSuccess" role="status" aria-live="polite" tabindex="-1">
               <strong data-en="Your email app is ready." data-fi="Sähköpostisovelluksesi on valmis.">Sähköpostisovelluksesi on valmis.</strong>
               <span data-en=" Please review the draft request to BetterClean and send it. We will reply personally after reviewing the details." data-fi=" Tarkista BetterCleanille avattu viestiluonnos ja lähetä se. Vastaamme henkilökohtaisesti tarkistettuamme tiedot."> Tarkista BetterCleanille avattu viestiluonnos ja lähetä se. Vastaamme henkilökohtaisesti tarkistettuamme tiedot.</span>
+              <a class="email-fallback" hidden data-en="Send the request by email" data-fi="Lähetä pyyntö sähköpostilla">Lähetä pyyntö sähköpostilla</a>
             </div>
           </div>
-        </div>
+        </form>
 
-        <div id="inquiryPanel" class="hidden-panel">
+        <form id="inquiryPanel" class="hidden-panel" novalidate onsubmit="submitInquiryRequest(event)">
           <div class="step-card">
-            <h2 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Tell us what you need and we will guide you" data-fi="Kerro mitä tarvitset, niin ohjaamme sinua">Kerro mitä tarvitset, niin ohjaamme sinua</h2>
+            <h1 class="text-4xl font-display font-extrabold mb-3" style="letter-spacing: -0.04em; color: var(--dark);" data-en="Tell us what you need and we will guide you" data-fi="Kerro mitä tarvitset, niin ohjaamme sinua">Kerro mitä tarvitset, niin ohjaamme sinua</h1>
             <p class="muted mb-8" data-en="This path is for customers who want advice, a call-back, a rough price range, or help choosing the right BetterClean service before committing to a booking request." data-fi="Tämä reitti on asiakkaille, jotka haluavat neuvoja, takaisinsoiton, karkean hinta-arvion tai apua oikean BetterClean-palvelun valintaan ennen sitoutumista varauspyyntöön.">Tämä reitti on asiakkaille, jotka haluavat neuvoja, takaisinsoiton, karkean hinta-arvion tai apua oikean BetterClean-palvelun valintaan ennen sitoutumista varauspyyntöön.</p>
 
+            <div class="form-error-summary" id="inquiryError" role="alert" tabindex="-1" hidden></div>
             <div class="grid md:grid-cols-2 gap-5 mb-6">
               <div>
                 <label class="field-label" for="inqService" data-en="Service you are interested in" data-fi="Palvelu, josta olet kiinnostunut">Palvelu, josta olet kiinnostunut</label>
-                <select id="inqService" onchange="updateInquirySummary()">
+                <select id="inqService" name="service" required onchange="updateInquirySummary()">
                   <option value="home-cleaning" data-en="Home cleaning" data-fi="Kotisiivous">Kotisiivous</option>
                   <option value="deep-cleaning" data-en="Deep cleaning" data-fi="Syväsiivous">Syväsiivous</option>
                   <option value="window-cleaning" data-en="Window cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</option>
@@ -720,42 +1180,47 @@
                 </select>
               </div>
               <div>
-                <label class="field-label" for="inqArea" data-en="Area or postcode" data-fi="Alue tai postinumero">Alue tai postinumero</label>
-                <input id="inqArea" type="text" onchange="updateInquirySummary()" />
+                <label class="field-label" for="inqArea" data-en="Area or postcode *" data-fi="Alue tai postinumero *">Alue tai postinumero *</label>
+                <input id="inqArea" name="area" type="text" autocomplete="postal-code" maxlength="120" required onchange="updateInquirySummary()" />
               </div>
               <div>
-                <label class="field-label" for="inqName" data-en="Name" data-fi="Nimi">Nimi</label>
-                <input id="inqName" type="text" />
+                <label class="field-label" for="inqName" data-en="Name *" data-fi="Nimi *">Nimi *</label>
+                <input id="inqName" name="name" type="text" autocomplete="name" maxlength="120" required />
               </div>
               <div>
                 <label class="field-label" for="inqPhone" data-en="Phone" data-fi="Puhelin">Puhelin</label>
-                <input id="inqPhone" type="tel" />
+                <input id="inqPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" />
               </div>
               <div class="md:col-span-2">
                 <label class="field-label" for="inqEmail" data-en="Email" data-fi="Sähköposti">Sähköposti</label>
-                <input id="inqEmail" type="email" />
+                <input id="inqEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" />
               </div>
             </div>
+            <p class="field-help contact-help" data-en="* Required. Add at least one contact method. We use your selected method first." data-fi="* Pakollinen. Lisää vähintään yksi yhteystapa. Käytämme ensisijaisesti valitsemaasi tapaa.">* Pakollinen. Lisää vähintään yksi yhteystapa. Käytämme ensisijaisesti valitsemaasi tapaa.</p>
 
             <div class="mb-6">
               <label class="field-label" for="inqNeed" data-en="What would you like help with?" data-fi="Missä haluaisit apua?">Missä haluaisit apua?</label>
-              <textarea id="inqNeed" rows="5" onchange="updateInquirySummary()"></textarea>
+              <textarea id="inqNeed" name="need" rows="5" maxlength="2000" onchange="updateInquirySummary()"></textarea>
             </div>
 
             <div class="grid md:grid-cols-2 gap-5 mb-6">
               <div>
                 <label class="field-label" for="inqSize" data-en="Approximate home size (optional)" data-fi="Arvioitu kodin koko (valinnainen)">Arvioitu kodin koko (valinnainen)</label>
-                <select id="inqSize" onchange="updateInquirySummary()">
+                <select id="inqSize" name="size" onchange="updateInquirySummary()">
                   <option value="" data-en="Not sure yet" data-fi="En ole varma">En ole varma</option>
-                  <option value="under-50" data-en="Under 50m²" data-fi="Alle 50m²">Alle 50m²</option>
-                  <option value="50-89" data-en="50 - 89m²" data-fi="50 - 89m²">50 - 89m²</option>
-                  <option value="90-119" data-en="90 - 119m²" data-fi="90 - 119m²">90 - 119m²</option>
-                  <option value="120-plus" data-en="120m² or larger" data-fi="120m² tai suurempi">120m² tai suurempi</option>
+                  <option value="under-40" data-en="Under 40 m²" data-fi="Alle 40 m²">Alle 40 m²</option>
+                  <option value="40-59" data-en="40-59 m²" data-fi="40-59 m²">40-59 m²</option>
+                  <option value="60-79" data-en="60-79 m²" data-fi="60-79 m²">60-79 m²</option>
+                  <option value="80-99" data-en="80-99 m²" data-fi="80-99 m²">80-99 m²</option>
+                  <option value="100-119" data-en="100-119 m²" data-fi="100-119 m²">100-119 m²</option>
+                  <option value="120-149" data-en="120-149 m²" data-fi="120-149 m²">120-149 m²</option>
+                  <option value="150-180" data-en="150-180 m²" data-fi="150-180 m²">150-180 m²</option>
+                  <option value="over-180" data-en="Over 180 m²" data-fi="Yli 180 m²">Yli 180 m²</option>
                 </select>
               </div>
               <div>
                 <label class="field-label" for="inqContactMethod" data-en="Preferred contact method" data-fi="Toivottu yhteydenottotapa">Toivottu yhteydenottotapa</label>
-                <select id="inqContactMethod" onchange="updateInquirySummary()">
+                <select id="inqContactMethod" name="contactMethod" required onchange="updateInquirySummary()">
                   <option value="phone" data-en="Phone call" data-fi="Puhelu">Puhelu</option>
                   <option value="email" data-en="Email" data-fi="Sähköposti">Sähköposti</option>
                   <option value="either" data-en="Either is fine" data-fi="Kumpi tahansa sopii">Kumpi tahansa sopii</option>
@@ -763,21 +1228,26 @@
               </div>
             </div>
 
+            <div class="honeypot-field" aria-hidden="true">
+              <label for="inquiryWebsite">Website</label>
+              <input id="inquiryWebsite" name="website" type="text" autocomplete="off" tabindex="-1" />
+            </div>
+
             <div class="tiny-note mb-6">
               <strong data-en="Designed for low pressure." data-fi="Suunniteltu ilman painetta.">Suunniteltu ilman painetta.</strong>
               <span data-en="No date, no payment details, and no commitment to a booking yet. Just enough for BetterClean to understand your needs and reply usefully." data-fi="Ei päivämäärää, ei maksutietoja eikä vielä sitoutumista varaukseen. Juuri sen verran tietoa, että BetterClean ymmärtää tarpeesi ja pystyy vastaamaan hyödyllisesti.">Ei päivämäärää, ei maksutietoja eikä vielä sitoutumista varaukseen. Juuri sen verran tietoa, että BetterClean ymmärtää tarpeesi ja pystyy vastaamaan hyödyllisesti.</span>
             </div>
 
-            <div class="step-actions">
-              <a href="pricing.html" class="btn-soft" data-en="Review pricing first" data-fi="Katso hinnat ensin">Katso hinnat ensin</a>
-              <button type="button" class="btn-primary" onclick="submitInquiryRequest()" data-en="Send inquiry" data-fi="Lähetä kysely">Lähetä kysely</button>
+            <div class="step-actions end">
+              <button type="submit" class="btn-primary" id="inquirySubmit" data-en="Send inquiry" data-fi="Lähetä kysely">Lähetä kysely</button>
             </div>
-            <div class="success-box" id="inquirySuccess">
+            <div class="success-box" id="inquirySuccess" role="status" aria-live="polite" tabindex="-1">
               <strong data-en="Your inquiry draft is ready." data-fi="Kyselyluonnoksesi on valmis.">Kyselyluonnoksesi on valmis.</strong>
               <span data-en=" Please review the email draft and send it so BetterClean can respond with the right recommendation." data-fi=" Tarkista avattu sähköpostiluonnos ja lähetä se, jotta BetterClean voi vastata oikealla suosituksella."> Tarkista avattu sähköpostiluonnos ja lähetä se, jotta BetterClean voi vastata oikealla suosituksella.</span>
+              <a class="email-fallback" hidden data-en="Send the inquiry by email" data-fi="Lähetä kysely sähköpostilla">Lähetä kysely sähköpostilla</a>
             </div>
           </div>
-        </div>
+        </form>
       </div>
 
       <aside class="surface summary-card">
@@ -796,11 +1266,11 @@
           </div>
           <div class="summary-line booking-only">
             <span data-en="Cleaning duration" data-fi="Siivouksen kesto">Siivouksen kesto</span>
-            <strong id="summaryDuration">6h</strong>
+            <strong id="summaryDuration" data-en="Select duration" data-fi="Valitse kesto">Valitse kesto</strong>
           </div>
           <div class="summary-line booking-only">
             <span data-en="Frequency" data-fi="Toistuvuus">Toistuvuus</span>
-            <strong id="summaryFrequency" data-en="Every second week" data-fi="Joka toinen viikko">Joka toinen viikko</strong>
+            <strong id="summaryFrequency" data-en="Select frequency" data-fi="Valitse toistuvuus">Valitse toistuvuus</strong>
           </div>
           <div class="summary-line booking-only">
             <span data-en="Additional services" data-fi="Lisäpalvelut">Lisäpalvelut</span>
@@ -808,8 +1278,13 @@
           </div>
           <div class="summary-line booking-only">
             <span data-en="Estimated total" data-fi="Arvioitu yhteensä">Arvioitu yhteensä</span>
-            <strong id="summaryEstimate">342 €</strong>
+            <strong id="summaryEstimate">-</strong>
           </div>
+          <div class="summary-line summary-line-discount booking-only">
+            <span data-en="Indicative after possible 35% deduction" data-fi="Suuntaa-antava mahdollisen 35 % vähennyksen jälkeen">Suuntaa-antava mahdollisen 35 % vähennyksen jälkeen</span>
+            <strong id="summaryEstimateAfterDeduction">-</strong>
+          </div>
+          <p class="field-help booking-only" id="summaryEstimateNote" data-en="35% illustration before the €150 annual personal threshold. Eligibility conditions apply; separately confirmed add-ons are not included." data-fi="35 % esimerkkilaskelma ennen 150 € vuotuista henkilökohtaista omavastuuta. Vähennyksen ehdot koskevat arviota; erikseen vahvistettavat lisäpalvelut eivät sisälly siihen.">35 % esimerkkilaskelma ennen 150 € vuotuista henkilökohtaista omavastuuta. Vähennyksen ehdot koskevat arviota; erikseen vahvistettavat lisäpalvelut eivät sisälly siihen.</p>
           <div class="summary-line inquiry-only hidden-panel">
             <span data-en="Preferred contact" data-fi="Toivottu yhteydenotto">Toivottu yhteydenotto</span>
             <strong id="summaryInquiryContact" data-en="Phone call" data-fi="Puhelu">Puhelu</strong>
@@ -819,20 +1294,36 @@
             <strong id="summaryInquiryArea" data-en="To be confirmed" data-fi="Vahvistetaan">Vahvistetaan</strong>
           </div>
 
-          <div class="summary-callout" id="summaryCallout" data-en="Choose the structured booking request if you already know you want home cleaning. If you are still comparing, switch to the inquiry route and BetterClean will guide you personally." data-fi="Valitse jäsennelty varauspyyntö, jos tiedät jo haluavasi kotisiivousta. Jos vertailet vielä, vaihda kyselyreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.">Valitse jäsennelty varauspyyntö, jos tiedät jo haluavasi kotisiivousta. Jos vertailet vielä, vaihda kyselyreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.</div>
+          <div class="summary-callout" id="summaryCallout" data-en="Choose the structured request if you already know which service you need: home cleaning, deep clean or move-out. If you are still comparing, switch to the quote route and BetterClean will guide you personally." data-fi="Valitse jäsennelty pyyntö, jos tiedät jo minkä palvelun tarvitset: kotisiivous, syväsiivous tai muuttosiivous. Jos vertailet vielä, vaihda tarjousreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.">Valitse jäsennelty pyyntö, jos tiedät jo minkä palvelun tarvitset: kotisiivous, syväsiivous tai muuttosiivous. Jos vertailet vielä, vaihda tarjousreittiin ja BetterClean ohjaa sinua henkilökohtaisesti.</div>
 
           <div class="booking-only">
-            <h4 class="font-display font-bold text-lg mb-2" data-en="What is included in a basic home cleaning?" data-fi="Mitä tavalliseen kotisiivoukseen kuuluu?">Mitä tavalliseen kotisiivoukseen kuuluu?</h4>
+            <h4 class="font-display font-bold text-lg mb-2">
+              <span data-scope="home" data-en="What is included in Essential Home Care?" data-fi="Mitä Peruskodin Hoitoon kuuluu?">Mitä Peruskodin Hoitoon kuuluu?</span>
+              <span data-scope="deep" hidden data-en="What is included in the Signature Deep Clean?" data-fi="Mitä Syväsiivoukseen kuuluu?">Mitä Syväsiivoukseen kuuluu?</span>
+              <span data-scope="office" hidden data-en="What is included in Move-out Cleaning?" data-fi="Mitä Muuttosiivoukseen kuuluu?">Mitä Muuttosiivoukseen kuuluu?</span>
+            </h4>
             <div class="scope-item open">
               <button class="scope-head" type="button" onclick="toggleScope(this)">
                 <span data-en="Whole apartment" data-fi="Koko asunto">Koko asunto</span>
                 <span>⌄</span>
               </button>
               <div class="scope-body">
-                <ul class="list-disc pl-5">
+                <ul class="list-disc pl-5" data-scope="home">
                   <li data-en="Dusting reachable surfaces, mirrors, and glass details" data-fi="Ulottuvien pintojen, peilien ja lasiyksityiskohtien pölyjen pyyhintä">Ulottuvien pintojen, peilien ja lasiyksityiskohtien pölyjen pyyhintä</li>
                   <li data-en="Vacuuming floors, rugs, and visible corners" data-fi="Lattioiden, mattojen ja näkyvien nurkkien imurointi">Lattioiden, mattojen ja näkyvien nurkkien imurointi</li>
                   <li data-en="Mopping and fresh finishing of the main living areas" data-fi="Pääasiallisten oleskelutilojen moppaus ja raikas viimeistely">Pääasiallisten oleskelutilojen moppaus ja raikas viimeistely</li>
+                </ul>
+                <ul class="list-disc pl-5" data-scope="deep" hidden>
+                  <li><strong data-en="Steam cleaning on applicable surfaces, such as hard floors" data-fi="Höyrypesu soveltuville pinnoille, kuten koville lattioille">Höyrypesu soveltuville pinnoille, kuten koville lattioille</strong></li>
+                  <li data-en="Everything in the Essential Home Care scope" data-fi="Kaikki Peruskodin Hoidon sisällöt">Kaikki Peruskodin Hoidon sisällöt</li>
+                  <li data-en="Baseboards, door frames and light switches" data-fi="Jalkalistat, ovenkarmit ja valokatkaisijat">Jalkalistat, ovenkarmit ja valokatkaisijat</li>
+                  <li data-en="Behind and beneath movable furniture and appliances" data-fi="Siirrettävien huonekalujen ja kodinkoneiden taustat ja alustat">Siirrettävien huonekalujen ja kodinkoneiden taustat ja alustat</li>
+                </ul>
+                <ul class="list-disc pl-5" data-scope="office" hidden>
+                  <li data-en="Every room cleaned to handover standard" data-fi="Kaikki huoneet luovutuskuntoon">Kaikki huoneet luovutuskuntoon</li>
+                  <li data-en="All cabinets, wardrobes and drawers inside" data-fi="Kaikki kaapit, komerot ja laatikot sisältä">Kaikki kaapit, komerot ja laatikot sisältä</li>
+                  <li data-en="Baseboards, doors, switches and interior windowsills" data-fi="Jalkalistat, ovet, katkaisijat ja sisäikkunalaudat">Jalkalistat, ovet, katkaisijat ja sisäikkunalaudat</li>
+                  <li data-en="Floors vacuumed and washed" data-fi="Lattioiden imurointi ja pesu">Lattioiden imurointi ja pesu</li>
                 </ul>
               </div>
             </div>
@@ -842,9 +1333,21 @@
                 <span>⌄</span>
               </button>
               <div class="scope-body">
-                <ul class="list-disc pl-5">
+                <ul class="list-disc pl-5" data-scope="home">
                   <li data-en="Countertops, sink, hob surface, and cabinet fronts" data-fi="Työtasot, allas, liesitaso ja kaappien ulkopinnat">Työtasot, allas, liesitaso ja kaappien ulkopinnat</li>
                   <li data-en="Visible appliance surfaces and splash areas" data-fi="Näkyvät laitepinnat ja roiskealueet">Näkyvät laitepinnat ja roiskealueet</li>
+                </ul>
+                <ul class="list-disc pl-5" data-scope="deep" hidden>
+                  <li data-en="Cabinet and drawer interiors" data-fi="Kaappien ja laatikoiden sisäpinnat">Kaappien ja laatikoiden sisäpinnat</li>
+                  <li data-en="Detailed limescale and grease removal from hob and splash areas" data-fi="Pinttyneen kalkin ja rasvan poisto liesitasolta ja roiskealueilta">Pinttyneen kalkin ja rasvan poisto liesitasolta ja roiskealueilta</li>
+                  <li data-en="Appliance exteriors cleaned in detail" data-fi="Kodinkoneiden ulkopinnat yksityiskohtaisesti">Kodinkoneiden ulkopinnat yksityiskohtaisesti</li>
+                </ul>
+                <ul class="list-disc pl-5" data-scope="office" hidden>
+                  <li data-en="Oven interior and oven trays" data-fi="Uunin sisäpuoli ja uunipellit">Uunin sisäpuoli ja uunipellit</li>
+                  <li data-en="Fridge and freezer interiors" data-fi="Jääkaapin ja pakastimen sisäpuolet">Jääkaapin ja pakastimen sisäpuolet</li>
+                  <li data-en="Range hood and grease filter" data-fi="Liesituuletin ja rasvasuodatin">Liesituuletin ja rasvasuodatin</li>
+                  <li data-en="Microwave interior" data-fi="Mikroaaltouunin sisäpuoli">Mikroaaltouunin sisäpuoli</li>
+                  <li data-en="Cabinets and drawers inside and out" data-fi="Kaapit ja laatikot sisältä ja ulkoa">Kaapit ja laatikot sisältä ja ulkoa</li>
                 </ul>
               </div>
             </div>
@@ -854,26 +1357,50 @@
                 <span>⌄</span>
               </button>
               <div class="scope-body">
-                <ul class="list-disc pl-5">
+                <ul class="list-disc pl-5" data-scope="home">
                   <li data-en="Mirror, sink, faucet, toilet, and visible surfaces" data-fi="Peili, allas, hana, wc-istuin ja näkyvät pinnat">Peili, allas, hana, wc-istuin ja näkyvät pinnat</li>
                   <li data-en="Freshening of shower and main bathroom zones" data-fi="Suihkun ja tärkeimpien kylpyhuonealueiden raikastus">Suihkun ja tärkeimpien kylpyhuonealueiden raikastus</li>
+                </ul>
+                <ul class="list-disc pl-5" data-scope="deep" hidden>
+                  <li><strong data-en="Steam treatment where the surface allows" data-fi="Höyrykäsittely, kun pinta sen sallii">Höyrykäsittely, kun pinta sen sallii</strong></li>
+                  <li data-en="Tile seams, faucets and limescale removal" data-fi="Laattasaumat, hanat ja kalkinpoisto">Laattasaumat, hanat ja kalkinpoisto</li>
+                  <li data-en="Shower area deep-cleaned" data-fi="Suihkutilan perusteellinen pesu">Suihkutilan perusteellinen pesu</li>
+                </ul>
+                <ul class="list-disc pl-5" data-scope="office" hidden>
+                  <li data-en="Full bathroom wash including limescale removal" data-fi="Kylpyhuoneen perusteellinen pesu ja kalkinpoisto">Kylpyhuoneen perusteellinen pesu ja kalkinpoisto</li>
+                  <li data-en="Steam treatment where suitable" data-fi="Höyrykäsittely soveltuvin osin">Höyrykäsittely soveltuvin osin</li>
+                  <li data-en="Floor drain cover cleaned" data-fi="Lattiakaivon kannen puhdistus">Lattiakaivon kannen puhdistus</li>
                 </ul>
               </div>
             </div>
             <div class="scope-item">
               <button class="scope-head" type="button" onclick="toggleScope(this)">
-                <span data-en="Optional additional services" data-fi="Valinnaiset lisäpalvelut">Valinnaiset lisäpalvelut</span>
+                <span id="optionalHeadDefault" data-en="Optional additional services" data-fi="Valinnaiset lisäpalvelut">Valinnaiset lisäpalvelut</span>
+                <span id="optionalHeadAdded" hidden data-en="Additional services added" data-fi="Lisätyt lisäpalvelut">Lisätyt lisäpalvelut</span>
                 <span>⌄</span>
               </button>
               <div class="scope-body">
-                <ul class="list-disc pl-5">
-                  <li data-en="Fridge cleaning" data-fi="Jääkaapin puhdistus">Jääkaapin puhdistus</li>
-                  <li data-en="Oven cleaning" data-fi="Uunin puhdistus">Uunin puhdistus</li>
-                  <li data-en="Sauna cleaning" data-fi="Saunan puhdistus">Saunan puhdistus</li>
-                  <li data-en="Window cleaning, steam cleaning, and post-renovation cleaning should start as a quote inquiry first" data-fi="Ikkunanpesu, höyrypesu ja remonttisiivous kannattaa aloittaa ensin tarjouskyselynä">Ikkunanpesu, höyrypesu ja remonttisiivous kannattaa aloittaa ensin tarjouskyselynä</li>
+                <ul class="list-disc pl-5" id="addedExtrasList" hidden></ul>
+                <ul class="list-disc pl-5 optional-static" data-scope="home">
+                  <li data-en="Oven cleaning +1 h" data-fi="Uunin puhdistus +1 h">Uunin puhdistus +1 h</li>
+                  <li data-en="Fridge cleaning +0.75 h" data-fi="Jääkaapin puhdistus +0,75 h">Jääkaapin puhdistus +0,75 h</li>
+                  <li data-en="Range hood cleaning +1 h" data-fi="Liesituulettimen puhdistus +1 h">Liesituulettimen puhdistus +1 h</li>
+                  <li data-en="Microwave cleaning +0.5 h" data-fi="Mikroaaltouunin puhdistus +0,5 h">Mikroaaltouunin puhdistus +0,5 h</li>
+                  <li data-en="Sauna and window cleaning — tick them in the add-ons and we confirm the price in our reply" data-fi="Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa">Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa</li>
+                </ul>
+                <ul class="list-disc pl-5 optional-static" data-scope="deep" hidden>
+                  <li data-en="Oven cleaning +1 h" data-fi="Uunin puhdistus +1 h">Uunin puhdistus +1 h</li>
+                  <li data-en="Fridge cleaning +0.75 h" data-fi="Jääkaapin puhdistus +0,75 h">Jääkaapin puhdistus +0,75 h</li>
+                  <li data-en="Range hood cleaning +1 h" data-fi="Liesituulettimen puhdistus +1 h">Liesituulettimen puhdistus +1 h</li>
+                  <li data-en="Microwave cleaning +0.5 h" data-fi="Mikroaaltouunin puhdistus +0,5 h">Mikroaaltouunin puhdistus +0,5 h</li>
+                  <li data-en="Sauna and window cleaning — tick them in the add-ons and we confirm the price in our reply" data-fi="Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa">Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa</li>
+                </ul>
+                <ul class="list-disc pl-5 optional-static" data-scope="office" hidden>
+                  <li data-en="Sauna and window cleaning — tick them in the add-ons and we confirm the price in our reply" data-fi="Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa">Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa</li>
                 </ul>
               </div>
             </div>
+            <p class="field-help" style="margin-top: 12px;" data-en="Products and supplies are included in the hourly price — no equipment or visit fees. For home cleaning we use your own vacuum for hygiene, or bring ours at no charge." data-fi="Aineet ja tarvikkeet sisältyvät tuntihintaan — ei väline- tai käyntimaksuja. Kotisiivouksessa käytämme kotisi imuria hygieniasyistä, tai tuomme oman veloituksetta.">Aineet ja tarvikkeet sisältyvät tuntihintaan — ei väline- tai käyntimaksuja. Kotisiivouksessa käytämme kotisi imuria hygieniasyistä, tai tuomme oman veloituksetta.</p>
           </div>
 
           <div class="inquiry-only hidden-panel">
@@ -932,6 +1459,7 @@
 <script>
   let currentLang = 'fi';
   const LEAD_ENDPOINT = '/api/lead';
+  const HOUSEHOLD_DEDUCTION_RATE = 0.35;
 
   function setLang(lang) {
     currentLang = lang;
@@ -959,6 +1487,13 @@
     });
 
     document.documentElement.lang = lang;
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+      const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-label', lang === 'fi'
+        ? (isOpen ? 'Sulje navigaatio' : 'Avaa navigaatio')
+        : (isOpen ? 'Close navigation' : 'Open navigation'));
+    }
 
     if (typeof refreshUi === 'function') {
       refreshUi();
@@ -966,71 +1501,566 @@
   }
 
   function toggleMobileNav() {
-    document.getElementById('mobileNav').classList.toggle('open');
-    document.getElementById('hamburger').classList.toggle('open');
+    const mobileNav = document.getElementById('mobileNav');
+    const hamburger = document.getElementById('hamburger');
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', currentLang === 'fi'
+      ? (isOpen ? 'Sulje navigaatio' : 'Avaa navigaatio')
+      : (isOpen ? 'Close navigation' : 'Open navigation'));
+    mobileNav.setAttribute('aria-hidden', String(!isOpen));
   }
 
   function closeMobileNav() {
     document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('mobileNav').setAttribute('aria-hidden', 'true');
     document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+    document.getElementById('hamburger').setAttribute('aria-label', currentLang === 'fi' ? 'Avaa navigaatio' : 'Open navigation');
   }
 
   const bookingState = {
     step: 1,
     mode: 'booking',
-    size: 'small',
-    duration: 3,
-    frequency: 'biweekly',
+    selectedServiceType: 'home',
+    selectedFrequency: '',
+    selectedPropertySize: '',
+    homeSizeM2: null,
+    baselinePersonHours: null,
+    recommendedFirstVisitHours: null,
+    recommendedOngoingHours: null,
+    selectedDuration: null,
+    durationWasManuallyChanged: false,
+    size: '',
+    duration: 0,
+    frequency: '',
     extras: [],
+    preferredDay: '',
     slot: '',
     address: '',
     postcode: '',
     pets: false
   };
 
-  const RECOMMENDED_DURATION_BY_SIZE = {
-    studio: 2,
-    small: 3,
-    medium: 4,
-    large: 5,
-    xlarge: 6
+  const BOOKING_SERVICE_CONFIG = {
+    home: {
+      labels: { en: 'Essential Home Care', fi: 'Peruskodin Hoito' },
+      pricingServiceKey: 'home',
+      rateKey: null,
+      forcedFrequency: null
+    },
+    deep: {
+      labels: { en: 'Signature Deep Clean', fi: 'Syväsiivous - Meidän Tavallamme' },
+      pricingServiceKey: 'deep',
+      rateKey: 'deep',
+      forcedFrequency: 'once'
+    },
+    office: {
+      labels: { en: 'Move-out Cleaning', fi: 'Muuttosiivous' },
+      pricingServiceKey: 'office',
+      rateKey: 'moveOut',
+      forcedFrequency: 'once'
+    }
   };
 
-  function getRecommendedDuration(size) {
-    return RECOMMENDED_DURATION_BY_SIZE[size] || RECOMMENDED_DURATION_BY_SIZE.small;
+  const BOOKING_SERVICE_ORDER = ['home', 'deep', 'office'];
+
+  const EXTRA_APPLICABILITY = {
+    oven: ['home', 'deep'],
+    fridge: ['home', 'deep'],
+    hood: ['home', 'deep'],
+    microwave: ['home', 'deep'],
+    sauna: ['home', 'deep', 'office'],
+    windows: ['home', 'deep', 'office']
+  };
+
+  const EXTRA_HOURS = {
+    oven: 1,
+    fridge: 0.75,
+    hood: 1,
+    microwave: 0.5
+  };
+
+
+  const FREQUENCY_LABELS = {
+    weekly: { en: 'Every week', fi: 'Joka viikko' },
+    biweekly: { en: 'Every second week', fi: 'Joka toinen viikko' },
+    monthly: { en: 'Every four weeks', fi: 'Joka neljäs viikko' },
+    once: { en: 'One time only', fi: 'Vain kerran' }
+  };
+
+  const SIZE_LABELS = {
+    studio: { en: 'Up to 39 m²', fi: 'Enintään 39 m²' },
+    small: { en: '40-59 m²', fi: '40-59 m²' },
+    medium: { en: '60-79 m²', fi: '60-79 m²' },
+    large: { en: '80-99 m²', fi: '80-99 m²' },
+    xlarge: { en: '100-119 m²', fi: '100-119 m²' },
+    xxlarge: { en: '120-149 m²', fi: '120-149 m²' },
+    xxxlarge: { en: '150-180 m²', fi: '150-180 m²' }
+  };
+
+  const RECOMMENDED_DURATION_BY_SIZE = {
+    studio: 2,
+    small: 2.5,
+    medium: 3,
+    large: 3.5,
+    xlarge: 4,
+    xxlarge: 4.5,
+    xxxlarge: 6
+  };
+
+  const RECOMMENDED_DURATION_BY_SERVICE = {
+    home: RECOMMENDED_DURATION_BY_SIZE,
+    deep: {
+      studio: 3,
+      small: 4,
+      medium: 5,
+      large: 6,
+      xlarge: 7,
+      xxlarge: 8,
+      xxxlarge: 10
+    },
+    office: {
+      studio: 4,
+      small: 5,
+      medium: 6,
+      large: 7,
+      xlarge: 8,
+      xxlarge: 9,
+      xxxlarge: 12
+    }
+  };
+
+  const DURATION_RECOMMENDATION_RULES = {
+    minimumPersonHours: 2,
+    durationStep: 0.5,
+    maximumSelectablePersonHours: 14,
+    frequencyMultipliers: {
+      once: 1,
+      monthly: 0.9,
+      biweekly: 0.8,
+      weekly: 0.7
+    }
+  };
+
+  const EXTRA_LABELS = {
+    oven: { en: 'Oven', fi: 'Uuni' },
+    fridge: { en: 'Fridge', fi: 'Jääkaappi' },
+    hood: { en: 'Range hood', fi: 'Liesituuletin' },
+    microwave: { en: 'Microwave', fi: 'Mikroaaltouuni' },
+    sauna: { en: 'Sauna (price confirmed separately)', fi: 'Sauna (hinta vahvistetaan erikseen)' },
+    windows: { en: 'Window cleaning (price confirmed separately)', fi: 'Ikkunanpesu (hinta vahvistetaan erikseen)' }
+  };
+
+  const QUOTE_HOME_SIZE_BRACKETS = typeof HOME_SIZE_BRACKETS !== 'undefined'
+    ? HOME_SIZE_BRACKETS
+    : [
+      { key: 'studio', min: 0, max: 39, labels: SIZE_LABELS.studio },
+      { key: 'small', min: 40, max: 59, labels: SIZE_LABELS.small },
+      { key: 'medium', min: 60, max: 79, labels: SIZE_LABELS.medium },
+      { key: 'large', min: 80, max: 99, labels: SIZE_LABELS.large },
+      { key: 'xlarge', min: 100, max: 119, labels: SIZE_LABELS.xlarge },
+      { key: 'xxlarge', min: 120, max: 149, labels: SIZE_LABELS.xxlarge },
+      { key: 'xxxlarge', min: 150, max: 180, labels: SIZE_LABELS.xxxlarge }
+    ];
+
+  function getFrequencyLabel(key, lang) {
+    if (!key || !FREQUENCY_LABELS[key]) return lang === 'fi' ? 'Valitse toistuvuus' : 'Select frequency';
+    return FREQUENCY_LABELS[key][lang];
   }
 
-  function updateDurationRecommendationLabels() {
+  function getBookingServiceConfig(serviceType) {
+    return BOOKING_SERVICE_CONFIG[serviceType || bookingState.selectedServiceType] || BOOKING_SERVICE_CONFIG.home;
+  }
+
+  function getBookingServiceLabel(lang) {
+    return getBookingServiceConfig().labels[lang] || getBookingServiceConfig().labels.fi;
+  }
+
+  // Every visit bills at the contract rate for the chosen cadence, the first
+  // one included. Deep and Move-out ignore cadence and use their flat rate.
+  function getContractRate(frequency) {
+    const config = getBookingServiceConfig();
+    if (config.rateKey && PRICES[config.rateKey]) return PRICES[config.rateKey];
+    return HOME_RATE_BY_FREQUENCY[frequency] || PRICES.oneTime;
+  }
+
+  function getBookingHourlyRate() {
+    return getContractRate(bookingState.selectedFrequency);
+  }
+
+  function normalizeBookingServiceType(value) {
+    const service = String(value || '').toLowerCase().trim();
+    if (BOOKING_SERVICE_CONFIG[service]) return service;
+    if (['move', 'move-out', 'moveout', 'reset', 'move-reset'].includes(service)) return 'office';
+    if (['essential', 'regular', 'home-cleaning'].includes(service)) return 'home';
+    return '';
+  }
+
+  function getSizeLabel(key, lang) {
+    if (!key || !SIZE_LABELS[key]) return lang === 'fi' ? 'Valitse kodin koko' : 'Select home size';
+    return SIZE_LABELS[key][lang];
+  }
+
+  function getQuoteHomeSizeBracket(squareMeters) {
+    if (typeof getHomeSizeBracket === 'function') return getHomeSizeBracket(squareMeters);
+    const value = Number(squareMeters);
+    if (!Number.isFinite(value) || value <= 0) return null;
+    return QUOTE_HOME_SIZE_BRACKETS.find(bracket => value >= bracket.min && value <= bracket.max) || null;
+  }
+
+  function readHomeSizeInputValue() {
+    const homeSize = document.getElementById('homeSize');
+    const value = Number(homeSize && homeSize.value);
+    return Number.isFinite(value) && value > 0 ? value : null;
+  }
+
+  function getTypedHomeSizeLabel(lang) {
+    if (!bookingState.homeSizeM2) return getSizeLabel(bookingState.selectedPropertySize, lang);
+    const bracketLabel = bookingState.selectedPropertySize
+      ? getSizeLabel(bookingState.selectedPropertySize, lang)
+      : (lang === 'fi' ? 'henkilökohtainen arvio' : 'custom estimate');
+    return bookingState.homeSizeM2 + ' m² · ' + bracketLabel;
+  }
+
+  function getExtrasLabels(lang) {
+    return bookingState.extras.map(item => (EXTRA_LABELS[item] && EXTRA_LABELS[item][lang]) || item);
+  }
+
+  function getExtrasHours() {
+    return bookingState.extras.reduce((sum, name) => sum + (EXTRA_HOURS[name] || 0), 0);
+  }
+
+
+  function getRecommendedDuration(size) {
+    const config = getBookingServiceConfig();
+    const bracket = QUOTE_HOME_SIZE_BRACKETS.find(item => item.key === size);
+    if (bracket && bracket.hours && bracket.hours[config.pricingServiceKey]) {
+      return bracket.hours[config.pricingServiceKey];
+    }
+    const serviceDurations = RECOMMENDED_DURATION_BY_SERVICE[config.pricingServiceKey] || RECOMMENDED_DURATION_BY_SERVICE.home;
+    return serviceDurations[size] || null;
+  }
+
+  function formatDurationNumber(hours, lang) {
+    const numericHours = Number(hours);
+    if (!Number.isFinite(numericHours)) return '-';
+    const value = numericHours % 1 === 0 ? String(numericHours) : numericHours.toFixed(1);
+    return lang === 'fi' ? value.replace('.', ',') : value;
+  }
+
+  function formatPersonHours(hours, lang) {
+    if (!Number.isFinite(Number(hours)) || Number(hours) <= 0) return '-';
+    return formatDurationNumber(hours, lang) + (lang === 'fi' ? ' henkilötuntia' : ' person-hours');
+  }
+
+  function roundPersonHoursUp(hours) {
+    const step = DURATION_RECOMMENDATION_RULES.durationStep;
+    return Math.ceil(Number(hours) / step) * step;
+  }
+
+  function calculateDurationRecommendation(baselinePersonHours, frequency) {
+    const baseline = Number(baselinePersonHours);
+    if (!Number.isFinite(baseline) || baseline <= 0) return null;
+    const multiplier = DURATION_RECOMMENDATION_RULES.frequencyMultipliers[frequency] || 1;
+    const rounded = roundPersonHoursUp(baseline * multiplier);
+    return Math.max(DURATION_RECOMMENDATION_RULES.minimumPersonHours, rounded);
+  }
+
+  function getCleaningDurationRecommendation(size, frequency) {
+    const baselinePersonHours = getRecommendedDuration(size);
+    if (!baselinePersonHours || !frequency) {
+      return {
+        baselinePersonHours: null,
+        recommendedFirstVisitHours: null,
+        recommendedOngoingHours: null,
+        recommendedSelectedDuration: null
+      };
+    }
+    const isRecurring = frequency !== 'once';
+    const recommendedOngoingHours = calculateDurationRecommendation(baselinePersonHours, frequency);
+    return {
+      baselinePersonHours,
+      recommendedFirstVisitHours: isRecurring ? baselinePersonHours : null,
+      recommendedOngoingHours,
+      recommendedSelectedDuration: isRecurring ? baselinePersonHours : recommendedOngoingHours
+    };
+  }
+
+  function isRecurringFrequency(frequency) {
+    return Boolean(frequency && frequency !== 'once');
+  }
+
+  function getPrimaryRecommendedDuration() {
+    if (!bookingState.selectedFrequency || !bookingState.selectedPropertySize) return null;
+    return isRecurringFrequency(bookingState.selectedFrequency)
+      ? bookingState.recommendedFirstVisitHours
+      : bookingState.recommendedOngoingHours;
+  }
+
+  function getDurationDisplayLabel(duration) {
+    return formatPersonHours(Number(duration), currentLang || 'fi');
+  }
+
+  function syncLegacyBookingFields() {
+    bookingState.service = bookingState.selectedServiceType;
+    bookingState.frequency = bookingState.selectedFrequency;
+    bookingState.size = bookingState.selectedPropertySize;
+    bookingState.duration = Number(bookingState.selectedDuration) || 0;
+  }
+
+  function populateDurationOptions() {
     const durationSelect = document.getElementById('cleanDuration');
     if (!durationSelect) return;
     const lang = currentLang || 'fi';
-    const recommendedDuration = getRecommendedDuration(bookingState.size);
+    const currentValue = bookingState.selectedDuration ? String(bookingState.selectedDuration) : '';
+    durationSelect.innerHTML = '';
 
-    Array.from(durationSelect.options).forEach(option => {
-      const baseLabel = option.value + 'h';
-      option.textContent = Number(option.value) === recommendedDuration
-        ? baseLabel + (lang === 'fi' ? ' (suositus)' : ' (recommendation)')
-        : baseLabel;
+    const placeholder = document.createElement('option');
+    placeholder.value = '';
+    placeholder.disabled = true;
+    placeholder.textContent = lang === 'fi' ? 'Valitse kesto' : 'Select duration';
+    placeholder.selected = !currentValue;
+    durationSelect.appendChild(placeholder);
+
+    for (
+      let value = DURATION_RECOMMENDATION_RULES.minimumPersonHours;
+      value <= DURATION_RECOMMENDATION_RULES.maximumSelectablePersonHours;
+      value += DURATION_RECOMMENDATION_RULES.durationStep
+    ) {
+      const option = document.createElement('option');
+      option.value = String(value);
+      option.textContent = formatPersonHours(value, lang);
+      option.selected = currentValue === option.value;
+      durationSelect.appendChild(option);
+    }
+
+    durationSelect.value = currentValue;
+  }
+
+  function updateServiceCards() {
+    BOOKING_SERVICE_ORDER.forEach(name => {
+      const card = document.getElementById('service-' + name);
+      if (!card) return;
+      const isSelected = bookingState.selectedServiceType === name;
+      card.classList.toggle('active', isSelected);
+      card.setAttribute('aria-checked', isSelected ? 'true' : 'false');
     });
   }
 
-  function setDurationFromRecommendedSize() {
-    const durationSelect = document.getElementById('cleanDuration');
-    if (!durationSelect) return;
-    const recommendedDuration = getRecommendedDuration(bookingState.size);
-    durationSelect.value = String(recommendedDuration);
-    bookingState.duration = recommendedDuration;
-    updateDurationRecommendationLabels();
+  function setRevealVisible(element, visible) {
+    if (!element) return;
+    element.classList.toggle('is-visible', visible);
+    element.setAttribute('aria-hidden', visible ? 'false' : 'true');
   }
 
-  function getFrequencyLabel(key, lang) {
-    const labels = {
-      weekly: { en: 'Every week', fi: 'Joka viikko' },
-      biweekly: { en: 'Every second week', fi: 'Joka toinen viikko' },
-      monthly: { en: 'Every four weeks', fi: 'Joka neljäs viikko' },
-      once: { en: 'One time only', fi: 'Vain kerran' }
+  function updateFrequencyCards() {
+    ['weekly', 'biweekly', 'monthly', 'once'].forEach(name => {
+      const card = document.getElementById('freq-' + name);
+      if (!card) return;
+      const isSelected = bookingState.selectedFrequency === name;
+      card.classList.toggle('active', isSelected);
+      card.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+    });
+  }
+
+  function updateDurationRecommendationState(resetSelectedDuration) {
+    const recommendation = getCleaningDurationRecommendation(
+      bookingState.selectedPropertySize,
+      bookingState.selectedFrequency
+    );
+
+    bookingState.baselinePersonHours = recommendation.baselinePersonHours;
+    bookingState.recommendedFirstVisitHours = recommendation.recommendedFirstVisitHours;
+    bookingState.recommendedOngoingHours = recommendation.recommendedOngoingHours;
+
+    if (resetSelectedDuration) {
+      bookingState.selectedDuration = recommendation.recommendedSelectedDuration;
+      bookingState.durationWasManuallyChanged = false;
+    }
+
+    if (!recommendation.recommendedSelectedDuration) {
+      bookingState.selectedDuration = null;
+      bookingState.durationWasManuallyChanged = false;
+    }
+
+    syncLegacyBookingFields();
+  }
+
+  function updateDurationRecommendationDisplay() {
+    const lang = currentLang || 'fi';
+    const serviceConfig = getBookingServiceConfig();
+    const serviceNeedsFrequency = !serviceConfig.forcedFrequency;
+    const hasFrequency = Boolean(bookingState.selectedFrequency);
+    const hasSize = Boolean(bookingState.selectedPropertySize);
+    const hasRecommendation = Boolean(hasFrequency && hasSize && bookingState.baselinePersonHours);
+    const isRecurring = isRecurringFrequency(bookingState.selectedFrequency);
+    const primaryRecommendation = getPrimaryRecommendedDuration();
+
+    const frequencySection = document.getElementById('frequencySection');
+    const homeSizePanel = document.getElementById('homeSizePanel');
+    const durationPanel = document.getElementById('durationPanel');
+    const homeSize = document.getElementById('homeSize');
+    const cleanDuration = document.getElementById('cleanDuration');
+    const durationHelper = document.getElementById('durationPersonHoursHelp');
+    const recommendationGrid = document.getElementById('recommendationGrid');
+    const oneTimeRecommendation = document.getElementById('oneTimeRecommendation');
+    const recurringExplanation = document.getElementById('recurringExplanation');
+    const firstVisitRecommendation = document.getElementById('firstVisitRecommendation');
+    const ongoingVisitRecommendation = document.getElementById('ongoingVisitRecommendation');
+    const durationWarning = document.getElementById('durationWarning');
+    const continueButton = document.getElementById('bookingStep1Continue');
+    const homeSizeBracketHelp = document.getElementById('homeSizeBracketHelp');
+    const canChooseHomeSize = serviceNeedsFrequency ? hasFrequency : Boolean(serviceConfig.forcedFrequency);
+
+    if (frequencySection) {
+      frequencySection.style.display = serviceNeedsFrequency ? '' : 'none';
+      frequencySection.setAttribute('aria-hidden', serviceNeedsFrequency ? 'false' : 'true');
+    }
+    setRevealVisible(homeSizePanel, canChooseHomeSize);
+    setRevealVisible(durationPanel, hasRecommendation);
+
+    if (homeSize) homeSize.disabled = !canChooseHomeSize;
+    // Out-of-range sizes used to disable Continue with no way forward. Offer the
+    // quote route instead: it is the highest-value job that reaches this branch.
+    const customEstimateLink = document.getElementById('customEstimateLink');
+    const outOfRange = Boolean(bookingState.homeSizeM2) && !hasSize;
+    if (customEstimateLink) customEstimateLink.hidden = !outOfRange;
+    if (homeSizeBracketHelp) {
+      if (!bookingState.homeSizeM2) {
+        homeSizeBracketHelp.hidden = false;
+        homeSizeBracketHelp.textContent = lang === 'fi'
+          ? 'Kirjoita kodin koko neliömetreinä.'
+          : 'Enter your home size in square meters.';
+      } else if (hasSize) {
+        homeSizeBracketHelp.hidden = true;
+        homeSizeBracketHelp.textContent = '';
+      } else {
+        homeSizeBracketHelp.hidden = false;
+        homeSizeBracketHelp.textContent = lang === 'fi'
+          ? 'Tälle koolle annamme henkilökohtaisen arvion.'
+          : 'For this size, we will provide a custom estimate.';
+      }
+    }
+    if (cleanDuration) cleanDuration.disabled = !hasRecommendation;
+    if (durationHelper) durationHelper.hidden = !hasRecommendation;
+    if (recommendationGrid) {
+      recommendationGrid.hidden = !(hasRecommendation && isRecurring);
+      recommendationGrid.classList.toggle('is-one-time', false);
+    }
+
+    if (oneTimeRecommendation) oneTimeRecommendation.hidden = true;
+    if (recurringExplanation) recurringExplanation.hidden = !hasRecommendation || !isRecurring;
+    if (firstVisitRecommendation) firstVisitRecommendation.hidden = !hasRecommendation || !isRecurring;
+    if (ongoingVisitRecommendation) ongoingVisitRecommendation.hidden = !hasRecommendation || !isRecurring;
+
+    const oneTimeValue = document.getElementById('oneTimeDurationValue');
+    if (oneTimeValue) oneTimeValue.textContent = formatPersonHours(bookingState.recommendedOngoingHours, lang);
+    const firstVisitValue = document.getElementById('firstVisitDurationValue');
+    if (firstVisitValue) firstVisitValue.textContent = formatPersonHours(bookingState.recommendedFirstVisitHours, lang);
+    const ongoingVisitValue = document.getElementById('ongoingVisitDurationValue');
+    if (ongoingVisitValue) {
+      ongoingVisitValue.textContent = formatPersonHours(bookingState.recommendedOngoingHours, lang) + (lang === 'fi' ? ' / käynti' : ' per visit');
+    }
+    const ongoingVisitCadence = document.getElementById('ongoingVisitCadence');
+    if (ongoingVisitCadence) {
+      const cadence = getFrequencyLabel(bookingState.selectedFrequency, lang).toLowerCase();
+      ongoingVisitCadence.textContent = lang === 'fi'
+        ? 'Perustuu rytmiin: ' + cadence
+        : 'Based on cleaning ' + cadence;
+    }
+
+    if (durationWarning) {
+      durationWarning.hidden = !(hasRecommendation && Number(bookingState.selectedDuration) < Number(primaryRecommendation));
+    }
+
+    if (continueButton) continueButton.disabled = !isBookingSetupValid();
+  }
+
+  function refreshBookingSetupControls() {
+    updateServiceCards();
+    updateFrequencyCards();
+    populateDurationOptions();
+    const homeSize = document.getElementById('homeSize');
+    if (homeSize) homeSize.value = bookingState.homeSizeM2 || '';
+    const cleanDuration = document.getElementById('cleanDuration');
+    if (cleanDuration) cleanDuration.value = bookingState.selectedDuration ? String(bookingState.selectedDuration) : '';
+    updateDurationRecommendationDisplay();
+  }
+
+  function isBookingSetupValid() {
+    return Boolean(
+      bookingState.selectedFrequency &&
+      bookingState.selectedPropertySize &&
+      Number(bookingState.selectedDuration) >= DURATION_RECOMMENDATION_RULES.minimumPersonHours
+    );
+  }
+
+  function continueBookingStep1() {
+    if (!isBookingSetupValid()) {
+      refreshUi();
+      return;
+    }
+    goBookingStep(2);
+  }
+
+  function continueBookingStep2() {
+    if (!validateBookingLocation()) return;
+    goBookingStep(3);
+  }
+
+  function getSelectedText(id) {
+    const element = document.getElementById(id);
+    if (!element || !element.options) return '';
+    const option = element.options[element.selectedIndex];
+    return option ? option.textContent.trim() : '';
+  }
+
+  function getBookingPayload(lang) {
+    syncLegacyBookingFields();
+    return {
+      ...bookingState,
+      serviceType: bookingState.selectedServiceType,
+      serviceLabel: getBookingServiceLabel(lang),
+      hourlyRate: getBookingHourlyRate(),
+      sizeLabel: getTypedHomeSizeLabel(lang),
+      pricingBracketLabel: getSizeLabel(bookingState.selectedPropertySize, lang),
+      durationLabel: getDurationDisplayLabel(bookingState.selectedDuration),
+      frequencyLabel: getFrequencyLabel(bookingState.selectedFrequency, lang),
+      baselinePersonHoursLabel: formatPersonHours(bookingState.baselinePersonHours, lang),
+      recommendedFirstVisitHoursLabel: formatPersonHours(bookingState.recommendedFirstVisitHours, lang),
+      recommendedOngoingHoursLabel: formatPersonHours(bookingState.recommendedOngoingHours, lang),
+      extrasLabels: getExtrasLabels(lang),
+      estimatedTotal: formatPriceFi(calculateEstimate()),
+      estimatedAfterHouseholdDeduction: formatPriceFi(calculateEstimateAfterHouseholdDeduction()),
+      contractRate: getContractRate(bookingState.selectedFrequency)
     };
-    return labels[key][lang];
+  }
+
+  function applyBookingServiceFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const serviceType = normalizeBookingServiceType(params.get('service'));
+    if (!serviceType) return false;
+    selectBookingService(serviceType);
+    return true;
+  }
+
+  // ?mode=inquiry[&inquiry=window-cleaning] opens the quote form directly, with
+  // the service preselected. Window cleaning arrives here: its duration depends
+  // on window count and glass surfaces, which the booking flow cannot price.
+  function applyInquiryFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mode') !== 'inquiry') return false;
+    setMode('inquiry');
+    const wanted = params.get('inquiry');
+    const select = document.getElementById('inqService');
+    if (wanted && select) {
+      const match = Array.prototype.find.call(select.options, option => option.value === wanted);
+      if (match) select.value = match.value;
+    }
+    refreshUi();
+    return true;
   }
 
   function getServiceLabel(lang) {
@@ -1038,7 +2068,7 @@
       const service = document.getElementById('inqService').selectedOptions[0];
       return service ? service.textContent : (lang === 'fi' ? 'Tarjouskysely' : 'Quote inquiry');
     }
-    return lang === 'fi' ? 'Kotisiivous' : 'Home cleaning';
+    return getBookingServiceLabel(lang);
   }
 
   function formatPriceFi(amount) {
@@ -1046,41 +2076,129 @@
   }
 
   function calculateEstimate() {
-    const recurring = bookingState.frequency !== 'once';
-    const rate = recurring ? PRICES.recurring : PRICES.oneTime;
-    const totalHours = bookingState.duration + bookingState.extras.length;
+    if (!isBookingSetupValid()) return 0;
+    const rate = getBookingHourlyRate();
+    const totalHours = Number(bookingState.selectedDuration) + getExtrasHours();
     return rate * totalHours;
+  }
+
+  function calculateEstimateAfterHouseholdDeduction() {
+    return Math.round(calculateEstimate() * (1 - HOUSEHOLD_DEDUCTION_RATE) * 100) / 100;
   }
 
   function setMode(mode) {
     bookingState.mode = mode;
-    document.getElementById('bookingPanel').style.display = mode === 'booking' ? 'block' : 'none';
-    document.getElementById('inquiryPanel').style.display = mode === 'inquiry' ? 'block' : 'none';
-    document.getElementById('bookingModeBtn').classList.toggle('active', mode === 'booking');
-    document.getElementById('inquiryModeBtn').classList.toggle('active', mode === 'inquiry');
+    const bookingPanel = document.getElementById('bookingPanel');
+    const inquiryPanel = document.getElementById('inquiryPanel');
+    const bookingButton = document.getElementById('bookingModeBtn');
+    const inquiryButton = document.getElementById('inquiryModeBtn');
+    bookingPanel.style.display = mode === 'booking' ? 'block' : 'none';
+    inquiryPanel.style.display = mode === 'inquiry' ? 'block' : 'none';
+    bookingPanel.setAttribute('aria-hidden', String(mode !== 'booking'));
+    inquiryPanel.setAttribute('aria-hidden', String(mode !== 'inquiry'));
+    bookingButton.classList.toggle('active', mode === 'booking');
+    inquiryButton.classList.toggle('active', mode === 'inquiry');
+    bookingButton.setAttribute('aria-pressed', String(mode === 'booking'));
+    inquiryButton.setAttribute('aria-pressed', String(mode === 'inquiry'));
     document.querySelectorAll('.booking-only').forEach(el => el.style.display = mode === 'booking' ? '' : 'none');
     document.querySelectorAll('.inquiry-only').forEach(el => el.style.display = mode === 'inquiry' ? '' : 'none');
     document.getElementById('progressBar').style.display = mode === 'booking' ? 'flex' : 'none';
     refreshUi();
   }
 
+  // Switching modes only toggles visibility, so anything already typed into the
+  // booking flow survives and is still there if the customer switches back.
+  function switchToInquiry() {
+    setMode('inquiry');
+    document.getElementById('inquiryPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   function goBookingStep(step) {
+    if (bookingState.mode === 'booking' && step > 1 && !isBookingSetupValid()) {
+      refreshUi();
+      return;
+    }
     bookingState.step = step;
     document.getElementById('bookingStep1').style.display = step === 1 ? 'block' : 'none';
     document.getElementById('bookingStep2').style.display = step === 2 ? 'block' : 'none';
     document.getElementById('bookingStep3').style.display = step === 3 ? 'block' : 'none';
     document.querySelectorAll('.progress-pill').forEach(pill => {
-      pill.classList.toggle('active', Number(pill.dataset.step) === step);
+      const active = Number(pill.dataset.step) === step;
+      pill.classList.toggle('active', active);
+      if (active) pill.setAttribute('aria-current', 'step');
+      else pill.removeAttribute('aria-current');
     });
     refreshUi();
   }
 
-  function selectFrequency(key) {
-    bookingState.frequency = key;
-    ['weekly', 'biweekly', 'monthly', 'once'].forEach(name => {
-      document.getElementById('freq-' + name).classList.toggle('active', name === key);
-    });
+  function selectBookingService(key) {
+    if (!BOOKING_SERVICE_CONFIG[key]) return;
+    const previousService = bookingState.selectedServiceType;
+    bookingState.selectedServiceType = key;
+    bookingState.extras = bookingState.extras.filter(name => (EXTRA_APPLICABILITY[name] || []).includes(key));
+    const serviceConfig = getBookingServiceConfig();
+
+    if (serviceConfig.forcedFrequency) {
+      bookingState.selectedFrequency = serviceConfig.forcedFrequency;
+    } else if (previousService !== key && getBookingServiceConfig(previousService).forcedFrequency) {
+      bookingState.selectedFrequency = '';
+    }
+
+    if (previousService !== key || bookingState.selectedPropertySize) {
+      updateDurationRecommendationState(true);
+    } else {
+      syncLegacyBookingFields();
+    }
     refreshUi();
+  }
+
+  function handleServiceKeydown(event, key) {
+    const currentIndex = BOOKING_SERVICE_ORDER.indexOf(key);
+    if (currentIndex < 0) return;
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      selectBookingService(key);
+      return;
+    }
+    if (!['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)) return;
+    event.preventDefault();
+    const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
+    const next = BOOKING_SERVICE_ORDER[(currentIndex + direction + BOOKING_SERVICE_ORDER.length) % BOOKING_SERVICE_ORDER.length];
+    selectBookingService(next);
+    const nextCard = document.getElementById('service-' + next);
+    if (nextCard && typeof nextCard.focus === 'function') nextCard.focus();
+  }
+
+  function selectFrequency(key) {
+    if (!FREQUENCY_LABELS[key]) return;
+    const serviceConfig = getBookingServiceConfig();
+    if (serviceConfig.forcedFrequency && key !== serviceConfig.forcedFrequency) return;
+    const frequencyChanged = bookingState.selectedFrequency !== key;
+    bookingState.selectedFrequency = key;
+    if (frequencyChanged && bookingState.selectedPropertySize) {
+      updateDurationRecommendationState(true);
+    } else {
+      syncLegacyBookingFields();
+    }
+    refreshUi();
+  }
+
+  function handleFrequencyKeydown(event, key) {
+    const order = ['weekly', 'biweekly', 'monthly', 'once'];
+    const currentIndex = order.indexOf(key);
+    if (currentIndex < 0) return;
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      selectFrequency(key);
+      return;
+    }
+    if (!['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)) return;
+    event.preventDefault();
+    const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
+    const next = order[(currentIndex + direction + order.length) % order.length];
+    selectFrequency(next);
+    const nextCard = document.getElementById('freq-' + next);
+    if (nextCard && typeof nextCard.focus === 'function') nextCard.focus();
   }
 
   function toggleExtra(name) {
@@ -1093,27 +2211,46 @@
     refreshUi();
   }
 
-  function selectSlot(slot) {
+  function handlePreferredDayChange() {
+    bookingState.preferredDay = document.getElementById('preferredDay').value;
+    refreshUi();
+  }
+
+  function selectSlot(slot, selectedButton) {
     bookingState.slot = slot;
-    document.querySelectorAll('.slot-btn').forEach(btn => btn.classList.toggle('active', btn.textContent === slot || slot.includes(btn.textContent)));
+    document.querySelectorAll('.slot-btn').forEach(btn => {
+      const active = selectedButton ? btn === selectedButton : btn.textContent === slot || slot.includes(btn.textContent);
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
     refreshUi();
   }
 
   function handleHomeSizeChange() {
-    bookingState.size = document.getElementById('homeSize').value;
-    setDurationFromRecommendedSize();
-    updateBookingSummary();
+    bookingState.homeSizeM2 = readHomeSizeInputValue();
+    const bracket = getQuoteHomeSizeBracket(bookingState.homeSizeM2);
+    bookingState.selectedPropertySize = bracket ? bracket.key : '';
+    updateDurationRecommendationState(true);
+    refreshUi();
   }
 
   function handleDurationChange() {
-    bookingState.duration = Number(document.getElementById('cleanDuration').value);
-    updateDurationRecommendationLabels();
+    bookingState.selectedDuration = Number(document.getElementById('cleanDuration').value);
+    bookingState.durationWasManuallyChanged = true;
+    syncLegacyBookingFields();
     updateBookingSummary();
   }
 
   function updateBookingSummary() {
-    bookingState.size = document.getElementById('homeSize').value;
-    bookingState.duration = Number(document.getElementById('cleanDuration').value);
+    const homeSize = document.getElementById('homeSize');
+    const cleanDuration = document.getElementById('cleanDuration');
+    if (homeSize) {
+      bookingState.homeSizeM2 = readHomeSizeInputValue();
+      const bracket = getQuoteHomeSizeBracket(bookingState.homeSizeM2);
+      bookingState.selectedPropertySize = bracket ? bracket.key : '';
+    }
+    if (cleanDuration && cleanDuration.value) bookingState.selectedDuration = Number(cleanDuration.value);
+    syncLegacyBookingFields();
     bookingState.address = document.getElementById('streetAddress') ? document.getElementById('streetAddress').value.trim() : '';
     bookingState.postcode = document.getElementById('postcode') ? document.getElementById('postcode').value.trim() : '';
     bookingState.pets = document.getElementById('petsHome') ? document.getElementById('petsHome').checked : false;
@@ -1125,12 +2262,91 @@
   }
 
   function toggleScope(button) {
-    button.parentElement.classList.toggle('open');
+    const item = button.parentElement;
+    const isOpen = item.classList.toggle('open');
+    button.setAttribute('aria-expanded', String(isOpen));
+    const body = button.nextElementSibling;
+    if (body) body.setAttribute('aria-hidden', String(!isOpen));
+  }
+
+  function initializeScopeAccessibility() {
+    document.querySelectorAll('.scope-head').forEach((button, index) => {
+      const body = button.nextElementSibling;
+      if (!body) return;
+      if (!body.id) body.id = 'scopeBody' + index;
+      const isOpen = button.parentElement.classList.contains('open');
+      button.setAttribute('aria-controls', body.id);
+      button.setAttribute('aria-expanded', String(isOpen));
+      body.setAttribute('aria-hidden', String(!isOpen));
+    });
+  }
+
+  function updateServiceScopeUi() {
+    const service = bookingState.selectedServiceType;
+    const lang = currentLang || 'fi';
+    document.querySelectorAll('[data-scope]').forEach(el => {
+      el.hidden = el.getAttribute('data-scope') !== service;
+    });
+    Object.keys(EXTRA_APPLICABILITY).forEach(name => {
+      const card = document.getElementById('extra-' + name);
+      if (!card) return;
+      const selected = bookingState.extras.includes(name);
+      card.hidden = !EXTRA_APPLICABILITY[name].includes(service);
+      card.classList.toggle('active', selected);
+      card.setAttribute('aria-checked', String(selected));
+    });
+    const note = document.getElementById('includedExtrasNote');
+    if (note) note.hidden = service !== 'office';
+
+    const added = bookingState.extras;
+    const headDefault = document.getElementById('optionalHeadDefault');
+    const headAdded = document.getElementById('optionalHeadAdded');
+    if (headDefault) headDefault.hidden = added.length > 0;
+    if (headAdded) headAdded.hidden = added.length === 0;
+    const addedList = document.getElementById('addedExtrasList');
+    if (addedList) {
+      addedList.hidden = added.length === 0;
+      addedList.innerHTML = '';
+      added.forEach(name => {
+        const li = document.createElement('li');
+        const label = (EXTRA_LABELS[name] && EXTRA_LABELS[name][lang]) || name;
+        const hours = EXTRA_HOURS[name];
+        li.textContent = hours
+          ? label + ' +' + String(hours).replace('.', lang === 'fi' ? ',' : '.') + ' h'
+          : label;
+        addedList.appendChild(li);
+      });
+    }
+    if (added.length) {
+      document.querySelectorAll('.optional-static').forEach(el => { el.hidden = true; });
+    }
+
+    // The first visit is longer, not dearer. Say the one rate.
+    const firstVisitRateNote = document.getElementById('firstVisitRateNote');
+    if (firstVisitRateNote) {
+      const freq = bookingState.selectedFrequency;
+      const show = service === 'home' && isRecurringFrequency(freq);
+      firstVisitRateNote.hidden = !show;
+      if (show) firstVisitRateNote.textContent = getContractRate(freq) + ' €/h';
+    }
+  }
+
+  // Show the total on step 1, before the address is asked for.
+  function updateStep1Estimate() {
+    const box = document.getElementById('step1Estimate');
+    if (!box) return;
+    const ready = bookingState.mode === 'booking' && isBookingSetupValid();
+    box.hidden = !ready;
+    if (!ready) return;
+    document.getElementById('step1EstimateValue').textContent = formatPriceFi(calculateEstimate());
+    document.getElementById('step1EstimateAfter').textContent = formatPriceFi(calculateEstimateAfterHouseholdDeduction());
   }
 
   function refreshUi() {
     const lang = currentLang || 'fi';
-    updateDurationRecommendationLabels();
+    refreshBookingSetupControls();
+    updateServiceScopeUi();
+    updateStep1Estimate();
     document.getElementById('summaryTitle').textContent = bookingState.mode === 'booking'
       ? (lang === 'fi' ? 'Kotisiivouspyyntö' : 'Home Cleaning Request')
       : (lang === 'fi' ? 'Tarjouskysely' : 'Quote Inquiry');
@@ -1138,18 +2354,16 @@
       ? (lang === 'fi' ? 'Varauspyyntö' : 'Booking request')
       : (lang === 'fi' ? 'Kysely' : 'Inquiry');
     document.getElementById('summaryService').textContent = getServiceLabel(lang);
-    document.getElementById('summaryDuration').textContent = bookingState.duration + 'h';
-    document.getElementById('summaryFrequency').textContent = getFrequencyLabel(bookingState.frequency, lang);
-    const extraLabels = {
-      fridge: { en: 'Fridge', fi: 'Jääkaappi' },
-      oven: { en: 'Oven', fi: 'Uuni' },
-      sauna: { en: 'Sauna', fi: 'Sauna' }
-    };
+    document.getElementById('summaryDuration').textContent = bookingState.selectedDuration
+      ? getDurationDisplayLabel(bookingState.selectedDuration)
+      : (lang === 'fi' ? 'Valitse kesto' : 'Select duration');
+    document.getElementById('summaryFrequency').textContent = getFrequencyLabel(bookingState.selectedFrequency, lang);
     const extrasText = bookingState.extras.length
-      ? bookingState.extras.map(item => extraLabels[item][lang]).join(', ')
+      ? getExtrasLabels(lang).join(', ')
       : (lang === 'fi' ? 'Vain siivoustarvikkeet' : 'Cleaning supplies only');
     document.getElementById('summaryExtras').textContent = extrasText;
-    document.getElementById('summaryEstimate').textContent = formatPriceFi(calculateEstimate());
+    document.getElementById('summaryEstimate').textContent = isBookingSetupValid() ? formatPriceFi(calculateEstimate()) : '-';
+    document.getElementById('summaryEstimateAfterDeduction').textContent = isBookingSetupValid() ? formatPriceFi(calculateEstimateAfterHouseholdDeduction()) : '-';
     const contactMethod = document.getElementById('inqContactMethod');
     if (contactMethod) {
       document.getElementById('summaryInquiryContact').textContent = contactMethod.options[contactMethod.selectedIndex].textContent;
@@ -1160,50 +2374,236 @@
     }
   }
 
-  async function submitBookingRequest() {
+  function isValidEmail(value) {
+    return !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function isValidPhone(value) {
+    return !value || (/^[+()\d\s.-]+$/.test(value) && value.replace(/\D/g, '').length >= 6);
+  }
+
+  function clearFieldError(id) {
+    const field = document.getElementById(id);
+    const error = document.getElementById(id + 'Error');
+    if (field) {
+      field.classList.remove('is-invalid');
+      field.removeAttribute('aria-invalid');
+      field.removeAttribute('aria-describedby');
+    }
+    if (error) error.remove();
+  }
+
+  function addFieldError(id, message) {
+    const field = document.getElementById(id);
+    if (!field) return;
+    clearFieldError(id);
+    const error = document.createElement('p');
+    error.id = id + 'Error';
+    error.className = 'field-error';
+    error.textContent = message;
+    field.classList.add('is-invalid');
+    field.setAttribute('aria-invalid', 'true');
+    field.setAttribute('aria-describedby', error.id);
+    field.insertAdjacentElement('afterend', error);
+  }
+
+  function clearErrorSummary(id) {
+    const summary = document.getElementById(id);
+    if (!summary) return;
+    summary.hidden = true;
+    summary.textContent = '';
+  }
+
+  function showErrorSummary(id, message) {
+    const summary = document.getElementById(id);
+    if (!summary) return;
+    summary.textContent = message;
+    summary.hidden = false;
+    summary.focus();
+  }
+
+  function validateBookingLocation() {
+    const lang = currentLang || 'fi';
+    const address = document.getElementById('streetAddress').value.trim();
+    const postcode = document.getElementById('postcode').value.trim();
+    clearFieldError('streetAddress');
+    clearFieldError('postcode');
+    clearErrorSummary('bookingLocationError');
+    let valid = true;
+
+    if (!address) {
+      addFieldError('streetAddress', lang === 'fi' ? 'Lisää katuosoite.' : 'Add the street address.');
+      valid = false;
+    }
+    if (!/^\d{5}$/.test(postcode)) {
+      addFieldError('postcode', lang === 'fi' ? 'Lisää viisinumeroinen postinumero.' : 'Add a five-digit postcode.');
+      valid = false;
+    }
+    if (!valid) {
+      showErrorSummary('bookingLocationError', lang === 'fi'
+        ? 'Tarkista osoitetiedot ennen jatkamista.'
+        : 'Check the address details before continuing.');
+    }
+    return valid;
+  }
+
+  function validateBookingContact() {
+    const lang = currentLang || 'fi';
+    const first = document.getElementById('bookFirstName').value.trim();
+    const email = document.getElementById('bookEmail').value.trim();
+    const phone = document.getElementById('bookPhone').value.trim();
+    ['bookFirstName', 'bookEmail', 'bookPhone'].forEach(clearFieldError);
+    clearErrorSummary('bookingError');
+    let valid = true;
+
+    if (!first) {
+      addFieldError('bookFirstName', lang === 'fi' ? 'Lisää etunimesi.' : 'Add your first name.');
+      valid = false;
+    }
+    if (!email && !phone) {
+      const message = lang === 'fi' ? 'Lisää sähköposti tai puhelinnumero.' : 'Add an email address or phone number.';
+      addFieldError('bookEmail', message);
+      addFieldError('bookPhone', message);
+      valid = false;
+    } else {
+      if (!isValidEmail(email)) {
+        addFieldError('bookEmail', lang === 'fi' ? 'Tarkista sähköpostiosoite.' : 'Check the email address.');
+        valid = false;
+      }
+      if (!isValidPhone(phone)) {
+        addFieldError('bookPhone', lang === 'fi' ? 'Tarkista puhelinnumero.' : 'Check the phone number.');
+        valid = false;
+      }
+    }
+    if (!valid) {
+      showErrorSummary('bookingError', lang === 'fi'
+        ? 'Täytä pakolliset yhteystiedot ennen lähettämistä.'
+        : 'Complete the required contact details before sending.');
+    }
+    return valid;
+  }
+
+  function validateInquiry() {
+    const lang = currentLang || 'fi';
+    const area = document.getElementById('inqArea').value.trim();
+    const name = document.getElementById('inqName').value.trim();
+    const phone = document.getElementById('inqPhone').value.trim();
+    const email = document.getElementById('inqEmail').value.trim();
+    const method = document.getElementById('inqContactMethod').value;
+    ['inqArea', 'inqName', 'inqPhone', 'inqEmail'].forEach(clearFieldError);
+    clearErrorSummary('inquiryError');
+    let valid = true;
+
+    if (!area) {
+      addFieldError('inqArea', lang === 'fi' ? 'Lisää alue tai postinumero.' : 'Add an area or postcode.');
+      valid = false;
+    }
+    if (!name) {
+      addFieldError('inqName', lang === 'fi' ? 'Lisää nimesi.' : 'Add your name.');
+      valid = false;
+    }
+    if (!isValidEmail(email)) {
+      addFieldError('inqEmail', lang === 'fi' ? 'Tarkista sähköpostiosoite.' : 'Check the email address.');
+      valid = false;
+    }
+    if (!isValidPhone(phone)) {
+      addFieldError('inqPhone', lang === 'fi' ? 'Tarkista puhelinnumero.' : 'Check the phone number.');
+      valid = false;
+    }
+    if ((method === 'email' && !email) || (method === 'phone' && !phone) || (method === 'either' && !email && !phone)) {
+      const target = method === 'email' ? 'inqEmail' : 'inqPhone';
+      addFieldError(target, lang === 'fi'
+        ? 'Lisää valitsemasi yhteystavan tiedot.'
+        : 'Add details for your selected contact method.');
+      valid = false;
+    }
+    if (!valid) {
+      showErrorSummary('inquiryError', lang === 'fi'
+        ? 'Tarkista merkityt tiedot ennen lähettämistä.'
+        : 'Check the marked details before sending.');
+    }
+    return valid;
+  }
+
+  function setSubmitting(formId, buttonId, isSubmitting) {
+    const form = document.getElementById(formId);
+    const button = document.getElementById(buttonId);
+    form.setAttribute('aria-busy', String(isSubmitting));
+    button.disabled = isSubmitting;
+    button.textContent = isSubmitting
+      ? (currentLang === 'fi' ? 'Lähetetään…' : 'Sending…')
+      : button.getAttribute('data-' + (currentLang || 'fi'));
+  }
+
+  function buildMailto(subject, body) {
+    return 'mailto:info@betterclean.fi?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+
+  async function submitBookingRequest(event) {
+    if (event) event.preventDefault();
+    if (!validateBookingLocation()) {
+      goBookingStep(2);
+      validateBookingLocation();
+      return;
+    }
+    if (!validateBookingContact()) return;
     const lang = currentLang || 'fi';
     const first = document.getElementById('bookFirstName').value.trim();
     const last = document.getElementById('bookLastName').value.trim();
     const email = document.getElementById('bookEmail').value.trim();
     const phone = document.getElementById('bookPhone').value.trim();
     const notes = document.getElementById('bookNotes').value.trim();
-    const extrasText = bookingState.extras.length ? bookingState.extras.join(', ') : 'none';
+    updateBookingSummary();
+    const bookingPayload = getBookingPayload(lang);
+    const extrasText = bookingPayload.extrasLabels.length
+      ? bookingPayload.extrasLabels.join(', ')
+      : (lang === 'fi' ? 'ei lisäpalveluita' : 'none');
     const subject = (lang === 'fi' ? 'BetterClean varauspyyntö - ' : 'BetterClean booking request - ') + [first, last].filter(Boolean).join(' ');
-    const body = [
+    const bodyLines = [
       lang === 'fi' ? 'Uusi BetterClean varauspyyntö' : 'New BetterClean booking request',
       '',
-      (lang === 'fi' ? 'Palvelu: ' : 'Service: ') + (lang === 'fi' ? 'Kotisiivous' : 'Home cleaning'),
-      (lang === 'fi' ? 'Kesto: ' : 'Duration: ') + bookingState.duration + 'h',
-      (lang === 'fi' ? 'Toistuvuus: ' : 'Frequency: ') + getFrequencyLabel(bookingState.frequency, lang),
+      (lang === 'fi' ? 'Palvelu: ' : 'Service: ') + bookingPayload.serviceLabel,
+      (lang === 'fi' ? 'Kodin koko: ' : 'Apartment size: ') + bookingPayload.sizeLabel,
+      (lang === 'fi' ? 'Kesto: ' : 'Duration: ') + bookingPayload.durationLabel,
+      (lang === 'fi' ? 'Toistuvuus: ' : 'Frequency: ') + bookingPayload.frequencyLabel,
       (lang === 'fi' ? 'Lisäpalvelut: ' : 'Additional services: ') + extrasText,
-      (lang === 'fi' ? 'Arvioitu yhteensä: ' : 'Estimated total: ') + formatPriceFi(calculateEstimate()),
-      (lang === 'fi' ? 'Osoite: ' : 'Address: ') + (bookingState.address || '-'),
-      (lang === 'fi' ? 'Postinumero: ' : 'Postcode: ') + (bookingState.postcode || '-'),
-      (lang === 'fi' ? 'Toivottu aika: ' : 'Preferred time: ') + (bookingState.slot || '-'),
-      (lang === 'fi' ? 'Lemmikit kotona: ' : 'Pets at home: ') + (bookingState.pets ? (lang === 'fi' ? 'Kyllä' : 'Yes') : (lang === 'fi' ? 'Ei' : 'No')),
+      (lang === 'fi' ? 'Arvioitu yhteensä: ' : 'Estimated total: ') + bookingPayload.estimatedTotal,
+      (lang === 'fi' ? '35 % esimerkkilaskelma ennen 150 € omavastuuta: ' : '35% illustration before the €150 personal threshold: ') + bookingPayload.estimatedAfterHouseholdDeduction,
+      (lang === 'fi' ? 'Tuntihinta: ' : 'Hourly rate: ') + bookingPayload.contractRate + ' €/h',
+      (lang === 'fi' ? 'Osoite: ' : 'Address: ') + (bookingPayload.address || '-'),
+      (lang === 'fi' ? 'Postinumero: ' : 'Postcode: ') + (bookingPayload.postcode || '-'),
+      (lang === 'fi' ? 'Toivottu päivä: ' : 'Preferred day: ') + (bookingPayload.preferredDay || '-'),
+      (lang === 'fi' ? 'Toivottu aika: ' : 'Preferred time: ') + (bookingPayload.slot || '-'),
+      (lang === 'fi' ? 'Lemmikit kotona: ' : 'Pets at home: ') + (bookingPayload.pets ? (lang === 'fi' ? 'Kyllä' : 'Yes') : (lang === 'fi' ? 'Ei' : 'No')),
       '',
       (lang === 'fi' ? 'Nimi: ' : 'Name: ') + [first, last].filter(Boolean).join(' '),
       'Email: ' + (email || '-'),
       (lang === 'fi' ? 'Puhelin: ' : 'Phone: ') + (phone || '-'),
       (lang === 'fi' ? 'Lisätiedot: ' : 'Notes: ') + (notes || '-')
-    ].join('\n');
-    const sent = await sendLeadToEndpoint({
+    ];
+    const body = bodyLines.filter(line => line !== null).join('\n');
+    setSubmitting('bookingPanel', 'bookingSubmit', true);
+    const result = await sendLeadToEndpoint({
       source: 'request-quote-booking',
       subject,
       body,
       language: lang,
       customer: { firstName: first, lastName: last, email, phone },
-      booking: bookingState
+      booking: bookingPayload,
+      website: document.getElementById('bookingWebsite').value
     });
-    if (sent) {
-      showStatusBox('bookingSuccess', 'sent');
+    setSubmitting('bookingPanel', 'bookingSubmit', false);
+    if (result.ok) {
+      showStatusBox('bookingSuccess', 'sent', '', result.reference);
+      document.getElementById('bookingSubmit').disabled = true;
       return;
     }
-    window.location.href = 'mailto:info@betterclean.fi?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    showStatusBox('bookingSuccess', 'email');
+    showStatusBox('bookingSuccess', 'error', buildMailto(subject, body));
   }
 
-  async function submitInquiryRequest() {
+  async function submitInquiryRequest(event) {
+    if (event) event.preventDefault();
+    if (!validateInquiry()) return;
     const lang = currentLang || 'fi';
     const service = document.getElementById('inqService').options[document.getElementById('inqService').selectedIndex].textContent;
     const area = document.getElementById('inqArea').value.trim();
@@ -1228,61 +2628,83 @@
       '',
       (lang === 'fi' ? 'Tarve / viesti: ' : 'Need / message: ') + (need || '-')
     ].join('\n');
-    const sent = await sendLeadToEndpoint({
+    setSubmitting('inquiryPanel', 'inquirySubmit', true);
+    const result = await sendLeadToEndpoint({
       source: 'request-quote-inquiry',
       subject,
       body,
       language: lang,
       customer: { name, email, phone },
-      inquiry: { service, area, size, method, need }
+      inquiry: { service, area, size, method, need },
+      website: document.getElementById('inquiryWebsite').value
     });
-    if (sent) {
-      showStatusBox('inquirySuccess', 'sent');
+    setSubmitting('inquiryPanel', 'inquirySubmit', false);
+    if (result.ok) {
+      showStatusBox('inquirySuccess', 'sent', '', result.reference);
+      document.getElementById('inquirySubmit').disabled = true;
       return;
     }
-    window.location.href = 'mailto:info@betterclean.fi?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    showStatusBox('inquirySuccess', 'email');
+    showStatusBox('inquirySuccess', 'error', buildMailto(subject, body));
   }
 
   async function sendLeadToEndpoint(payload) {
-    if (!LEAD_ENDPOINT) return false;
+    if (!LEAD_ENDPOINT) return { ok: false, error: 'Lead endpoint unavailable' };
     try {
       const response = await fetch(LEAD_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if (response.ok && typeof window.bcTrackLead === 'function') window.bcTrackLead();
-      return response.ok;
+      const data = await response.json().catch(() => ({}));
+      const ok = response.ok && data.ok !== false;
+      if (ok && typeof window.bcTrackLead === 'function') window.bcTrackLead();
+      return {
+        ok,
+        status: response.status,
+        reference: data.reference || '',
+        error: data.error || ''
+      };
     } catch (error) {
-      return false;
+      return { ok: false, error: 'Network error' };
     }
   }
 
-  function showStatusBox(id, mode) {
+  function showStatusBox(id, mode, mailtoHref, reference) {
     const box = document.getElementById(id);
     if (!box) return;
     const lang = currentLang || 'fi';
     const strong = box.querySelector('strong');
     const span = box.querySelector('span');
+    const fallback = box.querySelector('.email-fallback');
+    box.classList.toggle('error', mode === 'error');
     if (mode === 'sent') {
       strong.textContent = lang === 'fi' ? 'Pyyntö lähetetty BetterCleanille.' : 'Request sent to BetterClean.';
       span.textContent = lang === 'fi'
-        ? ' Vastaamme henkilökohtaisesti tarkistettuamme tiedot.'
-        : ' We will reply personally after reviewing the details.';
+        ? ' Vastaamme henkilökohtaisesti 24 tunnin kuluessa tarkistettuamme tiedot.' + (reference ? ' Viite: ' + reference : '')
+        : ' We will reply personally within 24 hours after reviewing the details.' + (reference ? ' Reference: ' + reference : '');
+      if (fallback) fallback.hidden = true;
     } else {
-      strong.textContent = lang === 'fi' ? 'Sähköpostiluonnos on valmis.' : 'Your email draft is ready.';
+      strong.textContent = lang === 'fi' ? 'Pyyntöä ei voitu lähettää.' : 'We could not send the request.';
       span.textContent = lang === 'fi'
-        ? ' Tarkista avattu sähköpostiluonnos ja paina Lähetä, jotta pyyntö tulee BetterCleanille.'
-        : ' Please review the email draft and press Send so BetterClean receives the request.';
+        ? ' Yritä uudelleen tai lähetä samat tiedot sähköpostilla: '
+        : ' Try again or send the same details by email: ';
+      if (fallback) {
+        fallback.href = mailtoHref;
+        fallback.hidden = false;
+      }
     }
     box.style.display = 'block';
+    box.focus();
   }
 
   setLang('fi');
+  initializeScopeAccessibility();
   goBookingStep(1);
-  selectFrequency('biweekly');
   setMode('booking');
+  document.getElementById('preferredDay').min = new Date().toISOString().slice(0, 10);
+  if (!applyInquiryFromQuery()) {
+    applyBookingServiceFromQuery();
+  }
 </script>
 
 

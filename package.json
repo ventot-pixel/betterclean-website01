@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "check": "node --check api/lead.js && node --check consent.js && node --check whatsapp-widget.js",
-    "test": "npm run check && node --test tests/*.test.cjs"
+    "test": "npm run check && node --test tests/*.test.cjs && node tests/lead-recipients.test.js && node tests/customer-reply-details.test.js && node tests/lead-delivery-fanout.test.js && node tests/homepage-exact-size-pricing.test.js && node tests/quote-pricing-flow.test.js && node tests/quote-duration-recommendation.test.js && node tests/quote-frequency-duration-flow.test.js && node tests/quote-continue-disabled-state.test.js && node tests/quote-form-hardening.test.js && node tests/home-rate-ladder.test.js && node tests/window-quote-route.test.js && node tests/pricing-source-of-truth.test.js"
   },
   "keywords": [],
   "author": "",

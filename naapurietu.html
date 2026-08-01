@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Naapurietu | BetterClean Tampere</title>
   <meta name="description" content="BetterCleanin naapurietu Tampereella: kotisiivous alkaen 39 €/h. Kerro asunnon koko, ikkunat, sauna ja parveke, niin saat henkilökohtaisen tarjouksen." />
-  <meta name="dateModified" content="2026-07-23" />
+  <meta name="dateModified" content="2026-08-01" />
   <meta name="keywords" content="naapurietu siivous tampere, kotisiivous tarjous tampere, asunnon siivous tampere, sohvanpesu tampere, matonpesu tampere, ikkunanpesu tampere" />
   <link rel="canonical" href="https://www.betterclean.fi/naapurietu.html" />
   <meta property="og:title" content="Naapurietu | BetterClean Tampere" />
@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://www.betterclean.fi/brand_assets/betterclean-logo.png" />
   <link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64" />
   <script src="/consent.js" defer></script>
-  <script src="/whatsapp-widget.js?v=20260615-auto" defer></script>
+  <script src="/whatsapp-widget.js?v=20260709-nodot" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -353,7 +353,7 @@
             <p class="font-display font-bold mb-1" data-en="Valid until 31.8.2026" data-fi="Voimassa 31.8.2026 asti">Voimassa 31.8.2026 asti</p>
             <p class="fine-print" data-en="No payment on this page. You receive a personal quote first, and photos are requested only if needed." data-fi="Sivulla ei tehdä maksua. Saat ensin henkilökohtaisen tarjouksen, ja kuvia pyydetään vain tarvittaessa.">Sivulla ei tehdä maksua. Saat ensin henkilökohtaisen tarjouksen, ja kuvia pyydetään vain tarvittaessa.</p>
             <p class="fine-print mt-3">
-              <span data-en="Normal home cleaning starts at 57 €/h, so this promo can save up to 18 €/h. " data-fi="Normaali kotisiivous alkaa 57 €/h, joten naapurietu voi säästää jopa 18 €/h. ">Normaali kotisiivous alkaa 57 €/h, joten naapurietu voi säästää jopa 18 €/h. </span>
+              <span data-en="Normal home cleaning starts at 49 €/h, so this promo can save up to 10 €/h. " data-fi="Normaali kotisiivous alkaa 49 €/h, joten naapurietu voi säästää jopa 10 €/h. ">Normaali kotisiivous alkaa 49 €/h, joten naapurietu voi säästää jopa 10 €/h. </span>
               <a href="pricing.html" class="rate-link" data-en="Check normal rates" data-fi="Katso normaalit hinnat">Katso normaalit hinnat</a>
             </p>
           </div>
@@ -458,10 +458,14 @@
             <div>
               <label class="field-label" for="homeSize" data-en="Apartment size" data-fi="Asunnon koko">Asunnon koko</label>
               <select id="homeSize" name="homeSize" onchange="updateNeighborRecommendation()">
-                <option value="under-40" data-en="Studio or under 40m²" data-fi="Yksiö tai alle 40m²">Yksiö tai alle 40m²</option>
-                <option value="40-59" data-en="40 - 59m²" data-fi="40 - 59m²">40 - 59m²</option>
-                <option value="60-79" data-en="60 - 79m²" data-fi="60 - 79m²">60 - 79m²</option>
-                <option value="80-plus" data-en="80m² or larger" data-fi="80m² tai suurempi">80m² tai suurempi</option>
+                <option value="under-40" data-en="Under 40 m²" data-fi="Alle 40 m²">Alle 40 m²</option>
+                <option value="40-59" data-en="40-59 m²" data-fi="40-59 m²">40-59 m²</option>
+                <option value="60-79" data-en="60-79 m²" data-fi="60-79 m²">60-79 m²</option>
+                <option value="80-99" data-en="80-99 m²" data-fi="80-99 m²">80-99 m²</option>
+                <option value="100-119" data-en="100-119 m²" data-fi="100-119 m²">100-119 m²</option>
+                <option value="120-149" data-en="120-149 m²" data-fi="120-149 m²">120-149 m²</option>
+                <option value="150-180" data-en="150-180 m²" data-fi="150-180 m²">150-180 m²</option>
+                <option value="over-180" data-en="Over 180 m²" data-fi="Yli 180 m²">Yli 180 m²</option>
               </select>
             </div>
             <div>
@@ -493,7 +497,7 @@
           <div class="soft-surface p-4 mb-5" aria-live="polite">
             <p class="field-label mb-1" data-en="Recommended visit length" data-fi="Suositeltu käyntikesto">Suositeltu käyntikesto</p>
             <div class="flex flex-col sm:flex-row sm:items-end gap-1 sm:gap-3">
-              <strong id="recommendedVisitLength" class="font-display text-3xl" style="color: var(--green-dark); white-space: nowrap;">2-3 h</strong>
+              <strong id="recommendedVisitLength" class="font-display text-3xl" style="color: var(--green-dark); white-space: nowrap;">3h+</strong>
               <span class="fine-print" data-en="Final time is confirmed with your personal quote." data-fi="Lopullinen aika vahvistetaan henkilökohtaisessa tarjouksessa.">Lopullinen aika vahvistetaan henkilökohtaisessa tarjouksessa.</span>
             </div>
           </div>
@@ -613,10 +617,14 @@
   let currentLang = 'fi';
   const LEAD_ENDPOINT = '/api/lead';
   const NEIGHBOR_VISIT_RECOMMENDATIONS = {
-    'under-40': '2-3 h',
-    '40-59': '3-4 h',
-    '60-79': '4-5 h',
-    '80-plus': '5-6 h'
+    'under-40': '3h+',
+    '40-59': '4h+',
+    '60-79': '4h+',
+    '80-99': '5h+',
+    '100-119': '5h+',
+    '120-149': '6h+',
+    '150-180': '7h+',
+    'over-180': '8h+'
   };
 
   function setLang(lang) {
