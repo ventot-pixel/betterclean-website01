@@ -8,6 +8,10 @@
   ],
   "rewrites": [
     {
+      "source": "/yrityksille/muuttosiivous-vuokrataloille",
+      "destination": "/yrityksille-muuttosiivous-vuokrataloille.html"
+    },
+    {
       "source": "/naapurietu",
       "destination": "/naapurietu.html"
     }
