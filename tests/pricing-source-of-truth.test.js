@@ -57,7 +57,7 @@ const fileSpecificRates = {
   // 39 €/h is the time-limited offer and 10 €/h is its displayed saving
   // against the 49 €/h standard weekly rate.
   'naapurietu.html': new Set(['39', '10']),
-  'llms.txt': new Set(['39']), // Published neighbour offer; expires 31.8.2026.
+  'llms.txt': new Set(['39']), // Published neighbour offer; expires 1.10.2026.
 };
 
 const violations = [];

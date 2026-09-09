@@ -28,7 +28,7 @@ const PRICES = {
   // ── Steam cleaning fixed prices (€) ───────────────────────────────────
   steamSingleMattress:  89,
   steamDoubleMattress:  129,
-  steamSofa2Seat:       129,
+  steamSofa2Seat:       89,
   steamSofaExtraSeat:   35,
   steamArmchair:        89,
   steamBathroomSauna:   149,  // alkaen
