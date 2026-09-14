@@ -27,10 +27,10 @@ const PRICES = {
 
   // ── Steam cleaning fixed prices (€) ───────────────────────────────────
   steamSingleMattress:  89,
-  steamDoubleMattress:  129,
+  steamDoubleMattress:  109,
   steamSofa2Seat:       89,
-  steamSofaExtraSeat:   35,
-  steamArmchair:        89,
+  steamSofaExtraSeat:   20,
+  steamArmchair:        79,
   steamBathroomSauna:   149,  // alkaen
 
   // ── Window cleaning estimates (€) ─────────────────────────────────────
@@ -187,3 +187,245 @@ function calcWidgetEstimate(service, size) {
     bracket
   };
 }
+
+// Display catalogue: quoted ranges and units are intentional, not instant bookings.
+const TEXTILE_RATE_CARD = {
+  "Armchair / steam": {
+    "fi": "79 €",
+    "en": "79 €"
+  },
+  "Armchair / extraction": {
+    "fi": "59 €",
+    "en": "59 €"
+  },
+  "Two-seat sofa / steam": {
+    "fi": "89 €",
+    "en": "89 €"
+  },
+  "Two-seat sofa / extraction": {
+    "fi": "69 €",
+    "en": "69 €"
+  },
+  "Three-seat sofa / steam": {
+    "fi": "109 €",
+    "en": "109 €"
+  },
+  "Three-seat sofa / extraction": {
+    "fi": "89 €",
+    "en": "89 €"
+  },
+  "Four-seat sofa / steam": {
+    "fi": "129 €",
+    "en": "129 €"
+  },
+  "Four-seat sofa / extraction": {
+    "fi": "109 €",
+    "en": "109 €"
+  },
+  "Divan or small corner sofa / steam": {
+    "fi": "Alkaen 159 €",
+    "en": "From 159 €"
+  },
+  "Divan or small corner sofa / extraction": {
+    "fi": "Alkaen 139 €",
+    "en": "From 139 €"
+  },
+  "Large corner sofa, 5-6 seats / steam": {
+    "fi": "Alkaen 199 €",
+    "en": "From 199 €"
+  },
+  "Large corner sofa, 5-6 seats / extraction": {
+    "fi": "Alkaen 169 €",
+    "en": "From 169 €"
+  },
+  "Extra-large or modular sofa / steam": {
+    "fi": "Alkaen 239 €",
+    "en": "From 239 €"
+  },
+  "Extra-large or modular sofa / extraction": {
+    "fi": "Alkaen 199 €",
+    "en": "From 199 €"
+  },
+  "Small ottoman / steam": {
+    "fi": "39 €",
+    "en": "39 €"
+  },
+  "Small ottoman / extraction": {
+    "fi": "29 €",
+    "en": "29 €"
+  },
+  "Large ottoman / steam": {
+    "fi": "49 €",
+    "en": "49 €"
+  },
+  "Large ottoman / extraction": {
+    "fi": "39 €",
+    "en": "39 €"
+  },
+  "Dining chair, seat only / steam": {
+    "fi": "19 €/kpl",
+    "en": "19 € each"
+  },
+  "Dining chair, seat only / extraction": {
+    "fi": "15 €/kpl",
+    "en": "15 € each"
+  },
+  "Dining chair, seat and back / steam": {
+    "fi": "27 €/kpl",
+    "en": "27 € each"
+  },
+  "Dining chair, seat and back / extraction": {
+    "fi": "22 €/kpl",
+    "en": "22 € each"
+  },
+  "Office chair / steam": {
+    "fi": "39 €/kpl",
+    "en": "39 € each"
+  },
+  "Office chair / extraction": {
+    "fi": "29 €/kpl",
+    "en": "29 € each"
+  },
+  "Sofa-bed sleeping section / steam": {
+    "fi": "+30 €",
+    "en": "+30 €"
+  },
+  "Sofa-bed sleeping section / extraction": {
+    "fi": "+20 €",
+    "en": "+20 €"
+  },
+  "Single mattress, 80-90 cm / steam": {
+    "fi": "89 €",
+    "en": "89 €"
+  },
+  "Single mattress, 80-90 cm / extraction": {
+    "fi": "69 €",
+    "en": "69 €"
+  },
+  "Medium mattress, 120-140 cm / steam": {
+    "fi": "99 €",
+    "en": "99 €"
+  },
+  "Medium mattress, 120-140 cm / extraction": {
+    "fi": "79 €",
+    "en": "79 €"
+  },
+  "Double mattress, 160 cm / steam": {
+    "fi": "109 €",
+    "en": "109 €"
+  },
+  "Double mattress, 160 cm / extraction": {
+    "fi": "89 €",
+    "en": "89 €"
+  },
+  "King-size mattress, 180 cm / steam": {
+    "fi": "119 €",
+    "en": "119 €"
+  },
+  "King-size mattress, 180 cm / extraction": {
+    "fi": "99 €",
+    "en": "99 €"
+  },
+  "Mattress underside, single / steam": {
+    "fi": "+30 €",
+    "en": "+30 €"
+  },
+  "Mattress underside, single / extraction": {
+    "fi": "+20 €",
+    "en": "+20 €"
+  },
+  "Mattress underside, double / steam": {
+    "fi": "+45 €",
+    "en": "+45 €"
+  },
+  "Mattress underside, double / extraction": {
+    "fi": "+30 €",
+    "en": "+30 €"
+  },
+  "Upholstered single bed base / steam": {
+    "fi": "Alkaen 109 €",
+    "en": "From 109 €"
+  },
+  "Upholstered single bed base / extraction": {
+    "fi": "Alkaen 89 €",
+    "en": "From 89 €"
+  },
+  "Upholstered double bed base / steam": {
+    "fi": "Alkaen 159 €",
+    "en": "From 159 €"
+  },
+  "Upholstered double bed base / extraction": {
+    "fi": "Alkaen 129 €",
+    "en": "From 129 €"
+  },
+  "Upholstered headboard / steam": {
+    "fi": "49-69 €",
+    "en": "49-69 €"
+  },
+  "Upholstered headboard / extraction": {
+    "fi": "39-59 €",
+    "en": "39-59 €"
+  },
+  "Complete continental bed / steam": {
+    "fi": "Alkaen 179 €",
+    "en": "From 179 €"
+  },
+  "Complete continental bed / extraction": {
+    "fi": "Alkaen 149 €",
+    "en": "From 149 €"
+  },
+  "Synthetic flat or low-pile carpet / steam": {
+    "fi": "12,90 €/m²",
+    "en": "12.90 €/m²"
+  },
+  "Synthetic flat or low-pile carpet / extraction": {
+    "fi": "9,90 €/m²",
+    "en": "9.90 €/m²"
+  },
+  "Thick-pile or shaggy carpet / steam": {
+    "fi": "18,90 €/m²",
+    "en": "18.90 €/m²"
+  },
+  "Thick-pile or shaggy carpet / extraction": {
+    "fi": "14,90 €/m²",
+    "en": "14.90 €/m²"
+  },
+  "Heavily soiled carpet / steam": {
+    "fi": "Alkaen 21,90 €/m²",
+    "en": "From 21,90 €/m²"
+  },
+  "Heavily soiled carpet / extraction": {
+    "fi": "Alkaen 17,90 €/m²",
+    "en": "From 17,90 €/m²"
+  },
+  "Wall-to-wall carpet / steam": {
+    "fi": "Alkaen 11,90 €/m²",
+    "en": "From 11,90 €/m²"
+  },
+  "Wall-to-wall carpet / extraction": {
+    "fi": "Alkaen 8,90 €/m²",
+    "en": "From 8,90 €/m²"
+  },
+  "Special stain treatment / steam": {
+    "fi": "+15-35 €",
+    "en": "+15-35 €"
+  },
+  "Special stain treatment / extraction": {
+    "fi": "+10-25 €",
+    "en": "+10-25 €"
+  },
+  "Pet accident or odour treatment / steam": {
+    "fi": "Alkaen 30 €",
+    "en": "From 30 €"
+  },
+  "Pet accident or odour treatment / extraction": {
+    "fi": "Alkaen 20 €",
+    "en": "From 20 €"
+  }
+};
+const TEXTILE_BUNDLE = { doubleMattress: 89, sofa3Seat: 89, price: 149 };
+
+// Fixed add-ons to an existing cleaning visit; separate visits need a quote.
+const ADDON_PRICES = { sauna: 90, largeSauna: 120, oven: 55, refrigerator: 45, freezer: 40, microwave: 25, dishwasher: 30, extractorHood: 50, balconyTerrace: 70, cabinetUnit: 25, allergyUpgrade: 60 };
+const TEXTILE_TERMS = { minimumVisit: 69, nearbyTravelFrom: 15, protectorMattressArmchair: 29, protectorSmallSofa: 39, protectorLargeSofa: 59, urgentPercent: 20 };
+const NEIGHBOUR_PROMOTION = { hourlyFrom: 39, sofa2SeatAddon: 59, sofa3SeatAddon: 79, carpetAddonFrom: 39, carpetAddonTo: 69, smallWindowsAddon: 39, validThrough: '2026-10-01' };

@@ -71,10 +71,10 @@
               "name": "Steam cleaning service prices",
               "itemListElement": [
                 {"@type": "Offer", "name": "Single mattress", "price": "89", "priceCurrency": "EUR"},
-                {"@type": "Offer", "name": "Double mattress", "price": "129", "priceCurrency": "EUR"},
+                {"@type": "Offer", "name": "Double mattress, 160 cm", "price": "109", "priceCurrency": "EUR"},
                 {"@type": "Offer", "name": "2-seat sofa", "price": "89", "priceCurrency": "EUR"},
-                {"@type": "Offer", "name": "Additional seat", "price": "35", "priceCurrency": "EUR"},
-                {"@type": "Offer", "name": "Armchair", "price": "89", "priceCurrency": "EUR"},
+                {"@type": "Offer", "name": "3-seat sofa", "price": "109", "priceCurrency": "EUR"},
+                {"@type": "Offer", "name": "Armchair", "price": "79", "priceCurrency": "EUR"},
                 {"@type": "Offer", "name": "Bathroom or sauna", "price": "149", "priceCurrency": "EUR"}
               ]
             },
@@ -653,7 +653,7 @@
 
     <!-- Deep Cleaning (featured) -->
     <div class="price-card featured">
-      <div class="featured-badge" data-en="Most Popular" data-fi="Suosituin">Suosituin</div>
+      <div class="featured-badge" data-en="Recommended" data-fi="Suositus">Suositus</div>
       <div class="card-header">
         <h3 data-en="Deep Cleaning" data-fi="Syväsiivous">Syväsiivous</h3>
         <p data-en="Comprehensive intensive clean. Inside cabinets, behind appliances, detailed scrubbing of all neglected areas. Includes steam cleaning." data-fi="Kattava tehokäsittely. Kaappien sisäpuoli, laitteiden takana, kaikkien laiminlyötyjen alueiden huolellinen pesu. Sisältää höyrypesun.">Kattava tehokäsittely. Kaappien sisäpuoli, laitteiden takana, kaikkien laiminlyötyjen alueiden huolellinen pesu. Sisältää höyrypesun.</p>
@@ -853,13 +853,7 @@
           <div class="price-label" data-en="Minimum booking" data-fi="Minimitilaus">Minimitilaus</div>
           <div class="price-val" data-en="4 hours" data-fi="4 tuntia">4 tuntia</div>
         </div>
-        <div class="price-row">
-          <div class="price-label">
-            <span data-en="HEPA filtration upgrade" data-fi="HEPA-suodatusparannus">HEPA-suodatusparannus</span>
-            <small data-en="Allergy-safe clean" data-fi="Allergiaturvallinen siivous"></small>
-          </div>
-          <div class="price-val" data-en="+60 €/kerta" data-fi="+60 €/kerta">+60 €/kerta</div>
-        </div>
+        <p class="text-sm" data-en="HEPA-filtered vacuuming is included; no HEPA equipment surcharge." data-fi="HEPA-suodatettu imurointi sisältyy hintaan; ei HEPA-laitelisää.">HEPA-suodatettu imurointi sisältyy hintaan; ei HEPA-laitelisää.</p>
       </div>
     </div>
 
@@ -872,23 +866,23 @@
       <div class="card-price">
         <div class="price-row">
           <div class="price-label" data-en="Single mattress" data-fi="Yhden hengen patja">Yhden hengen patja</div>
-          <div class="price-val">89 €</div>
+          <div class="price-val"><span class="catalogue-price" data-price-key="Single mattress, 80-90 cm / steam" data-en="89 €" data-fi="89 €">89 €</span></div>
         </div>
         <div class="price-row">
-          <div class="price-label" data-en="Double mattress" data-fi="Paripatja">Paripatja</div>
-          <div class="price-val">129 €</div>
+          <div class="price-label" data-en="Double mattress, 160 cm" data-fi="Paripatja, 160 cm">Paripatja, 160 cm</div>
+          <div class="price-val"><span class="catalogue-price" data-price-key="Double mattress, 160 cm / steam" data-en="109 €" data-fi="109 €">109 €</span></div>
         </div>
         <div class="price-row">
           <div class="price-label" data-en="2-seat sofa" data-fi="2-istuttava sohva">2-istuttava sohva</div>
-          <div class="price-val">89 €</div>
+          <div class="price-val"><span class="catalogue-price" data-price-key="Two-seat sofa / steam" data-en="89 €" data-fi="89 €">89 €</span></div>
         </div>
         <div class="price-row">
-          <div class="price-label" data-en="Additional seat" data-fi="Lisäistuin">Lisäistuin</div>
-          <div class="price-val">+35 €</div>
+          <div class="price-label" data-en="3-seat sofa" data-fi="3-istuttava sohva">3-istuttava sohva</div>
+          <div class="price-val"><span class="catalogue-price" data-price-key="Three-seat sofa / steam" data-en="109 €" data-fi="109 €">109 €</span></div>
         </div>
         <div class="price-row">
           <div class="price-label" data-en="Armchair" data-fi="Nojatuoli">Nojatuoli</div>
-          <div class="price-val">89 €</div>
+          <div class="price-val"><span class="catalogue-price" data-price-key="Armchair / steam" data-en="79 €" data-fi="79 €">79 €</span></div>
         </div>
         <div class="price-row">
           <div class="price-label" data-en="Bathroom / sauna" data-fi="Kylpyhuone / sauna">Kylpyhuone / sauna</div>
@@ -951,7 +945,7 @@
   <div class="text-center py-14 pb-8">
     <span class="section-label" data-en="Specialist Services" data-fi="Erikoispalvelut">Erikoispalvelut</span>
     <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em; color: var(--dark);" data-en="Extraction &amp; Upholstery Cleaning" data-fi="Ekstrahointi &amp; Verhoilujen Pesu">Ekstrahointi &amp; Verhoilujen Pesu</h2>
-    <p class="mt-3 text-gray-500 leading-relaxed mx-auto" style="max-width: 560px; font-size: 0.95rem;" data-en="Professional hot-water extraction helps remove embedded dirt, allergens and dust from suitable textile surfaces. Fabric protection treatment included where suitable." data-fi="Ammattimainen kuumavesiuuttaminen auttaa poistamaan pinttynyttä likaa, allergeeneja ja pölyä soveltuvilta tekstiilipinnoilta. Kangassuojakäsittely sisältyy soveltuvissa kohteissa.">Ammattimainen kuumavesiuuttaminen auttaa poistamaan pinttynyttä likaa, allergeeneja ja pölyä soveltuvilta tekstiilipinnoilta. Kangassuojakäsittely sisältyy soveltuvissa kohteissa.</p>
+    <p class="mt-3 text-gray-500 leading-relaxed mx-auto" style="max-width: 560px; font-size: 0.95rem;" data-en="Professional hot-water extraction helps remove embedded dirt, allergens and dust from suitable textile surfaces. Steam-assisted treatment and fabric protection are optional, priced separately on our textile cleaning page." data-fi="Ammattimainen kuumavesiuuttaminen auttaa poistamaan pinttynyttä likaa, allergeeneja ja pölyä soveltuvilta tekstiilipinnoilta. Höyryavusteinen käsittely ja tekstiilisuoja ovat valinnaisia lisäpalveluja. Hinnat ovat tekstiilipesun sivulla.">Ammattimainen kuumavesiuuttaminen auttaa poistamaan pinttynyttä likaa, allergeeneja ja pölyä soveltuvilta tekstiilipinnoilta. Höyryavusteinen käsittely ja tekstiilisuoja ovat valinnaisia lisäpalveluja. Hinnat ovat tekstiilipesun sivulla.</p>
     <div class="green-rule"></div>
   </div>
 
@@ -968,45 +962,45 @@
         <tr>
           <td>
             <strong data-en="Single Mattress" data-fi="Yksittäinen Patja">Yksittäinen Patja</strong>
-            <span class="note" data-en="Hot-water extraction + allergen treatment" data-fi="Kuumavesiuuttaminen + allergeenikäsittely">Kuumavesiuuttaminen + allergeenikäsittely</span>
+            <span class="note" data-en="Spray extraction, one accessible side" data-fi="Painehuuhtelu, yksi saavutettava puoli">Painehuuhtelu, yksi saavutettava puoli</span>
           </td>
-          <td data-en="Steam pre-treatment, extraction, deodorise, fabric protector" data-fi="Höyriesikäsittely, uuttaminen, deodorointi, kangassuoja">Höyriesikäsittely, uuttaminen, deodorointi, kangassuoja</td>
-          <td class="price-cell">69 €</td>
+          <td data-en="Spray extraction and standard stain pre-treatment; optional extras separately" data-fi="Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen">Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Single mattress, 80-90 cm / extraction" data-en="69 €" data-fi="69 €">69 €</span></td>
         </tr>
         <tr>
           <td>
-            <strong data-en="Double / Queen Mattress" data-fi="Pari-/Queensize-patja">Pari-/Queensize-patja</strong>
+            <strong data-en="Double Mattress, 160 cm" data-fi="Paripatja, 160 cm">Paripatja, 160 cm</strong>
           </td>
-          <td data-en="Steam pre-treatment, extraction, deodorise, fabric protector" data-fi="Höyriesikäsittely, uuttaminen, deodorointi, kangassuoja">Höyriesikäsittely, uuttaminen, deodorointi, kangassuoja</td>
-          <td class="price-cell">89 €</td>
+          <td data-en="Spray extraction and standard stain pre-treatment; optional extras separately" data-fi="Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen">Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Double mattress, 160 cm / extraction" data-en="89 €" data-fi="89 €">89 €</span></td>
         </tr>
         <tr>
           <td><strong data-en="Armchair / Single Chair" data-fi="Nojatuoli / Yksittäinen Tuoli">Nojatuoli / Yksittäinen Tuoli</strong></td>
-          <td data-en="Full extraction, stain treatment, protector" data-fi="Täysiekstrahointi, tahrankäsittely, suoja">Täysiekstrahointi, tahrankäsittely, suoja</td>
-          <td class="price-cell">59 €</td>
+          <td data-en="Spray extraction and standard stain pre-treatment; optional extras separately" data-fi="Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen">Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Armchair / extraction" data-en="59 €" data-fi="59 €">59 €</span></td>
         </tr>
         <tr>
           <td><strong data-en="2-Seat Fabric Sofa" data-fi="2-istuttava Kangassohva">2-istuttava Kangassohva</strong></td>
-          <td data-en="Full extraction, steam pre-treat, stain removal, protector" data-fi="Täysiekstrahointi, höyriesikäsittely, tahranpoisto, suoja">Täysiekstrahointi, höyriesikäsittely, tahranpoisto, suoja</td>
-          <td class="price-cell">69 €</td>
+          <td data-en="Spray extraction and standard stain pre-treatment; optional extras separately" data-fi="Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen">Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Two-seat sofa / extraction" data-en="69 €" data-fi="69 €">69 €</span></td>
         </tr>
         <tr>
           <td><strong data-en="3-Seat Fabric Sofa" data-fi="3-istuttava Kangassohva">3-istuttava Kangassohva</strong></td>
-          <td data-en="Full extraction, steam pre-treat, stain removal, protector" data-fi="Täysiekstrahointi, höyriesikäsittely, tahranpoisto, suoja">Täysiekstrahointi, höyriesikäsittely, tahranpoisto, suoja</td>
-          <td class="price-cell">89 €</td>
+          <td data-en="Spray extraction and standard stain pre-treatment; optional extras separately" data-fi="Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen">Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Three-seat sofa / extraction" data-en="89 €" data-fi="89 €">89 €</span></td>
         </tr>
         <tr>
           <td><strong data-en="Corner / Sectional Sofa" data-fi="Kulmasohva / Moduulisofa">Kulmasohva / Moduulisofa</strong></td>
-          <td data-en="Full extraction, multiple sections, protector coat" data-fi="Täysiekstrahointi, useita osia, suojakerros">Täysiekstrahointi, useita osia, suojakerros</td>
-          <td class="price-cell" data-en="from 139 €" data-fi="alkaen 139 €">alkaen 139 €</td>
+          <td data-en="Spray extraction and standard stain pre-treatment; optional extras separately" data-fi="Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen">Painehuuhtelu ja tavanomainen tahrojen esikäsittely; lisäpalvelut erikseen</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Divan or small corner sofa / extraction" data-en="From 139 €" data-fi="Alkaen 139 €">Alkaen 139 €</span></td>
         </tr>
         <tr>
           <td>
-            <strong data-en="Area Rug" data-fi="Matto">Matto</strong>
+            <strong data-en="Synthetic Flat / Low-pile Rug" data-fi="Synteettinen sileä tai matalanukkainen matto">Synteettinen sileä tai matalanukkainen matto</strong>
             <span class="note" data-en="Per square metre  -  minimum 2m²" data-fi="Neliömetriä kohden  -  minimi 2m²">Neliömetriä kohden  -  minimi 2m²</span>
           </td>
           <td data-en="Extraction wash, drying, deodorise" data-fi="Ekstrohointipesu, kuivaus, deodorointi">Ekstrohointipesu, kuivaus, deodorointi</td>
-          <td class="price-cell" data-en="25 € /m²" data-fi="25 € /m²">25 € /m²</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Synthetic flat or low-pile carpet / extraction" data-en="9.90 €/m²" data-fi="9,90 €/m²">9,90 €/m²</span></td>
         </tr>
         <tr>
           <td>
@@ -1014,21 +1008,21 @@
             <span class="note" data-en="Per square metre  -  on-site" data-fi="Neliömetriä kohden  -  paikan päällä">Neliömetriä kohden  -  paikan päällä</span>
           </td>
           <td data-en="Pre-vacuum, extraction, deodorise" data-fi="Esiimurointi, ekstrahointi, deodorointi">Esiimurointi, ekstrahointi, deodorointi</td>
-          <td class="price-cell" data-en="18 € /m²" data-fi="18 € /m²">18 € /m²</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Wall-to-wall carpet / extraction" data-en="From 8,90 €/m²" data-fi="Alkaen 8,90 €/m²">Alkaen 8,90 €/m²</span></td>
         </tr>
         <tr>
-          <td><strong data-en="Dining Chair" data-fi="Ruokapöydän Tuoli">Ruokapöydän Tuoli</strong></td>
+          <td><strong data-en="Dining Chair, Seat and Back" data-fi="Ruokapöydän tuoli, istuin ja selkänoja">Ruokapöydän tuoli, istuin ja selkänoja</strong></td>
           <td data-en="Spot treatment + extraction" data-fi="Pistekäsittely + ekstrahointi">Pistekäsittely + ekstrahointi</td>
-          <td class="price-cell" data-en="35 € /chair" data-fi="35 € /tuoli">35 € /tuoli</td>
+          <td class="price-cell"><span class="catalogue-price" data-price-key="Dining chair, seat and back / extraction" data-en="22 € each" data-fi="22 €/kpl">22 €/kpl</span></td>
         </tr>
         <tr>
           <td>
-            <strong data-en="Bundle: Mattress + 3-seat Sofa" data-fi="Paketti: Patja + 3-istuttava Sohva">Paketti: Patja + 3-istuttava Sohva</strong>
+            <strong data-en="Bundle: 160 cm Mattress + 3-seat Sofa" data-fi="Paketti: 160 cm patja + 3-istuttava sohva">Paketti: 160 cm patja + 3-istuttava sohva</strong>
             <span class="note" data-en="Both items in one visit" data-fi="Molemmat kohteet yhdellä käynnillä">Molemmat kohteet yhdellä käynnillä</span>
           </td>
-          <td data-en="Full service for both items" data-fi="Täysi palvelu molemmille kohteille">Täysi palvelu molemmille kohteille</td>
-          <td class="price-cell" style="color: var(--green)">149 €
-            <span class="tax-note" style="color: var(--green)" data-en="Save 29 € vs. individual" data-fi="Säästä 29 € verrattuna yksittäisiin">Säästä 29 € verrattuna yksittäisiin</span>
+          <td data-en="Extraction of both items; steam and protection excluded" data-fi="Molempien painehuuhtelu; höyry ja suoja erikseen">Molempien painehuuhtelu; höyry ja suoja erikseen</td>
+          <td class="price-cell" style="color: var(--green)"><span class="catalogue-price" data-price-key="Bundle / price" data-en="149 €" data-fi="149 €">149 €</span>
+            <span class="tax-note" data-price-key="Bundle / savings" data-en="Save 29 € vs. individual" data-fi="Säästä 29 € verrattuna yksittäisiin">Säästä 29 € verrattuna yksittäisiin</span>
           </td>
         </tr>
       </tbody>
@@ -1037,7 +1031,9 @@
 
   <hr class="section-divider" />
 
-  <!-- ── ADD-ONS ── -->
+
+<p class="text-sm text-gray-500 mb-8" data-en="Textile home visits have a 69 € minimum. Smaller items can be combined. Rug prices depend on material; see the full textile price list. Extras and any travel or parking charges are agreed before work." data-fi="Tekstiilipesun kotikäynnin minimitilaus on 69 €. Pienet kohteet voi yhdistää. Maton hinta riippuu materiaalista; katso tekstiilipesun hinnasto. Lisäpalvelut sekä matka- ja pysäköintikulut sovitaan ennen työtä.">Tekstiilipesun kotikäynnin minimitilaus on 69 €. Pienet kohteet voi yhdistää. Maton hinta riippuu materiaalista; katso tekstiilipesun hinnasto. Lisäpalvelut sekä matka- ja pysäköintikulut sovitaan ennen työtä.</p>
+<!-- ── ADD-ONS ── -->
   <div class="text-center py-14 pb-8">
     <span class="section-label" data-en="Add-on Services" data-fi="Lisäpalvelut">Lisäpalvelut</span>
     <h2 class="text-3xl md:text-4xl font-display font-bold" style="letter-spacing: -0.02em; color: var(--dark);" data-en="Additional Cleaning Services" data-fi="Lisäsiivouspalvelut">Lisäsiivouspalvelut</h2>
@@ -1153,7 +1149,7 @@
     <div class="pkg-card">
       <div class="pkg-badge" data-en="Fresh Home" data-fi="Tuore Koti">Tuore Koti</div>
       <div class="pkg-name" data-en="Fresh Home Package" data-fi="Tuore Koti -paketti">Tuore Koti -paketti</div>
-      <p class="pkg-desc" data-en="The most popular combination. Regular clean topped with kitchen appliance care." data-fi="Suosituin yhdistelmä. Säännöllinen siivous täydennettynä keittiölaitteiden hoidolla.">Suosituin yhdistelmä. Säännöllinen siivous täydennettynä keittiölaitteiden hoidolla.</p>
+      <p class="pkg-desc" data-en="A practical combination. Regular clean topped with kitchen appliance care." data-fi="Käytännöllinen yhdistelmä. Säännöllinen siivous täydennettynä keittiölaitteiden hoidolla.">Käytännöllinen yhdistelmä. Säännöllinen siivous täydennettynä keittiölaitteiden hoidolla.</p>
       <ul class="pkg-includes">
         <li data-en="Regular home cleaning (3 hours)" data-fi="Kotisiivous (3 tuntia)">Kotisiivous (3 tuntia)</li>
         <li data-en="Oven deep clean" data-fi="Uunin syväpesu">Uunin syväpesu</li>
@@ -1163,13 +1159,13 @@
       </ul>
       <div class="pkg-footer">
         <div class="pkg-total" data-en="Package total" data-fi="Paketin kokonaishinta">Paketin kokonaishinta</div>
-        <div class="pkg-price">€300</div>
-        <div class="pkg-save" data-en="Save €25 vs. individual pricing" data-fi="Säästä €25 verrattuna yksittäisiin hintoihin">Säästä €25 verrattuna yksittäisiin hintoihin</div>
+        <div class="pkg-price" data-en="Custom quote" data-fi="Yksilöllinen tarjous">Yksilöllinen tarjous</div>
+        <div class="pkg-save" data-en="Itemised price agreed before work" data-fi="Eritelty hinta sovitaan ennen työtä">Eritelty hinta sovitaan ennen työtä</div>
       </div>
     </div>
 
     <div class="pkg-card best">
-      <div class="pkg-badge" data-en="Best Value" data-fi="Paras Arvo">Paras Arvo</div>
+      <div class="pkg-badge" data-en="Seasonal Package" data-fi="Kausipaketti">Kausipaketti</div>
       <div class="pkg-name" data-en="Seasonal Deep Clean" data-fi="Kausiluonteinen Syväsiivous">Kausiluonteinen Syväsiivous</div>
       <p class="pkg-desc" data-en="The complete home reset. Ideal for spring and autumn. Includes steam & windows." data-fi="Täydellinen kodin nollaus. Ihanteellinen kevät- ja syyspuhdistukseen. Sisältää höyryn ja ikkunat.">Täydellinen kodin nollaus. Ihanteellinen kevät- ja syyspuhdistukseen. Sisältää höyryn ja ikkunat.</p>
       <ul class="pkg-includes">
@@ -1177,12 +1173,12 @@
         <li data-en="Window cleaning (up to 10 windows)" data-fi="Ikkunanpesu (enintään 10 ikkunaa)">Ikkunanpesu (enintään 10 ikkunaa)</li>
         <li data-en="Sauna cleaning" data-fi="Saunanpesu">Saunanpesu</li>
         <li data-en="Oven + refrigerator add-ons" data-fi="Uuni + jääkaappi lisäpalvelut">Uuni + jääkaappi lisäpalvelut</li>
-        <li data-en="Fabric protection spray for key surfaces" data-fi="Kangassuojasuihke keskeisille pinnoille">Kangassuojasuihke keskeisille pinnoille</li>
+        <li data-en="Optional fabric protection, quoted separately" data-fi="Valinnainen tekstiilisuoja, tarjous erikseen">Valinnainen tekstiilisuoja, tarjous erikseen</li>
       </ul>
       <div class="pkg-footer">
         <div class="pkg-total" data-en="Package total" data-fi="Paketin kokonaishinta">Paketin kokonaishinta</div>
-        <div class="pkg-price">€620</div>
-        <div class="pkg-save" data-en="Save €55 vs. individual pricing" data-fi="Säästä €55 verrattuna yksittäisiin hintoihin">Säästä €55 verrattuna yksittäisiin hintoihin</div>
+        <div class="pkg-price" data-en="Custom quote" data-fi="Yksilöllinen tarjous">Yksilöllinen tarjous</div>
+        <div class="pkg-save" data-en="Itemised price agreed before work" data-fi="Eritelty hinta sovitaan ennen työtä">Eritelty hinta sovitaan ennen työtä</div>
       </div>
     </div>
 
@@ -1194,13 +1190,13 @@
         <li data-en="Double mattress extraction" data-fi="Paripatjan ekstrahointi">Paripatjan ekstrahointi</li>
         <li data-en="3-seat sofa extraction" data-fi="3-istuttavan sohvan ekstrahointi">3-istuttavan sohvan ekstrahointi</li>
         <li data-en="Area rug up to 4m²" data-fi="Matto enintään 4m²">Matto enintään 4m²</li>
-        <li data-en="Fabric protection on all items" data-fi="Kangassuoja kaikille kohteille">Kangassuoja kaikille kohteille</li>
+        <li data-en="Optional fabric protection, quoted separately" data-fi="Valinnainen tekstiilisuoja, tarjous erikseen">Valinnainen tekstiilisuoja, tarjous erikseen</li>
         <li data-en="Drying guidance & aftercare advice" data-fi="Kuivausohjeet ja jälkihoitosuositukset">Kuivausohjeet ja jälkihoitosuositukset</li>
       </ul>
       <div class="pkg-footer">
         <div class="pkg-total" data-en="Package total" data-fi="Paketin kokonaishinta">Paketin kokonaishinta</div>
-        <div class="pkg-price">249 €</div>
-        <div class="pkg-save" data-en="Save 29 € vs. individual pricing" data-fi="Säästä 29 € verrattuna yksittäisiin hintoihin">Säästä 29 € verrattuna yksittäisiin hintoihin</div>
+        <div class="pkg-price" data-en="Custom quote" data-fi="Yksilöllinen tarjous">Yksilöllinen tarjous</div>
+        <div class="pkg-save" data-en="Itemised price agreed before work" data-fi="Eritelty hinta sovitaan ennen työtä">Eritelty hinta sovitaan ennen työtä</div>
       </div>
     </div>
 
@@ -1217,7 +1213,7 @@
       </ul>
       <div class="pkg-footer">
         <div class="pkg-total" data-en="Starting from" data-fi="Alkaen">Alkaen</div>
-        <div class="pkg-price">€480</div>
+        <div class="pkg-price" data-en="Custom quote" data-fi="Yksilöllinen tarjous">Yksilöllinen tarjous</div>
         <div class="pkg-save" data-en="Larger homes: custom quote" data-fi="Suuremmille kodeille: yksilöllinen tarjous">Suuremmille kodeille: yksilöllinen tarjous</div>
       </div>
     </div>
@@ -1237,7 +1233,7 @@
       <li data-en="Extraction cleaning drying time: 4-8 hours. We recommend booking before a day off." data-fi="Ekstrahointisiivouksen kuivumisaika: 4-8 tuntia. Suosittelemme varaamaan ennen vapaapäivää.">Ekstrahointisiivouksen kuivumisaika: 4-8 tuntia. Suosittelemme varaamaan ennen vapaapäivää.</li>
       <li data-en="Cancellation: free with 48 hours notice. Less than 48 hours: 50% charge applies." data-fi="Peruutus: maksuton 48 tunnin irtisanomisajalla. Alle 48 tuntia: 50 % maksu peritään.">Peruutus: maksuton 48 tunnin irtisanomisajalla. Alle 48 tuntia: 50 % maksu peritään.</li>
       <li data-en="We operate across Tampere, Kangasala, Ylöjärvi, Lempäälä, Pirkkala, and Nokia." data-fi="Toimialueemme kattaa Tampereen, Kangasalan, Ylöjärven, Lempäälän, Pirkkalan ja Nokian.">Toimialueemme kattaa Tampereen, Kangasalan, Ylöjärven, Lempäälän, Pirkkalan ja Nokian.</li>
-      <li data-en="Travel outside 20km radius of Tampere centre: surcharge from €30." data-fi="Matka yli 20 km Tampereen keskustasta: lisämaksu alkaen €30.">Matka yli 20 km Tampereen keskustasta: lisämaksu alkaen €30.</li>
+      <li data-en="Hourly services: travel outside 20 km of Tampere centre from €30. Textile visits use the textile page travel terms." data-fi="Tuntipalvelut: matkat yli 20 km Tampereen keskustasta alkaen €30. Tekstiilipesussa sovelletaan tekstiilipesun sivun matkaehtoja.">Tuntipalvelut: matkat yli 20 km Tampereen keskustasta alkaen €30. Tekstiilipesussa sovelletaan tekstiilipesun sivun matkaehtoja.</li>
       <li data-en="Detailed annual invoices provided for tax deduction claims at no extra cost." data-fi="Yksityiskohtaiset vuosilaskut toimitetaan verovähennyshakemuksia varten ilman lisäkuluja.">Yksityiskohtaiset vuosilaskut toimitetaan verovähennyshakemuksia varten ilman lisäkuluja.</li>
       <li data-en="Quality guarantee: if unsatisfied, we return and re-clean the area free of charge within 48 hours." data-fi="Laatutakuu: jos olet tyytymätön, palaamme ja siivoamme alueen uudelleen veloituksetta 48 tunnin kuluessa.">Laatutakuu: jos olet tyytymätön, palaamme ja siivoamme alueen uudelleen veloituksetta 48 tunnin kuluessa.</li>
       <li data-en="Household tax deduction: 35% of labour costs when purchased from a registered company. Personal deductible: €150/person/year. Materials and travel costs are not deductible." data-fi="Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä. Omavastuu 150 €/hlö/vuosi. Materiaalit ja matkakulut eivät kuulu vähennykseen.">Kotitalousvähennys 35 % työn osuudesta, kun palvelu ostetaan yritykseltä. Omavastuu 150 €/hlö/vuosi. Materiaalit ja matkakulut eivät kuulu vähennykseen.</li>

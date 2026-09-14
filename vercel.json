@@ -4,6 +4,11 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/brand_assets/premium_pricing.html",
+      "destination": "/pricing.html",
+      "permanent": true
     }
   ],
   "rewrites": [
