@@ -1030,7 +1030,7 @@
                     <span class="extra-check" aria-hidden="true"></span>
                     <div style="flex: 1;">
                       <strong data-en="Window cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="€49/h · time and total confirmed separately" data-fi="49 €/h · aika ja kokonaishinta vahvistetaan erikseen">49 €/h · aika ja kokonaishinta vahvistetaan erikseen</p>
+                      <p class="text-sm text-gray-500 mt-1" data-en="Time confirmed separately" data-fi="Aika vahvistetaan erikseen">Aika vahvistetaan erikseen</p>
                     </div>
                   </div>
                 </button>
@@ -2306,7 +2306,7 @@
 
     document.querySelectorAll('[data-addon-cost]').forEach(el => {
       const name = el.dataset.addonCost;
-      el.textContent = '+' + (EXTRA_HOURS[name] * 60) + ' min · +' + formatPriceFi(getExtraPrice(name));
+      el.textContent = '+' + formatDurationNumber(EXTRA_HOURS[name], lang) + ' h';
     });
 
     const added = bookingState.extras;
@@ -2322,7 +2322,7 @@
         const li = document.createElement('li');
         const label = (EXTRA_LABELS[name] && EXTRA_LABELS[name][lang]) || name;
         const hours = EXTRA_HOURS[name];
-        li.textContent = hours ? label + ' +' + formatPriceFi(getExtraPrice(name)) : label;
+        li.textContent = hours ? label + ' +' + formatDurationNumber(hours, lang) + ' h' : label;
         addedList.appendChild(li);
       });
     }
