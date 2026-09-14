@@ -128,7 +128,7 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BetterClean","item":"https://www.betterclean.fi/"},{"@type":"ListItem","position":2,"name":"Pyydä tarjous","item":"https://www.betterclean.fi/request-quote.html"}]}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="pricing.js?v=20260914-pricing-repair"></script>
+  <script src="pricing.js?v=20260914-home-timing"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -905,35 +905,35 @@
                 </button>
                 <button type="button" class="choice-card" id="freq-biweekly" role="radio" aria-checked="false" aria-describedby="freq-biweekly-desc" onclick="selectFrequency('biweekly')" onkeydown="handleFrequencyKeydown(event, 'biweekly')">
                   <span class="frequency-check" aria-hidden="true"></span>
-                  <span class="frequency-rate" aria-hidden="true">55 €/h</span>
+                  <span class="frequency-rate" aria-hidden="true">52 €/h</span>
                   <span class="mini-tag" data-en="Most popular" data-fi="Suosituin">Suosituin</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every second week" data-fi="Joka toinen viikko">Joka toinen viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-biweekly-desc" data-en="A balanced rhythm for most premium home cleaning clients" data-fi="Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille">Tasapainoinen rytmi useimmille premium-kotisiivouksen asiakkaille</p>
-                      <p class="offer-line" data-en="→ 35,75 €/h 35% illustration*" data-fi="→ 35,75 €/h 35 % esimerkkilaskelma*">→ 35,75 €/h 35 % esimerkkilaskelma*</p>
+                      <p class="offer-line" data-en="→ 33,80 €/h 35% illustration*" data-fi="→ 33,80 €/h 35 % esimerkkilaskelma*">→ 33,80 €/h 35 % esimerkkilaskelma*</p>
                     </div>
                   </div>
                 </button>
                 <button type="button" class="choice-card" id="freq-monthly" role="radio" aria-checked="false" aria-describedby="freq-monthly-desc" onclick="selectFrequency('monthly')" onkeydown="handleFrequencyKeydown(event, 'monthly')">
                   <span class="frequency-check" aria-hidden="true"></span>
-                  <span class="frequency-rate" aria-hidden="true">59 €/h</span>
+                  <span class="frequency-rate" aria-hidden="true">55 €/h</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="Every four weeks" data-fi="Joka neljäs viikko">Joka neljäs viikko</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-monthly-desc" data-en="Best when you mainly want a thorough monthly clean" data-fi="Paras silloin, kun haluat pääasiassa perusteellisen kuukausittaisen siivouksen">Paras silloin, kun haluat pääasiassa perusteellisen kuukausittaisen siivouksen</p>
-                      <p class="offer-line" data-en="→ 38,35 €/h 35% illustration*" data-fi="→ 38,35 €/h 35 % esimerkkilaskelma*">→ 38,35 €/h 35 % esimerkkilaskelma*</p>
+                      <p class="offer-line" data-en="→ 35,75 €/h 35% illustration*" data-fi="→ 35,75 €/h 35 % esimerkkilaskelma*">→ 35,75 €/h 35 % esimerkkilaskelma*</p>
                     </div>
                   </div>
                 </button>
                 <button type="button" class="choice-card" id="freq-once" role="radio" aria-checked="false" aria-describedby="freq-once-desc" onclick="selectFrequency('once')" onkeydown="handleFrequencyKeydown(event, 'once')">
                   <span class="frequency-check" aria-hidden="true"></span>
-                  <span class="frequency-rate" aria-hidden="true">69 €/h</span>
+                  <span class="frequency-rate" aria-hidden="true">59 €/h</span>
                   <div class="choice-row">
                     <div>
                       <strong data-en="One time only" data-fi="Vain kerran">Vain kerran</strong>
                       <p class="text-sm text-gray-500 mt-1" id="freq-once-desc" data-en="Ideal if you want to try BetterClean first or need a single support visit" data-fi="Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin">Sopii, jos haluat kokeilla BetterCleania ensin tai tarvitset yksittäisen tukikäynnin</p>
-                      <p class="offer-line" data-en="→ 44,85 €/h 35% illustration*" data-fi="→ 44,85 €/h 35 % esimerkkilaskelma*">→ 44,85 €/h 35 % esimerkkilaskelma*</p>
+                      <p class="offer-line" data-en="→ 38,35 €/h 35% illustration*" data-fi="→ 38,35 €/h 35 % esimerkkilaskelma*">→ 38,35 €/h 35 % esimerkkilaskelma*</p>
                     </div>
                   </div>
                 </button>
@@ -1600,15 +1600,7 @@
     xxxlarge: { en: '150-180 m²', fi: '150-180 m²' }
   };
 
-  const RECOMMENDED_DURATION_BY_SIZE = {
-    studio: 2,
-    small: 2.5,
-    medium: 3,
-    large: 3.5,
-    xlarge: 4,
-    xxlarge: 4.5,
-    xxxlarge: 6
-  };
+  const RECOMMENDED_DURATION_BY_SIZE = Object.fromEntries(HOME_SIZE_BRACKETS.map(bracket => [bracket.key, bracket.hours.home]));
 
   const RECOMMENDED_DURATION_BY_SERVICE = {
     home: RECOMMENDED_DURATION_BY_SIZE,
@@ -1635,13 +1627,7 @@
   const DURATION_RECOMMENDATION_RULES = {
     minimumPersonHours: 2,
     durationStep: 0.5,
-    maximumSelectablePersonHours: 14,
-    frequencyMultipliers: {
-      once: 1,
-      monthly: 0.9,
-      biweekly: 0.8,
-      weekly: 0.7
-    }
+    maximumSelectablePersonHours: 14
   };
 
   const EXTRA_LABELS = {
@@ -1775,12 +1761,15 @@
     return Math.ceil(Number(hours) / step) * step;
   }
 
-  function calculateDurationRecommendation(baselinePersonHours, frequency) {
+  function calculateDurationRecommendation(baselinePersonHours, frequency, size) {
     const baseline = Number(baselinePersonHours);
     if (!Number.isFinite(baseline) || baseline <= 0) return null;
-    const multiplier = DURATION_RECOMMENDATION_RULES.frequencyMultipliers[frequency] || 1;
-    const rounded = roundPersonHoursUp(baseline * multiplier);
-    return Math.max(getMinimumBookingHours(), rounded);
+    const config = getBookingServiceConfig();
+    const bracket = QUOTE_HOME_SIZE_BRACKETS.find(item => size ? item.key === size : item.hours?.home === baseline);
+    const hours = config.pricingServiceKey === 'home' && bracket
+      ? HOME_DURATION_BY_SIZE[bracket.key][frequency] || baseline
+      : roundPersonHoursUp(baseline);
+    return Math.max(getMinimumBookingHours(), hours);
   }
 
   function getCleaningDurationRecommendation(size, frequency) {
@@ -1794,7 +1783,7 @@
       };
     }
     const isRecurring = frequency !== 'once';
-    const recommendedOngoingHours = calculateDurationRecommendation(baselinePersonHours, frequency);
+    const recommendedOngoingHours = calculateDurationRecommendation(baselinePersonHours, frequency, size);
     return {
       baselinePersonHours,
       recommendedFirstVisitHours: isRecurring ? baselinePersonHours : null,

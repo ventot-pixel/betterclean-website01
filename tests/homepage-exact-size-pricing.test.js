@@ -34,7 +34,7 @@ assert.deepStrictEqual(
   },
   {
     recurring: 49,
-    oneTime: 69,
+    oneTime: 59,
     deep: 79,
     moveOut: 59
   },
@@ -89,9 +89,9 @@ assert.strictEqual(api.getHomeSizeBracket(181), null, 'homes above 180 m² fall 
 assert.deepStrictEqual(
   plain(api.calcWidgetEstimate('home', 72)),
   {
-    amount: 147,
-    price: '147 €',
-    hours: 3,
+    amount: 196,
+    price: '196 €',
+    hours: 4,
     rate: 49,
     bracket: plain(api.getHomeSizeBracket(72))
   },
@@ -119,13 +119,13 @@ assert.deepStrictEqual(
   },
   'Move-out pricing is calculated from typed m², bracket duration, and 59 €/h'
 );
-assert.strictEqual(api.calcWidgetEstimate('home', 50).price, '122,50 €', 'half-hour totals keep cents instead of rounding away .50');
+assert.strictEqual(api.calcWidgetEstimate('home', 50).price, '171,50 €', 'half-hour totals keep cents instead of rounding away .50');
 assert.deepStrictEqual(
   plain(api.calcWidgetEstimate('home', 135)),
   {
-    amount: 220.5,
-    price: '220,50 €',
-    hours: 4.5,
+    amount: 269.5,
+    price: '269,50 €',
+    hours: 5.5,
     rate: 49,
     bracket: plain(api.getHomeSizeBracket(135))
   },

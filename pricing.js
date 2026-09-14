@@ -11,7 +11,7 @@
 const PRICES = {
   // ── Hourly service rates (€/h) ─────────────────────────────────────────
   recurring:    49,   // Essential "alkaen" rate. MUST equal HOME_RATE_BY_FREQUENCY.weekly
-  oneTime:      69,   // Kertaluonteinen kotisiivous
+  oneTime:      59,   // Kertaluonteinen kotisiivous
   deep:         79,   // Signature syväsiivous / suursiivous (sis. höyrypesu)
   moveOut:      59,   // Muuttosiivous
   window:       49,   // Ikkunanpesu
@@ -19,7 +19,7 @@ const PRICES = {
 
   // ── 35% illustrations before the personal annual threshold ────────────
   recurringAfterTax:  31.85,
-  oneTimeAfterTax:    44.85,
+  oneTimeAfterTax:    38.35,
   deepAfterTax:       51.35,
   moveOutAfterTax:    38.35,
   windowAfterTax:     31.85,
@@ -54,12 +54,12 @@ const PRICES = {
  * Commitment buys a cheaper hour, and that is the entire incentive. Every
  * visit bills at this rate, including the first one. A new customer's first
  * visit is longer, because the home has not been maintained yet, but it is
- * not dearer. There is deliberately no second rate table here.
+ * billed at the same hourly rate. There is no separate first-visit rate.
  */
 const HOME_RATE_BY_FREQUENCY = {
   weekly:   49,
-  biweekly: 55,
-  monthly:  59,   // every four weeks
+  biweekly: 52,
+  monthly:  55,   // every four weeks
   once:     PRICES.oneTime,
 };
 
@@ -88,51 +88,97 @@ const HOME_SIZE_BRACKETS = [
     min: 0,
     max: 39,
     labels: { en: 'Up to 39 m²', fi: 'Enintään 39 m²' },
-    hours: { home: 2, deep: 3, office: 4 }
+    hours: { home: 3, deep: 3, office: 4 }
   },
   {
     key: 'small',
     min: 40,
     max: 59,
     labels: { en: '40-59 m²', fi: '40-59 m²' },
-    hours: { home: 2.5, deep: 4, office: 5 }
+    hours: { home: 3.5, deep: 4, office: 5 }
   },
   {
     key: 'medium',
     min: 60,
     max: 79,
     labels: { en: '60-79 m²', fi: '60-79 m²' },
-    hours: { home: 3, deep: 5, office: 6 }
+    hours: { home: 4, deep: 5, office: 6 }
   },
   {
     key: 'large',
     min: 80,
     max: 99,
     labels: { en: '80-99 m²', fi: '80-99 m²' },
-    hours: { home: 3.5, deep: 6, office: 7 }
+    hours: { home: 4.5, deep: 6, office: 7 }
   },
   {
     key: 'xlarge',
     min: 100,
     max: 119,
     labels: { en: '100-119 m²', fi: '100-119 m²' },
-    hours: { home: 4, deep: 7, office: 8 }
+    hours: { home: 5, deep: 7, office: 8 }
   },
   {
     key: 'xxlarge',
     min: 120,
     max: 149,
     labels: { en: '120-149 m²', fi: '120-149 m²' },
-    hours: { home: 4.5, deep: 8, office: 9 }
+    hours: { home: 5.5, deep: 8, office: 9 }
   },
   {
     key: 'xxxlarge',
     min: 150,
     max: 180,
     labels: { en: '150-180 m²', fi: '150-180 m²' },
-    hours: { home: 6, deep: 10, office: 12 }
+    hours: { home: 7, deep: 10, office: 12 }
   }
 ];
+
+// Explicit maintenance durations in person-hours. First visits use bracket.hours.home.
+const HOME_DURATION_BY_SIZE = {
+  "studio": {
+    "weekly": 2,
+    "biweekly": 2.5,
+    "monthly": 3,
+    "once": 3
+  },
+  "small": {
+    "weekly": 2.5,
+    "biweekly": 3,
+    "monthly": 3.5,
+    "once": 3.5
+  },
+  "medium": {
+    "weekly": 3,
+    "biweekly": 3.5,
+    "monthly": 4,
+    "once": 4
+  },
+  "large": {
+    "weekly": 3.5,
+    "biweekly": 4,
+    "monthly": 4.5,
+    "once": 4.5
+  },
+  "xlarge": {
+    "weekly": 4,
+    "biweekly": 4.5,
+    "monthly": 5,
+    "once": 5
+  },
+  "xxlarge": {
+    "weekly": 4.5,
+    "biweekly": 5,
+    "monthly": 5.5,
+    "once": 5.5
+  },
+  "xxxlarge": {
+    "weekly": 6,
+    "biweekly": 6.5,
+    "monthly": 7,
+    "once": 7
+  }
+};
 
 // Estimated hours per service x size combination, kept for older pages/scripts.
 const BOOKING_HOURS = HOME_SIZE_BRACKETS.reduce((hours, bracket) => {

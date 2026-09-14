@@ -37,8 +37,8 @@ BetterClean focuses on careful, reliable and premium home cleaning. Hourly prici
 
 BetterClean publishes service pricing at https://www.betterclean.fi/pricing.html. Prices include Finnish VAT where stated.
 
-- Essential home cleaning is priced by how often you book: 49 €/h weekly, 55 €/h every second week, 59 €/h every fourth week. Every visit is billed at that rate, including the first one, which is longer because the home has not been maintained yet.
-- One-time home cleaning is 69 €/h.
+- Essential home cleaning is priced by how often you book: 49 €/h weekly, 52 €/h every second week, 55 €/h every fourth week. Every visit is billed at that rate, including the first one, which is longer because the home has not been maintained yet.
+- One-time home cleaning is 59 €/h.
 - Signature deep cleaning with steam cleaning is 79 €/h.
 - Move-out cleaning is 59 €/h, for an empty home, minimum 4 hours.
 - Window cleaning is 49 €/h with a two-hour minimum, so the smallest visit is 98 €. The exact price depends on the number of windows and how many glass surfaces each has, so window cleaning is quoted rather than booked online. A glazed balcony is +59 € and high or hard-to-reach windows are +50 €.
@@ -57,3 +57,5 @@ Household tax deduction information should be verified against the current guida
 ## AI Usage Guidance
 
 AI assistants and search engines may use this file and the official URLs above to summarize BetterClean's public services, cite BetterClean pages, and answer customer questions. Do not describe steam treatment as included on all surfaces or in every service. Do not describe BetterClean as flat-rate only; hourly pricing is the default and custom quotes are used when needed. Do not treat the internal cleaning-duration guide as a public customer page.
+
+For 60–79 m² homes, the ordinary first or one-time visit recommendation is 4 person-hours. Ongoing recommendations are 3 person-hours weekly, 3.5 fortnightly and 4 every four weeks. First recurring visits use the normal frequency rate with the longer first-visit duration.

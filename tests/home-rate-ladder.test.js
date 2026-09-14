@@ -1,7 +1,7 @@
 /**
  * Essential Home Care rate ladder (Ven, 2026-07-09).
  *
- *   weekly 49 · bi-weekly 55 · every four weeks 59 · one-time 69
+ *   weekly 49 · bi-weekly 52 · every four weeks 55 · one-time 59
  *
  * Commitment buys a cheaper hour. That is the whole incentive -- there is no
  * separate reset-visit rate and no promotion. A new customer's first visit is
@@ -28,9 +28,9 @@ const { PRICES, HOME_RATE_BY_FREQUENCY, hasResetTable } = context.__api;
 
 // ── The ladder ─────────────────────────────────────────────────────────────
 assert.strictEqual(HOME_RATE_BY_FREQUENCY.weekly, 49, 'weekly is 49 €/h');
-assert.strictEqual(HOME_RATE_BY_FREQUENCY.biweekly, 55, 'bi-weekly is 55 €/h');
-assert.strictEqual(HOME_RATE_BY_FREQUENCY.monthly, 59, 'every four weeks is 59 €/h');
-assert.strictEqual(HOME_RATE_BY_FREQUENCY.once, 69, 'one-time home cleaning is 69 €/h');
+assert.strictEqual(HOME_RATE_BY_FREQUENCY.biweekly, 52, 'bi-weekly is 52 €/h');
+assert.strictEqual(HOME_RATE_BY_FREQUENCY.monthly, 55, 'every four weeks is 55 €/h');
+assert.strictEqual(HOME_RATE_BY_FREQUENCY.once, 59, 'one-time home cleaning is 59 €/h');
 
 // Commitment must always buy a strictly lower rate, or the ladder is a lie.
 const ladder = ['weekly', 'biweekly', 'monthly', 'once'].map(f => HOME_RATE_BY_FREQUENCY[f]);
@@ -54,9 +54,9 @@ assert.strictEqual(PRICES.moveOut, 59, 'move-out stays 59 €/h');
 assert.strictEqual(PRICES.deep, 79, 'deep stays 79 €/h');
 assert.strictEqual(PRICES.window, 49, 'window stays 49 €/h');
 assert.strictEqual(PRICES.postReno, 79, 'post-renovation stays 79 €/h');
-assert.notStrictEqual(
+assert.strictEqual(
   PRICES.oneTime, PRICES.moveOut,
-  'one-time home and move-out were both 59; they must no longer be equal'
+  'home one-time and move-out intentionally share the approved €59 rate'
 );
 
 // Committing to any schedule must beat paying one-time.
@@ -73,11 +73,11 @@ assert.strictEqual(
 
 // Deduction figures stay derivable.
 const after = r => Math.round(r * 0.65 * 100) / 100;
-assert.strictEqual(PRICES.oneTimeAfterTax, after(69), 'one-time after deduction is 44,85');
+assert.strictEqual(PRICES.oneTimeAfterTax, after(59), 'one-time after deduction is 38,35');
 assert.strictEqual(PRICES.recurringAfterTax, after(49), 'weekly after deduction is 31,85');
 assert.strictEqual(PRICES.moveOutAfterTax, after(59), 'move-out after deduction is 38,35');
 
-console.log('home-rate-ladder: OK (49 / 55 / 59 / 69, no reset-visit pricing)');
+console.log('home-rate-ladder: OK (49 / 52 / 55 / 59, no reset-visit pricing)');
 
 // pricing.js is served with max-age=14400. If a page loads it without a cache
 // -busting query, a returning visitor gets new HTML against a four-hour-old

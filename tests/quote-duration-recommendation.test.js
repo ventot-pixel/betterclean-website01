@@ -24,18 +24,21 @@ function extractBookingStateValue(key) {
   return rawValue.replace(/^['"]|['"]$/g, '');
 }
 
-const recommendations = extractObject('RECOMMENDED_DURATION_BY_SIZE');
+const vm = require('vm');
+const context = vm.createContext({});
+vm.runInContext(fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') + '\nthis.recommendations = Object.fromEntries(HOME_SIZE_BRACKETS.map(b => [b.key, b.hours.home]));', context);
+const recommendations = JSON.parse(JSON.stringify(context.recommendations));
 
 assert.deepStrictEqual(
   recommendations,
   {
-    studio: 2,
-    small: 2.5,
-    medium: 3,
-    large: 3.5,
-    xlarge: 4,
-    xxlarge: 4.5,
-    xxxlarge: 6
+    studio: 3,
+    small: 3.5,
+    medium: 4,
+    large: 4.5,
+    xlarge: 5,
+    xxlarge: 5.5,
+    xxxlarge: 7
   },
   'quote form uses the competitive Essential duration recommendations by size bracket through 180 m²'
 );

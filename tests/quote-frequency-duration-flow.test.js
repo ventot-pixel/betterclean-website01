@@ -12,7 +12,7 @@ const REAL_PRICING = (() => {
   vm.createContext(ctx);
   vm.runInContext(
     fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
-      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY, ADDON_PRICES };',
+      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY, ADDON_PRICES, HOME_DURATION_BY_SIZE, HOME_SIZE_BRACKETS };',
     ctx
   );
   return ctx.__p;
@@ -116,15 +116,7 @@ function createSelect(id, values, selectedValue) {
   return select;
 }
 
-const HOME_SIZE_BRACKETS = [
-  { key: 'studio', min: 0, max: 39, labels: { en: 'Up to 39 m²', fi: 'Enintään 39 m²' } },
-  { key: 'small', min: 40, max: 59, labels: { en: '40-59 m²', fi: '40-59 m²' } },
-  { key: 'medium', min: 60, max: 79, labels: { en: '60-79 m²', fi: '60-79 m²' } },
-  { key: 'large', min: 80, max: 99, labels: { en: '80-99 m²', fi: '80-99 m²' } },
-  { key: 'xlarge', min: 100, max: 119, labels: { en: '100-119 m²', fi: '100-119 m²' } },
-  { key: 'xxlarge', min: 120, max: 149, labels: { en: '120-149 m²', fi: '120-149 m²' } },
-  { key: 'xxxlarge', min: 150, max: 180, labels: { en: '150-180 m²', fi: '150-180 m²' } }
-];
+const HOME_SIZE_BRACKETS = REAL_PRICING.HOME_SIZE_BRACKETS;
 
 function getHomeSizeBracket(squareMeters) {
   const value = Number(squareMeters);
@@ -226,6 +218,7 @@ function loadQuoteFormApi() {
     // the price table is exactly how 49/59/79/59 outlived the real ladder.
     PRICES: REAL_PRICING.PRICES,
     ADDON_PRICES: REAL_PRICING.ADDON_PRICES,
+    HOME_DURATION_BY_SIZE: REAL_PRICING.HOME_DURATION_BY_SIZE,
     HOME_RATE_BY_FREQUENCY: REAL_PRICING.HOME_RATE_BY_FREQUENCY,
     URLSearchParams,
     console
@@ -420,16 +413,7 @@ assert.doesNotMatch(
 
 const { api, document } = loadQuoteFormApi();
 
-assert.deepStrictEqual(
-  JSON.parse(JSON.stringify(api.DURATION_RECOMMENDATION_RULES.frequencyMultipliers)),
-  {
-    once: 1,
-    monthly: 0.9,
-    biweekly: 0.8,
-    weekly: 0.7
-  },
-  'duration multipliers are kept in one named configuration object'
-);
+assert.strictEqual(api.DURATION_RECOMMENDATION_RULES.frequencyMultipliers, undefined, 'percentage duration reductions are retired');
 assert.strictEqual(api.DURATION_RECOMMENDATION_RULES.minimumPersonHours, 2, 'duration minimum is two person-hours');
 assert.strictEqual(api.DURATION_RECOMMENDATION_RULES.durationStep, 0.5, 'manual duration step is half a person-hour');
 assert.strictEqual(api.HOUSEHOLD_DEDUCTION_RATE, 0.35, 'household deduction rate is 35%');
@@ -440,10 +424,10 @@ assert.strictEqual(api.getQuoteHomeSizeBracket(160).key, 'xxxlarge', 'typed 160 
 assert.strictEqual(api.getQuoteHomeSizeBracket(190), null, 'homes above 180 m² require custom confirmation');
 
 assert.strictEqual(api.calculateDurationRecommendation(4, 'once'), 4, 'one-time visits use the full baseline');
-assert.strictEqual(api.calculateDurationRecommendation(6, 'monthly'), 5.5, 'every-four-weeks visits round up to the next half-hour');
-assert.strictEqual(api.calculateDurationRecommendation(4, 'biweekly'), 3.5, 'every-second-week visits apply the 80% multiplier');
-assert.strictEqual(api.calculateDurationRecommendation(4, 'weekly'), 3, 'weekly visits apply the 70% multiplier');
-assert.strictEqual(api.calculateDurationRecommendation(2.1, 'weekly'), 2, 'recommendations never fall below two person-hours');
+assert.strictEqual(api.calculateDurationRecommendation(6, 'monthly'), 6, 'unknown baselines retain their duration');
+assert.strictEqual(api.calculateDurationRecommendation(4, 'biweekly'), 3.5, 'four-hour home baselines use 3.5-hour fortnightly maintenance');
+assert.strictEqual(api.calculateDurationRecommendation(4, 'weekly'), 3, 'four-hour home baselines use three-hour weekly maintenance');
+assert.strictEqual(api.calculateDurationRecommendation(2.1, 'weekly'), 2.5, 'recommendations never fall below two person-hours');
 
 assert.strictEqual(api.bookingState.selectedFrequency, '', 'frequency starts unselected');
 assert.strictEqual(api.bookingState.selectedPropertySize, '', 'property size starts unselected');
@@ -493,24 +477,24 @@ document.getElementById('homeSize').value = '72';
 api.handleHomeSizeChange();
 assert.strictEqual(api.bookingState.homeSizeM2, 72, 'typed square meters are stored separately');
 assert.strictEqual(api.bookingState.selectedPropertySize, 'medium', 'typed square meters update selectedPropertySize through the pricing bracket');
-assert.strictEqual(api.bookingState.baselinePersonHours, 3, 'baseline person-hours use the mapped size bracket');
-assert.strictEqual(api.bookingState.recommendedFirstVisitHours, 3, 'recurring first visit uses the full baseline');
-assert.strictEqual(api.bookingState.recommendedOngoingHours, 2.5, 'ongoing weekly visits use the adjusted recommendation');
-assert.strictEqual(api.bookingState.selectedDuration, 3, 'recurring duration defaults to the first-visit recommendation');
-assert.strictEqual(document.getElementById('cleanDuration').value, '3', 'duration select is reset to the recommendation');
+assert.strictEqual(api.bookingState.baselinePersonHours, 4, 'baseline person-hours use the mapped size bracket');
+assert.strictEqual(api.bookingState.recommendedFirstVisitHours, 4, 'recurring first visit uses the full baseline');
+assert.strictEqual(api.bookingState.recommendedOngoingHours, 3, 'ongoing weekly visits use the adjusted recommendation');
+assert.strictEqual(api.bookingState.selectedDuration, 4, 'recurring duration defaults to the first-visit recommendation');
+assert.strictEqual(document.getElementById('cleanDuration').value, '4', 'duration select is reset to the recommendation');
 api.refreshUi();
 assert.strictEqual(document.getElementById('homeSizeBracketHelp').hidden, true, 'valid typed home sizes hide the internal size-bracket helper');
 assert.strictEqual(document.getElementById('homeSizeBracketHelp').textContent, '', 'valid typed home sizes do not show the size-bracket mapping text');
-assert.strictEqual(api.calculateEstimate(), 147, 'estimate uses the new recurring hourly price');
+assert.strictEqual(api.calculateEstimate(), 196, 'estimate uses the new recurring hourly price');
 assert.strictEqual(
   api.calculateEstimateAfterHouseholdDeduction(),
-  95.55,
+  127.4,
   'discounted estimate applies the 35% household deduction'
 );
-assert.strictEqual(document.getElementById('summaryEstimate').textContent, '147 €', 'summary shows the full estimated total');
+assert.strictEqual(document.getElementById('summaryEstimate').textContent, '196 €', 'summary shows the full estimated total');
 assert.strictEqual(
   document.getElementById('summaryEstimateAfterDeduction').textContent,
-  '95,55 €',
+  '127,40 €',
   'summary shows the price after the 35% household deduction'
 );
 assert.strictEqual(document.getElementById('recommendationGrid').hidden, false, 'recurring bookings keep the useful recommendation card grid');
@@ -525,22 +509,22 @@ assert.strictEqual(document.getElementById('durationWarning').hidden, false, 'sh
 
 api.selectFrequency('biweekly');
 assert.strictEqual(api.bookingState.durationWasManuallyChanged, false, 'frequency changes reset manual duration state');
-assert.strictEqual(api.bookingState.recommendedOngoingHours, 2.5, 'frequency changes recalculate the ongoing recommendation');
-assert.strictEqual(api.bookingState.selectedDuration, 3, 'frequency changes reset selectedDuration to the new recommendation');
+assert.strictEqual(api.bookingState.recommendedOngoingHours, 3.5, 'frequency changes recalculate the ongoing recommendation');
+assert.strictEqual(api.bookingState.selectedDuration, 4, 'frequency changes reset selectedDuration to the new recommendation');
 
 document.getElementById('homeSize').value = '88';
 api.handleHomeSizeChange();
 assert.strictEqual(api.bookingState.selectedPropertySize, 'large', 'size changes remap the pricing bracket');
-assert.strictEqual(api.bookingState.baselinePersonHours, 3.5, 'size changes recalculate the baseline');
-assert.strictEqual(api.bookingState.recommendedOngoingHours, 3, 'size changes recalculate the frequency-adjusted recommendation');
-assert.strictEqual(api.bookingState.selectedDuration, 3.5, 'size changes reset selectedDuration to the new first-visit recommendation');
+assert.strictEqual(api.bookingState.baselinePersonHours, 4.5, 'size changes recalculate the baseline');
+assert.strictEqual(api.bookingState.recommendedOngoingHours, 4, 'size changes recalculate the frequency-adjusted recommendation');
+assert.strictEqual(api.bookingState.selectedDuration, 4.5, 'size changes reset selectedDuration to the new first-visit recommendation');
 
 document.getElementById('homeSize').value = '135';
 api.handleHomeSizeChange();
 assert.strictEqual(api.bookingState.selectedPropertySize, 'xxlarge', '120-149 m² homes use the extended pricing bracket');
-assert.strictEqual(api.bookingState.baselinePersonHours, 4.5, '120-149 m² homes use the extended Essential duration baseline');
-assert.strictEqual(api.bookingState.recommendedOngoingHours, 4, 'extended recurring recommendations still round up to the next half-hour');
-assert.strictEqual(api.bookingState.selectedDuration, 4.5, 'extended size changes reset selectedDuration to the new first-visit recommendation');
+assert.strictEqual(api.bookingState.baselinePersonHours, 5.5, '120-149 m² homes use the extended Essential duration baseline');
+assert.strictEqual(api.bookingState.recommendedOngoingHours, 5, 'extended recurring recommendations still round up to the next half-hour');
+assert.strictEqual(api.bookingState.selectedDuration, 5.5, 'extended size changes reset selectedDuration to the new first-visit recommendation');
 
 document.getElementById('homeSize').value = '190';
 api.handleHomeSizeChange();
@@ -566,3 +550,18 @@ api.bookingState.selectedServiceType = 'deep';
 assert.strictEqual(api.calculateEstimate(), 0, 'deep clean cannot be quoted below three hours');
 api.bookingState.selectedDuration = 3;
 assert.strictEqual(api.calculateEstimate(), 237 + 55 + 45 + 50 + 25, 'deep clean uses the same fixed appliance tariff');
+
+// Approved 66 m² tariff: distinguish the first visit from later maintenance.
+api.bookingState.extras = [];
+api.selectBookingService('home');
+for (const [frequency, ongoing, firstTotal] of [['once', 4, 236], ['biweekly', 3.5, 208], ['monthly', 4, 220], ['weekly', 3, 196]]) {
+  api.selectFrequency(frequency);
+  document.getElementById('homeSize').value = '66';
+  api.handleHomeSizeChange();
+  assert.strictEqual(api.bookingState.selectedDuration, 4, frequency + ' first visit has four person-hours');
+  assert.strictEqual(api.bookingState.recommendedOngoingHours, ongoing, frequency + ' maintenance duration');
+  assert.strictEqual(api.calculateEstimate(), firstTotal, frequency + ' first visit full price');
+  document.getElementById('cleanDuration').value = String(ongoing);
+  api.handleDurationChange();
+  assert.strictEqual(api.calculateEstimate(), ongoing * REAL_PRICING.HOME_RATE_BY_FREQUENCY[frequency], frequency + ' maintenance uses the same hourly rate');
+}

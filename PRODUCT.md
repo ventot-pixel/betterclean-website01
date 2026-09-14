@@ -12,3 +12,7 @@
 - Neighbour prices are a separate, time-limited promotion; sofa and window prices there are add-ons to that visit, not standalone rates. Promotion scope and expiry must be visible and match JSON-LD.
 - Travel terms differ between hourly services and textile visits. Any applicable travel, parking or exceptional-treatment charge is agreed before work.
 - A lead form requests confirmation; it does not take payment or establish an unconditional booking.
+
+## Home timing and tariff approved 14 September 2026
+
+Weekly €49/h, fortnightly €52/h, every four weeks €55/h, ordinary one-time €59/h. `HOME_DURATION_BY_SIZE` owns explicit maintenance durations. First visits use the longer home-size baseline at the same contracted hourly rate. For 60–79 m²: first/one-time 4 h, fortnightly maintenance 3.5 h, four-weekly 4 h, weekly maintenance 3 h. These are estimates subject to agreed condition and scope. Other home-size baselines receive one additional person-hour; specialist durations are unchanged. Manual shorter selections retain the existing scope warning. The existing “more time” wording is retained at Ven’s request.
