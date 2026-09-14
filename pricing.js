@@ -17,7 +17,7 @@ const PRICES = {
   window:       49,   // Ikkunanpesu
   postReno:     79,   // Remonttisiivous
 
-  // ── 35% illustrations before the personal annual threshold ────────────
+  // ── Estimated costs after a 35% tax deduction, before the personal annual threshold ────────────
   recurringAfterTax:  31.85,
   oneTimeAfterTax:    38.35,
   deepAfterTax:       51.35,
