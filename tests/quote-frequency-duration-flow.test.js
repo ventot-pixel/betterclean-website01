@@ -12,7 +12,7 @@ const REAL_PRICING = (() => {
   vm.createContext(ctx);
   vm.runInContext(
     fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
-      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY, ADDON_PRICES, HOME_DURATION_BY_SIZE, HOME_SIZE_BRACKETS };',
+      '\nthis.__p = { PRICES, HOME_RATE_BY_FREQUENCY, ADDON_PRICES, ADDON_HOURS, HOME_DURATION_BY_SIZE, HOME_SIZE_BRACKETS };',
     ctx
   );
   return ctx.__p;
@@ -218,6 +218,7 @@ function loadQuoteFormApi() {
     // the price table is exactly how 49/59/79/59 outlived the real ladder.
     PRICES: REAL_PRICING.PRICES,
     ADDON_PRICES: REAL_PRICING.ADDON_PRICES,
+    ADDON_HOURS: REAL_PRICING.ADDON_HOURS,
     HOME_DURATION_BY_SIZE: REAL_PRICING.HOME_DURATION_BY_SIZE,
     HOME_RATE_BY_FREQUENCY: REAL_PRICING.HOME_RATE_BY_FREQUENCY,
     URLSearchParams,
@@ -532,15 +533,16 @@ assert.strictEqual(api.bookingState.selectedPropertySize, '', 'homes above 180 m
 assert.strictEqual(api.bookingState.selectedDuration, null, 'homes above 180 m² do not get an invented booking duration');
 assert.strictEqual(document.getElementById('homeSizeBracketHelp').hidden, false, 'custom-size homes still show the custom-estimate helper');
 
-// A fixed appliance add-on must not become more expensive with the hourly tier.
+// Timed add-ons use the booked hourly rate and preserve included move-out appliances.
 api.bookingState.selectedServiceType = 'home';
 api.bookingState.selectedPropertySize = 'medium';
 api.bookingState.selectedDuration = 3;
-api.bookingState.extras = ['oven', 'fridge', 'hood', 'microwave'];
+api.bookingState.extras = ['oven', 'fridge', 'hood', 'microwave', 'sauna'];
 for (const [frequency, rate] of Object.entries(REAL_PRICING.HOME_RATE_BY_FREQUENCY)) {
   api.bookingState.selectedFrequency = frequency;
-  assert.strictEqual(api.calculateEstimate(), 3 * rate + 55 + 45 + 50 + 25, 'fixed appliance prices at ' + frequency);
+  assert.strictEqual(api.calculateEstimate(), 6.75 * rate, 'timed appliance and sauna prices at ' + frequency);
 }
+api.bookingState.extras = ['oven', 'fridge', 'hood', 'microwave'];
 api.bookingState.selectedServiceType = 'office';
 api.bookingState.selectedDuration = 4;
 assert.strictEqual(api.calculateEstimate(), 236, 'included move-out appliances are not charged again');
@@ -549,7 +551,7 @@ assert.strictEqual(api.calculateEstimate(), 0, 'move-out cannot be quoted below 
 api.bookingState.selectedServiceType = 'deep';
 assert.strictEqual(api.calculateEstimate(), 0, 'deep clean cannot be quoted below three hours');
 api.bookingState.selectedDuration = 3;
-assert.strictEqual(api.calculateEstimate(), 237 + 55 + 45 + 50 + 25, 'deep clean uses the same fixed appliance tariff');
+assert.strictEqual(api.calculateEstimate(), 5.75 * 79, 'deep clean extras use the deep-clean hourly rate');
 
 // Approved 66 m² tariff: distinguish the first visit from later maintenance.
 api.bookingState.extras = [];

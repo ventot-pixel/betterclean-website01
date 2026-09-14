@@ -128,7 +128,7 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BetterClean","item":"https://www.betterclean.fi/"},{"@type":"ListItem","position":2,"name":"Pyydä tarjous","item":"https://www.betterclean.fi/request-quote.html"}]}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="pricing.js?v=20260914-home-timing"></script>
+  <script src="pricing.js?v=20260914-timed-addons"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -977,13 +977,15 @@
             <div class="mb-6" id="extrasSection">
               <label class="field-label" data-en="Additional services" data-fi="Lisäpalvelut">Lisäpalvelut</label>
               <p class="field-help" data-en="Tick the add-ons you want included in the same visit. The time is added to your estimate." data-fi="Valitse lisäpalvelut, jotka haluat samaan käyntiin. Aika lisätään arvioosi.">Valitse lisäpalvelut, jotka haluat samaan käyntiin. Aika lisätään arvioosi.</p>
+              <p class="field-help" data-en="Oven 60 min, fridge 60 min, hood/filter 30 min, microwave 15 min and sauna 60 min: extra time is billed at your booked cleaning rate and added to the visit. These allowances assume normal condition. Empty the fridge beforehand. Heavy buildup, large saunas and any extra work are agreed before booking." data-fi="Uuni 60 min, jääkaappi 60 min, liesituuletin/suodatin 30 min, mikroaaltouuni 15 min ja sauna 60 min: lisäaika veloitetaan varauksen siivoustuntihinnalla ja lisätään käyntiin. Aika-arviot koskevat tavanomaista likaa. Tyhjennä jääkaappi ennen käyntiä. Pinttynyt lika, suuret saunat ja lisätyö sovitaan ennen varausta.">Uuni 60 min, jääkaappi 60 min, liesituuletin/suodatin 30 min, mikroaaltouuni 15 min ja sauna 60 min: lisäaika veloitetaan varauksen siivoustuntihinnalla ja lisätään käyntiin. Aika-arviot koskevat tavanomaista likaa. Tyhjennä jääkaappi ennen käyntiä. Pinttynyt lika, suuret saunat ja lisätyö sovitaan ennen varausta.</p>
+<p class="field-help" data-en="Window cleaning: €49/person-hour. Minimum 1 additional hour with home cleaning; standalone minimum 2 hours (€98). Tell us the window count, opening sections, glass surfaces and access in your notes; send photos in reply. We confirm time and total before booking. Accessible glass, frames and sills are included. Blinds, balcony glazing and difficult access are quoted separately. Extra work is agreed first." data-fi="Ikkunanpesu: 49 €/henkilötyötunti. Kotisiivouksen lisänä vähintään 1 lisätunti; erillisen käynnin minimi 2 tuntia (98 €). Kerro lisätiedoissa ikkunoiden määrä, avautuvat osat, lasipinnat ja saavutettavuus; voit lähettää kuvia vastauksessasi. Vahvistamme ajan ja kokonaishinnan ennen varausta. Saavutettavat lasipinnat, karmit ja ikkunalaudat sisältyvät. Sälekaihtimet, parvekelasit ja vaikea pääsy hinnoitellaan erikseen. Lisätyö sovitaan etukäteen.">Ikkunanpesu: 49 €/henkilötyötunti. Kotisiivouksen lisänä vähintään 1 lisätunti; erillisen käynnin minimi 2 tuntia (98 €). Kerro lisätiedoissa ikkunoiden määrä, avautuvat osat, lasipinnat ja saavutettavuus; voit lähettää kuvia vastauksessasi. Vahvistamme ajan ja kokonaishinnan ennen varausta. Saavutettavat lasipinnat, karmit ja ikkunalaudat sisältyvät. Sälekaihtimet, parvekelasit ja vaikea pääsy hinnoitellaan erikseen. Lisätyö sovitaan etukäteen.</p>
               <div class="extras-grid">
                 <button type="button" class="extra-card" id="extra-oven" role="checkbox" aria-checked="false" onclick="toggleExtra('oven')">
                   <div class="choice-row">
                     <span class="extra-check" aria-hidden="true"></span>
                     <div style="flex: 1;">
                       <strong data-en="Oven" data-fi="Uuni">Uuni</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="+55 €" data-fi="+55 €">+55 €</p>
+                      <p class="text-sm text-gray-500 mt-1" data-addon-cost="oven">+60 min</p>
                     </div>
                   </div>
                 </button>
@@ -992,7 +994,7 @@
                     <span class="extra-check" aria-hidden="true"></span>
                     <div style="flex: 1;">
                       <strong data-en="Fridge" data-fi="Jääkaappi">Jääkaappi</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="+45 €" data-fi="+45 €">+45 €</p>
+                      <p class="text-sm text-gray-500 mt-1" data-addon-cost="fridge">+60 min</p>
                     </div>
                   </div>
                 </button>
@@ -1001,7 +1003,7 @@
                     <span class="extra-check" aria-hidden="true"></span>
                     <div style="flex: 1;">
                       <strong data-en="Range hood" data-fi="Liesituuletin">Liesituuletin</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="+50 €" data-fi="+50 €">+50 €</p>
+                      <p class="text-sm text-gray-500 mt-1" data-addon-cost="hood">+30 min</p>
                     </div>
                   </div>
                 </button>
@@ -1010,7 +1012,7 @@
                     <span class="extra-check" aria-hidden="true"></span>
                     <div style="flex: 1;">
                       <strong data-en="Microwave" data-fi="Mikroaaltouuni">Mikroaaltouuni</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="+25 €" data-fi="+25 €">+25 €</p>
+                      <p class="text-sm text-gray-500 mt-1" data-addon-cost="microwave">+15 min</p>
                     </div>
                   </div>
                 </button>
@@ -1019,7 +1021,7 @@
                     <span class="extra-check" aria-hidden="true"></span>
                     <div style="flex: 1;">
                       <strong data-en="Sauna" data-fi="Sauna">Sauna</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="We confirm the price in our reply" data-fi="Vahvistamme hinnan vastauksessa">Vahvistamme hinnan vastauksessa</p>
+                      <p class="text-sm text-gray-500 mt-1" data-addon-cost="sauna">+60 min</p>
                     </div>
                   </div>
                 </button>
@@ -1028,7 +1030,7 @@
                     <span class="extra-check" aria-hidden="true"></span>
                     <div style="flex: 1;">
                       <strong data-en="Window cleaning" data-fi="Ikkunanpesu">Ikkunanpesu</strong>
-                      <p class="text-sm text-gray-500 mt-1" data-en="We confirm the price in our reply" data-fi="Vahvistamme hinnan vastauksessa">Vahvistamme hinnan vastauksessa</p>
+                      <p class="text-sm text-gray-500 mt-1" data-en="€49/h · time and total confirmed separately" data-fi="49 €/h · aika ja kokonaishinta vahvistetaan erikseen">49 €/h · aika ja kokonaishinta vahvistetaan erikseen</p>
                     </div>
                   </div>
                 </button>
@@ -1049,7 +1051,7 @@
                 <span data-en="Estimated cost after tax deduction*" data-fi="Arvio kotitalousvähennyksen jälkeen*">Arvio kotitalousvähennyksen jälkeen*</span>
                 <strong id="step1EstimateAfter">-</strong>
               </div>
-              <p class="step1-estimate-note" id="step1EstimateQualification" data-en="*The estimate after tax deduction applies 35% to the estimated total before the €150 annual personal threshold. Final credit depends on the eligible labour share and your circumstances. Sauna and windows are confirmed separately." data-fi="*Arvio kotitalousvähennyksen jälkeen perustuu 35 % vähennykseen arviolaskusta ennen 150 € vuotuista henkilökohtaista omavastuuta. Lopullinen vähennys riippuu työn vähennyskelpoisesta osuudesta ja tilanteestasi. Sauna ja ikkunat vahvistetaan erikseen.">*Arvio kotitalousvähennyksen jälkeen perustuu 35 % vähennykseen arviolaskusta ennen 150 € vuotuista henkilökohtaista omavastuuta. Lopullinen vähennys riippuu työn vähennyskelpoisesta osuudesta ja tilanteestasi. Sauna ja ikkunat vahvistetaan erikseen.</p>
+              <p class="step1-estimate-note" id="step1EstimateQualification" data-en="*The estimate after tax deduction applies 35% to the estimated total before the €150 annual personal threshold. Final credit depends on the eligible labour share and your circumstances. Window cleaning is quoted separately and is not included in this estimate." data-fi="*Arvio kotitalousvähennyksen jälkeen perustuu 35 % vähennykseen arviolaskusta ennen 150 € vuotuista henkilökohtaista omavastuuta. Lopullinen vähennys riippuu työn vähennyskelpoisesta osuudesta ja tilanteestasi. Ikkunanpesu vahvistetaan erikseen eikä sisälly tähän arvioon.">*Arvio kotitalousvähennyksen jälkeen perustuu 35 % vähennykseen arviolaskusta ennen 150 € vuotuista henkilökohtaista omavastuuta. Lopullinen vähennys riippuu työn vähennyskelpoisesta osuudesta ja tilanteestasi. Ikkunanpesu vahvistetaan erikseen eikä sisälly tähän arvioon.</p>
             </div>
 
             <div class="step-actions center">
@@ -1382,21 +1384,21 @@
               <div class="scope-body">
                 <ul class="list-disc pl-5" id="addedExtrasList" hidden></ul>
                 <ul class="list-disc pl-5 optional-static" data-scope="home">
-                  <li data-en="Oven cleaning +55 €" data-fi="Uunin puhdistus +55 €">Uunin puhdistus +55 €</li>
-                  <li data-en="Fridge cleaning +45 €" data-fi="Jääkaapin puhdistus +45 €">Jääkaapin puhdistus +45 €</li>
-                  <li data-en="Range hood cleaning +50 €" data-fi="Liesituulettimen puhdistus +50 €">Liesituulettimen puhdistus +50 €</li>
-                  <li data-en="Microwave cleaning +25 €" data-fi="Mikroaaltouunin puhdistus +25 €">Mikroaaltouunin puhdistus +25 €</li>
-                  <li data-en="Sauna and window cleaning — tick them in the add-ons and we confirm the price in our reply" data-fi="Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa">Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa</li>
+                  <li data-en="Oven cleaning +60 min" data-fi="Uunin puhdistus +60 min">Uunin puhdistus +60 min</li>
+                  <li data-en="Fridge cleaning +60 min" data-fi="Jääkaapin puhdistus +60 min">Jääkaapin puhdistus +60 min</li>
+                  <li data-en="Range hood cleaning +30 min" data-fi="Liesituulettimen puhdistus +30 min">Liesituulettimen puhdistus +30 min</li>
+                  <li data-en="Microwave cleaning +15 min" data-fi="Mikroaaltouunin puhdistus +15 min">Mikroaaltouunin puhdistus +15 min</li>
+                  <li data-en="Sauna +60 min at the booked rate; windows €49/h with time and total confirmed separately" data-fi="Sauna +60 min varauksen tuntihinnalla; ikkunat 49 €/h, aika ja kokonaishinta vahvistetaan erikseen">Sauna +60 min varauksen tuntihinnalla; ikkunat 49 €/h, aika ja kokonaishinta vahvistetaan erikseen</li>
                 </ul>
                 <ul class="list-disc pl-5 optional-static" data-scope="deep" hidden>
-                  <li data-en="Oven cleaning +55 €" data-fi="Uunin puhdistus +55 €">Uunin puhdistus +55 €</li>
-                  <li data-en="Fridge cleaning +45 €" data-fi="Jääkaapin puhdistus +45 €">Jääkaapin puhdistus +45 €</li>
-                  <li data-en="Range hood cleaning +50 €" data-fi="Liesituulettimen puhdistus +50 €">Liesituulettimen puhdistus +50 €</li>
-                  <li data-en="Microwave cleaning +25 €" data-fi="Mikroaaltouunin puhdistus +25 €">Mikroaaltouunin puhdistus +25 €</li>
-                  <li data-en="Sauna and window cleaning — tick them in the add-ons and we confirm the price in our reply" data-fi="Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa">Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa</li>
+                  <li data-en="Oven cleaning +60 min" data-fi="Uunin puhdistus +60 min">Uunin puhdistus +60 min</li>
+                  <li data-en="Fridge cleaning +60 min" data-fi="Jääkaapin puhdistus +60 min">Jääkaapin puhdistus +60 min</li>
+                  <li data-en="Range hood cleaning +30 min" data-fi="Liesituulettimen puhdistus +30 min">Liesituulettimen puhdistus +30 min</li>
+                  <li data-en="Microwave cleaning +15 min" data-fi="Mikroaaltouunin puhdistus +15 min">Mikroaaltouunin puhdistus +15 min</li>
+                  <li data-en="Sauna +60 min at the booked rate; windows €49/h with time and total confirmed separately" data-fi="Sauna +60 min varauksen tuntihinnalla; ikkunat 49 €/h, aika ja kokonaishinta vahvistetaan erikseen">Sauna +60 min varauksen tuntihinnalla; ikkunat 49 €/h, aika ja kokonaishinta vahvistetaan erikseen</li>
                 </ul>
                 <ul class="list-disc pl-5 optional-static" data-scope="office" hidden>
-                  <li data-en="Sauna and window cleaning — tick them in the add-ons and we confirm the price in our reply" data-fi="Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa">Sauna ja ikkunanpesu — valitse lisäpalveluista, vahvistamme hinnan vastauksessa</li>
+                  <li data-en="Sauna +60 min at the booked rate; windows €49/h with time and total confirmed separately" data-fi="Sauna +60 min varauksen tuntihinnalla; ikkunat 49 €/h, aika ja kokonaishinta vahvistetaan erikseen">Sauna +60 min varauksen tuntihinnalla; ikkunat 49 €/h, aika ja kokonaishinta vahvistetaan erikseen</li>
                 </ul>
               </div>
             </div>
@@ -1575,12 +1577,7 @@
     windows: ['home', 'deep', 'office']
   };
 
-  const EXTRA_HOURS = {
-    oven: 1,
-    fridge: 0.75,
-    hood: 1,
-    microwave: 0.5
-  };
+  const EXTRA_HOURS = ADDON_HOURS;
 
 
   const FREQUENCY_LABELS = {
@@ -1635,7 +1632,7 @@
     fridge: { en: 'Fridge', fi: 'Jääkaappi' },
     hood: { en: 'Range hood', fi: 'Liesituuletin' },
     microwave: { en: 'Microwave', fi: 'Mikroaaltouuni' },
-    sauna: { en: 'Sauna (price confirmed separately)', fi: 'Sauna (hinta vahvistetaan erikseen)' },
+    sauna: { en: 'Sauna', fi: 'Sauna' },
     windows: { en: 'Window cleaning (price confirmed separately)', fi: 'Ikkunanpesu (hinta vahvistetaan erikseen)' }
   };
 
@@ -1714,12 +1711,16 @@
     return bookingState.extras.map(item => (EXTRA_LABELS[item] && EXTRA_LABELS[item][lang]) || item);
   }
 
-  const EXTRA_PRICE_KEYS = { oven: 'oven', fridge: 'refrigerator', hood: 'extractorHood', microwave: 'microwave' };
-
   function getExtraPrice(name) {
     const service = getBookingServiceConfig().pricingServiceKey;
     if (!(EXTRA_APPLICABILITY[name] || []).includes(service)) return 0;
-    return ADDON_PRICES[EXTRA_PRICE_KEYS[name]] || 0;
+    return (EXTRA_HOURS[name] || 0) * getBookingHourlyRate();
+  }
+
+  function getTotalBookingHours() {
+    const service = getBookingServiceConfig().pricingServiceKey;
+    return Number(bookingState.selectedDuration) + bookingState.extras.reduce((sum, name) =>
+      sum + ((EXTRA_APPLICABILITY[name] || []).includes(service) ? EXTRA_HOURS[name] || 0 : 0), 0);
   }
 
   function getExtrasPrice() {
@@ -1747,7 +1748,7 @@
   function formatDurationNumber(hours, lang) {
     const numericHours = Number(hours);
     if (!Number.isFinite(numericHours)) return '-';
-    const value = numericHours % 1 === 0 ? String(numericHours) : numericHours.toFixed(1);
+    const value = numericHours % 1 === 0 ? String(numericHours) : numericHours.toFixed(2).replace(/0$/, '');
     return lang === 'fi' ? value.replace('.', ',') : value;
   }
 
@@ -1811,7 +1812,7 @@
     bookingState.service = bookingState.selectedServiceType;
     bookingState.frequency = bookingState.selectedFrequency;
     bookingState.size = bookingState.selectedPropertySize;
-    bookingState.duration = Number(bookingState.selectedDuration) || 0;
+    bookingState.duration = getTotalBookingHours() || 0;
   }
 
   function populateDurationOptions() {
@@ -2028,9 +2029,11 @@
       serviceType: bookingState.selectedServiceType,
       serviceLabel: getBookingServiceLabel(lang),
       hourlyRate: getBookingHourlyRate(),
+      duration: getTotalBookingHours(),
+      totalPersonHours: getTotalBookingHours(),
       sizeLabel: getTypedHomeSizeLabel(lang),
       pricingBracketLabel: getSizeLabel(bookingState.selectedPropertySize, lang),
-      durationLabel: getDurationDisplayLabel(bookingState.selectedDuration),
+      durationLabel: getDurationDisplayLabel(getTotalBookingHours()),
       frequencyLabel: getFrequencyLabel(bookingState.selectedFrequency, lang),
       baselinePersonHoursLabel: formatPersonHours(bookingState.baselinePersonHours, lang),
       recommendedFirstVisitHoursLabel: formatPersonHours(bookingState.recommendedFirstVisitHours, lang),
@@ -2301,6 +2304,11 @@
     const note = document.getElementById('includedExtrasNote');
     if (note) note.hidden = service !== 'office';
 
+    document.querySelectorAll('[data-addon-cost]').forEach(el => {
+      const name = el.dataset.addonCost;
+      el.textContent = '+' + (EXTRA_HOURS[name] * 60) + ' min · +' + formatPriceFi(getExtraPrice(name));
+    });
+
     const added = bookingState.extras;
     const headDefault = document.getElementById('optionalHeadDefault');
     const headAdded = document.getElementById('optionalHeadAdded');
@@ -2356,7 +2364,7 @@
       : (lang === 'fi' ? 'Kysely' : 'Inquiry');
     document.getElementById('summaryService').textContent = getServiceLabel(lang);
     document.getElementById('summaryDuration').textContent = bookingState.selectedDuration
-      ? getDurationDisplayLabel(bookingState.selectedDuration)
+      ? getDurationDisplayLabel(getTotalBookingHours())
       : (lang === 'fi' ? 'Valitse kesto' : 'Select duration');
     document.getElementById('summaryFrequency').textContent = getFrequencyLabel(bookingState.selectedFrequency, lang);
     const extrasText = bookingState.extras.length

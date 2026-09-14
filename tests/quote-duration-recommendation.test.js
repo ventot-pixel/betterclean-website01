@@ -87,7 +87,7 @@ assert.match(
 
 assert.match(
   requestQuoteHtml,
-  /durationLabel: getDurationDisplayLabel\(bookingState\.selectedDuration\)/,
+  /durationLabel: getDurationDisplayLabel\(getTotalBookingHours\(\)\)/,
   'booking payload carries the same person-hour duration label as the UI'
 );
 

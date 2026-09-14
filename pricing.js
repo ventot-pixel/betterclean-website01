@@ -37,7 +37,7 @@ const PRICES = {
   // Window jobs are quoted at PRICES.window with a 2 h minimum. Do not add
   // apartment/house estimate constants back: they drifted out of sync with the
   // hourly rate twice, and both times the site advertised the wrong price.
-  windowBalconyAddon:   59,
+  // Balcony glazing, blinds and difficult access are quoted separately.
 
   // ── Minimum booking hours ──────────────────────────────────────────────
   minRecurring: 2,
@@ -45,6 +45,7 @@ const PRICES = {
   minDeep:      3,
   minMoveOut:   4,
   minWindow:    2,
+  minWindowAddon: 1,
   minPostReno:  4,
 };
 
@@ -472,6 +473,9 @@ const TEXTILE_RATE_CARD = {
 const TEXTILE_BUNDLE = { doubleMattress: 89, sofa3Seat: 89, price: 149 };
 
 // Fixed add-ons to an existing cleaning visit; separate visits need a quote.
-const ADDON_PRICES = { sauna: 90, largeSauna: 120, oven: 55, refrigerator: 45, freezer: 40, microwave: 25, dishwasher: 30, extractorHood: 50, balconyTerrace: 70, cabinetUnit: 25, allergyUpgrade: 60 };
+const ADDON_PRICES = { freezer: 40, dishwasher: 30, balconyTerrace: 70, cabinetUnit: 25, allergyUpgrade: 60 };
 const TEXTILE_TERMS = { minimumVisit: 69, nearbyTravelFrom: 15, protectorMattressArmchair: 29, protectorSmallSofa: 39, protectorLargeSofa: 59, urgentPercent: 20 };
 const NEIGHBOUR_PROMOTION = { hourlyFrom: 39, sofa2SeatAddon: 59, sofa3SeatAddon: 79, carpetAddonFrom: 39, carpetAddonTo: 69, smallWindowsAddon: 39, validThrough: '2026-10-01' };
+
+// Extra person-hours, billed at the booked service rate. Windows are quoted separately.
+const ADDON_HOURS = Object.freeze({ oven: 1, fridge: 1, hood: 0.5, microwave: 0.25, sauna: 1 });

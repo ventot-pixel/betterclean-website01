@@ -31,7 +31,8 @@ const { PRICES, hasWindowBrackets } = ctx.__p;
 assert.strictEqual(PRICES.window, 49, 'window cleaning is still 49 €/h');
 assert.strictEqual(PRICES.minWindow, 2, 'window cleaning still has a 2 hour minimum');
 assert.strictEqual(PRICES.window * PRICES.minWindow, 98, 'the smallest window visit is 98 €');
-assert.strictEqual(PRICES.windowBalconyAddon, 59, 'glazed balcony is still +59 €');
+assert.strictEqual(PRICES.windowBalconyAddon, undefined, 'balcony glazing is quoted separately');
+assert.strictEqual(PRICES.minWindowAddon, 1, 'home-cleaning window add-on minimum is one person-hour');
 assert.strictEqual(
   hasWindowBrackets, false,
   'WINDOW_COUNT_BRACKETS must stay deleted: its hours were never measured'

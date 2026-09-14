@@ -48,7 +48,7 @@ assert.strictEqual(
   api.PRICES.windowApartmentMin, undefined,
   'window estimate constants must stay deleted; they drifted from the hourly rate twice'
 );
-assert.strictEqual(api.PRICES.windowBalconyAddon, 59, 'glazed balcony add-on is 59 €');
+assert.strictEqual(api.PRICES.windowBalconyAddon, undefined, 'balcony glazing is quoted separately');
 assert.strictEqual(
   api.PRICES.window * api.PRICES.minWindow, 98,
   'the smallest window visit is the 2 hour minimum at 49 €/h'
