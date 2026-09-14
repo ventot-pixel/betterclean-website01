@@ -1,5 +1,7 @@
 # BetterClean pricing contract
 
+- Essential Home Care includes accessible surface dusting up to 1.8 m, vacuuming, material-safe damp mopping, mirrors and non-window glass, light marks on handles/switches/door frames, and bin emptying with disposal access. Kitchen appliance exteriors and routine bathroom/shower cleaning are included. Bed making is included; dishwasher loading and changing clean bed linen left ready on the bed are on request within booked time. Appliance interiors, hood filters, sauna, windows, cupboard interiors, heavy buildup and upholstery need separately agreed services. Ceiling/high-access cleaning, heavy furniture moving, dismantling drains/ventilation fittings and renovation cleaning are excluded from Essential. Deep cleaning retains detailed frame/switch/baseboard cleaning and its existing specialist scope.
+
 - Prices include 25.5% VAT. Tax-credit illustrations are conditional examples, not amounts customers pay.
 - `pricing.js` owns rates, booking durations and the textile rate card. After a textile change run `node update-prices.mjs`, then `npm test`.
 - Quote-form add-ons use ADDON_HOURS at the booked service hourly rate: oven 1 h, fridge 1 h, hood 0.5 h, microwave 0.25 h and sauna 1 h. Extra person-hours appear in the duration summary and are added to the estimate. Included move-out appliances cannot be charged again. Duration selection and estimates enforce each service minimum.
