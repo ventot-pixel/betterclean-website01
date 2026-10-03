@@ -8,12 +8,13 @@ const context = {};
 vm.createContext(context);
 vm.runInContext(
   fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
-    '\nthis.__prices = PRICES; this.__homeRates = HOME_RATE_BY_FREQUENCY;',
+    '\nthis.__prices = PRICES; this.__homeRates = HOME_RATE_BY_FREQUENCY; this.__neighborPromo = NEIGHBOUR_PROMOTION;',
   context
 );
 
 const PRICES = context.__prices;
 const HOME_RATE_BY_FREQUENCY = context.__homeRates;
+const NEIGHBOUR_PROMOTION = context.__neighborPromo;
 const RATE_RE = /([0-9]+(?:,[0-9]+)?) €\/h(?!lö)/g;
 
 function fi(amount) {
@@ -54,10 +55,9 @@ const liveFiles = [
   'llms.txt',
 ];
 const fileSpecificRates = {
-  // 39 €/h is the time-limited offer and 10 €/h is its displayed saving
-  // against the 49 €/h standard weekly rate.
-  'naapurietu.html': new Set(['39', '10']),
-  'llms.txt': new Set(['39']), // Published neighbour offer; expires 1.10.2026.
+  // 39 €/h is the six-month introductory rate for the first 50 new recurring customers.
+  'naapurietu.html': new Set(['39']),
+  'llms.txt': new Set(['39']),
 };
 
 const violations = [];
@@ -98,6 +98,38 @@ assert.deepStrictEqual(
 const pricingHtml = fs.readFileSync(path.join(root, 'pricing.html'), 'utf8');
 assert.doesNotMatch(pricingHtml, /Ekstrohointisiivouksen/);
 assert.match(pricingHtml, /Ekstrahointisiivouksen/);
+
+assert.deepStrictEqual(
+  JSON.parse(JSON.stringify(NEIGHBOUR_PROMOTION)),
+  {
+    hourlyRate: 39,
+    customerLimit: 50,
+    introductoryMonths: 6,
+    minimumVisitHours: 2,
+    validThrough: '2027-09-30',
+    sofa2SeatAddon: 59,
+    sofa3SeatAddon: 79,
+    carpetAddonFrom: 39,
+    carpetAddonTo: 69,
+    smallWindowsAddon: 39,
+  },
+  'Neighbor promotion terms must remain canonical in pricing.js'
+);
+
+const neighborHtml = fs.readFileSync(path.join(root, 'naapurietu.html'), 'utf8');
+for (const required of [
+  'Ensimmäiselle 50 uudelle vakioasiakkaalle',
+  'ensimmäiset 6 kuukautta',
+  '30.9.2027',
+  'Vähintään 2 tuntia käyntiä kohden',
+  'id="frequency"',
+  "introductoryMonths: 6",
+  "customerLimit: 50",
+  "validThrough: '2027-09-30'",
+]) {
+  assert.match(neighborHtml, new RegExp(required), `Neighbor page must include: ${required}`);
+}
+assert.doesNotMatch(neighborHtml, /1\.10\.2026|2026-10-01/);
 
 console.log(
   'pricing-source-of-truth: OK (allowed hourly values: ' +
