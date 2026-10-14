@@ -23,8 +23,7 @@ for (const dead of ['quoteResumeBar', 'hydrateQuoteResumeBar', 'QUOTE_DRAFT_KEY'
   assert.ok(!pricingHtml.includes(dead), `removed resume-bar remnant "${dead}" in pricing`);
 }
 
-// The reset visit is no longer a promotion, so there is no offer box, no
-// expiry date and no customer cap. It states the first-visit rate instead.
+// Expired promotions stay absent. The form states the normal first-visit rate.
 assert.match(
   requestQuoteHtml,
   /id="firstVisitRateNote"/,
@@ -36,6 +35,8 @@ for (const dead of ['freeResetOfferNote', 'firstVisitFreeNote', '30.9.2026', 'no
     `expiring promo remnant "${dead}" must be gone`
   );
 }
+assert.match(requestQuoteHtml, /normal one-time rate of 59 €\/h/);
+assert.doesNotMatch(requestQuoteHtml, /normal contract rate|normaaliin sopimushintaasi/);
 
 assert.doesNotMatch(
   pricingHtml,

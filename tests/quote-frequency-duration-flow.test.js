@@ -373,8 +373,8 @@ assert.match(
 );
 assert.match(
   requestQuoteHtml,
-  /It is billed at your normal contract rate, like every visit/,
-  'the reset explanation states that weekly and bi-weekly pay their contract rate for the first visit'
+  /It is billed at the normal one-time rate of 59 €\/h/,
+  'the first-visit explanation states the normal one-time rate'
 );
 assert.match(
   requestQuoteHtml,
@@ -486,16 +486,16 @@ assert.strictEqual(document.getElementById('cleanDuration').value, '4', 'duratio
 api.refreshUi();
 assert.strictEqual(document.getElementById('homeSizeBracketHelp').hidden, true, 'valid typed home sizes hide the internal size-bracket helper');
 assert.strictEqual(document.getElementById('homeSizeBracketHelp').textContent, '', 'valid typed home sizes do not show the size-bracket mapping text');
-assert.strictEqual(api.calculateEstimate(), 196, 'estimate uses the new recurring hourly price');
+assert.strictEqual(api.calculateEstimate(), 236, 'first-visit estimate uses the normal one-time hourly price');
 assert.strictEqual(
   api.calculateEstimateAfterHouseholdDeduction(),
-  127.4,
+  153.4,
   'discounted estimate applies the 35% household deduction'
 );
-assert.strictEqual(document.getElementById('summaryEstimate').textContent, '196 €', 'summary shows the full estimated total');
+assert.strictEqual(document.getElementById('summaryEstimate').textContent, '236 €', 'summary shows the full estimated total');
 assert.strictEqual(
   document.getElementById('summaryEstimateAfterDeduction').textContent,
-  '127,40 €',
+  '153,40 €',
   'summary shows the price after the 35% household deduction'
 );
 assert.strictEqual(document.getElementById('recommendationGrid').hidden, false, 'recurring bookings keep the useful recommendation card grid');
@@ -538,9 +538,9 @@ api.bookingState.selectedServiceType = 'home';
 api.bookingState.selectedPropertySize = 'medium';
 api.bookingState.selectedDuration = 3;
 api.bookingState.extras = ['oven', 'fridge', 'hood', 'microwave', 'sauna'];
-for (const [frequency, rate] of Object.entries(REAL_PRICING.HOME_RATE_BY_FREQUENCY)) {
+for (const frequency of Object.keys(REAL_PRICING.HOME_RATE_BY_FREQUENCY)) {
   api.bookingState.selectedFrequency = frequency;
-  assert.strictEqual(api.calculateEstimate(), 6.75 * rate, 'timed appliance and sauna prices at ' + frequency);
+  assert.strictEqual(api.calculateEstimate(), 6.75 * REAL_PRICING.PRICES.oneTime, 'first-visit add-ons use the normal one-time rate at ' + frequency);
 }
 api.bookingState.extras = ['oven', 'fridge', 'hood', 'microwave'];
 api.bookingState.selectedServiceType = 'office';
@@ -556,14 +556,14 @@ assert.strictEqual(api.calculateEstimate(), 5.75 * 79, 'deep clean extras use th
 // Approved 66 m² tariff: distinguish the first visit from later maintenance.
 api.bookingState.extras = [];
 api.selectBookingService('home');
-for (const [frequency, ongoing, firstTotal] of [['once', 4, 236], ['biweekly', 3.5, 208], ['monthly', 4, 220], ['weekly', 3, 196]]) {
+for (const [frequency, ongoing] of [['once', 4], ['biweekly', 3.5], ['monthly', 4], ['weekly', 3]]) {
   api.selectFrequency(frequency);
   document.getElementById('homeSize').value = '66';
   api.handleHomeSizeChange();
   assert.strictEqual(api.bookingState.selectedDuration, 4, frequency + ' first visit has four person-hours');
   assert.strictEqual(api.bookingState.recommendedOngoingHours, ongoing, frequency + ' maintenance duration');
-  assert.strictEqual(api.calculateEstimate(), firstTotal, frequency + ' first visit full price');
+  assert.strictEqual(api.calculateEstimate(), 236, frequency + ' first visit uses the normal 59 €/h price');
   document.getElementById('cleanDuration').value = String(ongoing);
   api.handleDurationChange();
-  assert.strictEqual(api.calculateEstimate(), ongoing * REAL_PRICING.HOME_RATE_BY_FREQUENCY[frequency], frequency + ' maintenance uses the same hourly rate');
+  assert.strictEqual(api.calculateEstimate(), ongoing * REAL_PRICING.PRICES.oneTime, frequency + ' booking remains a first visit at the normal one-time rate');
 }

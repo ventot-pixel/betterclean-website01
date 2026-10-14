@@ -128,7 +128,7 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BetterClean","item":"https://www.betterclean.fi/"},{"@type":"ListItem","position":2,"name":"Pyydä tarjous","item":"https://www.betterclean.fi/request-quote.html"}]}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="pricing.js?v=20260914-timed-addons"></script>
+  <script src="pricing.js?v=20261014-expired-promotions"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -617,16 +617,6 @@
     .extra-check::after { content: '✓'; }
     .extra-card.active .extra-check { background: #247a24; border-color: #247a24; color: #fff; }
     .offer-line { color: #14530f; font-weight: 700; font-size: 0.85rem; margin-top: 6px; }
-    .free-reset-offer {
-      background: #eaf7e6;
-      border: 1px solid rgba(36,122,36,0.35);
-      border-radius: 12px;
-      padding: 14px 16px;
-      color: #14530f;
-      line-height: 1.6;
-    }
-    .free-reset-offer strong { display: block; margin-bottom: 4px; font-family: 'Sora', sans-serif; }
-
     .slot-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
@@ -953,7 +943,7 @@
                 <select id="cleanDuration" onchange="handleDurationChange()" aria-describedby="durationPersonHoursHelp durationWarning" disabled></select>
               </div>
               <p id="durationPersonHoursHelp" class="field-help duration-helper duration-grid-span" hidden data-en="Duration is shown in person-hours. For example, four person-hours may mean one cleaner for four hours or two cleaners for two hours." data-fi="Kesto näytetään henkilötunteina. Esimerkiksi neljä henkilötuntia voi tarkoittaa yhtä siivoojaa neljäksi tunniksi tai kahta siivoojaa kahdeksi tunniksi.">Kesto näytetään henkilötunteina. Esimerkiksi neljä henkilötuntia voi tarkoittaa yhtä siivoojaa neljäksi tunniksi tai kahta siivoojaa kahdeksi tunniksi.</p>
-              <p id="recurringExplanation" class="duration-recommendation recurring-explanation-callout duration-grid-span" hidden data-en="Your first visit is longer, because the home has not been maintained by us yet. It is billed at your normal contract rate, like every visit. Once the home reaches a consistent level, ongoing visits are shorter." data-fi="Ensimmäinen käynti on pidempi, koska emme ole vielä ylläpitäneet kotia. Se laskutetaan normaaliin sopimushintaasi, kuten jokainen käynti. Kun koti on saatu tasaiselle tasolle, jatkokäynnit ovat lyhyempiä.">Ensimmäinen käynti on pidempi, koska emme ole vielä ylläpitäneet kotia. Se laskutetaan normaaliin sopimushintaasi, kuten jokainen käynti. Kun koti on saatu tasaiselle tasolle, jatkokäynnit ovat lyhyempiä.</p>
+              <p id="recurringExplanation" class="duration-recommendation recurring-explanation-callout duration-grid-span" hidden data-en="Your first visit is longer because the home has not been maintained by us yet. It is billed at the normal one-time rate of 59 €/h. Once the home reaches a consistent level, ongoing visits are shorter and use your chosen frequency rate." data-fi="Ensimmäinen käynti on pidempi, koska emme ole vielä ylläpitäneet kotia. Se laskutetaan normaalilla kertasiivouksen hinnalla 59 €/h. Kun koti on saatu tasaiselle tasolle, jatkokäynnit ovat lyhyempiä ja niissä käytetään valitsemasi käyntivälin hintaa.">Ensimmäinen käynti on pidempi, koska emme ole vielä ylläpitäneet kotia. Se laskutetaan normaalilla kertasiivouksen hinnalla 59 €/h. Kun koti on saatu tasaiselle tasolle, jatkokäynnit ovat lyhyempiä ja niissä käytetään valitsemasi käyntivälin hintaa.</p>
               <div class="recommendation-grid duration-grid-span" id="recommendationGrid" aria-live="polite" hidden>
                 <div id="oneTimeRecommendation" class="recommendation-item">
                   <span data-en="Recommended visit duration" data-fi="Suositeltu käynnin kesto">Suositeltu käynnin kesto</span>
@@ -962,7 +952,7 @@
                 <div id="firstVisitRecommendation" class="recommendation-item">
                   <span data-en="Recommended first visit" data-fi="Suositeltu ensimmäinen käynti">Suositeltu ensimmäinen käynti</span>
                   <strong id="firstVisitDurationValue">-</strong>
-                  <p data-en="Longer, same hourly rate" data-fi="Pidempi, sama tuntihinta">Pidempi, sama tuntihinta</p>
+                  <p data-en="Normal one-time rate" data-fi="Normaali kertasiivouksen hinta">Normaali kertasiivouksen hinta</p>
                   <p class="offer-line" id="firstVisitRateNote" hidden></p>
                 </div>
                 <div id="ongoingVisitRecommendation" class="recommendation-item">
@@ -1688,16 +1678,22 @@
     return getBookingServiceConfig().labels[lang] || getBookingServiceConfig().labels.fi;
   }
 
-  // Every visit bills at the contract rate for the chosen cadence, the first
-  // one included. Deep and Move-out ignore cadence and use their flat rate.
+  // The ongoing contract rate for the chosen cadence. Deep and Move-out ignore
+  // cadence and use their normal service rate.
   function getContractRate(frequency) {
     const config = getBookingServiceConfig();
     if (config.rateKey && PRICES[config.rateKey]) return PRICES[config.rateKey];
     return HOME_RATE_BY_FREQUENCY[frequency] || PRICES.oneTime;
   }
 
+  function getFirstVisitRate(frequency) {
+    const config = getBookingServiceConfig();
+    if (config.rateKey && PRICES[config.rateKey]) return PRICES[config.rateKey];
+    return PRICES.oneTime;
+  }
+
   function getBookingHourlyRate() {
-    return getContractRate(bookingState.selectedFrequency);
+    return getFirstVisitRate(bookingState.selectedFrequency);
   }
 
   function normalizeBookingServiceType(value) {
@@ -2068,6 +2064,7 @@
       extrasLabels: getExtrasLabels(lang),
       estimatedTotal: formatPriceFi(calculateEstimate()),
       estimatedAfterHouseholdDeduction: formatPriceFi(calculateEstimateAfterHouseholdDeduction()),
+      firstVisitRate: getFirstVisitRate(bookingState.selectedFrequency),
       contractRate: getContractRate(bookingState.selectedFrequency)
     };
   }
@@ -2357,13 +2354,18 @@
       document.querySelectorAll('.optional-static').forEach(el => { el.hidden = true; });
     }
 
-    // The first visit is longer, not dearer. Say the one rate.
+    // Recurring bookings begin at the normal one-time rate; show the later
+    // cadence rate beside it so there is no promotional-price ambiguity.
     const firstVisitRateNote = document.getElementById('firstVisitRateNote');
     if (firstVisitRateNote) {
       const freq = bookingState.selectedFrequency;
       const show = service === 'home' && isRecurringFrequency(freq);
       firstVisitRateNote.hidden = !show;
-      if (show) firstVisitRateNote.textContent = getContractRate(freq) + ' €/h';
+      if (show) {
+        firstVisitRateNote.textContent = lang === 'fi'
+          ? getFirstVisitRate(freq) + ' €/h ensimmäinen käynti, sen jälkeen ' + getContractRate(freq) + ' €/h'
+          : getFirstVisitRate(freq) + ' €/h first visit, then ' + getContractRate(freq) + ' €/h';
+      }
     }
   }
 
@@ -2605,7 +2607,10 @@
       (lang === 'fi' ? 'Lisäpalvelut: ' : 'Additional services: ') + extrasText,
       (lang === 'fi' ? 'Arvioitu yhteensä: ' : 'Estimated total: ') + bookingPayload.estimatedTotal,
       (lang === 'fi' ? 'Arvio kotitalousvähennyksen jälkeen (35 %, ennen 150 € vuotuista omavastuuta): ' : 'Estimated cost after tax deduction (35%, before the €150 annual personal threshold): ') + bookingPayload.estimatedAfterHouseholdDeduction,
-      (lang === 'fi' ? 'Tuntihinta: ' : 'Hourly rate: ') + bookingPayload.contractRate + ' €/h',
+      (lang === 'fi' ? 'Ensimmäisen käynnin tuntihinta: ' : 'First-visit hourly rate: ') + bookingPayload.firstVisitRate + ' €/h',
+      bookingPayload.selectedFrequency !== 'once'
+        ? (lang === 'fi' ? 'Jatkokäyntien tuntihinta: ' : 'Ongoing hourly rate: ') + bookingPayload.contractRate + ' €/h'
+        : null,
       (lang === 'fi' ? 'Osoite: ' : 'Address: ') + (bookingPayload.address || '-'),
       (lang === 'fi' ? 'Postinumero: ' : 'Postcode: ') + (bookingPayload.postcode || '-'),
       (lang === 'fi' ? 'Toivottu päivä: ' : 'Preferred day: ') + (bookingPayload.preferredDay || '-'),

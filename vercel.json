@@ -9,16 +9,22 @@
       "source": "/brand_assets/premium_pricing.html",
       "destination": "/pricing.html",
       "permanent": true
+    },
+    {
+      "source": "/naapurietu",
+      "destination": "/pricing.html",
+      "permanent": true
+    },
+    {
+      "source": "/naapurietu.html",
+      "destination": "/pricing.html",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/yrityksille/muuttosiivous-vuokrataloille",
       "destination": "/yrityksille-muuttosiivous-vuokrataloille.html"
-    },
-    {
-      "source": "/naapurietu",
-      "destination": "/naapurietu.html"
     }
   ]
 }

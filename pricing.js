@@ -52,10 +52,9 @@ const PRICES = {
 /**
  * Essential Home Care rate ladder (€/h, incl VAT).
  *
- * Outside an explicitly defined promotion, commitment buys a cheaper hour,
- * and that is the entire incentive. Every visit bills at this rate. A new
- * customer's first visit is longer because the home has not been maintained
- * yet, but it is billed at the same hourly rate.
+ * Commitment buys a cheaper maintenance hour. A new recurring customer's
+ * longer first visit is priced at the normal one-time rate; later visits use
+ * the cadence rate below.
  */
 const HOME_RATE_BY_FREQUENCY = {
   weekly:   49,
@@ -475,18 +474,5 @@ const TEXTILE_BUNDLE = { doubleMattress: 89, sofa3Seat: 89, price: 149 };
 // Fixed add-ons to an existing cleaning visit; separate visits need a quote.
 const ADDON_PRICES = { freezer: 40, dishwasher: 30, balconyTerrace: 70, cabinetUnit: 25, allergyUpgrade: 60 };
 const TEXTILE_TERMS = { minimumVisit: 69, nearbyTravelFrom: 15, protectorMattressArmchair: 29, protectorSmallSofa: 39, protectorLargeSofa: 59, urgentPercent: 20 };
-const NEIGHBOUR_PROMOTION = {
-  hourlyRate: 39,
-  customerLimit: 50,
-  introductoryMonths: 6,
-  minimumVisitHours: 2,
-  validThrough: '2027-09-30',
-  sofa2SeatAddon: 59,
-  sofa3SeatAddon: 79,
-  carpetAddonFrom: 39,
-  carpetAddonTo: 69,
-  smallWindowsAddon: 39,
-};
-
 // Extra person-hours, billed at the booked service rate. Windows are quoted separately.
 const ADDON_HOURS = Object.freeze({ oven: 1, fridge: 1, hood: 0.5, microwave: 0.25, sauna: 1 });

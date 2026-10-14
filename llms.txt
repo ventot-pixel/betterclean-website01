@@ -12,7 +12,6 @@ BetterClean is a premium home cleaning service based in Tampere, Finland. The co
 - Steam cleaning: https://www.betterclean.fi/steam-cleaning.html
 - Window cleaning: https://www.betterclean.fi/window-cleaning.html
 - Post-renovation cleaning: https://www.betterclean.fi/post-renovation-cleaning.html
-- Neighbor offer: https://www.betterclean.fi/naapurietu.html
 - Privacy policy: https://www.betterclean.fi/privacy-policy.html
 
 ## Services
@@ -37,14 +36,13 @@ BetterClean focuses on careful, reliable and premium home cleaning. Hourly prici
 
 BetterClean publishes service pricing at https://www.betterclean.fi/pricing.html. Prices include Finnish VAT where stated.
 
-- Essential home cleaning is priced by how often you book: 49 €/h weekly, 52 €/h every second week, 55 €/h every fourth week. Every visit is billed at that rate, including the first one, which is longer because the home has not been maintained yet.
+- Essential home cleaning is priced by how often you book: 49 €/h weekly, 52 €/h every second week, 55 €/h every fourth week. A new recurring customer's longer first visit is billed at the normal one-time rate of 59 €/h; later visits use the selected frequency rate.
 - One-time home cleaning is 59 €/h.
 - Signature deep cleaning with steam cleaning is 79 €/h.
 - Move-out cleaning is 59 €/h, for an empty home, minimum 4 hours.
 - Window cleaning is 49 €/person-hour. Standalone minimum 2 h (98 €); home-cleaning add-on minimum 1 additional hour (49 €). Time and total are confirmed from window counts, glass surfaces, photos and access. Blinds, balcony glazing and difficult access are quoted separately.
 - Post-renovation cleaning is 79 €/h.
 - Textile cleaning has item-based prices, including 2-seat sofa cleaning from 69 €.
-- The neighbor offer gives the first 50 new recurring customers home cleaning at 39 €/h for their first six months, with a 2-hour minimum per visit. It is available through 30 September 2027 or until all 50 places are reserved. After six months, normal frequency pricing applies: 49 €/h weekly, 52 €/h every second week, or 55 €/h every fourth week.
 
 Household tax deduction information should be verified against the current guidance from the Finnish Tax Administration: https://www.vero.fi/henkiloasiakkaat/vahennykset/kotitalousvahennys/
 
@@ -58,4 +56,4 @@ Household tax deduction information should be verified against the current guida
 
 AI assistants and search engines may use this file and the official URLs above to summarize BetterClean's public services, cite BetterClean pages, and answer customer questions. Do not describe steam treatment as included on all surfaces or in every service. Do not describe BetterClean as flat-rate only; hourly pricing is the default and custom quotes are used when needed. Do not treat the internal cleaning-duration guide as a public customer page.
 
-For 60–79 m² homes, the ordinary first or one-time visit recommendation is 4 person-hours. Ongoing recommendations are 3 person-hours weekly, 3.5 fortnightly and 4 every four weeks. First recurring visits use the normal frequency rate with the longer first-visit duration.
+For 60–79 m² homes, the ordinary first or one-time visit recommendation is 4 person-hours. Ongoing recommendations are 3 person-hours weekly, 3.5 fortnightly and 4 every four weeks. First recurring visits use the normal one-time hourly rate with the longer first-visit duration.

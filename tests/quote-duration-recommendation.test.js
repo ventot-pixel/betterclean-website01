@@ -4,7 +4,6 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const requestQuoteHtml = fs.readFileSync(path.join(root, 'request-quote.html'), 'utf8');
-const neighborHtml = fs.readFileSync(path.join(root, 'naapurietu.html'), 'utf8');
 
 function extractObject(name) {
   const match = requestQuoteHtml.match(new RegExp(`const ${name} = \\{([\\s\\S]*?)\\n  \\};`));
@@ -89,31 +88,4 @@ assert.match(
   requestQuoteHtml,
   /durationLabel: getDurationDisplayLabel\(getTotalBookingHours\(\)\)/,
   'booking payload carries the same person-hour duration label as the UI'
-);
-
-const neighborRecommendations = (() => {
-  const match = neighborHtml.match(/const NEIGHBOR_VISIT_RECOMMENDATIONS = \{([\s\S]*?)\n  \};/);
-  assert(match, 'neighbor page visit recommendations are defined');
-  return Function(`"use strict"; return ({${match[1]}});`)();
-})();
-
-assert.deepStrictEqual(
-  neighborRecommendations,
-  {
-    'under-40': '3h+',
-    '40-59': '4h+',
-    '60-79': '4h+',
-    '80-99': '5h+',
-    '100-119': '5h+',
-    '120-149': '6h+',
-    '150-180': '7h+',
-    'over-180': '8h+'
-  },
-  'neighbor page uses the same recommended visit-length buckets'
-);
-
-assert.match(
-  neighborHtml,
-  /<option value="120-149" data-en="120-149 m²" data-fi="120-149 m²">/,
-  'neighbor page home-size selector keeps apartment size separate from the duration recommendation'
 );

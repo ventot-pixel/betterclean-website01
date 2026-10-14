@@ -3,10 +3,9 @@
  *
  *   weekly 49 · bi-weekly 52 · every four weeks 55 · one-time 59
  *
- * Commitment buys a cheaper hour. That is the whole incentive -- there is no
- * separate reset-visit rate and no promotion. A new customer's first visit is
- * simply longer, and is billed at their normal contract rate like every other
- * visit.
+ * Commitment buys a cheaper maintenance hour. There is no promotion. A new
+ * customer's longer first visit is billed at the ordinary one-time rate;
+ * later visits use the selected cadence rate.
  *
  * Move-out stays 59 €/h and must NOT move when the one-time home rate does --
  * both were 59 before this change, which is why they are asserted apart.
@@ -41,12 +40,10 @@ for (let i = 1; i < ladder.length; i++) {
   );
 }
 
-// ── No reset-visit pricing ─────────────────────────────────────────────────
-// The first visit is longer, not dearer. If a second rate table reappears,
-// so does the "is my first visit a different price?" confusion.
+// ── No promotional reset table ─────────────────────────────────────────────
 assert.strictEqual(
   hasResetTable, false,
-  'there must be no separate reset-visit rate table; a visit costs the contract rate'
+  'there must be no promotional reset-visit rate table'
 );
 
 // ── Rates that must NOT have moved ─────────────────────────────────────────

@@ -8,13 +8,12 @@ const context = {};
 vm.createContext(context);
 vm.runInContext(
   fs.readFileSync(path.join(root, 'pricing.js'), 'utf8') +
-    '\nthis.__prices = PRICES; this.__homeRates = HOME_RATE_BY_FREQUENCY; this.__neighborPromo = NEIGHBOUR_PROMOTION;',
+    '\nthis.__prices = PRICES; this.__homeRates = HOME_RATE_BY_FREQUENCY;',
   context
 );
 
 const PRICES = context.__prices;
 const HOME_RATE_BY_FREQUENCY = context.__homeRates;
-const NEIGHBOUR_PROMOTION = context.__neighborPromo;
 const RATE_RE = /([0-9]+(?:,[0-9]+)?) €\/h(?!lö)/g;
 
 function fi(amount) {
@@ -51,20 +50,14 @@ const liveFiles = [
   'steam-cleaning.html',
   'textile-cleaning.html',
   'additional-cleaning-services.html',
-  'naapurietu.html',
   'llms.txt',
 ];
-const fileSpecificRates = {
-  // 39 €/h is the six-month introductory rate for the first 50 new recurring customers.
-  'naapurietu.html': new Set(['39']),
-  'llms.txt': new Set(['39']),
-};
 
 const violations = [];
 for (const file of liveFiles) {
   const text = fs.readFileSync(path.join(root, file), 'utf8');
   for (const match of text.matchAll(RATE_RE)) {
-    if (!allowed.has(match[1]) && !fileSpecificRates[file]?.has(match[1])) {
+    if (!allowed.has(match[1])) {
       violations.push(`${file}: "${match[1]} €/h" is not in pricing.js`);
     }
   }
@@ -99,37 +92,16 @@ const pricingHtml = fs.readFileSync(path.join(root, 'pricing.html'), 'utf8');
 assert.doesNotMatch(pricingHtml, /Ekstrohointisiivouksen/);
 assert.match(pricingHtml, /Ekstrahointisiivouksen/);
 
-assert.deepStrictEqual(
-  JSON.parse(JSON.stringify(NEIGHBOUR_PROMOTION)),
-  {
-    hourlyRate: 39,
-    customerLimit: 50,
-    introductoryMonths: 6,
-    minimumVisitHours: 2,
-    validThrough: '2027-09-30',
-    sofa2SeatAddon: 59,
-    sofa3SeatAddon: 79,
-    carpetAddonFrom: 39,
-    carpetAddonTo: 69,
-    smallWindowsAddon: 39,
-  },
-  'Neighbor promotion terms must remain canonical in pricing.js'
-);
-
-const neighborHtml = fs.readFileSync(path.join(root, 'naapurietu.html'), 'utf8');
-for (const required of [
-  'Ensimmäiselle 50 uudelle vakioasiakkaalle',
-  'ensimmäiset 6 kuukautta',
-  '30.9.2027',
-  'Vähintään 2 tuntia käyntiä kohden',
-  'id="frequency"',
-  "introductoryMonths: 6",
-  "customerLimit: 50",
-  "validThrough: '2027-09-30'",
-]) {
-  assert.match(neighborHtml, new RegExp(required), `Neighbor page must include: ${required}`);
-}
-assert.doesNotMatch(neighborHtml, /1\.10\.2026|2026-10-01/);
+const repositoryText = [
+  'pricing.js',
+  'request-quote.html',
+  'llms.txt',
+  'sitemap.xml',
+  'vercel.json',
+].map(file => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
+assert.doesNotMatch(repositoryText, /NEIGHBOUR_PROMOTION|neighbor-quote|39 €\/h|first six months|ensimmäiset 6 kuukautta/);
+assert.match(repositoryText, /"source": "\/naapurietu"[\s\S]*?"destination": "\/pricing\.html"/);
+assert.ok(!fs.existsSync(path.join(root, 'naapurietu.html')), 'expired neighbor landing page is removed');
 
 console.log(
   'pricing-source-of-truth: OK (allowed hourly values: ' +
