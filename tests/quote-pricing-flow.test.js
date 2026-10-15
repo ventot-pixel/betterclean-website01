@@ -37,6 +37,14 @@ for (const dead of ['freeResetOfferNote', 'firstVisitFreeNote', '30.9.2026', 'no
 }
 assert.match(requestQuoteHtml, /normal one-time rate of 59 €\/h/);
 assert.doesNotMatch(requestQuoteHtml, /normal contract rate|normaaliin sopimushintaasi/);
+assert.match(
+  requestQuoteHtml,
+  /A new recurring customer's first visit is 59 €\/h\. The cards below show the ongoing rate/,
+  'frequency selection discloses the first-visit rate before a cadence is chosen'
+);
+for (const rate of [49, 52, 55]) {
+  assert.match(requestQuoteHtml, new RegExp(`data-en="Ongoing ${rate} €\\/h"`));
+}
 
 assert.doesNotMatch(
   pricingHtml,
