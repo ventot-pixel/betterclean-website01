@@ -41,6 +41,22 @@
     } catch (e) { /* tracking must never break the form */ }
   };
 
+  /* Metricool web analytics: cookieless (stores nothing on the device; sends
+     page URL, window size and referrer only), so it runs without consent and
+     is disclosed in privacy-policy.html. */
+  var METRICOOL_HASH = '1a941411ee6f4538c083c02221119c36';
+  if (METRICOOL_HASH) {
+    try {
+      var mc = document.createElement('script');
+      mc.async = true;
+      mc.src = 'https://tracker.metricool.com/resources/be.js';
+      mc.onload = function () {
+        if (window.beTracker) window.beTracker.t({ hash: METRICOOL_HASH });
+      };
+      document.head.appendChild(mc);
+    } catch (e) { /* analytics must never break the page */ }
+  }
+
   if (!META_PIXEL_ID && !GOOGLE_TAG_ID) return;
 
   var choice = null;
