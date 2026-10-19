@@ -119,16 +119,9 @@
     .lang-btn.active { background: var(--green); color: #fff; }
 
     nav { background: #fff; border-bottom: 1px solid #e8f0e7; position: sticky; top: 0; z-index: 50; }
-    .nav-logo-wrap {
-      height: 44px;
-      width: 152px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .nav-logo-wrap img { transform: translateY(1px); }
-    .nav-slogan { font-size: 0.69rem; color: #5d6b5d; line-height: 1; margin-top: 1px; letter-spacing: 0; }
+    .nav-logo-wrap { height: 42px; overflow: hidden; display: flex; align-items: center; }
+    @media (min-width: 768px) { .nav-logo-wrap { height: 72px; } }
+    .nav-slogan { display: block; color: var(--green); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; width: 100%; margin-top: 3px; }
     .hamburger-btn { display: none; width: 40px; height: 40px; border: none; background: transparent; cursor: pointer; padding: 8px; }
     .hamburger-btn span { display: block; height: 2px; background: var(--dark); margin: 6px 0; transition: transform 0.2s, opacity 0.2s; }
     .hamburger-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -282,9 +275,6 @@
     @media (max-width: 768px) {
       .hamburger-btn { display: block; }
       .hero-section-page { padding: 82px 20px 68px; }
-      .nav-logo-wrap { width: 132px; }
-      .nav-logo-wrap img { height: 256px !important; }
-      .nav-slogan { font-size: 0.62rem; }
       .metric-strip { margin-top: -24px; }
       .quote-card, .muted-panel { padding: 24px; }
       .btn-primary, .btn-outline { width: 100%; text-align: center; }
