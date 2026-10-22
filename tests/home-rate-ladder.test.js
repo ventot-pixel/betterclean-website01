@@ -69,10 +69,10 @@ assert.strictEqual(
 );
 
 // Deduction figures stay derivable.
-const after = r => Math.round(r * 0.65 * 100) / 100;
-assert.strictEqual(PRICES.oneTimeAfterTax, after(59), 'one-time after deduction is 38,35');
-assert.strictEqual(PRICES.recurringAfterTax, after(49), 'weekly after deduction is 31,85');
-assert.strictEqual(PRICES.moveOutAfterTax, after(59), 'move-out after deduction is 38,35');
+const after = r => Math.round(r * 0.60 * 100) / 100;
+assert.strictEqual(PRICES.oneTimeAfterTax, after(59), 'one-time after deduction is 35,40');
+assert.strictEqual(PRICES.recurringAfterTax, after(49), 'weekly after deduction is 29,40');
+assert.strictEqual(PRICES.moveOutAfterTax, after(59), 'move-out after deduction is 35,40');
 
 console.log('home-rate-ladder: OK (49 / 52 / 55 / 59, no reset-visit pricing)');
 

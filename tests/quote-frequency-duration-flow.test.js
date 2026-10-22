@@ -359,11 +359,11 @@ assert.match(
 assert.match(
   requestQuoteHtml,
   /id="summaryEstimateAfterDeduction"/,
-  'summary shows the estimated price after the 35% household deduction'
+  'summary shows the estimated price after the 40% household deduction'
 );
 assert.match(
   requestQuoteHtml,
-  /const HOUSEHOLD_DEDUCTION_RATE = 0\.35/,
+  /const HOUSEHOLD_DEDUCTION_RATE = 0\.40/,
   'household deduction rate is stored in one named constant'
 );
 assert.match(
@@ -417,7 +417,7 @@ const { api, document } = loadQuoteFormApi();
 assert.strictEqual(api.DURATION_RECOMMENDATION_RULES.frequencyMultipliers, undefined, 'percentage duration reductions are retired');
 assert.strictEqual(api.DURATION_RECOMMENDATION_RULES.minimumPersonHours, 2, 'duration minimum is two person-hours');
 assert.strictEqual(api.DURATION_RECOMMENDATION_RULES.durationStep, 0.5, 'manual duration step is half a person-hour');
-assert.strictEqual(api.HOUSEHOLD_DEDUCTION_RATE, 0.35, 'household deduction rate is 35%');
+assert.strictEqual(api.HOUSEHOLD_DEDUCTION_RATE, 0.40, 'household deduction rate is 40%');
 assert.strictEqual(api.DURATION_RECOMMENDATION_RULES.maximumSelectablePersonHours >= 12, true, 'manual duration dropdown supports the largest move-out recommendation');
 assert.strictEqual(api.getQuoteHomeSizeBracket(72).key, 'medium', 'typed 72 m² maps to the 60-79 m² bracket');
 assert.strictEqual(api.getQuoteHomeSizeBracket(130).key, 'xxlarge', 'typed 130 m² maps to the 120-149 m² bracket');
@@ -489,14 +489,14 @@ assert.strictEqual(document.getElementById('homeSizeBracketHelp').textContent, '
 assert.strictEqual(api.calculateEstimate(), 236, 'first-visit estimate uses the normal one-time hourly price');
 assert.strictEqual(
   api.calculateEstimateAfterHouseholdDeduction(),
-  153.4,
-  'discounted estimate applies the 35% household deduction'
+  141.6,
+  'discounted estimate applies the 40% household deduction'
 );
 assert.strictEqual(document.getElementById('summaryEstimate').textContent, '236 €', 'summary shows the full estimated total');
 assert.strictEqual(
   document.getElementById('summaryEstimateAfterDeduction').textContent,
-  '153,40 €',
-  'summary shows the price after the 35% household deduction'
+  '141,60 €',
+  'summary shows the price after the 40% household deduction'
 );
 assert.strictEqual(document.getElementById('recommendationGrid').hidden, false, 'recurring bookings keep the useful recommendation card grid');
 assert.strictEqual(document.getElementById('firstVisitRecommendation').hidden, false, 'recurring bookings keep the first-visit recommendation card');

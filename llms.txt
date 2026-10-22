@@ -1,6 +1,6 @@
 # BetterClean
 
-BetterClean is a premium home cleaning service based in Tampere, Finland. The company serves Tampere and nearby areas including Kangasala, Ylöjärvi, Lempäälä, Pirkkala and Nokia.
+BetterClean is a quality-focused home cleaning service based in Tampere, Finland. The company serves Tampere and nearby areas including Kangasala, Ylöjärvi, Lempäälä, Pirkkala and Nokia.
 
 ## Official Site
 
@@ -16,7 +16,7 @@ BetterClean is a premium home cleaning service based in Tampere, Finland. The co
 
 ## Services
 
-- Premium home cleaning in Tampere and nearby areas
+- Quality home cleaning in Tampere and nearby areas
 - Recurring home cleaning
 - One-time home cleaning
 - Deep cleaning
@@ -30,7 +30,7 @@ BetterClean is a premium home cleaning service based in Tampere, Finland. The co
 
 ## Positioning
 
-BetterClean focuses on careful, reliable and premium home cleaning. Hourly pricing is the default for labour-based services. Custom quotes are used when the home size, condition, surface type or cleaning scope requires assessment. Steam treatment is used only on suitable surfaces and areas; it is not promised as a standard treatment for every surface or every service.
+BetterClean focuses on careful, reliable and high-quality home cleaning. Hourly pricing is the default for labour-based services. Custom quotes are used when the home size, condition, surface type or cleaning scope requires assessment. Steam treatment is used only on suitable surfaces and areas; it is not promised as a standard treatment for every surface or every service.
 
 ## Pricing Summary
 

@@ -37,7 +37,7 @@ const allowed = new Set([
   PRICES.postRenoAfterTax,
   ...Object.values(HOME_RATE_BY_FREQUENCY),
   ...Object.values(HOME_RATE_BY_FREQUENCY).map(rate =>
-    Math.round(rate * 0.65 * 100) / 100
+    Math.round(rate * 0.60 * 100) / 100
   ),
 ].map(fi));
 

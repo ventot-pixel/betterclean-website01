@@ -5,7 +5,7 @@
  * Update here first, then run:  node update-prices.mjs  (or grep manually)
  *
  * All prices include VAT 25.5%.
- * Kotitalousvähennys = 35% off labour, omavastuu 150 €/hlö/vuosi.
+ * Kotitalousvähennys = 40% off labour, omavastuu 150 €/hlö/vuosi.
  */
 
 const PRICES = {
@@ -17,13 +17,13 @@ const PRICES = {
   window:       49,   // Ikkunanpesu
   postReno:     79,   // Remonttisiivous
 
-  // ── Estimated costs after a 35% tax deduction, before the personal annual threshold ────────────
-  recurringAfterTax:  31.85,
-  oneTimeAfterTax:    38.35,
-  deepAfterTax:       51.35,
-  moveOutAfterTax:    38.35,
-  windowAfterTax:     31.85,
-  postRenoAfterTax:   51.35,
+  // ── Estimated costs after a 40% tax deduction, before the personal annual threshold ────────────
+  recurringAfterTax:  29.40,
+  oneTimeAfterTax:    35.40,
+  deepAfterTax:       47.40,
+  moveOutAfterTax:    35.40,
+  windowAfterTax:     29.40,
+  postRenoAfterTax:   47.40,
 
   // ── Steam cleaning fixed prices (€) ───────────────────────────────────
   steamSingleMattress:  89,

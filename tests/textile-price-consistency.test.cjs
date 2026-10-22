@@ -44,7 +44,7 @@ test('base extraction and included HEPA do not advertise contradictory extra cha
   assert.doesNotMatch(section, /Fabric protection treatment included|Steam pre-treatment, extraction|protector coat/);
   for (const file of ['pricing.html','post-renovation-cleaning.html']) assert.doesNotMatch(read(file), /HEPA filtration upgrade|HEPA-suodatusparannus/);
   assert.doesNotMatch(read('textile-cleaning.html'), /<span class="market-price"|Usual local price|Typical local range/);
-  assert.match(read('textile-cleaning.html'), /200 x 300 cm standard carpet: 69 €, premium 77.40 €/);
+  assert.match(read('textile-cleaning.html'), /200 x 300 cm standard carpet: 69 €, steam-assisted 77.40 €/);
 });
 test('legacy asset price list points to the current tariff without publishing old prices', () => {
   assert.doesNotMatch(read('brand_assets/premium_pricing.html'), /€|"price"\s*:/);
