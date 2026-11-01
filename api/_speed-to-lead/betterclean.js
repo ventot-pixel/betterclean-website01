@@ -10,21 +10,8 @@ module.exports = {
   defaultLanguage: 'fi',
   requireService: true,
   timeZone: 'Europe/Helsinki',
-  // betterclean.fi runs this engine in its own Vercel project with its existing variable names.
-  envAliases: {
-    LEAD_EMAIL: ['BETTERCLEAN_LEAD_EMAIL'],
-    LEAD_FROM: ['BETTERCLEAN_LEAD_FROM'],
-    REPLY_FROM: ['BETTERCLEAN_REPLY_FROM'],
-    CRM_URL: ['CRM_WEBHOOK_URL', 'CRM_INGEST_URL'],
-    CRM_SECRET: ['CRM_WEBHOOK_SECRET', 'CRM_INGEST_SECRET'],
-    CRM_BOARD_URL: ['BETTERCLEAN_CRM_BOARD_URL'],
-    CRM_OWNER: ['BETTERCLEAN_LEAD_OWNER'],
-    TELEGRAM_CHAT_ID: ['TELEGRAM_CHAT_ID'],
-    CALLMEBOT_PHONE: ['CALLMEBOT_PHONE'],
-    CALLMEBOT_APIKEY: ['CALLMEBOT_APIKEY'],
-    SHEETS_WEBHOOK_URL: ['SHEETS_WEBHOOK_URL'],
-    SHEETS_WEBHOOK_SECRET: ['SHEETS_WEBHOOK_SECRET']
-  },
+  // No envAliases here: this file is also loaded by the multi-client relay. betterclean.fi adds its
+  // legacy variable names in its own api/lead.js, where it is the only tenant.
   crm: {
     business: 'BetterClean',
     owner: 'Ven',
