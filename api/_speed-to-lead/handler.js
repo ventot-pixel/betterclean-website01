@@ -452,8 +452,10 @@ function formatCustomerReply(payload, client) {
   const lang = client.reply[requested] ? requested : client.defaultLanguage || Object.keys(client.reply)[0];
   const template = client.reply[lang];
   const text = TEXT[lang] || TEXT.en;
-  const firstName = safeFirstName(customer.firstName || (customer.name || '').split(' ')[0]);
-  const detailLines = formatCustomerDetailLines(payload, lang);
+  // client.echoDetails === false: fixed text only (public demos), nothing the visitor typed is sent back.
+  const echoes = client.echoDetails !== false;
+  const firstName = echoes ? safeFirstName(customer.firstName || (customer.name || '').split(' ')[0]) : '';
+  const detailLines = echoes ? formatCustomerDetailLines(payload, lang) : [];
   const detailBlock = detailLines.length
     ? ['', text.detailsHeading, ...detailLines.map((line) => '- ' + line), '', text.correction]
     : [];
