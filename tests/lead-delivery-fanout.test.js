@@ -69,7 +69,7 @@ async function run() {
       const response = createResponse();
       await leadHandler({
         method: 'POST',
-        headers: {},
+        headers: { origin: 'https://www.betterclean.fi', host: 'www.betterclean.fi' },
         body: {
           source: 'request-quote-inquiry',
           subject: 'BetterClean quote inquiry - Steam cleaning',

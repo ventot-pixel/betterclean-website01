@@ -61,9 +61,12 @@ async function invoke(method, body) {
     }
   };
 
-  await handler({ method, body }, res);
+  await handler({ method, body, headers: BROWSER_HEADERS }, res);
   return state;
 }
+
+// The site's own forms post same-origin, so a real request always carries these.
+const BROWSER_HEADERS = { origin: 'https://www.betterclean.fi', host: 'www.betterclean.fi' };
 
 beforeEach(() => {
   clearManagedEnv();
@@ -173,7 +176,7 @@ describe('BetterClean lead handoff', () => {
 
     const result = await invoke('GET');
     assert.equal(result.status, 405);
-    assert.equal(result.headers.Allow, 'POST');
+    assert.equal(result.headers.Allow, 'POST, OPTIONS');
   });
 
   test('rejects a non-object lead before any delivery attempt', async () => {
@@ -243,7 +246,7 @@ describe('BetterClean lead handoff', () => {
         status(value) { state.status = value; return this; },
         json(value) { state.body = value; return this; }
       };
-      await handler({ method: 'POST', headers: { 'x-forwarded-for': '203.0.113.88' }, body }, res);
+      await handler({ method: 'POST', headers: { ...BROWSER_HEADERS, 'x-forwarded-for': '203.0.113.88' }, body }, res);
       last = state;
     }
 
